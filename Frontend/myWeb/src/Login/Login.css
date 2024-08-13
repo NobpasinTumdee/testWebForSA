@@ -1,0 +1,85 @@
+/* รีเซ็ต margin และ padding ของ body */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.textSize {
+    font-size: 50px;
+}
+
+/* รีเซ็ต margin และ padding ของ container */
+.login-container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #000000, #1C1C1C, #403ECC);
+}
+
+
+/* ปรับให้กล่องล็อกอินมีขนาดตามที่ต้องการ */
+.login-box {
+    width: 350px;
+    padding: 30px;
+    /*background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);*/
+    text-align: center;
+}
+
+/* ส่วนของ h2 */
+h2 {
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: black;
+}
+
+/* ปรับช่องกรอกข้อมูล */
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+/* ลิงก์สำหรับลืมรหัสผ่าน */
+.forgot-password {
+    display: block;
+    /*justify-content: right;*/
+    text-align: right;
+    margin-bottom: 20px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 10px;
+}
+
+/* ปุ่มล็อกอิน */
+.login-button {
+    width: 70%;
+    padding: 10px;
+    background-color: #ffc107;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.colortext {
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+}
+
+/* ลิงก์สำหรับลงทะเบียน */
+.signup-link {
+    display: block;
+    margin-top: 20px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
