@@ -7,6 +7,8 @@ body, html {
 
 .textSize {
     font-size: 50px;
+    color: #ffffff;
+    
 }
 
 /* รีเซ็ต margin และ padding ของ container */
@@ -38,14 +40,32 @@ h2 {
     color: black;
 }
 
+/*=====================================================================================*/
 /* ปรับช่องกรอกข้อมูล */
 .input-field {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ccc;
+    border: 2px solid #969696;
     border-radius: 20px;
 }
+/* เมื่อ textbox ถูกโฟกัส */
+.input-field:focus {
+    background-color: #ffffff; /* พื้นหลังเปลี่ยนเป็นสีน้ำเงินอ่อน */
+    border-color: #403ECC; /* เส้นขอบเปลี่ยนเป็นสีน้ำเงิน */
+    border: 2px solid #ffc107;
+    outline: none;
+    
+}
+
+.input-field:hover{
+    /*opacity: 0.6;
+    border-color: #22044d;*/
+    box-shadow: 0 0px 7px #ffc107;
+    outline: none;
+    
+}
+/*=====================================================================================*/
 
 /* ลิงก์สำหรับลืมรหัสผ่าน */
 .forgot-password {
@@ -58,6 +78,8 @@ h2 {
     font-size: 10px;
 }
 
+
+/*=====================================================================================*/
 /* ปุ่มล็อกอิน */
 .login-button {
     width: 70%;
@@ -70,12 +92,22 @@ h2 {
     font-size: 20px;
     margin-top: 10px;
 }
+.login-button:hover{
+    box-shadow: 0 0px 7px #ffc107;
+    outline: none;
+    
+}
+/*=====================================================================================*/
+
 
 .colortext {
     color: rgb(255, 255, 255);
     font-size: 50px;
 }
 
+
+
+/*=====================================================================================*/
 /* ลิงก์สำหรับลงทะเบียน */
 .signup-link {
     display: block;
@@ -83,3 +115,11 @@ h2 {
     color: rgb(255, 255, 255);
     text-decoration: none;
 }
+.signup-link:hover{
+    text-shadow: 0 0px 7px #ffc107;
+    outline: none;
+    
+}
+/*=====================================================================================*/
+
+

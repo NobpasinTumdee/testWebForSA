@@ -12,15 +12,15 @@ const ForgetPassword: React.FC = () => {
         navigate('/');
     };
     return (
-        <div className="forget-container">
+        <div className="forget-container"> 
             <div className="forget-box">
-                <h1 >Reset Password</h1>
+                <h1 className='textSize'>Reset Password</h1>
                 <input type="text" placeholder="Username" className="input-field" />
                 <input type="email" placeholder="Gmail" className="input-field" />
                 <input type="password" placeholder="New Password" className="input-field" />
                 <input type="password" placeholder="Confirm Password" className="input-field" />
                 <button onClick={COMFIRM} className="confirm-button">CONFIRM</button>
-                <a href="/" className="BACKTOLOGIN">BACK TO LOGIN</a>
+                <a href="/" className="signup-link">BACK TO LOGIN</a>
             </div>
         </div>
     );
