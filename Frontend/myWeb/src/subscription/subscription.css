@@ -1,0 +1,347 @@
+
+
+.container {
+    width: auto;
+    height: 1024px;
+    position: relative;
+    background: linear-gradient(180deg, #403ECC 0%, black 58%);
+  }
+  .verify {
+    display: flex; /* ใช้ Flexbox เพื่อจัดตำแหน่ง */
+    align-items: left; /* จัดตำแหน่งรายการไปที่ด้านบนของ container */
+    justify-content: left; /* จัดตำแหน่งรายการไปที่ด้านซ้ายของ container */
+  }
+
+  .verify img {
+    max-width: 20%; /* ทำให้ภาพไม่เกินความกว้างของ container */
+    max-height: 20%; /* ทำให้ภาพไม่เกินความสูงของ container */
+    width: auto; 
+    height: auto; 
+    display: block; 
+  }
+  .background-overlay {
+    width: 1282px;
+    height: 801px;
+    left: 79px;
+    top: 112px;
+    position: absolute;
+    background: rgba(217, 217, 217, 0.10);
+    border-radius: 15px;
+  }
+
+  .plan-card {
+    width: 359px;
+    height: 613px;
+    position: absolute;
+  }
+
+  .week-plan {
+    left: 929px;
+    top: 241px;
+  }
+
+  .month-plan {
+    left: 540px;
+    top: 241px;
+  }
+
+  .year-plan {
+    left: 151px;
+    top: 241px;
+  }
+
+  .card-content {
+    width: 359px;
+    height: 566.35px;
+    left: 0;
+    top: 0;
+    position: absolute;
+  }
+
+  .card-content .choose-plan {
+    width: 244.12px;
+    height: 27.06px;
+    left: 57.44px;
+    top: 476.78px;
+    position: absolute;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    line-height: 28.80px;
+    word-wrap: break-word;
+    background-color: #FF5454; /* เพิ่มพื้นหลังให้เห็นกล่องข้อความ */
+    border-radius: 15px; /* เพิ่มมุมโค้ง */
+    box-shadow: 0px 1px 24px rgba(248, 148, 26, 0.7); /* เงา */
+    padding: 23px 10px;
+  }
+
+  .week-plan .card-content {
+    background: #ffffff;
+    box-shadow: 0px 4px 23.6px #FFB154;
+    border-radius: 15px;
+  }
+
+  .month-plan .card-content {
+    background: white;
+    box-shadow: 0px 4px 23.6px #FFB154;
+    border-radius: 15px;
+  }
+
+  .year-plan .card-content {
+    background: white;
+    box-shadow: 0px 4px 23.6px #FFB154;
+    border-radius: 15px;
+  }
+
+  .label {
+    width: 168px;
+    height: 37px;
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    line-height: 28.80px;
+    word-wrap: break-word;
+  }
+
+  .week {
+    left: 247px;
+    top: 164px;
+  }
+
+  .month {
+    left: 636px;
+    top: 164px;
+  }
+
+  .year {
+    left: 1025px;
+    top: 164px;
+  }
+
+  .subscription-title {
+    width: 420px;
+    height: 92px;
+    left: 510px;
+    top: 20px;
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-size: 64px;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    line-height: 76.80px;
+    word-wrap: break-word;
+  }
+  .icon1 {
+    width: 62px;
+    height: 61px;
+    position: absolute;
+    left: 562px;
+    top: 378px;
+  }
+  .icon2 {
+    width: 62px;
+    height: 61px;
+    position: absolute;
+    left: 565px;
+    top: 517px;
+  }
+
+  .description1 {
+    left: 639px;
+    top: 385px;
+    position: absolute;
+    color: black;
+    font-size: 22px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    line-height: 30.80px;
+    word-wrap: break-word;
+    text-align: left;
+  }
+  .description6 { /*ตรง 199*/
+    left: 639px;
+    top: 520px;
+    position: absolute;
+    color: black;
+    font-size: 22px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    line-height: 30.80px;
+    word-wrap: break-word;
+    text-align: left;
+  }
+  .icon3 {
+    width: 62px;
+    height: 61px;
+    position: absolute;
+    left: 173px;
+    top: 378px;
+  }
+
+  .description2 {
+    left: 250px;
+    top: 383px;
+    position: absolute;
+    color: black;
+    font-size: 22px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    line-height: 30.80px;
+    word-wrap: break-word;
+    text-align: left;
+  }
+  .description5 { /*ตรง 59*/
+    left: 250px;
+    top: 520px;
+    position: absolute;
+    color: black;
+    font-size: 22px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    line-height: 30.80px;
+    word-wrap: break-word;
+    text-align: left;
+  }
+  .icon4 {
+    width: 62px;
+    height: 61px;
+    position: absolute;
+    left: 176px;
+    top: 517px;
+  }
+
+  .icon5 {
+    width: 62px;
+    height: 61px;
+    position: absolute;
+    left: 954px;
+    top: 378px;
+  }
+
+  .description3 {
+    left: 1031px;
+    top: 383px;
+    position: absolute;
+    color: black;
+    font-size: 22px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    line-height: 30.80px;
+    word-wrap: break-word;
+    text-align: left;
+  }
+
+  .icon6 {
+    width: 62px;
+    height: 61px;
+    position: absolute;
+    left: 957px;
+    top: 517px;
+  }
+  .description4 { /*ตรง 1999*/
+    left: 1031px;
+    top: 520px;
+    position: absolute;
+    color: black;
+    font-size: 22px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    line-height: 30.80px;
+    word-wrap: break-word;
+    text-align: left;
+  }
+
+  .price {
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 50px;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    line-height: 43.20px;
+    word-wrap: break-word;
+  }
+  .description{
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 36px;
+    font-family: Inter, sans-serif;
+    font-weight: 100;
+    line-height: 40px;
+    word-wrap: break-word;
+  }
+  .description h6 {
+    margin: 5; /* ระยะห่างของ <h6> */
+    line-height: 1.2; /* ความสูงของบรรทัด */
+    font-size: 25px; 
+    text-align: left;
+  }
+  .week-price {
+    width: 207px;
+    height: 37px;
+    left: 227px;
+    top: 289px;
+  }
+
+  .month-price {
+    width: 226px;
+    height: 37px;
+    left: 607px;
+    top: 289px;
+  }
+
+  .year-price {
+    width: 226px;
+    height: 37px;
+    left: 996px;
+    top: 289px;
+  }
+
+  /* Return home button */
+  .return-home {
+    width: 283px;
+    height: 54px;
+    left: 79px;
+    top: 937px;
+    position: absolute;
+  }
+
+  .return-home-text {
+    width: 274px;
+    height: 31px;
+    left: 5px;
+    top: 11px;
+    position: absolute;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    line-height: 28.80px;
+    word-wrap: break-word;
+  }
+
+  .return-home-button {
+    width: 283px;
+    height: 54px;
+    left: 0;
+    top: 0;
+    position: absolute;
+    background: rgba(39.77, 38.63, 127.70, 0);
+    border-radius: 35px;
+    border: 2px white solid;
+  }
+  .choose-plan:hover {
+    background-color: #FF7F7F; 
+  }
+  .return-home:hover {
+    background-color: #2f2e2e; 
+    border-radius: 35px;
+  }

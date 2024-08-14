@@ -6,6 +6,7 @@ import MainWeb from './MainWeb/MainWeb';
 import SignUp from './SignUp/SignUp';
 import EditInformation from './EditInformation/EditInformation';
 import WatchMovie from './WatchMovie/WatchMovie';
+import Subscription from './subscription/subscription';
 
 const App: React.FC = () => {
     return (
@@ -18,6 +19,8 @@ const App: React.FC = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/EditInformation" element={<EditInformation />} />
                 <Route path="/WatchMovie" element={<WatchMovie />} />
+                <Route path="/Subscription" element={<Subscription />} />
+
                 
             </Routes>
         </Router>
