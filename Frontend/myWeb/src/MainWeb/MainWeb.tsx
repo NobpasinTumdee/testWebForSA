@@ -17,7 +17,8 @@ import jojo from "../assets/JOJO.jpg"
 import fullmetal from "../assets/Fullmetal.jpg"
 import steinsgate from "../assets/SteinsGate.jpeg"
 import lovemelovenot from "../assets/lovemelovenot.jpg"
-
+import Subscription from '../subscriptions/subscription';
+import { useNavigate } from 'react-router-dom';
 /*❤️💁🏻‍♀️🎞️✨*/
 
 const App: React.FC = () => {
@@ -27,6 +28,14 @@ const App: React.FC = () => {
       setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const navigate = useNavigate();
+
+  const subscription = () => {
+      // Logic สำหรับการรีเซ็ตรหัสผ่าน (เช่น การ validate ข้อมูล)
+      
+      // นำทางกลับไปที่หน้า login
+      navigate('/subscription');
+  };
   return (
       <div className="app">
           <aside className={`sidebar ${isSidebarOpen ? '' : 'hidden'}`}>
@@ -41,7 +50,7 @@ const App: React.FC = () => {
                               <li className="sizeMenu">🎞️ Movie</li>
                               <li className="sizeMenu">❤️ Favorite</li>
                               <li className="sizeMenu">💁🏻‍♀️ About You</li>
-                              <button className="button-85" >✨Subscribe✨</button>
+                              <button onClick={subscription} className="button-85" >✨Subscribe✨</button>
                               <a href="/" className="signup-link">🔙</a>
                           </ul>
                       </nav>
