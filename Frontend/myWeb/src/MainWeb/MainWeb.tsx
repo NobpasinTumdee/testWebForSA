@@ -44,8 +44,9 @@ const App: React.FC = () => {
                       <nav>
                           <ul>
                               <li className="sizeMenu">🎞️ Movie</li>
-                              <li className="sizeMenu">❤️ Favorite</li>
-                              <li className="sizeMenu">💁🏻‍♀️ About You</li>
+                              <li className="sizeMenu">❤️ Collection</li>
+                              <li className="sizeMenu">💁🏻‍♀️ Abont you</li>
+                              <li className="sizeMenu">👔 INFORMATION</li>
                               <button onClick={subscription} className="button-85" >✨Subscribe✨</button>
                               <a href="/" className="signup-link">🔙</a>
                           </ul>
