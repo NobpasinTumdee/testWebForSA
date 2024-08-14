@@ -17,7 +17,6 @@ import jojo from "../assets/JOJO.jpg"
 import fullmetal from "../assets/Fullmetal.jpg"
 import steinsgate from "../assets/SteinsGate.jpeg"
 import lovemelovenot from "../assets/lovemelovenot.jpg"
-import Subscription from '../subscriptions/subscription';
 import { useNavigate } from 'react-router-dom';
 /*❤️💁🏻‍♀️🎞️✨*/
 

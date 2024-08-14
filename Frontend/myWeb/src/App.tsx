@@ -5,6 +5,7 @@ import ForgetPassword from './ForgetPassword/ForgetPassword';
 import MainWeb from './MainWeb/MainWeb';
 import SignUp from './SignUp/SignUp';
 import Subscription from './subscriptions/subscription';
+import WatchMovie from './WatchMovie/WatchMovie';
 
 const App: React.FC = () => {
     return (
@@ -16,6 +17,7 @@ const App: React.FC = () => {
                 <Route path="/signup" element={<SignUp />} /> 
                 <Route path="/login" element={<Login />} />
                 <Route path="/subscription" element={<Subscription />} />
+                <Route path="/watchmovie" element={<WatchMovie />} />
             </Routes>
         </Router>
     );
