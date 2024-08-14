@@ -34,7 +34,8 @@ const App: React.FC = () => {
                               <li className="sizeMenu">🎞️ Movie</li>
                               <li className="sizeMenu">❤️ Favorite</li>
                               <li className="sizeMenu">💁🏻‍♀️ About You</li>
-                              <li className="subscribe">✨Subscribe</li>
+                              <li className="subscribe">✨Subscribe✨</li>
+                              <a href="/" className="signup-link">🔙</a>
                           </ul>
                       </nav>
                   </>
@@ -51,6 +52,7 @@ const App: React.FC = () => {
                   <h1>MOVIE</h1>
                   <div className="movie-grid">
                       {/* Repeat this block for each movie */}
+
                       <div className="movie-card">
                         <img src={VioletEvergarden} alt="Violet Evergarden" />
                       </div>
@@ -66,10 +68,7 @@ const App: React.FC = () => {
                       <div className="movie-card">
                         <img src={aot3} alt="aot3" />
                       </div>
-                      {/* Add more movie cards as needed */}
-                  </div>
-                  <div className="movie-grid">
-                      {/* Repeat this block for each movie */}
+
                       <div className="movie-card">
                         <img src={rezero} alt="rezero" />
                       </div>
