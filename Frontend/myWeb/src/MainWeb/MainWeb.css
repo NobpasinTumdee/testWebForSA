@@ -1,27 +1,26 @@
-html {
+html, body {
   margin: 0;
   padding: 0;
   height: 100%;
   background-color: #000000;
-}
-
-body {
-  margin: 0;
   font-family: Arial, sans-serif;
-  
+  overflow-x: hidden; /* ป้องกันการเลื่อนแนวนอน */
 }
 
 .app {
   display: flex;
-  height: 100vh;
+  min-height: 100vh; /* ปรับเป็น min-height เพื่อรองรับการเลื่อนหน้า */
+  background: linear-gradient(to right, #1C1C1C, #030334); /* ย้ายพื้นหลังมาไว้ที่นี่เพื่อคลุมทั้งหน้า */
 }
 
 .sidebar {
-  width: 230px;
+  width: 210px;
   background: linear-gradient(to bottom, #5654C0, #040312);
   padding: 20px;
-  position: relative;
-  transition: width 0.3s, transform 0.3s;
+  position: fixed; /* เปลี่ยนเป็น fixed เพื่อให้ Sidebar ตรึงอยู่กับหน้าจอ */
+  height: 100%; /* ให้ Sidebar มีความสูงเต็มหน้าจอ */
+  transition: width 0.8s, transform 0.8s;
+  z-index: 1000; /* เพื่อให้ Sidebar อยู่ด้านหน้าเสมอ */
 }
 
 .sidebar.hidden {
@@ -45,18 +44,27 @@ body {
   font-weight: bold;
   margin-bottom: 10px;
 }
-
+/*=============================================================================================*/
 .sizeMenu {
   font-size: 24px;
   color: #ffffff;
+  transition: 0.8s;
 }
 
+.sizeMenu:hover {
+
+  font-size: 24px;
+  color: #FFA726;
+}
+
+/*=============================================================================================*/
 .logo {
   font-size: 50px;
   font-weight: bold;
   margin-bottom: 20px;
   color: #ffffff;
 }
+
 .sidebar nav ul {
   list-style: none;
   padding: 0;
@@ -76,41 +84,46 @@ body {
 
 .main-content {
   flex-grow: 1;
-  background: linear-gradient(to right, #1C1C1C, #030334);
-  color: white;
   padding: 20px;
-  transition: margin-left 0.3s;
+  margin-left: 270px; /* ปรับเพื่อให้ Main Content อยู่ทางขวาของ Sidebar */
+  transition: margin-left 0.8s;
 }
 
 .main-content.expanded {
   margin-left: 0;
 }
 
-header {
+header {             /*top*/
   display: flex;
+  position: fixed;
   justify-content: space-between;
   margin-bottom: 20px;
+  
 }
 
-.search-bar {
+.search-bar {/* ช่อง ค้นหา*/
   flex-grow: 1;
+  background-color: #282780;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 20px;
+  width: 400px;
   border: none;
   outline: none;
 }
 
 .search-button {
-  background-color: #FFA726;
+  background-color: #b1b0e4;
+
   border: none;
   padding: 10px 20px;
   margin-left: 10px;
-  border-radius: 5px;
+  border-radius: 20px;
   cursor: pointer;
 }
 
 .movies h1 {
   margin-bottom: 20px;
+  margin-top: 50px;
 }
 
 .movie-grid {
@@ -125,6 +138,7 @@ header {
   padding: 0%;
   border-radius: 10px;
   text-align: center;
+  transition: 0.5s;
 }
 
 .movie-card img {
@@ -134,6 +148,86 @@ header {
 }
 
 .movie-card:hover {
-  box-shadow: 0 0px 15px #f9d055;
+  box-shadow: 0 0px 30px #FFE2BF;
   outline: none;
 }
+
+.titile {
+  color: #ffffff;
+  font-size: 34px;
+}
+
+/* ======================================================================================================
+<!-- HTML !-->
+<button class="button-85" role="button">Button 85</button>
+
+ CSS */
+.button-85 {
+  font-size: 24px;
+  font-style: #000000;  padding: 15px 20px;
+  border: none;
+  outline: none;
+  color: rgb(69, 39, 6);
+  background: #FFE2BF;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 20px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-85:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.button-85:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #FFE2BF;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+/* ===================================================================================== */
