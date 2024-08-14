@@ -19,7 +19,7 @@ const Login: React.FC = () => {
                 <input type="password" placeholder="password" className="input-field" />
                 <a href="/forget-password" className="forgot-password">FORGOT PASSWORD</a>
                 <button onClick={TOMAIN} className="login-button">LOG IN</button>
-                <a href="/MainWeb" className="signup-link">SIGN UP NOW</a>
+                <a href="/signup" className="signup-link">SIGN UP NOW</a>
             </div>
         </div>
     );

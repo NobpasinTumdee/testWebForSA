@@ -1,0 +1,99 @@
+/* รีเซ็ต margin และ padding ของ body */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* กำหนดความสูงของ container และพื้นหลัง */
+.signup-container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom,#403ECC,#1C1C1C);
+    width: 100vw;
+}
+/* กล่องสมัครสมาชิก */
+.signup-box {
+    width: 350px;
+    padding: 30px;
+    text-align: center;
+    display: flex; /* ใช้ Flexbox */
+    flex-direction: column; /* จัดวางในแนวตั้ง */
+    align-items: center; /* จัดวางกลางแนวนอน */
+    justify-content: center; /* จัดวางกลางแนวตั้ง */
+}
+
+/* ส่วนของ h1 */
+h1 {
+    text-align: center;
+    margin-bottom: 0px;
+    font-size: 24px;
+    color: rgb(239, 230, 230);
+}
+
+
+.form-group{
+    text-align: left;
+    color: white;
+}
+/* ปรับช่องกรอกข้อมูล */
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #969696;
+    border-radius: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* เมื่อ textbox ถูกโฟกัส */
+.form-group input:focus {
+    background-color: #ffffff; /* พื้นหลังเปลี่ยนเป็นขาว */
+    border-color: #403ECC; /* เส้นขอบเปลี่ยนเป็นสีน้ำเงิน */
+    outline: none;
+}
+
+/* เมื่อ textbox ถูกโฮเวอร์ */
+.form-group input:hover {
+    box-shadow: 0 0px 7px #ffc107;
+    outline: none;
+}
+
+/* ปุ่มสมัครสมาชิก */
+.signup-button {
+    width: 70%;
+    padding: 10px;
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    /* เพิ่มการจัดวางตรงกลาง */
+    text-align: center;
+}
+
+/* ปุ่มเมื่อโฮเวอร์ */
+.signup-button:hover {
+    box-shadow: 0 0px 7px #ff9900;
+    outline: none;
+}
+
+/* ลิงก์กลับไปที่หน้าเข้าสู่ระบบ */
+.login-link {
+    display: block;
+    margin-top: 20px;
+    color: rgb(241, 238, 238);
+    text-decoration: none;
+    text-align: center;
+}
+
+.login-link:hover {
+    text-shadow: 0 0px 7px #ffc107;
+}
