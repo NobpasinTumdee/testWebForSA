@@ -1,3 +1,4 @@
+
 import React from 'react';
 import './subscription.css'; 
 import verifyImage from '../assets/verify.png';
