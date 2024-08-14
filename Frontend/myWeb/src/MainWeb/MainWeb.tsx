@@ -69,8 +69,10 @@ const App: React.FC = () => {
                   <div className="movie-grid">
                       {/* Repeat this block for each movie */}
 
-                      <div className="movie-card">
-                        <img src={VioletEvergarden} alt="Violet Evergarden" />
+                      <div  className="movie-card">
+                        <a href="/WatchMovie">
+                        <img  src={VioletEvergarden} alt="Violet Evergarden" />
+                        </a>
                       </div>
                       <div className="movie-card">
                         <img src={yourname} alt="yourname" />
