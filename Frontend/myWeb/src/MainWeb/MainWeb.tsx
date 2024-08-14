@@ -10,6 +10,13 @@ import Cm5 from "../assets/Cm5persec.jpg"
 import evangelion from "../assets/evangelion.jpg"
 import haikyuu from "../assets/Haikyuu.jpg"
 import kimestu from "../assets/kimestuNoYaiba.jpg"
+import dragonball from "../assets/dragonball.jpg"
+import deatnote from "../assets/deatnote.jpg"
+import naruto from "../assets/Naruto.jpg"
+import jojo from "../assets/JOJO.jpg"
+import fullmetal from "../assets/Fullmetal.jpg"
+import steinsgate from "../assets/SteinsGate.jpeg"
+import lovemelovenot from "../assets/lovemelovenot.jpg"
 
 /*❤️💁🏻‍♀️🎞️✨*/
 
@@ -34,7 +41,7 @@ const App: React.FC = () => {
                               <li className="sizeMenu">🎞️ Movie</li>
                               <li className="sizeMenu">❤️ Favorite</li>
                               <li className="sizeMenu">💁🏻‍♀️ About You</li>
-                              <li className="subscribe">✨Subscribe✨</li>
+                              <button className="button-85" >✨Subscribe✨</button>
                               <a href="/" className="signup-link">🔙</a>
                           </ul>
                       </nav>
@@ -49,7 +56,7 @@ const App: React.FC = () => {
               </header>
               
               <section className="movies">
-                  <h1>MOVIE</h1>
+                  <h1 className='titile'>MOVIE</h1>
                   <div className="movie-grid">
                       {/* Repeat this block for each movie */}
 
@@ -85,6 +92,27 @@ const App: React.FC = () => {
                         <img src={kimestu} alt="kimestu" />
                       </div>
                       {/* Add more movie cards as needed */}
+                      <div className="movie-card">
+                        <img src={dragonball} alt="dragonball" />
+                      </div>
+                      <div className="movie-card">
+                        <img src={deatnote} alt="deatnote" />
+                      </div>
+                      <div className="movie-card">
+                        <img src={naruto} alt="naruto" />
+                      </div>
+                      <div className="movie-card">
+                        <img src={jojo} alt="jojo" />
+                      </div>
+                      <div className="movie-card">
+                        <img src={fullmetal} alt="fullmetal" />
+                      </div>
+                      <div className="movie-card">
+                        <img src={steinsgate} alt="steinsgate" />
+                      </div>
+                      <div className="movie-card">
+                        <img src={lovemelovenot} alt="lovemelovenot" />
+                      </div>
                   </div>
               </section>
           </main>
