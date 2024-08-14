@@ -31,9 +31,6 @@ const App: React.FC = () => {
   const navigate = useNavigate();
 
   const subscription = () => {
-      // Logic สำหรับการรีเซ็ตรหัสผ่าน (เช่น การ validate ข้อมูล)
-      
-      // นำทางกลับไปที่หน้า login
       navigate('/subscription');
   };
   return (
