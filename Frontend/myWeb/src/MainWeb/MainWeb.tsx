@@ -45,8 +45,8 @@ const App: React.FC = () => {
                           <ul>
                               <li className="sizeMenu">🎞️ Movie</li>
                               <li className="sizeMenu">❤️ Collection</li>
-                              <li className="sizeMenu">💁🏻‍♀️ Abont you</li>
-                              <li className="sizeMenu">👔 INFORMATION</li>
+                              <li className="sizeMenu">💁🏻‍♀️ About you</li>
+                              <a href="/EditInformation" className="sizeMenu">👔 INFORMATION</a>
                               <button onClick={subscription} className="button-85" >✨Subscribe✨</button>
                               <a href="/" className="signup-link">🔙</a>
                           </ul>
@@ -67,7 +67,9 @@ const App: React.FC = () => {
                       {/* Repeat this block for each movie */}
 
                       <div className="movie-card">
+                        <a href='/WatchMovie'>
                         <img src={VioletEvergarden} alt="Violet Evergarden" />
+                        </a>
                       </div>
                       <div className="movie-card">
                         <img src={yourname} alt="yourname" />

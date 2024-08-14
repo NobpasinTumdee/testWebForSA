@@ -49,6 +49,7 @@ html, body {
   font-size: 24px;
   color: #ffffff;
   transition: 0.8s;
+  text-decoration: none;
 }
 
 .sizeMenu:hover {

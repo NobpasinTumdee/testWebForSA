@@ -1,0 +1,57 @@
+/* ไฟล์: EditInformation.css */
+
+.container {
+    background-color: #2c2f48;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    width: 400px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  .container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  /*
+  input[type="text"],
+  input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #f39c12;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #e67e22;
+  }*/
+  
+  .return-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .return-button:hover {
+    background-color: #444;
+  }
