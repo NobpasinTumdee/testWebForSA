@@ -16,15 +16,21 @@ import naruto from "../assets/Naruto.jpg"
 import jojo from "../assets/JOJO.jpg"
 import fullmetal from "../assets/Fullmetal.jpg"
 import steinsgate from "../assets/SteinsGate.jpeg"
-import lovemelovenot from "../assets/lovemelovenot.jpg"
+import lovemelovenot from "../assets/Movie/lovemelovenot.jpg"
+import TheMatrix from "../assets/Movie/TheMatrix.jpg"
+
+import yournameBig from "../assets/Anime/yournamePosterBig3.png";
+import ourBeLove from "../assets/Movie/ourBeLoveSummer.png";
 import { useNavigate } from 'react-router-dom';
 /*❤️💁🏻‍♀️🎞️✨*/
 
 const App: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isPosterVisible, setIsPosterVisible] = useState(false);  // เพิ่ม state สำหรับ Poster
 
   const toggleSidebar = () => {
       setIsSidebarOpen(!isSidebarOpen);
+      setIsPosterVisible(isSidebarOpen);  // แสดง Poster เมื่อ Sidebar ถูกซ่อน
   };
 
   const navigate = useNavigate();
@@ -32,6 +38,7 @@ const App: React.FC = () => {
   const subscription = () => {
       navigate('/subscription');
   };
+
   return (
       <div className="app">
           <aside className={`sidebar ${isSidebarOpen ? '' : 'hidden'}`}>
@@ -45,8 +52,10 @@ const App: React.FC = () => {
                           <ul>
                               <li className="sizeMenu">🎞️ Movie</li>
                               <li className="sizeMenu">❤️ Collection</li>
-                              <li className="sizeMenu">💁🏻‍♀️ About you</li>
-                              <a href="/EditInformation" className="sizeMenu">👔 INFORMATION</a>
+                              <li className="sizeMenu">💁🏻‍♀️ About Me</li>
+                              <a href="/EditInformation" >
+                                <li className="sizeMenu">👔 Information</li>
+                              </a>
                               <button onClick={subscription} className="button-85" >✨Subscribe✨</button>
                               <a href="/" className="signup-link">🔙</a>
                           </ul>
@@ -62,13 +71,20 @@ const App: React.FC = () => {
               </header>
               
               <section className="movies">
-                  <h1 className='titile'>MOVIE</h1>
+                  {isPosterVisible && (  // แสดง PosterBIG เมื่อ isPosterVisible เป็น true
+                      <div className='PosterBIG'>
+                        <div className='image-container'>
+                          <img src={yournameBig} alt="yournameBig" />
+                          <div className="text-overlay">Your Name</div>
+                        </div>
+                      </div>
+                  )}
+                  <h1 className='titile'>ANIME</h1>
                   <div className="movie-grid">
                       {/* Repeat this block for each movie */}
-
                       <div className="movie-card">
                         <a href='/WatchMovie'>
-                        <img src={VioletEvergarden} alt="Violet Evergarden" />
+                          <img src={VioletEvergarden} alt="Violet Evergarden" />
                         </a>
                       </div>
                       <div className="movie-card">
@@ -83,7 +99,6 @@ const App: React.FC = () => {
                       <div className="movie-card">
                         <img src={aot3} alt="aot3" />
                       </div>
-
                       <div className="movie-card">
                         <img src={rezero} alt="rezero" />
                       </div>
@@ -118,9 +133,25 @@ const App: React.FC = () => {
                       <div className="movie-card">
                         <img src={steinsgate} alt="steinsgate" />
                       </div>
-                      <div className="movie-card">
-                        <img src={lovemelovenot} alt="lovemelovenot" />
+                  </div>
+                  
+
+                  {isPosterVisible && (  // แสดง PosterBIG เมื่อ isPosterVisible เป็น true
+                      <div className='PosterBIG'>
+                        <div className='image-container'>
+                          <img src={ourBeLove} alt="ourBeLove" />
+                          <div className="text-overlay">Our Be love Summer</div>
+                        </div>
                       </div>
+                  )}
+                  <h1 className='titile'>MOVIE</h1>
+                  <div className="movie-grid">
+                    <div className="movie-card">
+                        <img src={lovemelovenot} alt="lovemelovenot" />
+                    </div>
+                    <div className="movie-card">
+                        <img src={TheMatrix} alt="TheMatrix" />
+                    </div>
                   </div>
               </section>
           </main>

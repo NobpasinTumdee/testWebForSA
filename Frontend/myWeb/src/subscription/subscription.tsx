@@ -21,13 +21,13 @@ const Subscription: React.FC = () => {
         </div>
       </div>
       <div className="label week">WEEK</div>
-      <div className="subscription-title">subscription</div>
+      <div className="subscription-title">SUBSCRIPTION</div>
       <div className="label month">MONTH</div>
       <div className="label year">YEAR</div>
-      <div className="price week-price">59</div>
-      <div className="price month-price"> 199
+      <div className="price week-price">59 ฿</div>
+      <div className="price month-price"> 199 ฿
       </div>
-      <div className="price year-price">1999</div>
+      <div className="price year-price">1999 ฿</div>
 
       <a href="/MainWeb" >
       <div className="return-home">
