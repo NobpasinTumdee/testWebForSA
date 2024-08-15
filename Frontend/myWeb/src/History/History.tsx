@@ -36,7 +36,7 @@ const movies = [
   },
 ];
 
-const AdminManageMovies: React.FC = () => {
+const History: React.FC = () => {
   return (
     <div className="History-container">
       <h1 className="History-title">HISTORY</h1>
@@ -58,4 +58,4 @@ const AdminManageMovies: React.FC = () => {
   );
 };
 
-export default AdminManageMovies;
+export default History;

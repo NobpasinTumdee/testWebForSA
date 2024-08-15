@@ -58,7 +58,7 @@ const movies = [
   },
 ];
 
-const AdminManageMovies: React.FC = () => {
+const Collection: React.FC = () => {
   return (
     <div className="Collection-container">
       <h1 className="Collection-title">COLLECTION</h1>
@@ -83,4 +83,4 @@ const AdminManageMovies: React.FC = () => {
   );
 };
 
-export default AdminManageMovies;
+export default Collection;
