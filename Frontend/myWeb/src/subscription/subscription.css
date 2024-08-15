@@ -1,347 +1,189 @@
+/* SubscriptionPage.css */
+.subscription-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(to bottom, #000, #1a2a6c);
+  min-height: 100vh;
+  color: white;
+}
+
+.subscription-title {
+  font-size: 3rem;
+  margin-bottom: 30px;
+}
+
+.plans-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 1000px;
+  gap: 20px;
+}
+
+.plan-card {
+  height: 400px;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  color: #333;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  width: 30%;
+}
+
+.plan-card:hover {
+  transform: translateY(-10px);
+  background: #ffe7c2;
+  box-shadow:  0 0 18px #FFA726;
+}
+
+.plan-duration {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.plan-price {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.plan-description, .plan-duration-description {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.choose-plan-button {
+  margin-top: 140px;
+  background-color: #ff5851;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.choose-plan-button:hover {
+  background: #ffbb56;
+  box-shadow:  0 0 18px #FFA726;
+}
+
+.return-button {
+  margin-top: 30px;
+  padding: 10px 20px;
+  background: none;
+  border: 2px solid white;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.return-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
 
 
-.container {
-    width: auto;
-    height: 1024px;
-    position: relative;
-    background: linear-gradient(180deg, #403ECC 0%, black 58%);
-  }
-  .verify {
-    display: flex; /* ใช้ Flexbox เพื่อจัดตำแหน่ง */
-    align-items: left; /* จัดตำแหน่งรายการไปที่ด้านบนของ container */
-    justify-content: left; /* จัดตำแหน่งรายการไปที่ด้านซ้ายของ container */
-  }
+/* =================================================================================================*/
+/* subscription.css */
 
-  .verify img {
-    max-width: 20%; /* ทำให้ภาพไม่เกินความกว้างของ container */
-    max-height: 20%; /* ทำให้ภาพไม่เกินความสูงของ container */
-    width: auto; 
-    height: auto; 
-    display: block; 
-  }
-  .background-overlay {
-    width: 1282px;
-    height: 801px;
-    left: 79px;
-    top: 112px;
-    position: absolute;
-    background: rgba(217, 217, 217, 0.10);
-    border-radius: 15px;
-  }
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
-  .plan-card {
-    width: 359px;
-    height: 613px;
-    position: absolute;
-  }
+.popup-content {
+  color: #000;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+}
 
-  .week-plan {
-    left: 929px;
-    top: 241px;
-  }
+.close-button {
+  background-color: #ff5851;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-  .month-plan {
-    left: 540px;
-    top: 241px;
-  }
+.close-button:hover {
+  background-color: #e94b45;
+}
 
-  .year-plan {
-    left: 151px;
-    top: 241px;
-  }
+.payment-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-right: 15px;
+  transition: 0.5s;
+}
 
-  .card-content {
-    width: 359px;
-    height: 566.35px;
-    left: 0;
-    top: 0;
-    position: absolute;
-  }
+.payment-button:hover {
+  background: #ffbb56;
+  box-shadow:  0 0 18px #FFA726;
+  
+}
 
-  .card-content .choose-plan {
-    width: 244.12px;
-    height: 27.06px;
-    left: 57.44px;
-    top: 476.78px;
-    position: absolute;
-    text-align: center;
-    color: rgb(255, 255, 255);
-    font-size: 24px;
-    font-family: Inter, sans-serif;
-    font-weight: 700;
-    line-height: 28.80px;
-    word-wrap: break-word;
-    background-color: #FF5454; /* เพิ่มพื้นหลังให้เห็นกล่องข้อความ */
-    border-radius: 15px; /* เพิ่มมุมโค้ง */
-    box-shadow: 0px 1px 24px rgba(248, 148, 26, 0.7); /* เงา */
-    padding: 23px 10px;
-  }
 
-  .week-plan .card-content {
-    background: #ffffff;
-    box-shadow: 0px 4px 23.6px #FFB154;
-    border-radius: 15px;
-  }
+.imgPayment {
+  margin: 0;
+  width: 300px;
+  height: 450px;
+  box-shadow:  0 0 18px #00000022;
+}
 
-  .month-plan .card-content {
-    background: white;
-    box-shadow: 0px 4px 23.6px #FFB154;
-    border-radius: 15px;
-  }
 
-  .year-plan .card-content {
-    background: white;
-    box-shadow: 0px 4px 23.6px #FFB154;
-    border-radius: 15px;
-  }
 
-  .label {
-    width: 168px;
-    height: 37px;
-    position: absolute;
-    text-align: center;
-    color: white;
-    font-size: 24px;
-    font-family: Inter, sans-serif;
-    font-weight: 700;
-    line-height: 28.80px;
-    word-wrap: break-word;
-  }
 
-  .week {
-    left: 247px;
-    top: 164px;
-  }
 
-  .month {
-    left: 636px;
-    top: 164px;
-  }
 
-  .year {
-    left: 1025px;
-    top: 164px;
-  }
+/* สำหรับ Popup ของอนิเมชั่นชำระเงินสำเร็จ */
+.success-popup-content {
+  color: #000;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+}
 
-  .subscription-title {
-    width: auto;
-    height: auto;
-    left: 510px;
-    top: 20px;
-    position: absolute;
-    text-align: center;
-    color: white;
-    font-size: 64px;
-    font-family: Inter, sans-serif;
-    font-weight: 700;
-    line-height: 76.80px;
-    word-wrap: break-word;
-  }
-  .icon1 {
-    width: 62px;
-    height: 61px;
-    position: absolute;
-    left: 562px;
-    top: 378px;
-  }
-  .icon2 {
-    width: 62px;
-    height: 61px;
-    position: absolute;
-    left: 565px;
-    top: 517px;
-  }
+.success-checkmark {
+  font-size: 4rem;
+  color: #4CAF50;
+  animation: popUp 0.5s ease-in-out;
+}
 
-  .description1 {
-    left: 639px;
-    top: 385px;
-    position: absolute;
-    color: black;
-    font-size: 22px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 200;
-    line-height: 30.80px;
-    word-wrap: break-word;
-    text-align: left;
+/* อนิเมชั่นแสดงผลแบบเด้ง */
+@keyframes popUp {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
   }
-  .description6 { /*ตรง 199*/
-    left: 639px;
-    top: 520px;
-    position: absolute;
-    color: black;
-    font-size: 22px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 200;
-    line-height: 30.80px;
-    word-wrap: break-word;
-    text-align: left;
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
-  .icon3 {
-    width: 62px;
-    height: 61px;
-    position: absolute;
-    left: 173px;
-    top: 378px;
-  }
-
-  .description2 {
-    left: 250px;
-    top: 383px;
-    position: absolute;
-    color: black;
-    font-size: 22px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 200;
-    line-height: 30.80px;
-    word-wrap: break-word;
-    text-align: left;
-  }
-  .description5 { /*ตรง 59*/
-    left: 250px;
-    top: 520px;
-    position: absolute;
-    color: black;
-    font-size: 22px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 200;
-    line-height: 30.80px;
-    word-wrap: break-word;
-    text-align: left;
-  }
-  .icon4 {
-    width: 62px;
-    height: 61px;
-    position: absolute;
-    left: 176px;
-    top: 517px;
-  }
-
-  .icon5 {
-    width: 62px;
-    height: 61px;
-    position: absolute;
-    left: 954px;
-    top: 378px;
-  }
-
-  .description3 {
-    left: 1031px;
-    top: 383px;
-    position: absolute;
-    color: black;
-    font-size: 22px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 200;
-    line-height: 30.80px;
-    word-wrap: break-word;
-    text-align: left;
-  }
-
-  .icon6 {
-    width: 62px;
-    height: 61px;
-    position: absolute;
-    left: 957px;
-    top: 517px;
-  }
-  .description4 { /*ตรง 1999*/
-    left: 1031px;
-    top: 520px;
-    position: absolute;
-    color: black;
-    font-size: 22px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 200;
-    line-height: 30.80px;
-    word-wrap: break-word;
-    text-align: left;
-  }
-
-  .price {
-    position: absolute;
-    text-align: center;
-    color: black;
-    font-size: 50px;
-    font-family: Inter, sans-serif;
-    font-weight: 700;
-    line-height: 43.20px;
-    word-wrap: break-word;
-  }
-  .description{
-    position: absolute;
-    text-align: center;
-    color: black;
-    font-size: 36px;
-    font-family: Inter, sans-serif;
-    font-weight: 100;
-    line-height: 40px;
-    word-wrap: break-word;
-  }
-  .description h6 {
-    margin: 5; /* ระยะห่างของ <h6> */
-    line-height: 1.2; /* ความสูงของบรรทัด */
-    font-size: 25px; 
-    text-align: left;
-  }
-  .week-price {
-    width: 207px;
-    height: 37px;
-    left: 227px;
-    top: 289px;
-  }
-
-  .month-price {
-    width: 226px;
-    height: 37px;
-    left: 607px;
-    top: 289px;
-  }
-
-  .year-price {
-    width: 226px;
-    height: 37px;
-    left: 996px;
-    top: 289px;
-  }
-
-  /* Return home button */
-  .return-home {
-    width: 283px;
-    height: 54px;
-    left: 79px;
-    top: 937px;
-    position: absolute;
-  }
-
-  .return-home-text {
-    width: 274px;
-    height: 31px;
-    left: 5px;
-    top: 11px;
-    position: absolute;
-    text-align: center;
-    color: rgb(255, 255, 255);
-    font-size: 24px;
-    font-family: Inter, sans-serif;
-    font-weight: 700;
-    line-height: 28.80px;
-    word-wrap: break-word;
-  }
-
-  .return-home-button {
-    width: 283px;
-    height: 54px;
-    left: 0;
-    top: 0;
-    position: absolute;
-    background: rgba(39.77, 38.63, 127.70, 0);
-    border-radius: 35px;
-    border: 2px white solid;
-  }
-  .choose-plan:hover {
-    background-color: #FF7F7F; 
-  }
-  .return-home:hover {
-    background-color: #2f2e2e; 
-    border-radius: 35px;
-  }
+}

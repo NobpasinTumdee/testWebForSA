@@ -1,55 +1,78 @@
-import React from 'react';
-import './subscription.css'; 
-import verifyImage from '../assets/verify.png';
-const Subscription: React.FC = () => {
+import React, { useState } from 'react';
+import './subscription.css';
+import payment from "../assets/payment/payment.jpg" ;
+
+const Subscription = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState('');
+
+  const plans = [
+    { duration: 'WEEK', price: '59 ฿', description: 'You can watch all the movies on the web.', durationDescription: 'Duration of viewing 1 week' },
+    { duration: 'MONTH', price: '199 ฿', description: 'You can watch all the movies on the web.', durationDescription: 'Duration of viewing 1 month' },
+    { duration: 'YEAR', price: '1999 ฿', description: 'You can watch all the movies on the web.', durationDescription: 'Duration of viewing 1 year' },
+  ];
+
+  const openPopup = (plan: string) => {
+    setSelectedPlan(plan);
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
+
+  const proceedToPayment = () => {
+    setIsPopupOpen(false);
+    setIsSuccessPopupOpen(true);
+
+    // ตั้งเวลาให้ popup ปิดเองหลังจาก 2 วินาที
+    setTimeout(() => {
+      setIsSuccessPopupOpen(false);
+    }, 2000);
+  };
+
   return (
-    <div className="container">
-      <div className="background-overlay" />
-      <div className="plan-card week-plan">
-        <div className="card-content">
-          <div className="choose-plan">Choose Plan</div>
-        </div>
+    <div className="subscription-container">
+      <h1 className="subscription-title">SUBSCRIPTION</h1>
+      <div className="plans-container">
+        {plans.map((plan, index) => (
+          <div key={index} className="plan-card">
+            <h2 className="plan-duration">{plan.duration}</h2>
+            <h3 className="plan-price">{plan.price}</h3>
+            <p className="plan-description">{plan.description}</p>
+            <p className="plan-duration-description">{plan.durationDescription}</p>
+            <button className="choose-plan-button" onClick={() => openPopup(plan.duration)}>
+              Choose Plan
+            </button>
+          </div>
+        ))}
       </div>
-      <div className="plan-card month-plan">
-        <div className="card-content">
-          <div className="choose-plan">Choose Plan</div>
-        </div>
-      </div>
-      <div className="plan-card year-plan">
-        <div className="card-content">
-          <div className="choose-plan">Choose Plan</div>
-        </div>
-      </div>
-      <div className="label week">WEEK</div>
-      <div className="subscription-title">SUBSCRIPTION</div>
-      <div className="label month">MONTH</div>
-      <div className="label year">YEAR</div>
-      <div className="price week-price">59 ฿</div>
-      <div className="price month-price"> 199 ฿
-      </div>
-      <div className="price year-price">1999 ฿</div>
 
-      <a href="/MainWeb" >
-      <div className="return-home">
-        
-        <div  className="return-home-text">Return to home page</div>
-        
-        <div className="return-home-button" />
-      </div>
-      </a>
+      <a href="/MainWeb" className="return-button-Admin">Return to home page</a>
 
-      <img className="icon1" src={verifyImage} alt="icon1" />
-      <div className="description6">Duration of viewing <br /> 1 week</div>
-      <img className="icon2" src={verifyImage} alt="icon2" />
-      <div className="description1">You can watch all <br />the movies on the web.</div>
-      <img className="icon3" src={verifyImage} alt="icon3" />
-      <div className="description5">Duration of viewing <br /> 1 month</div>
-      <img className="icon4" src={verifyImage} alt="icon4" />
-      <div className="description2">You can watch all <br />the movies on the web.</div>
-      <img className="icon5" src={verifyImage} alt="icon5" />
-      <div className="description4">Duration of viewing <br /> 1 year</div>
-      <img className="icon6" src={verifyImage} alt="icon6" />
-      <div className="description3">You can watch all <br />the movies on the web.</div>
+      {isPopupOpen && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <h2>Payment for {selectedPlan} Plan</h2>
+            <p>Total amount: {plans.find(plan => plan.duration === selectedPlan)?.price}</p>
+            <div>
+              <img src={payment} className="imgPayment" alt="Payment" />
+            </div>
+            <button className="payment-button" onClick={proceedToPayment}>Proceed to Payment</button>
+            <button className="close-button" onClick={closePopup}>Close</button>
+          </div>
+        </div>
+      )}
+
+      {isSuccessPopupOpen && (
+        <div className="popup-overlay">
+          <div className="success-popup-content">
+            <div className="success-checkmark">✔</div>
+            <p>Payment Successful!</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

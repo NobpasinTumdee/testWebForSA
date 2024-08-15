@@ -23,7 +23,7 @@ const WatchMovie: React.FC = () => {
           </div>
         </div>
       </div>
-      <a  href="/MainWeb"  className="return-button">Return to home page</a>
+      <a  href="/MainWeb"  className="return-button-watch">Return to home page</a>
     </div>
   );
 };
