@@ -56,6 +56,9 @@ const App: React.FC = () => {
                               <a href="/EditInformation" >
                                 <li className="sizeMenu">👔 Information</li>
                               </a>
+                              <a href="/Admin" >
+                                <li className="sizeMenu">💻 Admin</li>
+                              </a>
                               <button onClick={subscription} className="button-85" >✨Subscribe✨</button>
                               <a href="/" className="signup-link">🔙</a>
                           </ul>

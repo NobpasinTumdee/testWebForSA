@@ -7,6 +7,7 @@ import SignUp from './SignUp/SignUp';
 import EditInformation from './EditInformation/EditInformation';
 import WatchMovie from './WatchMovie/WatchMovie';
 import Subscription from './subscription/subscription';
+import Admin from './Admin/Admin';
 
 const App: React.FC = () => {
     return (
@@ -20,6 +21,7 @@ const App: React.FC = () => {
                 <Route path="/EditInformation" element={<EditInformation />} />
                 <Route path="/WatchMovie" element={<WatchMovie />} />
                 <Route path="/Subscription" element={<Subscription />} />
+                <Route path="/Admin" element={<Admin />} />
 
                 
             </Routes>
