@@ -40,21 +40,23 @@ html, body {
 }
 
 .sidebar  {
+  
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 /*=============================================================================================*/
 .sizeMenu {
+  text-decoration: none;
   font-size: 24px;
   padding: 5px;
   color: #ffffff;
   transition: 0.5s;
-  text-decoration: none;
+  
 }
 
 .sizeMenu:hover {
-  
+  text-decoration: none;
   border-radius: 10px;
   background-color: #9E9EE2;
   font-size: 24px;
@@ -79,6 +81,9 @@ html, body {
   cursor: pointer;
 }
 
+a {
+  text-decoration: none;
+}
 .sidebar nav ul li.subscribe {
   background-color: #FFA726;
   padding: 10px;

@@ -1,0 +1,19 @@
+.AboutMeTitie{
+    color: aliceblue;
+    margin: 30px;
+}
+
+.textAbout {
+    background: linear-gradient(to bottom, #000, #f6b4ff);
+    color: white;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+
+    
+}
+
+.divAboutMe {
+    margin: 40px;
+}

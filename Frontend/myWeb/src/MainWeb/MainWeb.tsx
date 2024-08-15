@@ -51,8 +51,13 @@ const App: React.FC = () => {
                       <nav>
                           <ul>
                               <li className="sizeMenu">🎞️ Movie</li>
-                              <li className="sizeMenu">❤️ Collection</li>
-                              <li className="sizeMenu">💁🏻‍♀️ About Me</li>
+
+                              <a href='./Collection'>
+                                <li className="sizeMenu">❤️ Collection</li>
+                              </a>
+                              <a href='./AboutMe'>
+                                <li className="sizeMenu">💁🏻‍♀️ About Me</li>
+                              </a>
                               <a href="/EditInformation" >
                                 <li className="sizeMenu">👔 Information</li>
                               </a>
