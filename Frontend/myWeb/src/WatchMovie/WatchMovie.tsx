@@ -15,7 +15,7 @@ const WatchMovie: React.FC = () => {
             allowFullScreen
           ></iframe>
         </div>
-        <div className="movie-info">
+        <div className="movie-infoWatch">
           <img src={VioletEvergarden} alt="Movie Poster" className="movie-poster" />
           <div className="info">
             <h2>Movie information</h2>

@@ -67,9 +67,9 @@ const Collection: React.FC = () => {
           <div className="movie-card-Adminpage" key={movie.id}>
             <img src={movie.image} alt={movie.title} className="movie-image" />
             <div className="movie-info">
-              <h2>{movie.title}</h2>
-              <p>{movie.description}</p>
-              <p>Date: {movie.date}</p>
+              <h2 >{movie.title}</h2>
+              <p >{movie.description}</p>
+              <p >Date: {movie.date}</p>
             </div>
             <button className="edit-button">
               <img src={icon} className='edit-icon-Collection'></img>

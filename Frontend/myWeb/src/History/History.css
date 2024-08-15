@@ -40,19 +40,7 @@
     margin-right: 15px;
   }
   
-  .movie-info {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* จัดให้อยู่ชิดซ้าย */
-  }
-  
-  .movie-info h2, .movie-info p {
-    margin: 0;
-    text-align: left; /* จัดข้อความให้ชิดซ้าย */
-    width: 100%;
-    }
-  
+
   .edit-button {
     background-color: transparent;
     border: none;

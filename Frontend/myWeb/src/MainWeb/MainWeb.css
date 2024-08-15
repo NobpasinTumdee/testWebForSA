@@ -21,6 +21,7 @@ html, body {
   height: 100%; /* ให้ Sidebar มีความสูงเต็มหน้าจอ */
   transition: width 0.8s, transform 0.8s;
   z-index: 1000; /* เพื่อให้ Sidebar อยู่ด้านหน้าเสมอ */
+  border-radius: 0px 15px 15px 0px;
 }
 
 .sidebar.hidden {

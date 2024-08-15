@@ -50,8 +50,8 @@ const App: React.FC = () => {
                       <div className="logo">NetFlim</div>
                       <nav>
                           <ul>
-                              <div className="sizeMenu" onClick={toggleSidebar}>
-                                <li>🎞️ Movie</li>
+                              <div  onClick={toggleSidebar}>
+                                <li className="sizeMenu">🎞️ Movie</li>
                               </div>
                               <a href='./Collection'>
                                 <li className="sizeMenu">❤️ Collection</li>

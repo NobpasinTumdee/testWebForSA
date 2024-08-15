@@ -34,11 +34,15 @@
     border: none;
   }
 
-  .movie-info {
+  .movie-infoWatch {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .movie-infoWatch h2{
+    color: #ffffff;
   }
 
   .movie-poster {
