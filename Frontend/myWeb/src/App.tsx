@@ -9,6 +9,7 @@ import WatchMovie from './WatchMovie/WatchMovie';
 import Subscription from './subscription/subscription';
 import Admin from './Admin/Admin';
 import History from './History/History';
+import Collection from './Collection/Collection' ;
 
 const App: React.FC = () => {
     return (
@@ -24,6 +25,7 @@ const App: React.FC = () => {
                 <Route path="/Subscription" element={<Subscription />} />
                 <Route path="/Admin" element={<Admin />} />
                 <Route path="/History" element={<History />} />
+                <Route path="/Collection" element={<Collection />} />
 
                 
             </Routes>

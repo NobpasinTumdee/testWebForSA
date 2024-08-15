@@ -1,5 +1,5 @@
-.History-container {
-    background: linear-gradient(to bottom, #000, #b90e01);
+.Collection-container {
+    background: linear-gradient(to bottom, #000, #FFB154);
     color: white;
     min-height: 100vh;
     padding: 20px;
@@ -8,7 +8,7 @@
     align-items: center;
   }
   
-  .History-title {
+  .Collection-title {
     font-size: 3rem;
     margin-bottom: 30px;
   }
@@ -71,14 +71,14 @@
   }
   
 
-  .edit-icon-Admin {
-    width: 20px; /* กำหนดขนาดตามต้องการ */
-    height: 20px; /* กำหนดขนาดตามต้องการ */
+  .edit-icon-Collection {
+    width: 40px; /* กำหนดขนาดตามต้องการ */
+    height: 40px; /* กำหนดขนาดตามต้องการ */
     object-fit: contain; /* ปรับให้รูปไม่ถูกบีบหรือยืด */
   }
 
 
-  .return-button-Admin {
+  .return-button-Collection {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -94,6 +94,6 @@
     cursor: pointer;
   }
 
-  .return-button-Admin:hover {
+  .return-button-Collection:hover {
     background-color: rgba(255, 255, 255, 0.1);
   }

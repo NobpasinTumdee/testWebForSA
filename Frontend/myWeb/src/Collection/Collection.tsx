@@ -1,9 +1,9 @@
 import React from 'react';
-import './Admin.css';
+import './Collection.css';
 import VioletEvergarden from "../assets/VioletEvergarden.jpg";
 import rezero from "../assets/rezero.jpg"
 import Cm5 from "../assets/Cm5persec.jpg"
-import icon from "../assets/icon/EditIcon.png"
+import icon from "../assets/icon/RedHeart.png"
 import fullmetal from "../assets/Fullmetal.jpg"
 
 const movies = [
@@ -60,8 +60,8 @@ const movies = [
 
 const AdminManageMovies: React.FC = () => {
   return (
-    <div className="admin-container">
-      <h1 className="admin-title">ADMIN</h1>
+    <div className="Collection-container">
+      <h1 className="Collection-title">COLLECTION</h1>
       <div className="movies-list">
         {movies.map((movie) => (
           <div className="movie-card-Adminpage" key={movie.id}>
@@ -72,13 +72,13 @@ const AdminManageMovies: React.FC = () => {
               <p>Date: {movie.date}</p>
             </div>
             <button className="edit-button">
-              <img src={icon} className='edit-icon-Admin'></img>
+              <img src={icon} className='edit-icon-Collection'></img>
             </button>
           </div>
         ))}
         
       </div>
-      <a  href="/MainWeb"  className="return-button-Admin">Return to home page</a>
+      <a  href="/MainWeb"  className="return-button-Collection">Return to home page</a>
     </div>
   );
 };

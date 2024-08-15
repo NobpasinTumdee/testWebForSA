@@ -38,8 +38,8 @@ const movies = [
 
 const AdminManageMovies: React.FC = () => {
   return (
-    <div className="admin-container">
-      <h1 className="admin-title">HISTORY</h1>
+    <div className="History-container">
+      <h1 className="History-title">HISTORY</h1>
       <div className="movies-list">
         {movies.map((movie) => (
           <div className="movie-card-Adminpage" key={movie.id}>
