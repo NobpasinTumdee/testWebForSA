@@ -11,5 +11,5 @@ type Collection struct {
 	User_ID uint
 	User   User `gorm:"foreignKey:User_ID"`
 
-	Movie []Movie `gorm:"many2many:CollectionMovie;"`
+	//Movie []Movie `gorm:"many2many:CollectionMovie;"`
 }

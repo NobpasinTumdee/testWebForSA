@@ -13,7 +13,7 @@ type Movie struct {
 	Movie_length        float32
 	
 	// 1 Movie เป็นเจ้าของได้หลาย History
-	History []History `gorm:"foreignKey:Movie_ID"`
+	History []History `gorm:"foreignKey:MovieID"`
 
 	Collection []Collection `gorm:"many2many:CollectionMovie;"`
 }

@@ -9,11 +9,11 @@ type History struct {
 	gorm.Model
 	Date  time.Time
 	
-	User_ID uint
-	User   User `gorm:"foreignKey:User_ID"`
+	UserID uint
+	User   User `gorm:"foreignKey:UserID"`
 
-	Movie_ID uint
-	Movie   Movie `gorm:"foreignKey:Movie_ID"`
+	MovieID uint
+	Movie   Movie `gorm:"foreignKey:MovieID"`
 	
 	
 }

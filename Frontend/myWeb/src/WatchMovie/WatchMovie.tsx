@@ -1,6 +1,6 @@
 import React from 'react';
 import './WatchMovie.css';
-import VioletEvergarden from "../assets/VioletEvergarden.jpg"; // นำเข้ารูปภาพ
+import VioletEvergarden from "../assets/VioletEvergarden.jpg"; // นำเข้ารูปภาพ นะจ้ะ 
 
 const WatchMovie: React.FC = () => {
   return (
