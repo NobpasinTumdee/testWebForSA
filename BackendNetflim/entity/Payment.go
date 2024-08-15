@@ -11,11 +11,11 @@ type Payment struct {
 	Payment_status  string
 	Date  time.Time
 	
-	User_ID uint
-	User   User `gorm:"foreignKey:User_ID"`
+	UserID uint
+	User   User `gorm:"foreignKey:UserID"`
 
-	Package_ID uint
-	MoviePackage   MoviePackage `gorm:"foreignKey:Package_ID"`
+	PackageID uint
+	MoviePackage   MoviePackage `gorm:"foreignKey:PackageID"`
 	
 	
 }

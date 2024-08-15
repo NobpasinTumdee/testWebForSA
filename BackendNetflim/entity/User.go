@@ -12,11 +12,11 @@ type User struct {
 	Status string
 	
 	// 1 User เป็นเจ้าของได้หลาย History
-	History []History `gorm:"foreignKey:User_ID"`
+	History []History `gorm:"foreignKey:UserID"`
 
 	// 1 User เป็นเจ้าของได้หลาย Collection
-	Collection []Collection `gorm:"foreignKey:User_ID"`
+	Collection []Collection `gorm:"foreignKey:UserID"`
 
 	// 1 User เป็นเจ้าของได้หลาย Payment
-	Payment []Payment `gorm:"foreignKey:User_ID"`
+	Payment []Payment `gorm:"foreignKey:UserID"`
 }

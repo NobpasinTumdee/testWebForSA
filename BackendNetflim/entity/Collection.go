@@ -8,8 +8,8 @@ type Collection struct {
 	gorm.Model
 	Collection_name  string
 	
-	User_ID uint
-	User   User `gorm:"foreignKey:User_ID"`
+	UserID uint
+	User   User `gorm:"foreignKey:UserID"`
 
-	//Movie []Movie `gorm:"many2many:CollectionMovie;"`
+	Movie []Movie `gorm:"many2many:CollectionMovie;"`
 }
