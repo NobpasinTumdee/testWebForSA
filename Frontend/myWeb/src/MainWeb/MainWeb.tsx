@@ -30,7 +30,7 @@ const App: React.FC = () => {
 
   const toggleSidebar = () => {
       setIsSidebarOpen(!isSidebarOpen);
-      setIsPosterVisible(isSidebarOpen);  // แสดง Poster เมื่อ Sidebar ถูกซ่อน
+      setIsPosterVisible(isSidebarOpen);  // แสดง Poster เมื่อ Sidebar ถูกซ่อน l
   };
 
   const navigate = useNavigate();
