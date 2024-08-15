@@ -21,17 +21,23 @@ const Subscription: React.FC = () => {
         </div>
       </div>
       <div className="label week">WEEK</div>
-      <div className="subscription-title">subscription</div>
+      <div className="subscription-title">SUBSCRIPTION</div>
       <div className="label month">MONTH</div>
       <div className="label year">YEAR</div>
-      <div className="price week-price">$1.68</div>
-      <div className="price month-price"> $5.67
+      <div className="price week-price">59 ฿</div>
+      <div className="price month-price"> 199 ฿
       </div>
-      <div className="price year-price">$56.99</div>
+      <div className="price year-price">1999 ฿</div>
+
+      <a href="/MainWeb" >
       <div className="return-home">
-        <div className="return-home-text">Return to home page</div>
+        
+        <div  className="return-home-text">Return to home page</div>
+        
         <div className="return-home-button" />
       </div>
+      </a>
+
       <img className="icon1" src={verifyImage} alt="icon1" />
       <div className="description6">Duration of viewing <br /> 1 week</div>
       <img className="icon2" src={verifyImage} alt="icon2" />

@@ -4,8 +4,10 @@ import Login from './Login/Login';
 import ForgetPassword from './ForgetPassword/ForgetPassword';
 import MainWeb from './MainWeb/MainWeb';
 import SignUp from './SignUp/SignUp';
-import Subscription from './subscriptions/subscription';
+import EditInformation from './EditInformation/EditInformation';
 import WatchMovie from './WatchMovie/WatchMovie';
+import Subscription from './subscription/subscription';
+import Admin from './Admin/Admin';
 
 const App: React.FC = () => {
     return (
@@ -16,8 +18,12 @@ const App: React.FC = () => {
                 <Route path="/mainWeb" element={<MainWeb />} />
                 <Route path="/signup" element={<SignUp />} /> 
                 <Route path="/login" element={<Login />} />
-                <Route path="/subscription" element={<Subscription />} />
-                <Route path="/watchmovie" element={<WatchMovie />} />
+                <Route path="/EditInformation" element={<EditInformation />} />
+                <Route path="/WatchMovie" element={<WatchMovie />} />
+                <Route path="/Subscription" element={<Subscription />} />
+                <Route path="/Admin" element={<Admin />} />
+
+                
             </Routes>
         </Router>
     );

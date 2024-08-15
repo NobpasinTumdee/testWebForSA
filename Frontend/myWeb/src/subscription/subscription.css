@@ -1,6 +1,7 @@
-/* Main container */
+
+
 .container {
-    width: 1440px;
+    width: auto;
     height: 1024px;
     position: relative;
     background: linear-gradient(180deg, #403ECC 0%, black 58%);
@@ -10,7 +11,7 @@
     align-items: left; /* จัดตำแหน่งรายการไปที่ด้านบนของ container */
     justify-content: left; /* จัดตำแหน่งรายการไปที่ด้านซ้ายของ container */
   }
-  
+
   .verify img {
     max-width: 20%; /* ทำให้ภาพไม่เกินความกว้างของ container */
     max-height: 20%; /* ทำให้ภาพไม่เกินความสูงของ container */
@@ -33,22 +34,22 @@
     height: 613px;
     position: absolute;
   }
-  
+
   .week-plan {
     left: 929px;
     top: 241px;
   }
-  
+
   .month-plan {
     left: 540px;
     top: 241px;
   }
-  
+
   .year-plan {
     left: 151px;
     top: 241px;
   }
-  
+
   .card-content {
     width: 359px;
     height: 566.35px;
@@ -56,7 +57,7 @@
     top: 0;
     position: absolute;
   }
-  
+
   .card-content .choose-plan {
     width: 244.12px;
     height: 27.06px;
@@ -75,25 +76,25 @@
     box-shadow: 0px 1px 24px rgba(248, 148, 26, 0.7); /* เงา */
     padding: 23px 10px;
   }
-  
+
   .week-plan .card-content {
     background: #ffffff;
     box-shadow: 0px 4px 23.6px #FFB154;
     border-radius: 15px;
   }
-  
+
   .month-plan .card-content {
     background: white;
     box-shadow: 0px 4px 23.6px #FFB154;
     border-radius: 15px;
   }
-  
+
   .year-plan .card-content {
     background: white;
     box-shadow: 0px 4px 23.6px #FFB154;
     border-radius: 15px;
   }
-  
+
   .label {
     width: 168px;
     height: 37px;
@@ -106,25 +107,25 @@
     line-height: 28.80px;
     word-wrap: break-word;
   }
-  
+
   .week {
     left: 247px;
     top: 164px;
   }
-  
+
   .month {
     left: 636px;
     top: 164px;
   }
-  
+
   .year {
     left: 1025px;
     top: 164px;
   }
-  
+
   .subscription-title {
-    width: 420px;
-    height: 92px;
+    width: auto;
+    height: auto;
     left: 510px;
     top: 20px;
     position: absolute;
@@ -150,7 +151,7 @@
     left: 565px;
     top: 517px;
   }
-  
+
   .description1 {
     left: 639px;
     top: 385px;
@@ -182,7 +183,7 @@
     left: 173px;
     top: 378px;
   }
-  
+
   .description2 {
     left: 250px;
     top: 383px;
@@ -214,7 +215,7 @@
     left: 176px;
     top: 517px;
   }
-  
+
   .icon5 {
     width: 62px;
     height: 61px;
@@ -222,7 +223,7 @@
     left: 954px;
     top: 378px;
   }
-  
+
   .description3 {
     left: 1031px;
     top: 383px;
@@ -235,7 +236,7 @@
     word-wrap: break-word;
     text-align: left;
   }
-  
+
   .icon6 {
     width: 62px;
     height: 61px;
@@ -255,7 +256,7 @@
     word-wrap: break-word;
     text-align: left;
   }
-  
+
   .price {
     position: absolute;
     text-align: center;
@@ -288,21 +289,21 @@
     left: 227px;
     top: 289px;
   }
-  
+
   .month-price {
     width: 226px;
     height: 37px;
     left: 607px;
     top: 289px;
   }
-  
+
   .year-price {
     width: 226px;
     height: 37px;
     left: 996px;
     top: 289px;
   }
-  
+
   /* Return home button */
   .return-home {
     width: 283px;
@@ -311,7 +312,7 @@
     top: 937px;
     position: absolute;
   }
-  
+
   .return-home-text {
     width: 274px;
     height: 31px;
@@ -326,7 +327,7 @@
     line-height: 28.80px;
     word-wrap: break-word;
   }
-  
+
   .return-home-button {
     width: 283px;
     height: 54px;
@@ -341,7 +342,6 @@
     background-color: #FF7F7F; 
   }
   .return-home:hover {
-    background-color: #524e4e; 
+    background-color: #2f2e2e; 
     border-radius: 35px;
   }
-  
