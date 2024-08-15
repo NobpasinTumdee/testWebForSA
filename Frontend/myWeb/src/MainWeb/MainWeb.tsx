@@ -56,6 +56,9 @@ const App: React.FC = () => {
                               <a href="/EditInformation" >
                                 <li className="sizeMenu">👔 Information</li>
                               </a>
+                              <a href="/History" >
+                                <li className="sizeMenu">👜 History</li>
+                              </a>
                               <a href="/Admin" >
                                 <li className="sizeMenu">💻 Admin</li>
                               </a>
