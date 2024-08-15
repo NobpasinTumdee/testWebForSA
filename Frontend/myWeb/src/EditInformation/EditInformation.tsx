@@ -38,10 +38,12 @@ const EditInformation: FC = () => {
             <input type="password" name="newPassword" required />
           </div>
         </div>
+        <div className='form-group'>
           <div className="input-group">
             <label>Confirm PASSWORD</label>
             <input type="password" name="confirmPassword" required />
           </div>
+        </div>
         <button type="submit" className="editinformation-button">
           Edit Information
         </button>

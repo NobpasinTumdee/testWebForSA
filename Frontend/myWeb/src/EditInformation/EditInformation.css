@@ -21,6 +21,7 @@
 }
 
 .form-group {
+  width: 700px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
@@ -38,21 +39,23 @@ label {
   text-align: left;
 }
 
+/*
 input[type="text"],
 input[type="password"] {
-    width: 100%; /* ลดความกว้างลงจาก 100% เป็น 80% */
-    padding: 8px; /* ลด padding จาก 10px เป็น 8px */
-    border-radius: 20px; /* ลดมุมโค้ง */
+    width: 100%;
+    padding: 8px; 
+    border-radius: 20px; 
     border: none;
-    font-size: 14px; /* ลดขนาดตัวอักษรลงจาก 16px เป็น 14px */
-    background: white; /* สีพื้นหลังเป็นสีขาว */
-    color: black; /* สีข้อความเป็นสีดำ */
+    font-size: 14px; 
+    background: white; 
+    color: black; 
     
 }
+*/
 
 
 .editinformation-button {
-  margin-top: 20px;
+  margin-top: 70px;
   padding: 15px 30px;
   background-color: #FFA726;
   border: none;
