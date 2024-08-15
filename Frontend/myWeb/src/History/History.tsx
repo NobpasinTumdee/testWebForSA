@@ -3,7 +3,6 @@ import './History.css';
 import VioletEvergarden from "../assets/VioletEvergarden.jpg";
 import rezero from "../assets/rezero.jpg"
 import Cm5 from "../assets/Cm5persec.jpg"
-import icon from "../assets/icon/EditIcon.png"
 import fullmetal from "../assets/Fullmetal.jpg"
 
 const movies = [
