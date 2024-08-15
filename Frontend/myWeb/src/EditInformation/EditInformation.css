@@ -1,57 +1,89 @@
-/* ไฟล์: EditInformation.css */
 
-.container {
-    background-color: #2c2f48;
-    padding: 20px;
-    color: white;
-    text-align: center;
-    width: 400px;
-    margin: 0 auto;
-    border-radius: 10px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-  }
-  
-  .container h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-  }
-  /*
-  input[type="text"],
-  input[type="password"] {
-    width: 90%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
+
+.containerEdit {
+  background: linear-gradient(180deg, #403ECC 0%, black 58%);
+  padding: 10px;
+  color: white;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column; /* จัดเรียงเนื้อหาภายในในแนวตั้ง */
+  justify-content: center; /* จัดให้อยู่กลางในแนวตั้ง */
+  align-items: center; /* จัดให้อยู่กลางในแนวนอน */
+}
+
+.edit-h2 {
+  margin-bottom: 30px;
+  font-size: 42px;
+  font-weight: bold;
+  color: white;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+
+label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  text-align: left;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%; /* ลดความกว้างลงจาก 100% เป็น 80% */
+    padding: 8px; /* ลด padding จาก 10px เป็น 8px */
+    border-radius: 20px; /* ลดมุมโค้ง */
     border: none;
-    font-size: 16px;
-  }
+    font-size: 14px; /* ลดขนาดตัวอักษรลงจาก 16px เป็น 14px */
+    background: white; /* สีพื้นหลังเป็นสีขาว */
+    color: black; /* สีข้อความเป็นสีดำ */
+    
+}
+
+
+.editinformation-button {
+  margin-top: 20px;
+  padding: 15px 30px;
+  background-color: #FFA726;
+  border: none;
+  border-radius: 15px; /* เพิ่มมุมโค้ง */
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 1px 24px rgba(248, 148, 26, 0.7); /* เพิ่มเงาให้ปุ่ม */
+  transition: background-color 0.3s ease;
+}
+
+.editinformation-button:hover {
+  background-color: #FF7F7F;
+}
+
+.return-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #0b824a00;
+  border: none;
+  border-radius: 15px; /* เพิ่มมุมโค้ง */
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
   
-  button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #f39c12;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #e67e22;
-  }*/
-  
-  .return-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #333;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .return-button:hover {
-    background-color: #444;
-  }
+}
+
+.return-button:hover {
+  background-color: #444;
+}
+
+
