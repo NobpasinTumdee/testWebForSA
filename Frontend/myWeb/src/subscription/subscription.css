@@ -190,6 +190,12 @@
     height: 130px;
     box-shadow:  0 0 18px #00000022;
     border-radius: 15px;
+    transition: all,0.3s;
+  }
+
+  .imgPayment:hover{
+    width:240px;
+    height: 140px;
   }
 
 

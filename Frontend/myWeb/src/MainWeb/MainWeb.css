@@ -109,6 +109,8 @@ header {             /*top*/
   justify-content: space-between;
   margin-bottom: 20px;
   
+
+  
 }
 
 .search-bar {/* ช่อง ค้นหา*/
@@ -119,6 +121,8 @@ header {             /*top*/
   width: 400px;
   border: none;
   outline: none;
+  box-shadow: 0 0px 30px #00000077;
+
 }
 
 .search-button {
@@ -129,6 +133,8 @@ header {             /*top*/
   margin-left: 10px;
   border-radius: 20px;
   cursor: pointer;
+  box-shadow: 0 0px 30px #00000077;
+
 }
 
 .movies h1 {

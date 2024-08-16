@@ -18,6 +18,7 @@ import fullmetal from "../assets/Fullmetal.jpg"
 import steinsgate from "../assets/SteinsGate.jpeg"
 import lovemelovenot from "../assets/Movie/lovemelovenot.jpg"
 import TheMatrix from "../assets/Movie/TheMatrix.jpg"
+import Xmen from "../assets/Movie/xmen.jpg"
 
 import yournameBig from "../assets/Anime/yournamePosterBig3.png";
 import ourBeLove from "../assets/Movie/ourBeLoveSummer.png";
@@ -151,8 +152,8 @@ const App: React.FC = () => {
                   {isPosterVisible && (  // แสดง PosterBIG เมื่อ isPosterVisible เป็น true
                       <div className='PosterBIG'>
                         <div className='image-container'>
-                          <img src={ourBeLove} alt="ourBeLove" />
-                          <div className="text-overlay">Our Be love Summer</div>
+                          <img src={Xmen} alt="Xmen" />
+                          <div className="text-overlay">X MEN</div>
                         </div>
                       </div>
                   )}

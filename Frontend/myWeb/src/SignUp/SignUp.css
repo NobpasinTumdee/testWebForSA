@@ -20,7 +20,8 @@ body, html {
 .signup-box {
     width: 350px;
     padding: 30px;
-    text-align: center;
+    
+    align-items: center;
     display: flex; /* ใช้ Flexbox */
     flex-direction: column; /* จัดวางในแนวตั้ง */
     align-items: center; /* จัดวางกลางแนวนอน */
@@ -36,7 +37,10 @@ body, html {
     color: rgb(239, 230, 230);
 }
 
-
+.labelSignUp{
+    align-items: left;
+    color: white;
+}
 .form-group{
     text-align: left;
     color: white;
@@ -66,10 +70,25 @@ body, html {
 }
 
 /* ปุ่มสมัครสมาชิก */
+.signup-buttonDIV {
+    
+    width: 100%;
+
+
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    /* เพิ่มการจัดวางตรงกลาง */
+    text-align: center;
+}
 .signup-button {
+    
     width: 70%;
     padding: 10px;
-    background-color: #ff9900;
+    background-color: #ffc107;
     color: white;
     border: none;
     border-radius: 20px;
