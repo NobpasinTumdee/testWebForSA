@@ -111,7 +111,7 @@
   padding: 30px;
   border-radius: 10px;
   text-align: center;
-  width: 300px;
+  width: 600px;
 }
 
 .close-button {
@@ -149,12 +149,6 @@
 }
 
 
-.imgPayment {
-  margin: 0;
-  width: 300px;
-  height: 450px;
-  box-shadow:  0 0 18px #00000022;
-}
 
 
 
@@ -188,3 +182,23 @@
     opacity: 1;
   }
 }
+
+
+  .imgPayment {
+    margin: 5px;
+    width: 230px;
+    height: 130px;
+    box-shadow:  0 0 18px #00000022;
+    border-radius: 15px;
+  }
+
+
+  .popup-image {
+    width: 300px;
+    height: 450px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  

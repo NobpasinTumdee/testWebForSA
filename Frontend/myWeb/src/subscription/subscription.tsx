@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import './subscription.css';
-import payment from "../assets/payment/payment.jpg" ;
+import payment from "../assets/payment/payment.jpg";
+import mastercard from "../assets/payment/mastercard.png";
+import Gpay from "../assets/payment/Gpay.png";
+import visa from "../assets/payment/visa.png";
+import Prompay from "../assets/payment/Prompay.png";
 
 const Subscription = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
+  const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState('');
 
   const plans = [
@@ -24,12 +29,19 @@ const Subscription = () => {
 
   const proceedToPayment = () => {
     setIsPopupOpen(false);
+    setIsImagePopupOpen(false);
     setIsSuccessPopupOpen(true);
-
-    // ตั้งเวลาให้ popup ปิดเองหลังจาก 2 วินาที
     setTimeout(() => {
       setIsSuccessPopupOpen(false);
     }, 2000);
+  };
+
+  const PayPopup = () => {
+    setIsImagePopupOpen(true);
+  };
+
+  const closeImagePopup = () => {
+    setIsImagePopupOpen(false);
   };
 
   return (
@@ -57,9 +69,14 @@ const Subscription = () => {
             <h2>Payment for {selectedPlan} Plan</h2>
             <p>Total amount: {plans.find(plan => plan.duration === selectedPlan)?.price}</p>
             <div>
-              <img src={payment} className="imgPayment" alt="Payment" />
+              <img src={mastercard} className="imgPayment" onClick={PayPopup} alt="Payment" />
+              <img src={Prompay} className="imgPayment" onClick={PayPopup} alt="Payment" />
             </div>
-            <button className="payment-button" onClick={proceedToPayment}>Proceed to Payment</button>
+            <div>
+              <img src={Gpay} className="imgPayment" onClick={PayPopup} alt="Payment" />
+              <img src={visa} className="imgPayment" onClick={PayPopup} alt="Payment" />
+            </div>
+
             <button className="close-button" onClick={closePopup}>Close</button>
           </div>
         </div>
@@ -70,6 +87,21 @@ const Subscription = () => {
           <div className="success-popup-content">
             <div className="success-checkmark">✔</div>
             <p>Payment Successful!</p>
+          </div>
+        </div>
+      )}
+
+      {isImagePopupOpen && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <div>
+              <img src={payment} alt="Payment Info" className="popup-image" />
+            </div>
+            <div>
+              <button className="payment-button" onClick={proceedToPayment}>Proceed to Payment</button>
+              <button className="close-button" onClick={closeImagePopup}>Close</button>
+            </div>
+
           </div>
         </div>
       )}
