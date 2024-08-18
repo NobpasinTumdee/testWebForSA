@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './subscription.css';
 import payment from "../assets/payment/payment.jpg";
 import mastercard from "../assets/payment/mastercard.png";

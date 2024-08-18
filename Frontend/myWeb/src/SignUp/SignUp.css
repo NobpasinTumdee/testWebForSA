@@ -1,9 +1,9 @@
-/* รีเซ็ต margin และ padding ของ body */
+/* รีเซ็ต margin และ padding ของ body 
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-}
+}*/
 
 /* กำหนดความสูงของ container และพื้นหลัง */
 .signup-container {

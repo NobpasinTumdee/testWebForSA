@@ -21,7 +21,7 @@ import TheMatrix from "../assets/Movie/TheMatrix.jpg"
 import Xmen from "../assets/Movie/xmen.jpg"
 
 import yournameBig from "../assets/Anime/yournamePosterBig3.png";
-import ourBeLove from "../assets/Movie/ourBeLoveSummer.png";
+
 import { useNavigate } from 'react-router-dom';
 /*❤️💁🏻‍♀️🎞️✨*/
 

@@ -1,0 +1,179 @@
+
+.pageLogin1 {
+    background-color: black;
+    margin: 0px;
+    position: relative; /* เพิ่มตำแหน่งแบบ relative ให้กับคอนเทนเนอร์ */
+}
+
+.PosterINFO {
+    width: 100%;
+    height: 50%;
+    margin-top: 20px;
+    pointer-events: none; /* กอปรูปด้านหลังไม่ได้ */
+    position: relative; /* ตั้งค่าให้รูปภาพอยู่ในตำแหน่ง relative */
+    z-index: 1; /* z-index ต่ำกว่าเมนูเพื่อให้ไม่ทับเมนู */
+}
+
+.text-overlay-forPoster {
+    position: absolute;
+    margin-top: 110px;
+    top: 0;
+    left: 40px;
+    width: 100%;
+    color: #ffffff;
+    font-family: 'Kameron';
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+    font-size: 96px;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.text-overlay-info {
+    position: absolute;
+    margin-top: 250px;
+    width: 600px;
+    top: 0;
+    left: 40px;
+    color: #cbcbcb;
+    font-family: 'Kameron';
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+    font-size: 24px;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.text-overlay-infodate {
+    position: absolute;
+    margin-top: 90px;
+    width: 600px;
+    top: 0;
+    left: 40px;
+    color: #9d9d9d;
+    font-family: 'Kameron';
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+    font-size: 20px;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.text-overlay-forPoster,
+.text-overlay-info,
+.text-overlay-infodate {
+    position: absolute;
+    z-index: 1; /* z-index ต่ำกว่าเมนูเพื่อให้ไม่ทับเมนู */
+}
+
+
+
+.topnav {
+    position: fixed;
+    overflow: hidden;
+    background-color: #000000;
+    width: 100%;
+    z-index: 1000; /* เพิ่ม z-index เพื่อให้เมนูอยู่ด้านบนสุด */
+}
+
+
+.topnav h2 {
+    float: left;
+    color: #ffffff;
+    margin-left: 20px;
+    margin-bottom: 0px;
+}
+
+.topnav a {
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #1b0e7b;
+    color: white;
+}
+
+
+
+
+.button-85-login1 {
+    position: absolute; /* เปลี่ยนเป็น absolute เพื่อให้ปุ่มอยู่บนรูปภาพ */
+    top: 480px; /* ปรับตำแหน่งปุ่มตามต้องการ */
+    left: 45px; /* ปรับตำแหน่งปุ่มตามต้องการ */
+    font-size: 24px;
+    padding: 15px 20px;
+    border: none;
+    outline: none;
+    color: rgb(69, 39, 6);
+    background: #FFE2BF;
+    cursor: pointer;
+    z-index: 2; /* คงไว้ที่ 2 เพื่อให้ปุ่มอยู่เหนือรูปภาพและข้อความ */
+    border-radius: 20px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+  
+  .button-85-login1:before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing-button-85-login1 20s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+  }
+  
+  @keyframes glowing-button-85-login1 {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 400% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+  
+  .button-85-login1:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #FFE2BF;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+  
