@@ -13,7 +13,7 @@ const WatchMovie: React.FC = () => {
           <iframe
             src="https://www.youtube.com/embed/BUfSen2rYQs?si=hAdWNkFA_nHak6DH"
             allowFullScreen
-          ></iframe>
+          />
         </div>
         <div className="movie-infoWatch">
           <img src={VioletEvergarden} alt="Movie Poster" className="movie-poster" />
