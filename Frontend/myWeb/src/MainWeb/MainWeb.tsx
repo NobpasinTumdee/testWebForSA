@@ -1,19 +1,40 @@
 import React, { useState } from 'react';
 import "./MainWeb.css"; 
 
+//โปสเตอร์
 import Xmen from "../assets/Movie/xmen.jpg"
 import yournameBig from "../assets/Anime/yournamePosterBig3.png";
+
 
 import { useNavigate } from 'react-router-dom';
 /*❤️💁🏻‍♀️🎞️✨*/
 
+
+// ข้อมูลหนัง และ อนิเมะ
 import { AnimesMain, moviesMain } from "./DataMovie";
+
+// about me
+import { DataUser } from '../AboutMe/DataUser';
 
 
 
 const MainWeb: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isPosterVisible, setIsPosterVisible] = useState(false);  // เพิ่ม state สำหรับ Poster
+
+  // popup
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const openPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
+  const Edit = () => {
+    navigate("/EditInformation")
+  }
 
   const toggleSidebar = () => {
       setIsSidebarOpen(!isSidebarOpen);
@@ -26,6 +47,7 @@ const MainWeb: React.FC = () => {
       navigate('/subscription');
   };
   
+  // ข้อมูล หนัง อนิเมะ
   const handleMovieClick = (movie: { id: number; title: string; image: string }) => {
     navigate('/WatchMovie', { state: movie });
   };
@@ -47,7 +69,7 @@ const MainWeb: React.FC = () => {
                               <a href='./Collection'>
                                 <li className="sizeMenu">❤️ Collection</li>
                               </a>
-                              <a href='./AboutMe'>
+                              <a href='#' onClick={() => openPopup()}>
                                 <li className="sizeMenu">💁🏻‍♀️ About Me</li>
                               </a>
                               <a href="/EditInformation" >
@@ -119,6 +141,28 @@ const MainWeb: React.FC = () => {
 
               </section>
           </main>
+        {isPopupOpen && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            {DataUser.map((User) => (
+                      <div className='dataAboutME' key={User.id}> 
+                        <div>{User.id}</div>
+                        <div>{User.USERNAME}</div>
+                        <div>{User.Gmail}</div>
+                        <div>{User.Duration}</div>
+                        <div>{User.Expire}</div>
+                           
+                         
+                         
+                        
+                        
+                      </div>))}
+            <button className="payment-button" onClick={() => Edit()}> Edit your Information </button>
+            <button className="close-button" onClick={() => closePopup()}> Close </button>
+          </div>
+        </div>
+      )}                 
+
       </div>
   );
 };

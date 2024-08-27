@@ -15,6 +15,9 @@ const WatchMovie: React.FC = () => {
     <div className="watch-movie-container">
       <div className="movie-header">
         {movie.title}
+        <button className="edit-button">
+          ❤️
+        </button>
       </div>
       <div className="movie-content">
         <div className="movie-player">
