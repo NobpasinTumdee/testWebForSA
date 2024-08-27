@@ -1,31 +1,17 @@
 import React, { useState } from 'react';
 import "./MainWeb.css"; 
-import VioletEvergarden from "../assets/VioletEvergarden.jpg"; // นำเข้ารูปภาพ
-import yourname from "../assets/yourname.jpg"
-import aot1 from "../assets/Aot1.jpg"
-import aot2 from "../assets/Aot2.jpg"
-import aot3 from "../assets/Aot3.jpg"
-import rezero from "../assets/rezero.jpg"
-import Cm5 from "../assets/Cm5persec.jpg"
-import evangelion from "../assets/evangelion.jpg"
-import haikyuu from "../assets/Haikyuu.jpg"
-import kimestu from "../assets/kimestuNoYaiba.jpg"
-import dragonball from "../assets/dragonball.jpg"
-import deatnote from "../assets/deatnote.jpg"
-import naruto from "../assets/Naruto.jpg"
-import jojo from "../assets/JOJO.jpg"
-import fullmetal from "../assets/Fullmetal.jpg"
-import steinsgate from "../assets/SteinsGate.jpeg"
-import lovemelovenot from "../assets/Movie/lovemelovenot.jpg"
-import TheMatrix from "../assets/Movie/TheMatrix.jpg"
-import Xmen from "../assets/Movie/xmen.jpg"
 
+import Xmen from "../assets/Movie/xmen.jpg"
 import yournameBig from "../assets/Anime/yournamePosterBig3.png";
 
 import { useNavigate } from 'react-router-dom';
 /*❤️💁🏻‍♀️🎞️✨*/
 
-const App: React.FC = () => {
+import { AnimesMain, moviesMain } from "./DataMovie";
+
+
+
+const MainWeb: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isPosterVisible, setIsPosterVisible] = useState(false);  // เพิ่ม state สำหรับ Poster
 
@@ -38,6 +24,10 @@ const App: React.FC = () => {
 
   const subscription = () => {
       navigate('/subscription');
+  };
+  
+  const handleMovieClick = (movie: { id: number; title: string; image: string }) => {
+    navigate('/WatchMovie', { state: movie });
   };
 
   return (
@@ -92,60 +82,17 @@ const App: React.FC = () => {
                         </div>
                       </div>
                   )}
+
+                  
                   <h1 className='titile'>ANIME</h1>
                   <div className="movie-grid">
                       {/* Repeat this block for each movie */}
-                      <div className="movie-card">
-                        <a href='/WatchMovie'>
-                          <img src={VioletEvergarden} alt="Violet Evergarden" />
-                        </a>
-                      </div>
-                      <div className="movie-card">
-                        <img src={yourname} alt="yourname" />
-                      </div>
-                      <div className="movie-card">
-                        <img src={aot1} alt="aot1" />
-                      </div>
-                      <div className="movie-card">
-                        <img src={aot2} alt="aot2" />
-                      </div>
-                      <div className="movie-card">
-                        <img src={aot3} alt="aot3" />
-                      </div>
-                      <div className="movie-card">
-                        <img src={rezero} alt="rezero" />
-                      </div>
-                      <div className="movie-card">
-                        <img src={Cm5} alt="Cm5" />
-                      </div>
-                      <div className="movie-card">
-                        <img src={evangelion} alt="evangelion" />
-                      </div>
-                      <div className="movie-card">
-                        <img src={haikyuu} alt="haikyuu" />
-                      </div>
-                      <div className="movie-card">
-                        <img src={kimestu} alt="kimestu" />
-                      </div>
-                      {/* Add more movie cards as needed */}
-                      <div className="movie-card">
-                        <img src={dragonball} alt="dragonball" />
-                      </div>
-                      <div className="movie-card">
-                        <img src={deatnote} alt="deatnote" />
-                      </div>
-                      <div className="movie-card">
-                        <img src={naruto} alt="naruto" />
-                      </div>
-                      <div className="movie-card">
-                        <img src={jojo} alt="jojo" />
-                      </div>
-                      <div className="movie-card">
-                        <img src={fullmetal} alt="fullmetal" />
-                      </div>
-                      <div className="movie-card">
-                        <img src={steinsgate} alt="steinsgate" />
-                      </div>
+                      {AnimesMain.map((movies) => (
+                      <div className="movie-card"  key={movies.id} onClick={() => handleMovieClick(movies)}>
+                        
+                          <img src={movies.image} alt={movies.title} />
+                        
+                      </div>))}
                   </div>
                   
 
@@ -157,19 +104,23 @@ const App: React.FC = () => {
                         </div>
                       </div>
                   )}
+
+
                   <h1 className='titile'>MOVIE</h1>
                   <div className="movie-grid">
-                    <div className="movie-card">
-                        <img src={lovemelovenot} alt="lovemelovenot" />
-                    </div>
-                    <div className="movie-card">
-                        <img src={TheMatrix} alt="TheMatrix" />
-                    </div>
+                      {/* Repeat this block for each movie */}
+                      {moviesMain.map((movies) => (
+                      <div className="movie-card"  key={movies.id} onClick={() => handleMovieClick(movies)}>
+                        
+                          <img src={movies.image} alt={movies.title} />
+                        
+                      </div>))}
                   </div>
+
               </section>
           </main>
       </div>
   );
 };
 
-export default App;
+export default MainWeb;

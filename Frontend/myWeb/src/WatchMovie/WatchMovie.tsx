@@ -1,22 +1,30 @@
 import React from 'react';
 import './WatchMovie.css';
-import VioletEvergarden from "../assets/VioletEvergarden.jpg"; // นำเข้ารูปภาพ นะจ้ะ 
 
+import {  useLocation } from 'react-router-dom';
+
+
+
+  
 const WatchMovie: React.FC = () => {
+
+  const location = useLocation();
+  const movie = location.state as { id: number; title: string; image: string; link: string};
+
   return (
     <div className="watch-movie-container">
       <div className="movie-header">
-        Violet Evergarden
+        {movie.title}
       </div>
       <div className="movie-content">
         <div className="movie-player">
           <iframe
-            src="https://www.youtube.com/embed/BUfSen2rYQs?si=hAdWNkFA_nHak6DH"
+            src={movie.link}
             allowFullScreen
           />
         </div>
         <div className="movie-infoWatch">
-          <img src={VioletEvergarden} alt="Movie Poster" className="movie-poster" />
+          <img src={movie.image} alt={movie.title} className="movie-poster" />
           <div className="info">
             <h2>Movie information</h2>
             <p>The Great War finally came to an end after four long years of conflict; fractured in two, the continent of Telesis slowly began to flourish once again. Caught up in the bloodshed was Violet Evergarden, a young girl raised for the sole purpose of decimating enemy lines.</p>
