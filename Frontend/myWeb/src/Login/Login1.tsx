@@ -38,7 +38,7 @@ function Login1() {
             <div className='pageLogin1'>
                 <div className="topnav">
                     <a className="active" href="/login">Login</a>
-                    <a href="#news">Movie</a>
+                    <a href="#Movie" className='scroll-container'>Movie</a>
                     <h2>Netflim</h2>
                 </div>
 
@@ -53,7 +53,7 @@ function Login1() {
                 </div>
                 <div className='RecommendMovieLogin1'>
                     Recommend
-                    <div className="movie-grid-recommend">
+                    <div className="movie-grid-recommend" id='Movie'>
                         {/* Repeat this block for each movie */}
                         <div className="movie-card-recommend" onClick={notify}>
                             <img src={VioletEvergarden} alt="Violet Evergarden" />
