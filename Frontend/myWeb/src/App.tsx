@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes ,useLocation } from 'react-router-dom';
 import Login1 from './Login/Login1';
 import Login from './Login/Login';
 import ForgetPassword from './ForgetPassword/ForgetPassword';
@@ -12,17 +12,25 @@ import Admin from './Admin/Admin';
 import History from './History/History';
 import Collection from './Collection/Collection' ;
 import AboutMe from './AboutMe/AboutMe';
+import { Navbar } from './Component/Navbar';
+//import LoadingScreen from './Component/LoadingScreen';
+//<LoadingScreen />
+
 
 const App: React.FC = () => {
+    const location = useLocation();
+
+    const hideNavbar = [ '/','/login', '/forget-password', '/signup','/MainWeb'].includes(location.pathname);
+
     return (
-        <Router>
+        <div>
+            {!hideNavbar && <Navbar />}
             <Routes>
                 <Route path="/" element={<Login1 />} />
-                <Route path="/Login" element={<Login />} />
-                <Route path="/forget-password" element={<ForgetPassword />} />
-                <Route path="/mainWeb" element={<MainWeb />} />
-                <Route path="/signup" element={<SignUp />} /> 
                 <Route path="/login" element={<Login />} />
+                <Route path="/Forget-password" element={<ForgetPassword />} />
+                <Route path="/signup" element={<SignUp />} /> 
+                <Route path="/MainWeb" element={<MainWeb />} />
                 <Route path="/EditInformation" element={<EditInformation />} />
                 <Route path="/WatchMovie" element={<WatchMovie />} />
                 <Route path="/Subscription" element={<Subscription />} />
@@ -30,12 +38,15 @@ const App: React.FC = () => {
                 <Route path="/History" element={<History />} />
                 <Route path="/Collection" element={<Collection />} />
                 <Route path="/AboutMe" element={<AboutMe />} />
-
-                
             </Routes>
-        </Router>
+        </div>
     );
 };
 
-export default App;
+const AppWrapper: React.FC = () => (
+    <Router>
+        <App />
+    </Router>
+);
 
+export default AppWrapper;
