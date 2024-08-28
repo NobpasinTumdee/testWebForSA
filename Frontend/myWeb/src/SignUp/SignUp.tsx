@@ -34,8 +34,8 @@ const SignUp: React.FC = () => {
       <div className="signup-box">
         <form onSubmit={handleSubmit}>
           <h1 className='signUpHeader'>SIGN UP</h1>
+            <label className="labelSignUp" htmlFor="username">Username</label>
           <div className="form-group">
-            <label htmlFor="username">Username</label>
             <input
               type="text"
               id="username"
@@ -45,8 +45,8 @@ const SignUp: React.FC = () => {
               required
             />
           </div>
+            <label className="labelSignUp" htmlFor="email">Email</label>
           <div className="form-group">
-            <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
@@ -56,8 +56,8 @@ const SignUp: React.FC = () => {
               required
             />
           </div>
+            <label className="labelSignUp" htmlFor="password">Password</label>
           <div className="form-group">
-            <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
@@ -67,8 +67,8 @@ const SignUp: React.FC = () => {
               required
             />
           </div>
+            <label className="labelSignUp" htmlFor="confirmPassword">Confirm Password</label>
           <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password</label>
             <input
               type="password"
               id="confirmPassword"
@@ -78,7 +78,9 @@ const SignUp: React.FC = () => {
               required
             />
           </div>
-          <button type="submit" className="signup-button">SIGN UP</button>
+          <div className="signup-buttonDIV">
+            <button type="submit" className="signup-button">SIGN UP</button>
+          </div>
           <a href="/login" className="login-link">BACK TO LOGIN</a>
         </form>
       </div>

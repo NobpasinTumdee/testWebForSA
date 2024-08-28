@@ -2,7 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: #000000;
+  background-color: #000000;/**/
   font-family: Arial, sans-serif;
   overflow-x: hidden; /* ป้องกันการเลื่อนแนวนอน */
 }
@@ -109,6 +109,8 @@ header {             /*top*/
   justify-content: space-between;
   margin-bottom: 20px;
   
+
+  
 }
 
 .search-bar {/* ช่อง ค้นหา*/
@@ -119,6 +121,8 @@ header {             /*top*/
   width: 400px;
   border: none;
   outline: none;
+  box-shadow: 0 0px 30px #00000077;
+
 }
 
 .search-button {
@@ -129,6 +133,8 @@ header {             /*top*/
   margin-left: 10px;
   border-radius: 20px;
   cursor: pointer;
+  box-shadow: 0 0px 30px #00000077;
+
 }
 
 .movies h1 {
@@ -198,6 +204,7 @@ header {             /*top*/
   width: 1470px;
   height: 350px;
   border-radius: 10px;
+  pointer-events: none; /* กอปรูปด้านหลังไม่ได้ */
 }
 
 .text-overlay {
@@ -289,3 +296,7 @@ header {             /*top*/
 }
 
 /* ===================================================================================== */
+
+.dataAboutME {
+  margin: 20px;
+}
