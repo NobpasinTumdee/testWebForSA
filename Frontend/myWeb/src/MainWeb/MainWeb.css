@@ -18,7 +18,7 @@ html, body {
   background: linear-gradient(to bottom, #5654C0, #040312);
   padding: 20px;
   position: fixed; /* เปลี่ยนเป็น fixed เพื่อให้ Sidebar ตรึงอยู่กับหน้าจอ */
-  height: 100%; /* ให้ Sidebar มีความสูงเต็มหน้าจอ */
+  height: 95%; /* ให้ Sidebar มีความสูงเต็มหน้าจอ */
   transition: width 0.8s, transform 0.8s;
   z-index: 1000; /* เพื่อให้ Sidebar อยู่ด้านหน้าเสมอ */
   border-radius: 0px 15px 15px 0px;
@@ -33,10 +33,10 @@ html, body {
 .toggle-button {
   position: absolute;
   top: 20px;
-  right: -20px;
+  right: -40px;
   background-color: #5654C0;
   padding: 5px;
-  border-radius: 50%;
+  border-radius: 0px 15px 15px 0px;
   cursor: pointer;
 }
 
@@ -122,7 +122,8 @@ header {             /*top*/
   border: none;
   outline: none;
   box-shadow: 0 0px 30px #00000077;
-
+  margin-left: 30px;
+  
 }
 
 .search-button {

@@ -13,6 +13,9 @@ import History from './History/History';
 import Collection from './Collection/Collection' ;
 import AboutMe from './AboutMe/AboutMe';
 import { Navbar } from './Component/Navbar';
+// import {PopUpAdmin} from './Component/PopUpAdmin';
+// <PopUpAdmin /> 
+ 
 //import LoadingScreen from './Component/LoadingScreen';
 //<LoadingScreen />
 

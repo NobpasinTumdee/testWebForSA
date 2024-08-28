@@ -3,7 +3,7 @@ import "./MainWeb.css";
 
 //โปสเตอร์
 import Xmen from "../assets/Movie/xmen.jpg"
-import yournameBig from "../assets/Anime/yournamePosterBig3.png";
+import yournameBig from "../assets/Anime/yournamePosterBig4.png";
 
 
 import { useNavigate } from 'react-router-dom';

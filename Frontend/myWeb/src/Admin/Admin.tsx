@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Admin.css';
 import VioletEvergarden from "../assets/VioletEvergarden.jpg";
 import rezero from "../assets/rezero.jpg"
 import Cm5 from "../assets/Cm5persec.jpg"
 import icon from "../assets/icon/EditIcon.png"
 import fullmetal from "../assets/Fullmetal.jpg"
+
+import { PopUpAdmin } from '../Component/PopUpAdmin';
 
 const movies = [
   {
@@ -30,35 +32,25 @@ const movies = [
   },
   {
     id: 4,
-    title: 'fullmetal',
+    title: 'Fullmetal',
     description: 'A story of a shy girl who starts a rock band...',
     date: '15/July/2024',
     image: fullmetal,
   },
-  {
-    id: 5,
-    title: 'fullmetal',
-    description: 'A story of a shy girl who starts a rock band...',
-    date: '15/July/2024',
-    image: fullmetal,
-  },
-  {
-    id: 6,
-    title: 'fullmetal',
-    description: 'A story of a shy girl who starts a rock band...',
-    date: '15/July/2024',
-    image: fullmetal,
-  },
-  {
-    id: 7,
-    title: 'fullmetal',
-    description: 'A story of a shy girl who starts a rock band...',
-    date: '15/July/2024',
-    image: fullmetal,
-  },
+  //...other movies
 ];
 
 const AdminManageMovies: React.FC = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const openPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
+
   return (
     <div className="admin-container">
       <h1 className="admin-title">ADMIN</h1>
@@ -71,14 +63,22 @@ const AdminManageMovies: React.FC = () => {
               <p>{movie.description}</p>
               <p>Date: {movie.date}</p>
             </div>
-            <button className="edit-button">
-              <img src={icon} className='edit-icon-Admin'></img>
+            <button className="edit-button" onClick={openPopup}>
+              <img src={icon} className='edit-icon-Admin' alt="Edit Icon" />
             </button>
           </div>
         ))}
-
       </div>
       <a href="/MainWeb" className="return-button-Admin">Return to home page</a>
+
+      {isPopupOpen && (
+        <div className='popup-container'>
+          <PopUpAdmin />
+          <button onClick={closePopup} className="close-popup-button">
+            Close
+          </button>
+        </div>
+      )}
     </div>
   );
 };
