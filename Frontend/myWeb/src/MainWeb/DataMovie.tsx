@@ -30,6 +30,10 @@ import ResidentEvil from "../assets/Movie/ResidentEvil.jpg"
 import ShestheMan from "../assets/Movie/ShestheMan.jpg"
 import Submergence from "../assets/Movie/Submergence.jpg"
 import TheMortalInstruments from "../assets/Movie/TheMortalInstruments.jpg"
+import TheNotebook from "../assets/Movie/TheNotebook.jpg"
+import TheNottingHill from "../assets/Movie/TheNottingHill.jpg"
+import ThePerfectDate from "../assets/Movie/ThePerfectDate.jpg"
+import TheVow from "../assets/Movie/TheVow.jpg"
 
 
 export const AnimesMain = [
@@ -214,7 +218,25 @@ export const AnimesMain = [
     {
       id: 14,
       title: 'TheNotebook',
-      image: TheMortalInstruments,
+      image: TheNotebook,
+      link: "https://www.youtube.com/embed/uXGE0vuuaDo?si=013evguRewon-sX5",
+    },
+    {
+      id: 15,
+      title: 'TheNottingHill',
+      image: TheNottingHill,
+      link: "https://www.youtube.com/embed/uXGE0vuuaDo?si=013evguRewon-sX5",
+    },
+    {
+      id: 16,
+      title: 'ThePerfectDate',
+      image: ThePerfectDate,
+      link: "https://www.youtube.com/embed/uXGE0vuuaDo?si=013evguRewon-sX5",
+    },
+    {
+      id: 17,
+      title: 'TheVow',
+      image: TheVow,
       link: "https://www.youtube.com/embed/uXGE0vuuaDo?si=013evguRewon-sX5",
     },
   ];
