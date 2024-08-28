@@ -27,11 +27,14 @@
   .movie-player {
     flex: 3;
     margin-right: 20px;
+    box-shadow: 0 0px 50px #000000;
+    background-color: #000;
+    border-radius: 10px;
   }
 
   .movie-player iframe {
     width: 100%;
-    height: 450px;
+    height: 550px;
     border-radius: 10px;
     border: none;
   }
@@ -52,6 +55,7 @@
     margin-bottom: 20px;
     border-radius: 10px;
     pointer-events: none;
+    box-shadow: 0 0px 40px #fff9dc;
   }
 
   .info {
@@ -74,4 +78,12 @@
 
   .return-button-watch:hover {
     background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .love-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 40px;
+    margin-left: 30px;
   }

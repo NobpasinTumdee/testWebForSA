@@ -19,7 +19,17 @@ import steinsgate from "../assets/SteinsGate.jpeg"
 //Movie
 import lovemelovenot from "../assets/Movie/lovemelovenot.jpg"
 import TheMatrix from "../assets/Movie/TheMatrix.jpg"
-
+import After from "../assets/Movie/After.jpg"
+import BlueValentine from "../assets/Movie/BlueValentine.jpg"
+import DearJohn from "../assets/Movie/DearJohn.jpg"
+import MeanGirls from "../assets/Movie/MeanGirls.jpg"
+import MeninBlack from "../assets/Movie/MeninBlack.jpg"
+import MidnightSun from "../assets/Movie/MidnightSun.jpg"
+import OneDay from "../assets/Movie/OneDay.jpg"
+import ResidentEvil from "../assets/Movie/ResidentEvil.jpg"
+import ShestheMan from "../assets/Movie/ShestheMan.jpg"
+import Submergence from "../assets/Movie/Submergence.jpg"
+import TheMortalInstruments from "../assets/Movie/TheMortalInstruments.jpg"
 
 
 export const AnimesMain = [
@@ -133,6 +143,78 @@ export const AnimesMain = [
       id: 2,
       title: 'TheMatrix',
       image: TheMatrix,
+      link: "https://www.youtube.com/embed/uXGE0vuuaDo?si=013evguRewon-sX5",
+    },
+    {
+      id: 3,
+      title: 'After',
+      image: After,
+      link: "https://www.youtube.com/embed/uXGE0vuuaDo?si=013evguRewon-sX5",
+    },
+    {
+      id: 4,
+      title: 'BlueValentine',
+      image: BlueValentine,
+      link: "https://www.youtube.com/embed/uXGE0vuuaDo?si=013evguRewon-sX5",
+    },
+    {
+      id: 5,
+      title: 'DearJohn',
+      image: DearJohn,
+      link: "https://www.youtube.com/embed/uXGE0vuuaDo?si=013evguRewon-sX5",
+    },
+    {
+      id: 6,
+      title: 'MeanGirls',
+      image: MeanGirls,
+      link: "https://www.youtube.com/embed/uXGE0vuuaDo?si=013evguRewon-sX5",
+    },
+    {
+      id: 7,
+      title: 'MeninBlack',
+      image: MeninBlack,
+      link: "https://www.youtube.com/embed/uXGE0vuuaDo?si=013evguRewon-sX5",
+    },
+    {
+      id: 8,
+      title: 'MidnightSun',
+      image: MidnightSun,
+      link: "https://www.youtube.com/embed/uXGE0vuuaDo?si=013evguRewon-sX5",
+    },
+    {
+      id: 9,
+      title: 'OneDay',
+      image: OneDay,
+      link: "https://www.youtube.com/embed/uXGE0vuuaDo?si=013evguRewon-sX5",
+    },
+    {
+      id: 10,
+      title: 'ResidentEvil',
+      image: ResidentEvil,
+      link: "https://www.youtube.com/embed/uXGE0vuuaDo?si=013evguRewon-sX5",
+    },
+    {
+      id: 11,
+      title: 'ShestheMan',
+      image: ShestheMan,
+      link: "https://www.youtube.com/embed/uXGE0vuuaDo?si=013evguRewon-sX5",
+    },
+    {
+      id: 12,
+      title: 'Submergence',
+      image: Submergence,
+      link: "https://www.youtube.com/embed/uXGE0vuuaDo?si=013evguRewon-sX5",
+    },
+    {
+      id: 13,
+      title: 'TheMortalInstruments',
+      image: TheMortalInstruments,
+      link: "https://www.youtube.com/embed/uXGE0vuuaDo?si=013evguRewon-sX5",
+    },
+    {
+      id: 14,
+      title: 'TheNotebook',
+      image: TheMortalInstruments,
       link: "https://www.youtube.com/embed/uXGE0vuuaDo?si=013evguRewon-sX5",
     },
   ];
