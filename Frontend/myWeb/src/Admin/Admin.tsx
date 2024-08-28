@@ -76,9 +76,9 @@ const AdminManageMovies: React.FC = () => {
             </button>
           </div>
         ))}
-        
+
       </div>
-      <a  href="/MainWeb"  className="return-button-Admin">Return to home page</a>
+      <a href="/MainWeb" className="return-button-Admin">Return to home page</a>
     </div>
   );
 };

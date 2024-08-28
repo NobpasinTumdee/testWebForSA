@@ -23,6 +23,7 @@ const WatchMovie: React.FC = () => {
         <div className="movie-player">
           <iframe
             src={movie.link}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           />
         </div>

@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 import './EditInformation.css';
 
 const EditInformation: FC = () => {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
-  const handleReturnClick = () => {
-    navigate('/MainWeb'); // เส้นทางกลับไปยังหน้า MainWeb
-  };
+  // const handleReturnClick = () => {
+  //   navigate('/MainWeb'); // เส้นทางกลับไปยังหน้า MainWeb
+  // };
 
   const handleEditInformation = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -48,9 +48,7 @@ const EditInformation: FC = () => {
           Edit Information
         </button>
       </form>
-      <button className="return-button" onClick={handleReturnClick}>
-        Return to home page
-      </button>
+      <a href="/MainWeb" className="return-button-Admin">Return to home page</a>
     </div>
   );
 };

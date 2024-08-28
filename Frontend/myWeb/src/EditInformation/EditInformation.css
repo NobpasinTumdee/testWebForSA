@@ -59,7 +59,7 @@ input[type="password"] {
   padding: 15px 30px;
   background-color: #FFA726;
   border: none;
-  border-radius: 15px; /* เพิ่มมุมโค้ง */
+  border-radius: 20px; /* เพิ่มมุมโค้ง */
   color: white;
   font-size: 18px;
   font-weight: bold;
@@ -72,21 +72,5 @@ input[type="password"] {
   background-color: #FF7F7F;
 }
 
-.return-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #0b824a00;
-  border: none;
-  border-radius: 15px; /* เพิ่มมุมโค้ง */
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  
-}
-
-.return-button:hover {
-  background-color: #444;
-}
 
 
