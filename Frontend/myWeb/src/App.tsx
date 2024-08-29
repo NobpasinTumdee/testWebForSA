@@ -14,6 +14,7 @@ import Collection from './Collection/Collection' ;
 import AboutMe from './AboutMe/AboutMe';
 import { Navbar } from './Component/Navbar';
 import Social from "./Component/Social/Social"
+import Intro from './Component/Intro/Intro';
 
 // import {PopUpAdmin} from './Component/PopUpAdmin';
 // <PopUpAdmin /> 
@@ -25,15 +26,17 @@ import Social from "./Component/Social/Social"
 const App: React.FC = () => {
     const location = useLocation();
 
+    const IntroLogo = ['/'].includes(location.pathname);
     const hideNavbar = [ '/','/login', '/forget-password', '/signup','/MainWeb'].includes(location.pathname);
-    const hideSocial = [ '/MainWeb','/WatchMovie'].includes(location.pathname);
+    const hideSocial = [ '/MainWeb','/WatchMovie','/subscription'].includes(location.pathname);
 
     return (
         <div>
-            
+            {IntroLogo && <Intro />}
             {!hideNavbar && <Navbar />}
-            {!hideSocial && <Social />}
+            {!hideSocial && <Social /> }
             <Routes>
+                
                 <Route path="/" element={<Login1 />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/Forget-password" element={<ForgetPassword />} />
