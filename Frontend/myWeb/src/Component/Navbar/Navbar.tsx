@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./Navbar.css"
 // about me
-import { DataUser } from '../AboutMe/DataUser';
-import userPhoto from '../assets/icon/User.png';
+import { DataUser } from '../../AboutMe/DataUser';
+import userPhoto from './User.png';
 
 export const Navbar: React.FC = () => {
     const navigate = useNavigate();

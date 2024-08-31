@@ -12,7 +12,7 @@ import Admin from './Admin/Admin';
 import History from './History/History';
 import Collection from './Collection/Collection' ;
 import AboutMe from './AboutMe/AboutMe';
-import { Navbar } from './Component/Navbar';
+import { Navbar } from './Component/Navbar/Navbar';
 import Social from "./Component/Social/Social"
 import Intro from './Component/Intro/Intro';
 
@@ -29,6 +29,7 @@ const App: React.FC = () => {
     const IntroLogo = ['/'].includes(location.pathname);
     const hideNavbar = [ '/','/login', '/forget-password', '/signup','/MainWeb'].includes(location.pathname);
     const hideSocial = [ '/MainWeb','/WatchMovie','/subscription'].includes(location.pathname);
+
 
     return (
         <div>

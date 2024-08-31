@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './TypographyAnimation.module.css';
 
-const TypographyAnimation: React.FC = () => {
+export const TypographyAnimation: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
 

@@ -20,7 +20,7 @@ const ForgetPassword: React.FC = () => {
                 <input type="password" placeholder="New Password" className="input-field" />
                 <input type="password" placeholder="Confirm Password" className="input-field" />
                 <button onClick={COMFIRM} className="confirm-button">CONFIRM</button>
-                <a href="/" className="signup-link">BACK TO LOGIN</a>
+                <a href="/login" className="signup-link">BACK TO LOGIN</a>
             </div>
         </div>
     );
