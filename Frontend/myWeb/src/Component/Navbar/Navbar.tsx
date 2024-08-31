@@ -47,7 +47,9 @@ export const Navbar: React.FC = () => {
                     <a href="/Admin" >
                         <li className="sizeMenuComponent">💻</li>
                     </a>
-                    <a href="/" className="signup-link">🔙</a>
+                    <a href="/" >
+                        <li className="sizeMenuComponent">🔙</li>
+                    </a>
                 </ul>
             </nav>
         {isPopupOpen && (
