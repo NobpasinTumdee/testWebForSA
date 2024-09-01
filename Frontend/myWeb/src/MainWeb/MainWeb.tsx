@@ -17,6 +17,8 @@ import { AnimesMain, moviesMain } from "./DataMovie";
 import { DataUser } from '../AboutMe/DataUser';
 import userPhoto from '../assets/icon/User.png';
 
+
+
 //loadingScren
 //import {LoadingScreen} from '../Component/LoadingScreen';
 
