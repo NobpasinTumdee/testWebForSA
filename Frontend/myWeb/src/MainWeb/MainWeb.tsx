@@ -17,7 +17,7 @@ import { AnimesMain, moviesMain } from "./DataMovie";
 import { DataUser } from '../AboutMe/DataUser';
 import userPhoto from '../assets/icon/User.png';
 
-import { Loading } from '../Component/Loading/Loading';
+import { LoadingStarWar } from '../Component/Loading/LoadingStarWar';
 
 //loadingScren
 //import {LoadingScreen} from '../Component/LoadingScreen';
@@ -33,7 +33,7 @@ const MainWeb: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 1000)
+    }, 2000)
   })
 
 
@@ -76,7 +76,7 @@ const MainWeb: React.FC = () => {
     <>
       {isLoading ? (<div style={{
         position: 'fixed', top: '50%', left: '55%', marginTop: '-50px', marginLeft: '-100px'
-      }}><Loading /></div>) : (
+      }}><LoadingStarWar /></div>) : (
         <div className="app">
           <aside className={`sidebar ${isSidebarOpen ? '' : 'hidden'}`}>
             <div className="toggle-button" onClick={toggleSidebar}>

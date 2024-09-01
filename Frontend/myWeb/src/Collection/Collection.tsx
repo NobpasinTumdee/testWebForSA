@@ -6,7 +6,7 @@ import Cm5 from "../assets/Cm5persec.jpg"
 import icon from "../assets/icon/RedHeart.png"
 import fullmetal from "../assets/Fullmetal.jpg"
 
-import { Loading } from '../Component/Loading/Loading';
+import { LoadingHart } from '../Component/Loading/LoadingHart';
 
 
 const movies = [
@@ -67,14 +67,14 @@ const Collection: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 300)
+    }, 1000)
   })
 
   return (
     <>
     {isLoading ? (<div style={{
         position: 'fixed', top: '50%', left: '55%', marginTop: '-50px', marginLeft: '-100px'
-      }}><Loading /></div>) : (
+      }}><LoadingHart /></div>) : (
     <div className="Collection-container">
       <h1 className="Collection-title">COLLECTION</h1>
       <div className="movies-list">

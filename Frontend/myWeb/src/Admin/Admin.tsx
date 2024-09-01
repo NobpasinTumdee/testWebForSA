@@ -8,7 +8,9 @@ import fullmetal from "../assets/Fullmetal.jpg"
 
 import { PopUpAdmin } from '../Component/PopUpAdmin';
 
-import { Loading } from '../Component/Loading/Loading';
+
+
+import LoadingScreen from '../Component/LoadingScreen';
 
 const movies = [
   {
@@ -59,15 +61,15 @@ const AdminManageMovies: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 300)
+    }, 1500)
   })
 
 
   return (
     <>
       {isLoading ? (<div style={{
-        position: 'fixed', top: '50%', left: '55%', marginTop: '-50px', marginLeft: '-100px'
-      }}><Loading /></div>) : (
+        backgroundColor: '#674636'
+      }}><LoadingScreen /></div>) : (
         <div className="admin-container">
           <h1 className="admin-title">ADMIN</h1>
           <div className="movies-list">

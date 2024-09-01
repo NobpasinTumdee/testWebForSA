@@ -5,7 +5,7 @@ import rezero from "../assets/rezero.jpg"
 import Cm5 from "../assets/Cm5persec.jpg"
 import fullmetal from "../assets/Fullmetal.jpg"
 
-import { Loading } from '../Component/Loading/Loading';
+import { LoadingCamp } from '../Component/Loading/LoadingCamp';
 
 const movies = [
   {
@@ -45,14 +45,14 @@ const History: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 300)
+    }, 2000)
   })
 
   return (
     <>
     {isLoading ? (<div style={{
-        position: 'fixed', top: '50%', left: '55%', marginTop: '-50px', marginLeft: '-100px'
-      }}><Loading /></div>) : (
+        position: 'fixed', top: '30%', left: '47%', marginTop: '-50px', marginLeft: '-100px'
+      }}><LoadingCamp /></div>) : (
     <div className="History-container">
       <h1 className="History-title">HISTORY</h1>
       <div className="movies-list">
