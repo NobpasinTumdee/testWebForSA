@@ -27,16 +27,14 @@ export const Navbar: React.FC = () => {
             <div className="logoComponent"></div>
             <nav>
                 <ul>
-                    <div  >
                     <a href='./MainWeb'>
                         <li className="sizeMenuComponent">🎞️</li>
                     </a>
-                    </div>
-                    <a href='./Collection'>
-                        <li className="sizeMenuComponent">❤️</li>
-                    </a>
                     <a href='#' onClick={() => openPopup()}>
                         <li className="sizeMenuComponent">💁🏻‍♀️</li>
+                    </a>
+                    <a href='./Collection'>
+                        <li className="sizeMenuComponent">❤️</li>
                     </a>
                     <a href="/EditInformation" >
                         <li className="sizeMenuComponent">👔</li>
