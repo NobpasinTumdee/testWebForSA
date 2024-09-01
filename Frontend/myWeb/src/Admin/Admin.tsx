@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Admin.css';
 import VioletEvergarden from "../assets/VioletEvergarden.jpg";
 import rezero from "../assets/rezero.jpg"
@@ -7,6 +7,8 @@ import icon from "../assets/icon/EditIcon.png"
 import fullmetal from "../assets/Fullmetal.jpg"
 
 import { PopUpAdmin } from '../Component/PopUpAdmin';
+
+import { Loading } from '../Component/Loading/Loading';
 
 const movies = [
   {
@@ -51,35 +53,51 @@ const AdminManageMovies: React.FC = () => {
     setIsPopupOpen(false);
   };
 
-  return (
-    <div className="admin-container">
-      <h1 className="admin-title">ADMIN</h1>
-      <div className="movies-list">
-        {movies.map((movie) => (
-          <div className="movie-card-Adminpage" key={movie.id}>
-            <img src={movie.image} alt={movie.title} className="movie-image" />
-            <div className="movie-info">
-              <h2>{movie.title}</h2>
-              <p>{movie.description}</p>
-              <p>Date: {movie.date}</p>
-            </div>
-            <button className="edit-button" onClick={openPopup}>
-              <img src={icon} className='edit-icon-Admin' alt="Edit Icon" />
-            </button>
-          </div>
-        ))}
-      </div>
-      <a href="/MainWeb" className="return-button-Admin">Return to home page</a>
 
-      {isPopupOpen && (
-        <div className='popup-container'>
-          <PopUpAdmin />
-          <button onClick={closePopup} className="close-popup-button">
-            Close
-          </button>
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 300)
+  })
+
+
+  return (
+    <>
+      {isLoading ? (<div style={{
+        position: 'fixed', top: '50%', left: '55%', marginTop: '-50px', marginLeft: '-100px'
+      }}><Loading /></div>) : (
+        <div className="admin-container">
+          <h1 className="admin-title">ADMIN</h1>
+          <div className="movies-list">
+            {movies.map((movie) => (
+              <div className="movie-card-Adminpage" key={movie.id}>
+                <img src={movie.image} alt={movie.title} className="movie-image" />
+                <div className="movie-info">
+                  <h2>{movie.title}</h2>
+                  <p>{movie.description}</p>
+                  <p>Date: {movie.date}</p>
+                </div>
+                <button className="edit-button" onClick={openPopup}>
+                  <img src={icon} className='edit-icon-Admin' alt="Edit Icon" />
+                </button>
+              </div>
+            ))}
+          </div>
+          <a href="/MainWeb" className="return-button-Admin">Return to home page</a>
+
+          {isPopupOpen && (
+            <div className='popup-container'>
+              <PopUpAdmin />
+              <button onClick={closePopup} className="close-popup-button">
+                Close
+              </button>
+            </div>
+          )}
         </div>
       )}
-    </div>
+    </>
   );
 };
 

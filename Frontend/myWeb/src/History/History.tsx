@@ -1,9 +1,11 @@
-import React from 'react';
+import  {useState ,useEffect} from 'react';
 import './History.css';
 import VioletEvergarden from "../assets/VioletEvergarden.jpg";
 import rezero from "../assets/rezero.jpg"
 import Cm5 from "../assets/Cm5persec.jpg"
 import fullmetal from "../assets/Fullmetal.jpg"
+
+import { Loading } from '../Component/Loading/Loading';
 
 const movies = [
   {
@@ -37,7 +39,20 @@ const movies = [
 ];
 
 const History: React.FC = () => {
+
+  const [isLoading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 300)
+  })
+
   return (
+    <>
+    {isLoading ? (<div style={{
+        position: 'fixed', top: '50%', left: '55%', marginTop: '-50px', marginLeft: '-100px'
+      }}><Loading /></div>) : (
     <div className="History-container">
       <h1 className="History-title">HISTORY</h1>
       <div className="movies-list">
@@ -55,6 +70,8 @@ const History: React.FC = () => {
       </div>
       <a  href="/MainWeb"  className="return-button-Admin">Return to home page</a>
     </div>
+    )}
+    </>
   );
 };
 
