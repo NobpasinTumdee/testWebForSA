@@ -2,8 +2,8 @@ import React from 'react';
 import './WatchMovie.css';
 
 import {  useLocation } from 'react-router-dom';
-//loveBTN
-import { LoveBtn } from '../Component/LoveBtn/LoveBtn';
+
+
 
   
 const WatchMovie: React.FC = () => {
@@ -15,7 +15,9 @@ const WatchMovie: React.FC = () => {
     <div className="watch-movie-container">
       <div className="movie-header">
         {movie.title}
-        <LoveBtn />
+        <button className="love-button">
+          ❤️
+        </button>
       </div>
       <div className="movie-content">
         <div className="movie-player">
