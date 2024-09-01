@@ -23,6 +23,9 @@ import Intro from './Component/Intro/Intro';
 //<LoadingScreen />
 
 
+// ติดตั้ง npm install react-loader-spinner --save  และ  npm install --save react-toastify
+
+
 const App: React.FC = () => {
     const location = useLocation();
 
