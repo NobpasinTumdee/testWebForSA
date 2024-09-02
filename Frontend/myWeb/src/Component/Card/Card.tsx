@@ -3,12 +3,16 @@ import './Card.css';
 
 export const Card: React.FC = () => {
     return (
-        <div className="card">
-            <div className="first-content">
-                <span>First</span>
-            </div>
-            <div className="second-content">
-                <span>Second</span>
+        <div className="flip-card">
+            <div className="flip-card-inner">
+                <div className="flip-card-front">
+                    <p className="title">FLIP CARD</p>
+                    <p>Hover Me</p>
+                </div>
+                <div className="flip-card-back">
+                    <p className="title">BACK</p>
+                    <p>Leave Me</p>
+                </div>
             </div>
         </div>
     );

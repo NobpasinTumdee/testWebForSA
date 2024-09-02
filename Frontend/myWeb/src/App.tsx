@@ -12,6 +12,7 @@ import Admin from './Admin/Admin';
 import History from './History/History';
 import Collection from './Collection/Collection' ;
 import AboutMe from './AboutMe/AboutMe';
+import PreviewSubscription from './subscription/PreviewSubscription'
 import { Navbar } from './Component/Navbar/Navbar';
 import Social from "./Component/Social/Social"
 import Intro from './Component/Intro/Intro';
@@ -53,6 +54,7 @@ const App: React.FC = () => {
                 <Route path="/History" element={<History />} />
                 <Route path="/Collection" element={<Collection />} />
                 <Route path="/AboutMe" element={<AboutMe />} />
+                <Route path="/PreviewSubscription" element={<PreviewSubscription />} />
             </Routes>
         </div>
     );
