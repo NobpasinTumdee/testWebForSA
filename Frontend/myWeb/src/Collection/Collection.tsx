@@ -1,4 +1,4 @@
-import  {useState ,useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import './Collection.css';
 import VioletEvergarden from "../assets/VioletEvergarden.jpg";
 import rezero from "../assets/rezero.jpg"
@@ -7,6 +7,8 @@ import icon from "../assets/icon/RedHeart.png"
 import fullmetal from "../assets/Fullmetal.jpg"
 
 import { LoadingHart } from '../Component/Loading/LoadingHart';
+
+import CollectionComponent from './CollectionComponent';
 
 
 const movies = [
@@ -63,7 +65,19 @@ const movies = [
 
 const Collection: React.FC = () => {
   const [isLoading, setLoading] = useState(true);
-  
+
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [InfoCollection, setInfoCollection] = useState('');
+
+  const openPopup = (movie: string) => {
+    setInfoCollection(movie)
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
+
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -72,29 +86,41 @@ const Collection: React.FC = () => {
 
   return (
     <>
-    {isLoading ? (<div style={{
+      {isLoading ? (<div style={{
         position: 'fixed', top: '50%', left: '55%', marginTop: '-50px', marginLeft: '-100px'
       }}><LoadingHart /></div>) : (
-    <div className="Collection-container">
-      <h1 className="Collection-title">COLLECTION</h1>
-      <div className="movies-list">
-        {movies.map((movie) => (
-          <div className="movie-card-Adminpage" key={movie.id}>
-            <img src={movie.image} alt={movie.title} className="movie-image" />
-            <div className="movie-info">
-              <h2 >{movie.title}</h2>
-              <p >{movie.description}</p>
-              <p >Date: {movie.date}</p>
-            </div>
-            <button className="edit-button">
-              <img src={icon} className='edit-icon-Collection'></img>
-            </button>
+        <div className="Collection-container">
+          <h1 className="Collection-title">COLLECTION</h1>
+          <div className="movies-list">
+            {movies.map((movie) => (
+              <div className="movie-card-Adminpage" key={movie.id}>
+                <img src={movie.image} alt={movie.title} className="movie-image" />
+                <div className="movie-info">
+                  <h2 >{movie.title}</h2>
+                  <p >{movie.description}</p>
+                  <p >Date: {movie.date}</p>
+                </div>
+                <button className="edit-button" onClick={() => openPopup(movie.title)}>
+                  <img src={icon} className='edit-icon-Collection'></img>
+                </button>
+              </div>
+            ))}
+
           </div>
-        ))}
-        
-      </div>
-      <a  href="/MainWeb"  className="return-button-Collection">Return to home page</a>
-    </div>
+          <a href="/MainWeb" className="return-button-Collection">Return to home page</a>
+          {isPopupOpen && (
+            <div className='popup-container'>
+              <h1>{InfoCollection}</h1>
+              <div style={{
+                position: 'fixed', top: '20%', left: '42%', marginTop: '-50px', marginLeft: '-100px'
+              }}><CollectionComponent /></div>
+
+              <button onClick={closePopup} className="close-popup-button">
+                Close
+              </button>
+            </div>
+          )}
+        </div>
       )}
     </>
   );
