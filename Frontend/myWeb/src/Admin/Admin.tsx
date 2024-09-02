@@ -10,7 +10,7 @@ import { PopUpAdmin } from '../Component/PopUpAdmin';
 
 
 
-import LoadingScreen from '../Component/LoadingScreen';
+import LoadingScreen from '../Component/Loading/LoadingScreen';
 
 const movies = [
   {
