@@ -1,0 +1,125 @@
+.bodyG {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #051215;
+    
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1.25rem;
+    transition: all 400ms;
+}
+
+.card {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    transition: all 400ms;
+    cursor: pointer;
+}
+
+.card > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    opacity: 0;
+    transition: opacity 400ms;
+    background-color: #0000008f;
+    box-shadow: 0 0px 50px #000000;
+    font: small-caps bold 36px/1 sans-serif;
+}
+
+.card:hover .overlay {
+    opacity: 1;
+}
+
+.card:nth-child(odd) {
+    translate: 0 -20px;
+}
+
+.card:nth-child(even) {
+    translate: 0 20px;
+}
+
+.container:hover .card:not(:hover) {
+    filter: grayscale(100%);
+}
+
+.card:hover {
+    flex: 3;
+}
+
+
+
+
+
+
+/* From Uiverse.io by cssbuttons-io */ 
+.buttonGrow {
+    --glow-color: rgb(217, 176, 255);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    --enhanced-glow-color: rgb(231, 206, 255);
+    --btn-color: rgb(100, 61, 136);
+    border: .25em solid var(--glow-color);
+    padding: 1em 3em;
+    color: var(--glow-color);
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 1em .25em var(--glow-color),
+           0 0 4em 1em var(--glow-spread-color),
+           inset 0 0 .75em .25em var(--glow-color);
+    text-shadow: 0 0 .5em var(--glow-color);
+    position: fixed;
+    bottom: 50px;
+    left: 43%;
+    transition: all 0.3s;
+   }
+   
+   .buttonGrow::after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 120%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--glow-spread-color);
+    filter: blur(2em);
+    opacity: .7;
+    transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+   }
+   
+   .buttonGrow:hover {
+    color: var(--btn-color);
+    background-color: var(--glow-color);
+    box-shadow: 0 0 1em .25em var(--glow-color),
+           0 0 4em 2em var(--glow-spread-color),
+           inset 0 0 .75em .25em var(--glow-color);
+   }
+   
+   .buttonGrow:active {
+    box-shadow: 0 0 0.6em .25em var(--glow-color),
+           0 0 2.5em 2em var(--glow-spread-color),
+           inset 0 0 .5em .25em var(--glow-color);
+   }

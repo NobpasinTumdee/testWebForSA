@@ -1,13 +1,17 @@
-import { Card } from "../Component/Card/Card"
 
+import { Gallery } from "../Component/Card/Gallery"
+import { useNavigate } from 'react-router-dom';
 
 function PreviewSubscription() {
+    const navigate = useNavigate();
+    const returntologin = () => {
+        navigate('/login');
+      };
     return (
         <>
-        <div style={{display: 'flex',position: 'fixed', top: '45%', left: '35%', marginTop: '-50px', marginLeft: '-100px',gap: '30px'}}>
-            <Card />
-            <Card />
-            <Card />
+        <div >
+            <Gallery />
+            <button className='buttonGrow' onClick={returntologin}> Return to Login</button>
         </div>
         </>
     )

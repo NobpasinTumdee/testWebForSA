@@ -20,7 +20,7 @@ import { useNavigate } from 'react-router-dom';
 function Login1() {
     const navigate = useNavigate();
     const subscription = () => {
-        navigate('/subscription');
+        navigate('/PreviewSubscription');
     };
 
     const notify = () => toast.warn('For Members', {
