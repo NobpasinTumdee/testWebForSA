@@ -1,83 +1,92 @@
 .sidebarComponent {
-    margin-top: 10%;
-    width: 45px;
-    background: linear-gradient(to bottom, #060036, #010010);
-    padding: 0px;
-    position: fixed; /* เปลี่ยนเป็น fixed เพื่อให้ Sidebar ตรึงอยู่กับหน้าจอ */
-    height: auto; /* ให้ Sidebar มีความสูงเต็มหน้าจอ */
-    transition: width 0.8s, transform 0.8s;
-    z-index: 999; /* เพื่อให้ Sidebar อยู่ด้านหน้าเสมอ */
-    border-radius: 0px 15px 15px 0px;
-  }
-  
-  .sidebarComponent.hidden {
-    transform: translateX(-100%);
-    width: 0;
-    padding: 0;
-  }
-  
-  .toggle-buttonComponent {
-    position: absolute;
-    top: 20px;
-    right: -20px;
-    background-color: #5654C0;
-    padding: 5px;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  
-  .sidebarComponent  {
-    
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  /*=============================================================================================*/
-  .sizeMenuComponent {
-    text-decoration: none;
-    font-size: 24px;
-    padding: 5px;
-    color: #ffffff;
-    transition: 0.5s;
-    
-  }
-  
-  .sizeMenuComponent:hover {
-    text-decoration: none;
-    border-radius: 10px;
-    background-color: #9E9EE2;
-    font-size: 24px;
-    color: #FFA726;
-  }
+  margin-top: 10%;
+  width: 45px;
+  background: linear-gradient(to bottom, #060036, #010010);
+  padding: 0px;
+  position: fixed;
+  /* เปลี่ยนเป็น fixed เพื่อให้ Sidebar ตรึงอยู่กับหน้าจอ */
+  height: auto;
+  /* ให้ Sidebar มีความสูงเต็มหน้าจอ */
+  transition: width 0.8s, transform 0.8s;
+  z-index: 999;
+  /* เพื่อให้ Sidebar อยู่ด้านหน้าเสมอ */
+  border-radius: 0px 15px 15px 0px;
+}
 
-  .sizeMenuComponent:focus {
-    background-color: #9E9EE2;
-  }
-  
-  /*=============================================================================================*/
-  .logoComponent {
-    font-size: 50px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #ffffff;
-  }
-  
-  .sidebarComponent nav ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebarComponent nav ul li {
-    margin: 20px 0;
-    cursor: pointer;
-  }
-  
-  a {
-    text-decoration: none;
-  }
-  .sidebarComponent nav ul li.subscribe {
-    background-color: #FFA726;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-  }
+.sidebarComponent.hidden {
+  transform: translateX(-100%);
+  width: 0;
+  padding: 0;
+}
+
+.toggle-buttonComponent {
+  position: absolute;
+  top: 20px;
+  right: -20px;
+  background-color: #5654C0;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.sidebarComponent {
+
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/*=============================================================================================*/
+.sizeMenuComponent {
+  text-decoration: none;
+  font-size: 24px;
+  padding: 5px;
+  color: #ffffff;
+  transition: 0.5s;
+
+}
+
+.sizeMenuComponent:hover {
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: #9E9EE2;
+  font-size: 24px;
+  color: #FFA726;
+}
+
+.sizeMenuComponent.active {
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: #9E9EE2;
+  font-size: 24px;
+  color: #FFA726;
+}
+
+/*=============================================================================================*/
+.logoComponent {
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.sidebarComponent nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebarComponent nav ul li {
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+.sidebarComponent nav ul li.subscribe {
+  background-color: #FFA726;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
