@@ -51,6 +51,7 @@
     margin: 0;
     text-align: left; /* จัดข้อความให้ชิดซ้าย */
     width: 100%;
+    font-family: 'Kameron';
     }
   
   .edit-button {
