@@ -102,6 +102,7 @@
 .topnav a.active {
     background-color: #1b0e7b;
     color: white;
+    font-family: 'pkmaehongson';
 }
 
 
@@ -218,5 +219,6 @@
 
   .scroll-container {
     scroll-behavior: smooth;
+    font-family: 'pkmaehongson';
   }
   

@@ -30,16 +30,19 @@ body, html {
 
 /* ส่วนของ h1 */
 .signUpHeader {
-    
+    font-family: 'pkmaehongson';
     text-align: center;
     margin-bottom: 20px;
-    font-size: 42px;
+    font-size: 50px;
     color: rgb(239, 230, 230);
+    font-weight: bold;
 }
 
 .labelSignUp{
     align-items: left;
     color: white;
+    font-family: 'pkmaehongson';
+    font-size: 17px;
 }
 .form-group{
     text-align: left;
@@ -71,10 +74,8 @@ body, html {
 
 /* ปุ่มสมัครสมาชิก */
 .signup-buttonDIV {
-    
+    font-family: 'pkmaehongson';
     width: 100%;
-
-
     color: white;
     border: none;
     border-radius: 20px;
@@ -85,18 +86,19 @@ body, html {
     text-align: center;
 }
 .signup-button {
-    
-    width: 70%;
+    font-family: 'pkmaehongson';
+    width: 40%;
     padding: 10px;
     background-color: #ffc107;
     color: white;
     border: none;
     border-radius: 20px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
     margin-top: 10px;
     /* เพิ่มการจัดวางตรงกลาง */
     text-align: center;
+    font-weight: bold;
 }
 
 /* ปุ่มเมื่อโฮเวอร์ */
@@ -112,8 +114,16 @@ body, html {
     color: rgb(241, 238, 238);
     text-decoration: none;
     text-align: center;
+    font-family: 'pkmaehongson';
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .login-link:hover {
     text-shadow: 0 0px 7px #ffc107;
+}
+
+@font-face {
+    font-family: pkmaehongson;
+    src: url(../src/PK-Maehongson-Medium.ttf);
 }

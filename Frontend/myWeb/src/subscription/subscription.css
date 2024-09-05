@@ -10,9 +10,10 @@
 }
 
 .subscription-title {
-  font-size: 3rem;
+  font-size: 4rem;
   margin: .0px;
   margin-bottom: 120px;
+  font-family: 'pkmaehongson';
 }
 
 .plans-container {
@@ -42,30 +43,34 @@
 }
 
 .plan-duration {
-  font-size: 1.2rem;
+  font-size: 2.5rem;
   margin-bottom: 10px;
+  font-family: 'pkmaehongson';
 }
 
 .plan-price {
   font-size: 2.5rem;
   margin-bottom: 20px;
+  font-family: 'pkmaehongson';
 }
 
 .plan-description, .plan-duration-description {
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin: 10px 0;
+  font-family: 'pkmaehongson';
 }
 
 .choose-plan-button {
-  margin-top: 140px;
+  margin-top: 110px;
   background-color: #ff5851;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 15px 30px;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-family: 'pkmaehongson';
 }
 
 .choose-plan-button:hover {
@@ -206,5 +211,10 @@
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  @font-face {
+    font-family: pkmaehongson;
+    src: url(../src/PK-Maehongson-Medium.ttf);
   }
   
