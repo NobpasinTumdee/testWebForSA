@@ -1,0 +1,116 @@
+package controller
+
+import (
+	"net/http"
+	"time"
+	"backendproject/entity"
+	"backendproject/config"
+	"github.com/gin-gonic/gin"
+)
+
+
+// POST /Payments
+func CreatePayment(c *gin.Context) {
+	var Payment entity.Payment
+
+	// bind เข้าตัวแปร user
+	if err := c.ShouldBindJSON(&Payment); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	db := config.DB()
+
+
+	u := entity.Payment{
+		Payment_method: Payment.Payment_method, 
+		Payment_status:  Payment.Payment_status,  
+		Date:  Payment.Date,
+		UserID:  Payment.UserID,
+		PackageID:  Payment.PackageID,
+	}
+
+	// บันทึก
+	if err := db.Create(&u).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusCreated, gin.H{"message": "Created success", "data": u})
+}
+
+
+// GET /payments
+func ListPayments(c *gin.Context) {
+    var payments []struct {
+        ID              uint      `json:"id"`
+        Payment_method  string    `json:"Payment_method"`
+        Payment_status  string    `json:"Payment_status"`
+        Date            time.Time `json:"Date"`
+        UserID          uint      `json:"UserID"`
+        Username        string    `json:"Username"` // เอา username ของ user มาแสดง
+        PackageID       uint      `json:"PackageID"`
+        Package_name    string    `json:"Package_name"` // เอาชื่อแพ็กเกจมาแสดง
+    }
+
+    // Get the database connection
+    db := config.DB()
+
+    // Query with joins to get user and package details
+    results := db.Table("payments").
+        Select("payments.id, payments.payment_method, payments.payment_status, payments.date, payments.user_id, users.username AS username, payments.package_id, movie_packages.package_name AS package_name").
+        Joins("left join users on users.id = payments.user_id").
+        Joins("left join movie_packages on movie_packages.id = payments.package_id").
+        Scan(&payments)
+
+    // Check for errors in the query
+    if results.Error != nil {
+        c.JSON(http.StatusNotFound, gin.H{"error": results.Error.Error()})
+        return
+    }
+
+    // Return the results as JSON
+    c.JSON(http.StatusOK, payments)
+}
+
+
+// DELETE /Payments/:id
+func DeletePayment(c *gin.Context) {
+
+	id := c.Param("id")
+	db := config.DB()
+	if tx := db.Exec("DELETE FROM payments WHERE id = ?", id); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "id not found"})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"message": "Deleted successful"})
+
+}
+
+
+// PATCH /Payments
+func UpdatePayment(c *gin.Context) {
+	var Payment entity.Payment
+
+	PaymentID := c.Param("id")
+
+	db := config.DB()
+	result := db.First(&Payment, PaymentID)
+	if result.Error != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "id not found"})
+		return
+	}
+
+	if err := c.ShouldBindJSON(&Payment); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request, unable to map payload"})
+		return
+	}
+
+	result = db.Save(&Payment)
+	if result.Error != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Updated successful"})
+}

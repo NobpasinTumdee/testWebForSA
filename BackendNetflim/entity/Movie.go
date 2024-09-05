@@ -14,6 +14,6 @@ type Movie struct {
 	
 	// 1 Movie เป็นเจ้าของได้หลาย History
 	History []History `gorm:"foreignKey:MovieID"`
-
-	Collection []Collection `gorm:"many2many:CollectionMovie;"`
+	CollectionMovie []CollectionMovie `gorm:"foreignKey:MovieID"`
+	//Collection []Collection `gorm:"many2many:CollectionMovie;"`
 }
