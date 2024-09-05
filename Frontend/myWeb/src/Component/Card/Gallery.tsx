@@ -24,9 +24,9 @@ export const Gallery: React.FC = () => {
     });
 
     return (
-        <div className='bodyG' onClick={notify}>
+        <div className='bodyG' >
             <div className="container">
-                <div className="card">
+                <div className="card"onClick={notify}>
                     <img src={A1} alt="Gallery Image 1" />
                     <div className="overlay">59/WEEK</div>
                 </div>
@@ -34,7 +34,7 @@ export const Gallery: React.FC = () => {
                     <img src={A2} alt="Gallery Image 2" />
                     <div className="overlay"></div>
                 </div>
-                <div className="card">
+                <div className="card"onClick={notify}>
                     <img src={A3} alt="Gallery Image 3" />
                     <div className="overlay">199/MONTH</div>
                 </div>
@@ -42,7 +42,7 @@ export const Gallery: React.FC = () => {
                     <img src={A4} alt="Gallery Image 4" />
                     <div className="overlay"></div>
                 </div>
-                <div className="card">
+                <div className="card"onClick={notify}>
                     <img src={A5} alt="Gallery Image 5" />
                     <div className="overlay">1999/YEAR</div>
                 </div>
