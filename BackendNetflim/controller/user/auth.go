@@ -27,7 +27,8 @@ import (
 
 type (
     Authen struct {
-        Email    string `json:"email"`  // แก้เป็น backticks
+        //Email    string `json:"email"`  // แก้เป็น backticks
+        Username string `json:"username"`
         Password string `json:"password"`
     }
  
@@ -35,7 +36,7 @@ type (
         Username string `json:"username"`  // แก้เป็น backticks
         Email     string `json:"email"`
         Password  string `json:"password"`
-        Status string `json:"status"`
+        //Status string `json:"status"`
     }
  )
  
@@ -102,7 +103,7 @@ func SignUp(c *gin.Context) {
 
     Password:     hashedPassword,
 
-    Status:       payload.Status,
+    //Status:       payload.Status,
 
 
    }
@@ -123,7 +124,7 @@ func SignUp(c *gin.Context) {
 
 }
 
-
+//Sign in == login 
 func SignIn(c *gin.Context) {
 
    var payload Authen
@@ -141,7 +142,7 @@ func SignIn(c *gin.Context) {
 
    // ค้นหา user ด้วย Username ที่ผู้ใช้กรอกเข้ามา
 
-   if err := config.DB().Raw("SELECT * FROM users WHERE email = ?", payload.Email).Scan(&user).Error; err != nil {
+   if err := config.DB().Raw("SELECT * FROM users WHERE username = ?", payload.Username).Scan(&user).Error; err != nil {
 
        c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 

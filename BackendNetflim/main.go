@@ -22,8 +22,8 @@ func main() {
 
 	r.Use(CORSMiddleware())
 
-	r.POST("/signup", user.SignUp)
-    r.POST("/signin", user.SignIn)
+	r.POST("/signup", user.SignUp) //สมัคร
+    r.POST("/signin", user.SignIn) //Sign in == login 
 
 	router := r.Group("")
   {
