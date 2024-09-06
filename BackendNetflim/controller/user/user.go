@@ -25,9 +25,9 @@ func CreateUser(c *gin.Context) {
 
 	// สร้าง User
 	u := entity.User{
-		Email: user.Email, // ตั้งค่าฟิลด์ FirstName
-		Username:  user.Username,  // ตั้งค่าฟิลด์ LastName
-		Password:  hashedPassword,     // ตั้งค่าฟิลด์ Email
+		Email: user.Email, 
+		Username:  user.Username,  
+		Password:  hashedPassword,     
 		Status:  user.Password,
 	}
 

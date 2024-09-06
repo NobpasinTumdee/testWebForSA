@@ -7,12 +7,12 @@ import (
 
 type History struct {
 	gorm.Model
-	Date  time.Time
+	Date  time.Time 	`json:"Date"`
 	
-	UserID uint
-	User   User `gorm:"foreignKey:UserID"`
+	UserID uint 		`json:"UserID"`
+	User   User 		`gorm:"foreignKey:UserID"`
 
-	MovieID uint
+	MovieID uint 		`json:"MovieID"`
 	Movie   Movie `gorm:"foreignKey:MovieID"`
 	
 	

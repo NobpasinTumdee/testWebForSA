@@ -6,10 +6,10 @@ import (
 
 type User struct {
 	gorm.Model
-	Email  string `json:"email"`
-	Username  string `json:"username"`
+	Email  string 		`json:"email"`
+	Username  string 	`json:"username"`
 	Password     string `json:"password"`
-	Status string `json:"status"`
+	Status string 		`json:"status"`
 	
 	// 1 User เป็นเจ้าของได้หลาย History
 	History []History `gorm:"foreignKey:UserID"`

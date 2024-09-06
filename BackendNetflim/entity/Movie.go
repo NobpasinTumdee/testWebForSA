@@ -6,11 +6,11 @@ import (
 
 type Movie struct {
 	gorm.Model
-	Movie_name  		string
-	Movie_poster  		string
-	Movie_information   string
-	Movie_video 		string
-	Movie_length        float32
+	Movie_name  		string  `json:"Movie_name"`
+	Movie_poster  		string  `json:"Movie_poster"`
+	Movie_information   string  `json:"Movie_information"`
+	Movie_video 		string  `json:"Movie_video"`
+	Movie_length        float32 `json:"Movie_length"`
 	
 	// 1 Movie เป็นเจ้าของได้หลาย History
 	History []History `gorm:"foreignKey:MovieID"`
