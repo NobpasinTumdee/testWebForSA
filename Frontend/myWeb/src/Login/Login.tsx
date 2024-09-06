@@ -1,7 +1,7 @@
 import React from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
-
+//import {APItest} from '../testApi/Apitest'<APItest />
 const Login: React.FC = () => {
     const navigate = useNavigate();
 
@@ -12,6 +12,7 @@ const Login: React.FC = () => {
         navigate('/MainWeb');
     };
     return (
+        <>
         <div className="login-container">
             <div className="login-box">
                 <h1 className='colortext' >NetFlim</h1>
@@ -22,6 +23,7 @@ const Login: React.FC = () => {
                 <a href="/signup" className="signup-link">SIGN UP NOW</a>
             </div>
         </div>
+        </>
     );
 };
 

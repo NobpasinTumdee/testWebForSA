@@ -3,8 +3,10 @@ package main
 import (
 	"backendproject/config"
 	"backendproject/controller"
+	"backendproject/controller/user"
 	"github.com/gin-gonic/gin"
-  "net/http"
+  	"net/http"
+	//"backendproject/middlewares"
 )
 const PORT = "8000"
 
@@ -20,14 +22,18 @@ func main() {
 
 	r.Use(CORSMiddleware())
 
+	r.POST("/signup", user.SignUp)
+    r.POST("/signin", user.SignIn)
+
 	router := r.Group("")
   {
+		//router.Use(middlewares.Authorizes())
 
 		// User Routes
-		router.GET("/users", controller.ListUsers)
-		router.POST("/users", controller.CreateUser)
-		router.PATCH("/users", controller.UpdateUser)
-		router.DELETE("/users/:id", controller.DeleteUser)
+		router.GET("/users", user.ListUsers) //getAll
+		router.POST("/users", user.CreateUser)
+		router.PUT("/users/:id", user.UpdateUser)
+		router.DELETE("/users/:id", user.DeleteUser)
 		// Movie Routes
 		router.GET("/Movies", controller.ListMovies)
 		router.POST("/Movies", controller.CreateMovie)

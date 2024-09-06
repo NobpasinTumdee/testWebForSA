@@ -8,7 +8,7 @@ import (
 type MoviePackage struct {
 	gorm.Model
 	Package_name   string
-	Price     	   float32 `gorm:"type:decimal(10,2)"`
+	Price     	   int
 	Duration	   int
 	
 }
