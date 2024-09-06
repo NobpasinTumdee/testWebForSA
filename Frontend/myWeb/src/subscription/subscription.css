@@ -43,25 +43,29 @@
 }
 
 .plan-duration {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+  font-size: 2.2rem;
+  margin-bottom: 0px;
   font-family: 'pkmaehongson';
 }
 
 .plan-price {
   font-size: 2.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   font-family: 'pkmaehongson';
 }
 
-.plan-description, .plan-duration-description {
-  font-size: 1.1rem;
+.plan-description  {
+  font-size: 1rem;
   margin: 10px 0;
   font-family: 'pkmaehongson';
 }
-
+.plan-duration-description {
+  font-size: 1.5rem;
+  margin: 10px 0;
+  font-family: 'pkmaehongson';
+}
 .choose-plan-button {
-  margin-top: 110px;
+  margin-top: 40px;
   background-color: #ff5851;
   color: white;
   border: none;

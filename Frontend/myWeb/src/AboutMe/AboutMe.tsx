@@ -1,12 +1,22 @@
 import React from 'react';
 import './AboutMe.css';
+import {APItestMoviePackage} from "../testApi/Apitest"
 
 
 const AboutMe: React.FC = () => {
 
     
     return (
-        <div className="textAbout">
+        <>
+        <APItestMoviePackage />
+        </>
+        
+    );
+};
+
+export default AboutMe;
+/*
+<div className="textAbout">
             <h1 className='AboutMeTitie'>ABOUT ME</h1>
             <div className='divAboutMe'>
                 <a>USERNAME : Nichakorn </a>
@@ -22,8 +32,4 @@ const AboutMe: React.FC = () => {
             </div>
                 <a  href="/MainWeb"  className="return-button-Admin">Return to home page</a>
 
-        </div>
-    );
-};
-
-export default AboutMe;
+        </div>*/
