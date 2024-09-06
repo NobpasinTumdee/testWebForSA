@@ -14,8 +14,9 @@ import { useNavigate } from 'react-router-dom';
 import { AnimesMain, moviesMain } from "./DataMovie";
 
 // about me
-import { DataUser } from '../AboutMe/DataUser';
-import userPhoto from '../assets/icon/User.png';
+// import { DataUser } from '../AboutMe/DataUser';
+// import userPhoto from '../assets/icon/User.png';
+import AboutMeCom from '../AboutMe/AboutMeCom'
 
 import { LoadingStarWar } from '../Component/Loading/LoadingStarWar';
 
@@ -168,7 +169,7 @@ const MainWeb: React.FC = () => {
           {isPopupOpen && (
             <div className="popup-overlay">
               <div className="popup-content">
-                {DataUser.map((User) => (
+                {/* {DataUser.map((User) => (
 
                   <div key={User.id}>
                     <img src={userPhoto} className='imgAboutME' />
@@ -178,7 +179,8 @@ const MainWeb: React.FC = () => {
                       <div>Duration : {User.Duration}</div>
                       <div>Expire : {User.Expire}</div>
                     </div>
-                  </div>))}
+                  </div>))} */}
+                <AboutMeCom />
                 <button className="payment-button" onClick={() => Edit()}> Edit your Information </button>
                 <button className="close-button" onClick={() => closePopup()}> Close </button>
               </div>

@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import "./Navbar.css"
 // about me
-import { DataUser } from '../../AboutMe/DataUser';
-import userPhoto from './User.png';
+//import { DataUser } from '../../AboutMe/DataUser';
+//import userPhoto from './User.png';
+import AboutMeCom from '../../AboutMe/AboutMeCom'
 
 export const Navbar: React.FC = () => {
   const navigate = useNavigate();
@@ -58,7 +59,7 @@ export const Navbar: React.FC = () => {
       {isPopupOpen && (
         <div className="popup-overlay">
           <div className="popup-content">
-            {DataUser.map((User) => (
+            {/* {DataUser.map((User) => (
               <div key={User.id}>
                 <img src={userPhoto} className='imgAboutME' />
                 <div className='dataAboutME'>
@@ -68,7 +69,8 @@ export const Navbar: React.FC = () => {
                   <div>Expire : {User.Expire}</div>
                 </div>
               </div>
-            ))}
+            ))} */}
+            <AboutMeCom />
             <button className="payment-button" onClick={Edit}>Edit your Information</button>
             <button className="close-button" onClick={closePopup}>Close</button>
           </div>

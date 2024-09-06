@@ -5,6 +5,8 @@ import (
 	"backendproject/entity"
 	"backendproject/config"
 	"github.com/gin-gonic/gin"
+	"errors"  // เพิ่ม import สำหรับ package errors
+	"gorm.io/gorm" // เพิ่ม import สำหรับ gorm
 )
 
 // POST /users
@@ -40,7 +42,29 @@ func CreateUser(c *gin.Context) {
 	c.JSON(http.StatusCreated, gin.H{"message": "Created success", "data": u})
 }
 
+
 // GET /user/:id
+func GetUser(c *gin.Context) {
+	ID := c.Param("id")
+	var user entity.User
+
+	db := config.DB()
+
+
+	// Query the user by ID
+	results := db.Where("id = ?", ID).First(&user)
+	if results.Error != nil {
+		if errors.Is(results.Error, gorm.ErrRecordNotFound) {
+			c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
+		} else {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": results.Error.Error()})
+		}
+		return
+	}
+
+	c.JSON(http.StatusOK, user)
+}
+
 
 // GET /users
 func ListUsers(c *gin.Context) {

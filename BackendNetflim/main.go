@@ -31,6 +31,7 @@ func main() {
 
 		// User Routes
 		router.GET("/users", user.ListUsers) //getAll
+		router.GET("/users/:id", user.GetUser) //getOnlyID
 		router.POST("/users", user.CreateUser)
 		router.PUT("/users/:id", user.UpdateUser)
 		router.DELETE("/users/:id", user.DeleteUser)
