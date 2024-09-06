@@ -46,7 +46,7 @@ export const Gallery: React.FC = () => {
                 {/* รูปที่ 1 */}
                 <div className="card" onClick={notify}>
                     <img src={A1} alt="Gallery Image 1" />
-                    <div className="overlay">{Packages[0]?.Package_name ?? 'No Data'}</div>
+                    <div className="overlay">{Packages[0]?.Package_name ?? 'No Data'} {Packages[0]?.Price ?? 'No Data'}</div>
                 </div>
 
                 {/* รูปที่ 2 */}
@@ -58,7 +58,7 @@ export const Gallery: React.FC = () => {
                 {/* รูปที่ 3 */}
                 <div className="card" onClick={notify}>
                     <img src={A3} alt="Gallery Image 3" />
-                    <div className="overlay">{Packages[1]?.Package_name ?? 'No Data'}</div>
+                    <div className="overlay">{Packages[1]?.Package_name ?? 'No Data'} {Packages[1]?.Price ?? 'No Data'}</div>
                 </div>
 
                 {/* รูปที่ 4 */}
@@ -70,7 +70,7 @@ export const Gallery: React.FC = () => {
                 {/* รูปที่ 5 */}
                 <div className="card" onClick={notify}>
                     <img src={A5} alt="Gallery Image 5" />
-                    <div className="overlay">{Packages[2]?.Package_name ?? 'No Data'}</div>
+                    <div className="overlay">{Packages[2]?.Package_name ?? 'No Data'} {Packages[2]?.Price ?? 'No Data'}</div>
                 </div>
             </div>
             <ToastContainer
