@@ -6,7 +6,7 @@ import (
 	"backendproject/controller/user"
 	"github.com/gin-gonic/gin"
   	"net/http"
-	//"backendproject/middlewares"
+	"backendproject/middlewares"
 )
 const PORT = "8000"
 
@@ -27,7 +27,7 @@ func main() {
 
 	router := r.Group("")
   {
-		//router.Use(middlewares.Authorizes())
+		router.Use(middlewares.Authorizes())
 
 		// User Routes
 		router.GET("/users", user.ListUsers) //getAll

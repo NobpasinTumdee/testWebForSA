@@ -11,17 +11,16 @@ import { useNavigate } from 'react-router-dom';
 
 
 // ข้อมูลหนัง และ อนิเมะ
-import { AnimesMain, moviesMain } from "./DataMovie";
+import {  moviesMain } from "./DataMovie";
 
-// about me
-// import { DataUser } from '../AboutMe/DataUser';
-// import userPhoto from '../assets/icon/User.png';
 import AboutMeCom from '../AboutMe/AboutMeCom'
 
 import { LoadingStarWar } from '../Component/Loading/LoadingStarWar';
 
-//loadingScren
-//import {LoadingScreen} from '../Component/LoadingScreen';
+//API
+import { MovieInterface } from "../interfaces/IMoviePackage";
+import axios from 'axios';
+
 
 const MainWeb: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -36,6 +35,27 @@ const MainWeb: React.FC = () => {
       setLoading(false);
     }, 2000)
   })
+  const [Movies, setMovie] = useState<MovieInterface[]>([]); //API
+  useEffect(() => {
+    const Authorization = localStorage.getItem("token");
+    const Bearer = localStorage.getItem("token_type");
+
+    const requestOptions = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `${Bearer} ${Authorization}`,
+        },
+    };
+
+    axios.get<MovieInterface[]>('http://localhost:8000/Movies', requestOptions)
+        .then(response => {
+            console.log(response.data);
+            setMovie(response.data);
+        })
+        .catch(error => {
+            console.error('มีข้อผิดพลาดในการดึงข้อมูล:', error);
+        });
+  }, []);
 
 
 
@@ -65,8 +85,12 @@ const MainWeb: React.FC = () => {
   };
 
   // ข้อมูล หนัง อนิเมะ
-  const handleMovieClick = (movie: { id: number; title: string; image: string }) => {
+  const handleMovieClick1 = (movie: { id: number; title: string; image: string }) => {
     navigate('/WatchMovie', { state: movie });
+  };
+  const handleMovieClick = (movie: MovieInterface) => {
+    //setSelectedMovieVideo(movie.Movie_video || null);
+    navigate('/WatchMovie', { state: { videoUrl: movie.Movie_video, movieName: movie.Movie_name, Movie_poster: movie.Movie_poster } });
   };
 
   // if (isLoading) {
@@ -134,10 +158,10 @@ const MainWeb: React.FC = () => {
               <h1 className='titile'>ANIME</h1>
               <div className="movie-grid">
                 {/* Repeat this block for each movie */}
-                {AnimesMain.map((movies) => (
-                  <div className="movie-card" key={movies.id} onClick={() => handleMovieClick(movies)}>
+                {Movies.map((movie) => (
+                  <div className="movie-card" key={movie.id} onClick={() => handleMovieClick(movie)}>
 
-                    <img src={movies.image} alt={movies.title} />
+                    <img src={movie.Movie_poster} alt={movie.Movie_name} />
 
                   </div>))}
               </div>
@@ -157,7 +181,7 @@ const MainWeb: React.FC = () => {
               <div className="movie-grid">
                 {/* Repeat this block for each movie */}
                 {moviesMain.map((movies) => (
-                  <div className="movie-card" key={movies.id} onClick={() => handleMovieClick(movies)}>
+                  <div className="movie-card" key={movies.id} onClick={() => handleMovieClick1(movies)}>
 
                     <img src={movies.image} alt={movies.title} />
 

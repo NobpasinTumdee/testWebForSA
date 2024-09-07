@@ -29,8 +29,19 @@ export const Gallery: React.FC = () => {
 
     // Fetch API
     const [Packages, setPackage] = useState<PackageInterface[]>([]);
+
     useEffect(() => {
-        axios.get<PackageInterface[]>('http://localhost:8000/MoviePackages')
+        const Authorization = localStorage.getItem("token");
+        const Bearer = localStorage.getItem("token_type");
+
+        const requestOptions = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `${Bearer} ${Authorization}`,
+            },
+        };
+
+        axios.get<PackageInterface[]>('http://localhost:8000/MoviePackages', requestOptions)
             .then(response => {
                 console.log(response.data); // ดูข้อมูลที่ได้รับจาก API ใน console
                 setPackage(response.data); // บันทึกข้อมูลลงใน state
@@ -50,7 +61,7 @@ export const Gallery: React.FC = () => {
                 </div>
 
                 {/* รูปที่ 2 */}
-                <div className="card" >
+                <div className="card">
                     <img src={A2} alt="Gallery Image 2" />
                     <div className="overlay"></div>
                 </div>
@@ -62,7 +73,7 @@ export const Gallery: React.FC = () => {
                 </div>
 
                 {/* รูปที่ 4 */}
-                <div className="card" >
+                <div className="card">
                     <img src={A4} alt="Gallery Image 4" />
                     <div className="overlay"></div>
                 </div>

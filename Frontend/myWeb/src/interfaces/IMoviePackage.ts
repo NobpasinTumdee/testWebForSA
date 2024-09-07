@@ -4,3 +4,12 @@ export interface PackageInterface {
     Price?: number;
     Duration?: number;
 }
+
+export interface MovieInterface {
+    id?: number;
+    Movie_name?: string;
+    Movie_poster?: string;
+    Movie_information?: string;
+    Movie_video?: string;
+    Movie_length?: string;
+}
