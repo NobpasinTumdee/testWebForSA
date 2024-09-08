@@ -42,8 +42,8 @@ func SetupDatabase() {
 
 	//User
 	User := []entity.User{
-		{Email: "B6506407@g.sut.ac.th",Username:  "Nobpasin Tumdee",Password:    hashedPassword ,Status:  "Pass"},
-		{Email: "B6525972@g.sut.ac.th",Username:  "Nichakorn Chanyutha",Password:    hashedPassword ,Status:  "Pass"},
+		{Email: "B6506407@g.sut.ac.th",Username:  "Nobpasin Tumdee",Password:    hashedPassword ,Status:  "User"},
+		{Email: "B6525972@g.sut.ac.th",Username:  "Nichakorn Chanyutha",Password:    hashedPassword ,Status:  "User"},
 	}
 	for _, pkg := range User {
 		db.FirstOrCreate(&pkg,entity.User{Username: pkg.Username})

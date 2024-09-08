@@ -30,7 +30,7 @@ func CreateUser(c *gin.Context) {
 		Email: user.Email, 
 		Username:  user.Username,  
 		Password:  hashedPassword,     
-		Status:  user.Password,
+		Status:  "User",
 	}
 
 	// บันทึก

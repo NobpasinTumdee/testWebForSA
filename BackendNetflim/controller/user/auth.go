@@ -36,7 +36,7 @@ type (
         Username string `json:"username"`  // แก้เป็น backticks
         Email     string `json:"email"`
         Password  string `json:"password"`
-        //Status string `json:"status"`
+        Status string `json:"status"`
     }
  )
  
@@ -64,7 +64,7 @@ func SignUp(c *gin.Context) {
 
    // Check if the user with the provided email already exists
 
-   result := db.Where("email = ?", payload.Email).First(&userCheck)
+   result := db.Where("username = ?", payload.Username).First(&userCheck)
 
    if result.Error != nil && !errors.Is(result.Error, gorm.ErrRecordNotFound) {
 
@@ -81,7 +81,7 @@ func SignUp(c *gin.Context) {
 
        // If the user with the provided email already exists
 
-       c.JSON(http.StatusConflict, gin.H{"error": "Email is already registered"})
+       c.JSON(http.StatusConflict, gin.H{"error": "Username is already registered"})
 
        return
 
@@ -103,7 +103,7 @@ func SignUp(c *gin.Context) {
 
     Password:     hashedPassword,
 
-    //Status:       payload.Status,
+    Status:       "User",
 
 
    }

@@ -108,23 +108,35 @@ async function GetGenders() {
   }
   
   
+  // async function CreateUser(data: UsersInterface) {
+  //   const requestOptions = {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(data),
+  //   };
+  
+  //   let res = await fetch(`${apiUrl}/users`, requestOptions)
+  //     .then((res) => {
+  //       if (res.status == 201) {
+  //         return res.json();
+  //       } else {
+  //         return false;
+  //       }
+  //     });
+  
+  //   return res;
+  // }
+
   async function CreateUser(data: UsersInterface) {
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    };
+
+    return await axios
   
-    let res = await fetch(`${apiUrl}/users`, requestOptions)
-      .then((res) => {
-        if (res.status == 201) {
-          return res.json();
-        } else {
-          return false;
-        }
-      });
+      .post(`${apiUrl}/signup`, data, requestOptions)
   
-    return res;
+      .then((res) => res)
+  
+      .catch((e) => e.response);
+  
   }
   
   async function UpdateUser(data: UsersInterface) {

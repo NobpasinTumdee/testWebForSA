@@ -1,91 +1,100 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React from 'react';
 import './SignUp.css';
-
-interface FormState {
-  username: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
+import { Form, Input , message } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { UsersInterface } from '../interfaces/IUser';
+import { CreateUser } from '../services/https/index';
 
 const SignUp: React.FC = () => {
-  const [form, setForm] = useState<FormState>({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-  });
+  const navigate = useNavigate();
+  //const [loading, setLoading] = useState(false);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const [messageApi, contextHolder] = message.useMessage();
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    // การจัดการเมื่อกดปุ่มลงทะเบียน
-    console.log('Form submitted:', form);
+  const onFinish = async (values: UsersInterface) => {
+    //setLoading(true);
+
+    let res = await CreateUser(values);
+
+    //setLoading(false);
+
+    if (res.status === 201) {
+      messageApi.open({
+        type: 'success',
+        content: res.data.message,
+      });
+
+      setTimeout(() => {
+        navigate('/login');
+      }, 1000);
+    } else {
+      messageApi.open({
+        type: 'error',
+        content: res.data.error,
+      });
+    }
   };
 
   return (
     <div className="signup-container">
+      {contextHolder}
       <div className="signup-box">
-        <form onSubmit={handleSubmit}>
-          <h1 className='signUpHeader'>SIGN UP</h1>
-            <label className="labelSignUp" htmlFor="username">Username</label>
-          <div className="form-group">
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={form.username}
-              onChange={handleChange}
-              required
-            />
-          </div>
-            <label className="labelSignUp" htmlFor="email">Email</label>
-          <div className="form-group">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-            <label className="labelSignUp" htmlFor="password">Password</label>
-          <div className="form-group">
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={form.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
-            <label className="labelSignUp" htmlFor="confirmPassword">Confirm Password</label>
-          <div className="form-group">
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              value={form.confirmPassword}
-              onChange={handleChange}
-              required
-            />
-          </div>
+        <h1 className="signUpHeader">SIGN UP</h1>
+        <Form layout="vertical" onFinish={onFinish}>
+          <Form.Item
+            label={<label className="labelSignUp">Username</label>}
+            name="username"
+            rules={[{ required: true, message: 'Please input your username!' }]}
+          >
+            <Input className="form-group" />
+          </Form.Item>
+
+          <Form.Item
+            label={<label className="labelSignUp">Email</label>}
+            name="email"
+            rules={[{ required: true, message: 'Please input your email!', type: 'email' }]}
+          >
+            <Input className="form-group" />
+          </Form.Item>
+
+          <Form.Item
+            label={<label className="labelSignUp">Password</label>}
+            name="password"
+            rules={[{ required: true, message: 'Please input your password!' }]}
+          >
+            <Input.Password className="form-group" />
+          </Form.Item>
+
+          <Form.Item
+            label={<label className="labelSignUp">Confirm Password</label>}
+            name="confirmPassword"
+            dependencies={['password']}
+            rules={[
+              { required: true, message: 'Please confirm your password!' },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(new Error('Passwords do not match!'));
+                },
+              }),
+            ]}
+          >
+            <Input.Password className="form-group" />
+          </Form.Item>
+
           <div className="signup-buttonDIV">
-            <button type="submit" className="signup-button">SIGN UP</button>
+            <button  className="signup-button">
+              SIGN UP
+            </button>
           </div>
-          <a href="/login" className="login-link">BACK TO LOGIN</a>
-        </form>
+        </Form>
+        <a href="/login" className="login-link">BACK TO LOGIN</a>
       </div>
     </div>
   );
 };
 
 export default SignUp;
+
