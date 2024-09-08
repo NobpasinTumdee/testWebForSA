@@ -1,48 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './Admin.css';
-import VioletEvergarden from "../assets/VioletEvergarden.jpg";
-import rezero from "../assets/rezero.jpg"
-import Cm5 from "../assets/Cm5persec.jpg"
 import icon from "../assets/icon/EditIcon.png"
-import fullmetal from "../assets/Fullmetal.jpg"
 
 import { PopUpAdmin } from '../Component/PopUpAdmin';
-
-
-
 import LoadingScreen from '../Component/Loading/LoadingScreen';
 
-const movies = [
-  {
-    id: 1,
-    title: 'Violet Evergarden',
-    description: 'A touching story about a young girl who used to be a weapon...',
-    date: '15/July/2024',
-    image: VioletEvergarden,
-  },
-  {
-    id: 2,
-    title: 'Haikyuu!!',
-    description: 'An inspiring sports anime about volleyball...',
-    date: '15/July/2024',
-    image: rezero,
-  },
-  {
-    id: 3,
-    title: 'Bocchi the Rock!',
-    description: 'A story of a shy girl who starts a rock band...',
-    date: '15/July/2024',
-    image: Cm5,
-  },
-  {
-    id: 4,
-    title: 'Fullmetal',
-    description: 'A story of a shy girl who starts a rock band...',
-    date: '15/July/2024',
-    image: fullmetal,
-  },
-  //...other movies
-];
+
+//API
+import { MovieInterface } from "../interfaces/IMoviePackage";
+import axios from 'axios';
+
+
+
 
 const AdminManageMovies: React.FC = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -63,6 +32,27 @@ const AdminManageMovies: React.FC = () => {
       setLoading(false);
     }, 1500)
   })
+  const [Movies, setMovie] = useState<MovieInterface[]>([]); //API
+  useEffect(() => {
+    const Authorization = localStorage.getItem("token");
+    const Bearer = localStorage.getItem("token_type");
+
+    const requestOptions = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `${Bearer} ${Authorization}`,
+        },
+    };
+
+    axios.get<MovieInterface[]>('http://localhost:8000/Movies', requestOptions)
+        .then(response => {
+            console.log(response.data);
+            setMovie(response.data);
+        })
+        .catch(error => {
+            console.error('มีข้อผิดพลาดในการดึงข้อมูล:', error);
+        });
+  }, []);
 
 
   return (
@@ -73,13 +63,13 @@ const AdminManageMovies: React.FC = () => {
         <div className="admin-container">
           <h1 className="admin-title">ADMIN</h1>
           <div className="movies-list">
-            {movies.map((movie) => (
+            {Movies.map((movie) => (
               <div className="movie-card-Adminpage" key={movie.id}>
-                <img src={movie.image} alt={movie.title} className="movie-image" />
+                <img src={movie.Movie_poster} alt={movie.Movie_name} className="movie-image" />
                 <div className="movie-info">
-                  <h2>{movie.title}</h2>
-                  <p>{movie.description}</p>
-                  <p>Date: {movie.date}</p>
+                  <h2>{movie.Movie_name}</h2>
+                  <p style={{color: "green"}}>length: {movie.Movie_length} minute.</p>
+                  <p>description: {movie.Movie_information}</p>
                 </div>
                 <button className="edit-button" onClick={openPopup}>
                   <img src={icon} className='edit-icon-Admin' alt="Edit Icon" />
