@@ -10,7 +10,7 @@ type Movie struct {
 	Movie_poster  		string  `json:"Movie_poster"`
 	Movie_information   string  `json:"Movie_information"`
 	Movie_video 		string  `json:"Movie_video"`
-	Movie_length        float32 `json:"Movie_length"`
+	Movie_length        string `json:"Movie_length"`
 	
 	// 1 Movie เป็นเจ้าของได้หลาย History
 	History []History `gorm:"foreignKey:MovieID"`

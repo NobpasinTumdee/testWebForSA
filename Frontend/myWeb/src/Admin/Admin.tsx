@@ -63,6 +63,7 @@ const AdminManageMovies: React.FC = () => {
         <div className="admin-container">
           <h1 className="admin-title">ADMIN</h1>
           <div className="movies-list">
+          <button onClick={openPopup} className='AddMovie'>Add New Movie</button>
             {Movies.map((movie) => (
               <div className="movie-card-Adminpage" key={movie.id}>
                 <img src={movie.Movie_poster} alt={movie.Movie_name} className="movie-image" />
@@ -83,7 +84,7 @@ const AdminManageMovies: React.FC = () => {
             <div className='popup-container'>
               <PopUpAdmin />
               <button onClick={closePopup} className="close-popup-button">
-                Close
+                X
               </button>
             </div>
           )}

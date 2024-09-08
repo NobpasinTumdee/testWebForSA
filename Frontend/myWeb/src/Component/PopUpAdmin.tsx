@@ -1,78 +1,111 @@
 import React, { useState } from 'react';
 import './PopUp.css';
-
-
-interface FormState {
-    NameMovie: string;
-    Description: string;
-    date: string;
-}
+import { Form, Input, Button, message } from 'antd';
+import { MovieInterface } from '../interfaces/IMoviePackage';
+import { CreateMovie } from '../services/https/index';
+import { useNavigate } from 'react-router-dom';
 
 export const PopUpAdmin: React.FC = () => {
-    const [form, setForm] = useState<FormState>({
-        NameMovie: '',
-        Description: '',
-        date: ''
-    });
+  const navigate = useNavigate();
+  const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
+  const [messageApi, contextHolder] = message.useMessage();
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setForm((prevForm) => ({
-            ...prevForm,
-            [name]: value,
-        }));
-    };
+  const onFinish = async (values: MovieInterface) => {
+    setLoading(true);
 
-    const handleSubmit = () => {
+    let res = await CreateMovie(values);
 
-        console.log('Form data:', form);
-    };
+    setLoading(false);
 
+    if (res.status === 201) {
+      messageApi.open({
+        type: 'success',
+        content: res.data.message,
+      });
 
-    return (
+      setTimeout(() => {
+        navigate('/Admin');
+      }, 500);
+    } else {
+      messageApi.open({
+        type: 'error',
+        content: res.data.error,
+      });
+    }
+  };
 
-        <div className='PopUpAdmin'>
-            <div className='textAdim'>
-                Edit Info Movie
-            </div>
-            <div className="">
-                <label htmlFor="NameMovie">Name Movie:</label>
-                <input
-                    type="text"
-                    id="NameMovie"
-                    name="NameMovie"
-                    value={form.NameMovie}
-                    onChange={handleChange}
-                    required
-                />
-            </div>
-            <div className="">
-                <label htmlFor="Description">Description:</label>
-                <textarea
-                    id="Description"
-                    name="Description"
-                    value={form.Description}
-                    onChange={handleChange}
-                    required
-                />
-            </div>
-            <div className="">
-                <label htmlFor="date">Release Date:</label>
-                <input
-                    type="date"
-                    id="date"
-                    name="date"
-                    value={form.date}
-                    onChange={handleChange}
-                    required
-                />
-            </div>
-            <button onClick={handleSubmit} className="submit-button">
-                Confirm
-            </button>
-        </div>
+  return (
+    <div className="PopUpAdmin">
+      {contextHolder}
+      <div className="textAdmin">
+        Add Movie
+      </div>
+      <Form
+        form={form}
+        layout="vertical"
+        onFinish={onFinish}
+        initialValues={{
+          Movie_name: '',
+          Movie_information: '',
+          Movie_length: '',
+          Movie_poster: '',
+          Movie_video: ''
+        }}
+      >
+        <Form.Item
+          label="Name Movie:"
+          name="Movie_name"
+          rules={[{ required: true, message: 'Please input the movie name!' }]}
+        >
+          <Input />
+        </Form.Item>
 
-    );
+        <Form.Item
+          label="Description:"
+          name="Movie_information"
+          rules={[{ required: true, message: 'Please input the movie description!' }]}
+        >
+          <Input.TextArea />
+        </Form.Item>
+
+        <Form.Item
+          label="Movie Length:"
+          name="Movie_length"
+          rules={[{ required: true, message: 'Please input the movie length!' }]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          label="Movie Poster URL:"
+          name="Movie_poster"
+          rules={[{ required: true, message: 'Please input the movie poster URL!' }]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          label="Movie Video URL:"
+          name="Movie_video"
+          rules={[{ required: true, message: 'Please input the movie video URL!' }]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="submit-button"
+            loading={loading}
+          >
+            Confirm
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
+  );
 };
 
 export default PopUpAdmin;

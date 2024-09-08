@@ -1,4 +1,5 @@
 import {UsersInterface} from "../../interfaces/IUser";
+import {MovieInterface} from "../../interfaces/IMoviePackage";
 import {SignInInterface} from "../../interfaces/SignIn";
 //import {PackageInterface} from "../../interfaces/IMoviePackage"
 import axios from 'axios';
@@ -126,12 +127,37 @@ async function GetGenders() {
   
   //   return res;
   // }
-
+  //
+  //signus
   async function CreateUser(data: UsersInterface) {
 
     return await axios
   
       .post(`${apiUrl}/signup`, data, requestOptions)
+  
+      .then((res) => res)
+  
+      .catch((e) => e.response);
+  
+  }
+  // เพิ่มหนัง
+  async function CreateMovie(data: MovieInterface) {
+
+    return await axios
+  
+      .post(`${apiUrl}/Movies`, data, requestOptions)
+  
+      .then((res) => res)
+  
+      .catch((e) => e.response);
+  
+  }
+
+  async function UpdateMovieById(id: string, data: MovieInterface) {
+
+    return await axios
+  
+      .put(`${apiUrl}/user/${id}`, data, requestOptions)
   
       .then((res) => res)
   
@@ -165,6 +191,8 @@ async function GetGenders() {
     GetGenders,
     DeleteUserByID,
     GetUserById,
-    UpdateUser
+    UpdateUser,
+    CreateMovie,
+    UpdateMovieById
   };
   

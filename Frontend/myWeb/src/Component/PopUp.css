@@ -1,8 +1,9 @@
 .PopUpAdmin {
+    padding: 20px;
     background-color: #f4f4f4;
     justify-content: center;
     width: 500px;
-    height: 300px;
+    height: auto;
     border-radius: 20px;
     box-shadow: 0 0px 50px #000000;
     color: #000;

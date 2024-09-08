@@ -42,31 +42,31 @@ const SignUp: React.FC = () => {
         <h1 className="signUpHeader">SIGN UP</h1>
         <Form layout="vertical" onFinish={onFinish}>
           <Form.Item
-            label={<label className="labelSignUp">Username</label>}
+            //label={<label className="labelSignUp">Username</label>}
             name="username"
             rules={[{ required: true, message: 'Please input your username!' }]}
           >
-            <Input className="form-group" />
+            <Input placeholder="Username" className="form-group" />
           </Form.Item>
 
           <Form.Item
-            label={<label className="labelSignUp">Email</label>}
+            //label={<label className="labelSignUp">Email</label>}
             name="email"
             rules={[{ required: true, message: 'Please input your email!', type: 'email' }]}
           >
-            <Input className="form-group" />
+            <Input placeholder="Email" className="form-group" />
           </Form.Item>
 
           <Form.Item
-            label={<label className="labelSignUp">Password</label>}
+            //label={<label className="labelSignUp">Password</label>}
             name="password"
             rules={[{ required: true, message: 'Please input your password!' }]}
           >
-            <Input.Password className="form-group" />
+            <Input.Password placeholder="Password" className="form-group" />
           </Form.Item>
 
           <Form.Item
-            label={<label className="labelSignUp">Confirm Password</label>}
+            //label={<label className="labelSignUp">Confirm Password</label>}
             name="confirmPassword"
             dependencies={['password']}
             rules={[
@@ -81,7 +81,7 @@ const SignUp: React.FC = () => {
               }),
             ]}
           >
-            <Input.Password className="form-group" />
+            <Input.Password placeholder="confirm your Password" className="form-group" />
           </Form.Item>
 
           <div className="signup-buttonDIV">

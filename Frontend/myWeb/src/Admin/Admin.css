@@ -95,7 +95,30 @@
  }
 
  .close-popup-button {
-  width: 50px;
-  height: 20px;
-  margin: 25% 48%;
+  width: 30px;
+  height: 30px;
+  margin: 2% 68%;
+  background-color: rgb(173, 10, 37);
+  border-color: #ffffff;
+  border-radius: 20px;
+  color: #ffffff;
  }
+
+ .AddMovie {
+  margin-top: 20px;
+  border-radius: 20px;
+  padding: 5px;
+  font-family: pkmaehongson;
+  font-size: 24px;
+  border-color: #ffffff;
+  transition: 0.5s;
+ }
+
+ .AddMovie:hover {
+  background-color: #f4d57a;
+  box-shadow: 0 0px 7px #ffc107;
+ }
+ @font-face {
+  font-family: pkmaehongson;
+  src: url(../src/PK-Maehongson-Medium.ttf);
+}
