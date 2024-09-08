@@ -2,20 +2,21 @@ import React, { useState, useEffect } from 'react';
 import './Admin.css';
 import icon from "../assets/icon/EditIcon.png"
 
-import { PopUpAdmin } from '../Component/PopUpAdmin';
+import { PopUpAdmin } from './PopUpAdmin';
 import LoadingScreen from '../Component/Loading/LoadingScreen';
 
 
 //API
 import { MovieInterface } from "../interfaces/IMoviePackage";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 
 
 
 const AdminManageMovies: React.FC = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-
+  const navigate = useNavigate();
   const openPopup = () => {
     setIsPopupOpen(true);
   };
@@ -65,14 +66,14 @@ const AdminManageMovies: React.FC = () => {
           <div className="movies-list">
           <button onClick={openPopup} className='AddMovie'>Add New Movie</button>
             {Movies.map((movie) => (
-              <div className="movie-card-Adminpage" key={movie.id}>
+              <div className="movie-card-Adminpage" key={movie.ID}>
                 <img src={movie.Movie_poster} alt={movie.Movie_name} className="movie-image" />
                 <div className="movie-info">
-                  <h2>{movie.Movie_name}</h2>
+                  <h2>{movie.ID}. {movie.Movie_name}</h2>
                   <p style={{color: "green"}}>length: {movie.Movie_length} minute.</p>
                   <p>description: {movie.Movie_information}</p>
                 </div>
-                <button className="edit-button" onClick={openPopup}>
+                <button className="edit-button" onClick={() => navigate(`/PopUpAdminUpdate/${movie.ID}`)}>
                   <img src={icon} className='edit-icon-Admin' alt="Edit Icon" />
                 </button>
               </div>

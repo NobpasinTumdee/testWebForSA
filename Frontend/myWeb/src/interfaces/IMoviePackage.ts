@@ -1,12 +1,12 @@
 export interface PackageInterface {
-    id?: number;
+    ID?: number;
     Package_name?: string;
     Price?: number;
     Duration?: number;
 }
 
 export interface MovieInterface {
-    id?: number;
+    ID?: number;
     Movie_name?: string;
     Movie_poster?: string;
     Movie_information?: string;

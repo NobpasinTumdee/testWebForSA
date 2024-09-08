@@ -90,7 +90,7 @@ const MainWeb: React.FC = () => {
   };
   const handleMovieClick = (movie: MovieInterface) => {
     //setSelectedMovieVideo(movie.Movie_video || null);
-    navigate('/WatchMovie', { state: { videoUrl: movie.Movie_video, movieName: movie.Movie_name, Movie_poster: movie.Movie_poster } });
+    navigate('/WatchMovie', { state: { videoUrl: movie.Movie_video, movieName: movie.Movie_name, Movie_poster: movie.Movie_poster, Movie_information: movie.Movie_information } });
   };
 
   // if (isLoading) {
@@ -159,7 +159,7 @@ const MainWeb: React.FC = () => {
               <div className="movie-grid">
                 {/* Repeat this block for each movie */}
                 {Movies.map((movie) => (
-                  <div className="movie-card" key={movie.id} onClick={() => handleMovieClick(movie)}>
+                  <div className="movie-card" key={movie.ID} onClick={() => handleMovieClick(movie)}>
 
                     <img src={movie.Movie_poster} alt={movie.Movie_name} />
 

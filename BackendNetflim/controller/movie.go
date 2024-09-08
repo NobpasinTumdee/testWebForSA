@@ -7,6 +7,8 @@ import (
 	"log"
 	"net/http"
 	"strconv" // import strconv เพื่อใช้แปลง string เป็น int
+	"errors"  // เพิ่ม import สำหรับ package errors
+	"gorm.io/gorm" // เพิ่ม import สำหรับ gorm
 )
 
 // POST /Movies
@@ -38,7 +40,52 @@ func CreateMovie(c *gin.Context) {
 
 	c.JSON(http.StatusCreated, gin.H{"message": "Created success", "data": u})
 }
+// PUT update movie 
+func UpdateMovieByid(c *gin.Context) {
 
+
+	var movie entity.Movie
+ 
+ 
+	MovieID := c.Param("id")
+ 
+ 
+	db := config.DB()
+ 
+	result := db.First(&movie, MovieID)
+ 
+	if result.Error != nil {
+ 
+		c.JSON(http.StatusNotFound, gin.H{"error": "NameMovie not found"})
+ 
+		return
+ 
+	}
+ 
+ 
+	if err := c.ShouldBindJSON(&movie); err != nil {
+ 
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request, unable to map payload"})
+ 
+		return
+ 
+	}
+ 
+ 
+	result = db.Save(&movie)
+ 
+	if result.Error != nil {
+ 
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request"})
+ 
+		return
+ 
+	}
+ 
+ 
+	c.JSON(http.StatusOK, gin.H{"message": "Updated successful"})
+ 
+ }
 // GET /Movies
 func ListMovies(c *gin.Context) {
 
@@ -60,6 +107,28 @@ func ListMovies(c *gin.Context) {
 	// Return the results as JSON
 	c.JSON(http.StatusOK, Movie)
 }
+// GET /Movies/:id
+func GetMovieByid(c *gin.Context) {
+	ID := c.Param("id")
+	var Movie entity.Movie
+
+	db := config.DB()
+
+
+	// Query the user by ID
+	results := db.Where("id = ?", ID).First(&Movie)
+	if results.Error != nil {
+		if errors.Is(results.Error, gorm.ErrRecordNotFound) {
+			c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
+		} else {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": results.Error.Error()})
+		}
+		return
+	}
+
+	c.JSON(http.StatusOK, Movie)
+}
+
 
 // DELETE /Movies/:id
 func DeleteMovie(c *gin.Context) {

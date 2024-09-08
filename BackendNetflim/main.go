@@ -37,9 +37,11 @@ func main() {
 		router.DELETE("/users/:id", user.DeleteUser)
 		// Movie Routes
 		router.GET("/Movies", controller.ListMovies)
+		router.GET("/Movies/:id", controller.GetMovieByid)
 		router.POST("/Movies", controller.CreateMovie)
 		router.PATCH("/Movies", controller.UpdateMovie)
 		router.DELETE("/Movies/:id", controller.DeleteMovie)
+		router.PUT("/Movies/:UpdateMovieByName" , controller.UpdateMovieByid)
 		// MoviePackage Routes
 		router.GET("/MoviePackages", controller.ListMoviePackages)
 		router.POST("/MoviePackages", controller.CreateMoviePackage)

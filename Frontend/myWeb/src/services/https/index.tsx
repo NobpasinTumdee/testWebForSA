@@ -152,19 +152,30 @@ async function GetGenders() {
       .catch((e) => e.response);
   
   }
-
-  async function UpdateMovieById(id: string, data: MovieInterface) {
+  // update movie
+  async function UpdateMovieByid(id: string, data: MovieInterface) {
 
     return await axios
   
-      .put(`${apiUrl}/user/${id}`, data, requestOptions)
+      .put(`${apiUrl}/Movies/${id}`, data, requestOptions)
   
       .then((res) => res)
   
       .catch((e) => e.response);
   
   }
+  // get movie by id
+  async function GetMovieById(id: string) {
+
+    return await axios
   
+      .get(`${apiUrl}/Movies/${id}`, requestOptions)
+  
+      .then((res) => res)
+  
+      .catch((e) => e.response);
+  
+  }
   async function UpdateUser(data: UsersInterface) {
     const requestOptions = {
       method: "PATCH",
@@ -193,6 +204,7 @@ async function GetGenders() {
     GetUserById,
     UpdateUser,
     CreateMovie,
-    UpdateMovieById
+    UpdateMovieByid,
+    GetMovieById
   };
   

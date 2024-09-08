@@ -107,5 +107,3 @@ export const PopUpAdmin: React.FC = () => {
     </div>
   );
 };
-
-export default PopUpAdmin;

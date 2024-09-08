@@ -11,7 +11,7 @@ import { LoveBtn } from '../Component/LoveBtn/LoveBtn';
 const WatchMovie: React.FC = () => {
 
    const location = useLocation();
-   const { videoUrl, movieName,Movie_poster } = location.state as { videoUrl: string; movieName: string; Movie_poster: string;};
+   const { videoUrl, movieName,Movie_poster ,Movie_information} = location.state as { videoUrl: string; movieName: string; Movie_poster: string; Movie_information: string;};
  
 //   const movie = location.state as { id: number; title: string; image: string; link: string};
 
@@ -33,7 +33,7 @@ const WatchMovie: React.FC = () => {
            <img src={Movie_poster} alt={movieName} className="movie-poster" />
            <div className="info">
              <h2>Movie information</h2>
-             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis totam et autem inventore aliquam nisi nemo in eos blanditiis odit repellendus corporis tenetur repellat, quasi, magni sunt beatae maiores. Error incidunt earum repudiandae dolore? Nostrum eveniet animi fuga alias iusto velit, aut officiis accusantium quam impedit tenetur excepturi facilis numquam.</p>
+             <p>{Movie_information}</p>
            </div>
          </div>
        </div>
