@@ -1,4 +1,3 @@
-import React from "react";
 import {UsersInterface} from "../../interfaces/IUser";
 import {MovieInterface} from "../../interfaces/IMoviePackage";
 import {SignInInterface} from "../../interfaces/SignIn";
@@ -55,25 +54,6 @@ async function GetUsers() {
   }
 
 
-async function GetGenders() {
-    const requestOptions = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-  
-    let res = await fetch(`${apiUrl}/genders`, requestOptions)
-      .then((res) => {
-        if (res.status == 200) {
-          return res.json();
-        } else {
-          return false;
-        }
-      });
-  
-    return res;
-  }
   
   async function DeleteUserByID(id: Number | undefined) {
     const requestOptions = {
@@ -107,7 +87,7 @@ async function GetGenders() {
   
   }
   
-    //===========================================================================================================
+  //===========================================================================================================
 
   //signus
   async function CreateUser(data: UsersInterface) {
@@ -121,7 +101,7 @@ async function GetGenders() {
       .catch((e) => e.response);
   
   }
-  //===========================================================================================================
+  //===========================================================================================================⬇️
   // เพิ่มหนัง
   async function CreateMovie(data: MovieInterface) {
 
@@ -174,7 +154,7 @@ async function GetGenders() {
       .catch((e) => e.response);
   }
   
-  //===========================================================================================================
+  //===========================================================================================================⬆️
 
 
 
@@ -201,15 +181,16 @@ async function GetGenders() {
   
   export {
     GetUsers,
-    SignIn,
-    CreateUser,
-    GetGenders,
     DeleteUserByID,
-    GetUserById,
     UpdateUser,
+    
+    SignIn,//sign in 
+    CreateUser,//sign Up
+    GetUserById,// get User by id
+
     CreateMovie,//เพิ่มหนัง
     UpdateMovieByid,//แก้ไขข้อมูลหนัง
     DeleteMovieById,//ลบหนัง
-    GetMovieById
+    GetMovieById//แสดงหนังด้วยไอดี
   };
   
