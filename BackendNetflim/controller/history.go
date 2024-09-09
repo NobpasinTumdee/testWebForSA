@@ -86,6 +86,43 @@ func ListHistorys(c *gin.Context) {
     // Return the results as JSON
     c.JSON(http.StatusOK, historys)
 }
+//get by id user
+func ListHistorysByID(c *gin.Context) {
+    // รับค่า userID จากพารามิเตอร์ใน URL
+    userID := c.Param("id")
+
+    // กำหนด struct สำหรับเก็บผลลัพธ์
+    var historys []struct {
+        ID        uint      `json:"id"`
+        Date      time.Time `json:"date"`
+        UserID    uint      `json:"user_id"`
+        MovieID   uint      `json:"movie_id"`
+        UserName  string    `json:"user_name"`
+        MovieName string    `json:"movie_name"`
+		Poster	  string	`json:"poster"`
+    }
+
+    // Get the database connection
+    db := config.DB()
+
+    // Query with joins to get user and movie details, filtered by userID
+    results := db.Table("histories").
+        Select("histories.id, histories.date, histories.user_id, histories.movie_id, users.username AS user_name, movies.movie_name AS movie_name ,movies.movie_poster AS poster").
+        Joins("left join users on users.id = histories.user_id").
+        Joins("left join movies on movies.id = histories.movie_id").
+        Where("histories.user_id = ?", userID).
+        Scan(&historys)
+
+    // Check for errors in the query
+    if results.Error != nil {
+        c.JSON(http.StatusNotFound, gin.H{"error": results.Error.Error()})
+        return
+    }
+
+    // Return the results as JSON
+    c.JSON(http.StatusOK, historys)
+}
+
 
 
 

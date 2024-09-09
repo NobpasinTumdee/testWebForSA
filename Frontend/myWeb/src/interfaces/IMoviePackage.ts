@@ -13,3 +13,13 @@ export interface MovieInterface {
     Movie_video?: string;
     Movie_length?: string;
 }
+
+export interface HistoryInterface {
+    ID?: number;
+    date?: Date;
+    UserID?: number;
+    user_name?: string;
+    MovieID?: number;
+    movie_name?: string;
+    poster?: string;
+}

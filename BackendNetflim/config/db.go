@@ -131,6 +131,11 @@ func SetupDatabase() {
 		Movie_information:  "Lorem YourName dolor sit amet consectetur adipisicing elit. Facilis totam et autem inventore aliquam nisi nemo in eos blanditiis odit repellendus corporis tenetur repellat, quasi, magni sunt beatae maiores. Error incidunt earum repudiandae dolore? Nostrum eveniet animi fuga alias iusto velit, aut officiis accusantium quam impedit tenetur excepturi facilis numquam.",
 		Movie_video: "https://www.youtube.com/embed/uMYhjVwp0Fk?si=U9We0HaaVyLJzvma&autoplay=1" , 
 		Movie_length: "20"},//16
+		{Movie_name: "Jujutsu Kaisen", 
+		Movie_poster: "https://m.media-amazon.com/images/I/71Wnxg6OJaL._AC_UF894,1000_QL80_.jpg", 
+		Movie_information:  "Jujutsu Kaisen Wiki, a community created by the fans, for the fans, and is dedicated to housing everything about Jujutsu Kaisen created by Gege Akutami. Our goal is to become the best source of information on the series. Please help us by creating or editing any of our articles! We currently have 68,685 edits to 986 articles and 5,824 images on this wiki.",
+		Movie_video: "https://www.youtube.com/embed/X8xLl_802UU?si=YzztegzJOvaGZsep&autoplay=1" , 
+		Movie_length: "20:30"},//17
 	}
 	for _, pkg := range Movie {
 		db.FirstOrCreate(&pkg,entity.Movie{Movie_name: pkg.Movie_name})
@@ -150,6 +155,11 @@ func SetupDatabase() {
 	//History
 	Historys := []entity.History{
 		{Date: time.Now(), UserID: 1, MovieID: 1},
+		{Date: time.Now(), UserID: 1, MovieID: 2},
+		{Date: time.Now(), UserID: 1, MovieID: 3},
+		{Date: time.Now(), UserID: 1, MovieID: 4},
+		{Date: time.Now(), UserID: 2, MovieID: 1},
+		{Date: time.Now(), UserID: 2, MovieID: 4},
 
 	}
 	for _, history  := range Historys {

@@ -156,6 +156,19 @@ async function GetUsers() {
   
   //===========================================================================================================⬆️
 
+  //History
+  // get History by id
+  async function GetHistoryById(id: string) {
+
+    return await axios
+  
+      .get(`${apiUrl}/Historys/${id}`, requestOptions)
+  
+      .then((res) => res)
+  
+      .catch((e) => e.response);
+  
+  }
 
 
 
@@ -191,6 +204,8 @@ async function GetUsers() {
     CreateMovie,//เพิ่มหนัง
     UpdateMovieByid,//แก้ไขข้อมูลหนัง
     DeleteMovieById,//ลบหนัง
-    GetMovieById//แสดงหนังด้วยไอดี
+    GetMovieById,//แสดงหนังด้วยไอดี
+
+    GetHistoryById,//GetHistoryById
   };
   

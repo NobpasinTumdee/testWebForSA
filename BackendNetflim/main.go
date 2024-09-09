@@ -49,6 +49,7 @@ func main() {
 		//router.DELETE("/MoviePackages/:id", controller.DeleteMoviePackage)
 		// History Routes
 		router.GET("/Historys", controller.ListHistorys)
+		router.GET("/Historys/:id", controller.ListHistorysByID)
 		router.POST("/Historys", controller.CreateHistory)
 		router.PATCH("/Historys", controller.UpdateHistory)
 		router.DELETE("/Historys/:id", controller.DeleteHistory)
