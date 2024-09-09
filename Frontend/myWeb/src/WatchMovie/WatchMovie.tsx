@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './WatchMovie.css';
 
 import {  useLocation } from 'react-router-dom';
 
 //loveBTN
 import { LoveBtn } from '../Component/LoveBtn/LoveBtn';
-
+import { message } from "antd";
 
   
 const WatchMovie: React.FC = () => {
 
    const location = useLocation();
    const { videoUrl, movieName,Movie_poster ,Movie_information} = location.state as { videoUrl: string; movieName: string; Movie_poster: string; Movie_information: string;};
- 
+  useEffect(()=>{
+    message.success("Update your History!!!");
+  })
+
+  
 //   const movie = location.state as { id: number; title: string; image: string; link: string};
 
    return (

@@ -3,7 +3,7 @@ import './History.css';
 import { LoadingCamp } from '../Component/Loading/LoadingCamp';
 // API
 import { HistoryInterface } from "../interfaces/IMoviePackage";
-import { GetHistoryById } from "../services/https/index";
+import { GetHistoryById, DeleteHistoryByID } from "../services/https/index";
 import { message } from "antd"; // Ant Design message for notifications
 
 const History: React.FC = () => {
@@ -24,12 +24,33 @@ const History: React.FC = () => {
       if (res.status === 200) {
         setHistory(res.data);
       } else {
-        message.error("ไม่พบข้อมูลผู้ใช้");
+        message.error("ยังไม่มีประวัติการรับชม!!!");
       }
     } catch (error) {
-      message.error("เกิดข้อผิดพลาดในการดึงข้อมูลผู้ใช้");
+      message.error("Your viewing history is not yet available.");
     }
   };
+
+  // ฟังก์ชันสำหรับลบประวัติการรับชม
+  const handleDelete = async (id: number | undefined) => {
+    if (id) {
+      try {
+        const res = await DeleteHistoryByID(String(id));
+        if (res.status === 200) {
+          // อัปเดต state เพื่อให้ข้อมูลประวัติถูกลบออกจากหน้าจอทันที
+          message.success("ลบประวัติสำเร็จ");
+          setHistory((prevHistory) => prevHistory.filter(item => item.id !== id));
+        } else {
+          message.error("ไม่สามารถลบประวัติได้");
+        }
+      } catch (error) {
+        message.error("เกิดข้อผิดพลาดในการลบประวัติ");
+      }
+    } else {
+      message.error("ID ของประวัติไม่ถูกต้อง");
+    }
+  };
+  
 
   const [isLoading, setLoading] = useState(true);
 
@@ -50,23 +71,26 @@ const History: React.FC = () => {
           <h1 className="History-title">HISTORY</h1>
           <div className="movies-list">
             {history.length > 0 ? (
-              history.map((historyItem) => {
-                // ตรวจสอบข้อมูลจาก API
-                console.log("History Item:", historyItem);
-
+              history.reverse().map((historyItem) => {
                 return (
-                  <div className="movie-card-Adminpage" key={historyItem.ID}>
+                  <div className="movie-card-Adminpage" key={historyItem.id}>
                     <img src={historyItem.poster} alt={historyItem.movie_name} className="movie-image" />
                     <div className="movie-info">
-                      <h2>Movie: {historyItem.movie_name || "No Movie Name"}</h2> {/* แสดง username */}
-                      <p>Name: {historyItem.user_name || "No Username"}</p> {/* แสดงชื่อหนัง */}
-                      <p>Date: {historyItem.date ? new Date(historyItem.date).toLocaleDateString() : "No Date Available"}</p> {/* แสดงวันที่ */}
+                      <h2>Movie: {historyItem.movie_name || "No Movie Name"}</h2>
+                      <p>User Name: {historyItem.user_name || "No Username"}</p>
+                      <p>Date: {historyItem.date ? new Date(historyItem.date).toLocaleDateString() : "No Date Available"}</p>
                     </div>
+                    <button className="edit-button" onClick={() => handleDelete(historyItem.id)}>
+                      🗑️
+                    </button>
                   </div>
                 );
               })
             ) : (
-              <div>No history data available</div>
+              <div style={{ textAlign: 'center', fontSize: '44px' }}>
+                <h1 style={{ textAlign: 'center', fontSize: '34px' }}>Your viewing history is not yet available.</h1>
+                <a href="/MainWeb">✨Watch now✨</a>
+              </div>
             )}
           </div>
           <a href="/MainWeb" className="return-button-Admin">Return to home page</a>

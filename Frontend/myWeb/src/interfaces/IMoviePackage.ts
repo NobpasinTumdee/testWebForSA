@@ -15,7 +15,7 @@ export interface MovieInterface {
 }
 
 export interface HistoryInterface {
-    ID?: number;
+    id?: number;
     date?: Date;
     UserID?: number;
     user_name?: string;

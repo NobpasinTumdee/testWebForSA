@@ -157,7 +157,7 @@ async function GetUsers() {
   //===========================================================================================================⬆️
 
   //History
-  // get History by id
+  // get History by id user
   async function GetHistoryById(id: string) {
 
     return await axios
@@ -184,7 +184,18 @@ async function GetUsers() {
       .catch((e) => e.response);
   
   }
-
+  //ลบประวัติ
+  async function DeleteHistoryByID(id: string) {
+    return await axios
+      .delete(`${apiUrl}/Historys/${id}`, requestOptions)
+      .then((res) => {
+        // if (res) {
+        //   window.location.reload(); // reload หลังจากลบเสร็จ
+        // }
+        return res;
+      })
+      .catch((e) => e.response);
+  }
 
 
 
@@ -221,7 +232,8 @@ async function GetUsers() {
     DeleteMovieById,//ลบหนัง
     GetMovieById,//แสดงหนังด้วยไอดี
 
-    GetHistoryById,//GetHistoryById
-    CreateHistory,
+    GetHistoryById,//GetHistoryByIduser
+    CreateHistory,//สร้างประวัติ
+    DeleteHistoryByID,//ลบประวัติ
   };
   
