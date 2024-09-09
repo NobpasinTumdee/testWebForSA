@@ -1,3 +1,4 @@
+import React from "react";
 import {UsersInterface} from "../../interfaces/IUser";
 import {MovieInterface} from "../../interfaces/IMoviePackage";
 import {SignInInterface} from "../../interfaces/SignIn";
@@ -91,8 +92,9 @@ async function GetGenders() {
     return res;
   }
   
-  
-  // get movie by id
+  //===========================================================================================================
+
+  // get User by id
   async function GetUserById(id: string) {
 
     return await axios
@@ -105,25 +107,8 @@ async function GetGenders() {
   
   }
   
-  // async function CreateUser(data: UsersInterface) {
-  //   const requestOptions = {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(data),
-  //   };
-  
-  //   let res = await fetch(`${apiUrl}/users`, requestOptions)
-  //     .then((res) => {
-  //       if (res.status == 201) {
-  //         return res.json();
-  //       } else {
-  //         return false;
-  //       }
-  //     });
-  
-  //   return res;
-  // }
-  //
+    //===========================================================================================================
+
   //signus
   async function CreateUser(data: UsersInterface) {
 
@@ -136,15 +121,19 @@ async function GetGenders() {
       .catch((e) => e.response);
   
   }
+  //===========================================================================================================
   // เพิ่มหนัง
   async function CreateMovie(data: MovieInterface) {
 
     return await axios
   
       .post(`${apiUrl}/Movies`, data, requestOptions)
-  
-      .then((res) => res)
-  
+      .then((res) => {
+        if (res) {
+          window.location.reload(); // reload หลังจากลบเสร็จ
+        }
+        return res;
+      })
       .catch((e) => e.response);
   
   }
@@ -172,6 +161,25 @@ async function GetGenders() {
       .catch((e) => e.response);
   
   }
+  //ลบหนัง
+  async function DeleteMovieById(id: string) {
+    return await axios
+      .delete(`${apiUrl}/Movies/${id}`, requestOptions)
+      .then((res) => {
+        if (res) {
+          window.location.reload(); // reload หลังจากลบเสร็จ
+        }
+        return res;
+      })
+      .catch((e) => e.response);
+  }
+  
+  //===========================================================================================================
+
+
+
+
+
   async function UpdateUser(data: UsersInterface) {
     const requestOptions = {
       method: "PATCH",
@@ -199,8 +207,9 @@ async function GetGenders() {
     DeleteUserByID,
     GetUserById,
     UpdateUser,
-    CreateMovie,
-    UpdateMovieByid,
+    CreateMovie,//เพิ่มหนัง
+    UpdateMovieByid,//แก้ไขข้อมูลหนัง
+    DeleteMovieById,//ลบหนัง
     GetMovieById
   };
   

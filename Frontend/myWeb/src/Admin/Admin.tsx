@@ -11,7 +11,7 @@ import { MovieInterface } from "../interfaces/IMoviePackage";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
-
+import {DeleteMovieById} from "../services/https/index";
 
 
 const AdminManageMovies: React.FC = () => {
@@ -73,9 +73,12 @@ const AdminManageMovies: React.FC = () => {
                   <p style={{color: "green"}}>length: {movie.Movie_length} minute.</p>
                   <p>description: {movie.Movie_information}</p>
                 </div>
-                <button className="edit-button" onClick={() => navigate(`/PopUpAdminUpdate/${movie.ID}`)}>
-                  <img src={icon} className='edit-icon-Admin' alt="Edit Icon" />
-                </button>
+                  <button className="edit-button" onClick={() => navigate(`/PopUpAdminUpdate/${movie.ID}`)}>
+                    <img src={icon} className='edit-icon-Admin' alt="Edit Icon" />
+                  </button>
+                  <button className="edit-button" onClick={() => DeleteMovieById(String(movie.ID)) } >
+                    🗑️
+                  </button>
               </div>
             ))}
           </div>
