@@ -20,13 +20,13 @@ import { LoadingStarWar } from '../Component/Loading/LoadingStarWar';
 //API
 import { MovieInterface } from "../interfaces/IMoviePackage";
 import axios from 'axios';
-
+import {CreateHistory} from "../services/https/index"
 
 const MainWeb: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isPosterVisible, setIsPosterVisible] = useState(false);  // เพิ่ม state สำหรับ Poster
-
-
+  const userIdstr = localStorage.getItem("id");
+  
   const [isLoading, setLoading] = useState(true);
 
 
@@ -89,8 +89,25 @@ const MainWeb: React.FC = () => {
     navigate('/WatchMovie', { state: movie });
   };
   const handleMovieClick = (movie: MovieInterface) => {
-    //setSelectedMovieVideo(movie.Movie_video || null);
-    navigate('/WatchMovie', { state: { videoUrl: movie.Movie_video, movieName: movie.Movie_name, Movie_poster: movie.Movie_poster, Movie_information: movie.Movie_information } });
+    // เรียกใช้ฟังก์ชัน CreateHistory เมื่อผู้ใช้คลิกหนัง
+    if (userIdstr && movie.ID) {
+      const historyData = {
+        UserID: parseInt(userIdstr), // เปลี่ยน string เป็น number
+        MovieID: movie.ID,
+        movie_name: movie.Movie_name,
+        poster: movie.Movie_poster,
+      };
+      CreateHistory(historyData);
+    }
+    
+    navigate('/WatchMovie', { 
+      state: { 
+        videoUrl: movie.Movie_video, 
+        movieName: movie.Movie_name, 
+        Movie_poster: movie.Movie_poster, 
+        Movie_information: movie.Movie_information 
+      } 
+    });
   };
 
   // if (isLoading) {

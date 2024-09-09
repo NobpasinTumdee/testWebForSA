@@ -1,5 +1,5 @@
 import {UsersInterface} from "../../interfaces/IUser";
-import {MovieInterface} from "../../interfaces/IMoviePackage";
+import {MovieInterface,HistoryInterface} from "../../interfaces/IMoviePackage";
 import {SignInInterface} from "../../interfaces/SignIn";
 //import {PackageInterface} from "../../interfaces/IMoviePackage"
 import axios from 'axios';
@@ -169,6 +169,21 @@ async function GetUsers() {
       .catch((e) => e.response);
   
   }
+  // create history 
+  async function CreateHistory(data: HistoryInterface) {
+
+    return await axios
+  
+      .post(`${apiUrl}/Historys`, data, requestOptions)
+      .then((res) => {
+        if (res) {
+          window.location.reload(); // reload หลังจากลบเสร็จ
+        }
+        return res;
+      })
+      .catch((e) => e.response);
+  
+  }
 
 
 
@@ -207,5 +222,6 @@ async function GetUsers() {
     GetMovieById,//แสดงหนังด้วยไอดี
 
     GetHistoryById,//GetHistoryById
+    CreateHistory,
   };
   

@@ -37,26 +37,6 @@ func CreateHistory(c *gin.Context) {
 }
 
 
-// GET /Historys
-// func ListHistorys(c *gin.Context) {
-
-// 	var Historys []entity.History
-
-// 	// Get the database connection
-// 	db := config.DB()
-
-// 	// Query the user table for basic user data
-// 	results := db.Select("id, Date, user_id, movie_id").Find(&Historys)
-
-// 	// Check for errors in the query
-// 	if results.Error != nil {
-// 		c.JSON(http.StatusNotFound, gin.H{"error": results.Error.Error()})
-// 		return
-// 	}
-
-// 	// Return the results as JSON
-// 	c.JSON(http.StatusOK, Historys)
-// }
 func ListHistorys(c *gin.Context) {
     var historys []struct {
         ID        uint      `json:"id"`
