@@ -71,7 +71,7 @@ const History: React.FC = () => {
           <h1 className="History-title">HISTORY</h1>
           <div className="movies-list">
             {history.length > 0 ? (
-              history.reverse().map((historyItem) => {
+              history.map((historyItem) => {
                 return (
                   <div className="movie-card-Adminpage" key={historyItem.id}>
                     <img src={historyItem.poster} alt={historyItem.movie_name} className="movie-image" />

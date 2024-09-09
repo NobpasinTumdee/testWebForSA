@@ -59,7 +59,7 @@ const Login: React.FC = () => {
                             </button>
                         </Form.Item>
                     </Form>
-                    <a href="/MainWeb" className="signup-link">เข้าหน้า main ชั่วคราว</a>
+                    {/* <a href="/MainWeb" className="signup-link">เข้าหน้า main ชั่วคราว</a> */}
                     <a href="/signup" className="signup-link">SIGN UP NOW</a>
                 </div>
             </div>

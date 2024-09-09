@@ -20,16 +20,27 @@ const Subscription = () => {
 
   //Form API
   const [Packages, setPackage] = useState<PackageInterface[]>([]);
-  useEffect(() => {
-    axios.get<PackageInterface[]>('http://localhost:8000/MoviePackages')
-      .then(response => {
-        console.log(response.data); // ดูข้อมูลที่ได้รับจาก API ใน console
-        setPackage(response.data); // TypeScript จะรู้ว่าข้อมูลที่ได้รับคือ Album[]
-      })
-      .catch(error => {
-        console.error('มีข้อผิดพลาดในการดึงข้อมูล:', error);
-      });
-  }, []);
+
+    useEffect(() => {
+        const Authorization = localStorage.getItem("token");
+        const Bearer = localStorage.getItem("token_type");
+
+        const requestOptions = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `${Bearer} ${Authorization}`,
+            },
+        };
+
+        axios.get<PackageInterface[]>('http://localhost:8000/MoviePackages', requestOptions)
+            .then(response => {
+                console.log(response.data); // ดูข้อมูลที่ได้รับจาก API ใน console
+                setPackage(response.data); // บันทึกข้อมูลลงใน state
+            })
+            .catch(error => {
+                console.error('มีข้อผิดพลาดในการดึงข้อมูล:', error);
+            });
+    }, []);
 
   // const plans = [
   //   { duration: 'WEEK', price: '59 ฿', description: 'You can watch all the movies on the web.', durationDescription: 'Duration of viewing 1 week' },
