@@ -91,23 +91,19 @@ async function GetGenders() {
     return res;
   }
   
-  async function GetUserById(id: Number | undefined) {
-    const requestOptions = {
-      method: "GET"
-    };
   
-    let res = await fetch(`${apiUrl}/user/${id}`, requestOptions)
-      .then((res) => {
-        if (res.status == 200) {
-          return res.json();
-        } else {
-          return false;
-        }
-      });
+  // get movie by id
+  async function GetUserById(id: string) {
+
+    return await axios
   
-    return res;
+      .get(`${apiUrl}/users/${id}`, requestOptions)
+  
+      .then((res) => res)
+  
+      .catch((e) => e.response);
+  
   }
-  
   
   // async function CreateUser(data: UsersInterface) {
   //   const requestOptions = {

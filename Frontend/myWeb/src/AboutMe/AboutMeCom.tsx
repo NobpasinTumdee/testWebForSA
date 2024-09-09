@@ -1,38 +1,55 @@
-import { useEffect,useState } from 'react';
-//import { DataUser } from './DataUser';
+import { useEffect, useState } from 'react';
 import userPhoto from '../Component/Navbar/User.png';
-
-//API users
 import { UsersInterface } from "../interfaces/IUser";
-import axios from 'axios';
+import { GetUserById } from "../services/https/index";
+import { message } from "antd"; // Ant Design message for notifications
+
 const AboutMeCom: React.FC = () => {
-    const [Users, setUsers] = useState<UsersInterface[]>([]);
+    const [user, setUser] = useState<UsersInterface | null>(null); // State to store user data
+    const userIdstr = localStorage.getItem("id");
+
     useEffect(() => {
-        axios.get<UsersInterface[]>('http://localhost:8000/users')
-          .then(response => {
-            console.log(response.data); // ดูข้อมูลที่ได้รับจาก API ใน console
-            setUsers(response.data); // TypeScript จะรู้ว่าข้อมูลที่ได้รับคือ Album[]
-          })
-          .catch(error => {
-            console.error('มีข้อผิดพลาดในการดึงข้อมูล:', error);
-          });
-      }, []);
+        if (userIdstr) {
+            fetchUserData(userIdstr);
+        } else {
+            message.error("ไม่พบ ID ของผู้ใช้ใน localStorage");
+        }
+    }, [userIdstr]);
+    
+
+    const fetchUserData = async (userIdstr: string ) => {
+        try {
+            console.log("Fetching user data for ID:", userIdstr); // Debug
+            const res = await GetUserById(userIdstr);
+            console.log("Response from API:", res); // Debug
+            if (res.status === 200) {
+                setUser(res.data);
+                //message.success("พบข้อมูลUser");
+            } else {
+                message.error("ไม่พบข้อมูลUser");
+            }
+        } catch (error) {
+            console.error("Error fetching user data:", error); // Debug
+            message.error("เกิดข้อผิดพลาดในการดึงข้อมูลUser");
+        }
+    };
+    
 
     return (
         <>
-            {Users.map((User) => (
-                <div key={User.id}>
-                    <img src={userPhoto} className='imgAboutME' />
+            {user ? (
+                <div>
+                    <img src={userPhoto} className='imgAboutME' alt="User" />
                     <div className='dataAboutME'>
-                        <div>Name : {User.username}</div>
-                        <div>Gmail : {User.email}</div>
-                        <div>status : {User.status}</div>
-                        
+                        <div>Name: {user.username}</div>
+                        <div>Email: {user.email}</div>
+                        <div>Status: {user.status}</div>
                     </div>
                 </div>
-            ))}
+            ) : (
+                <div>Loading user data...</div>
+            )}
         </>
-
     );
 };
 

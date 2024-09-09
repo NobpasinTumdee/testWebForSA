@@ -118,7 +118,7 @@ const MainWeb: React.FC = () => {
                     <a href='./Collection'>
                       <li className="sizeMenu">❤️ Collection</li>
                     </a>
-                    <a href='#' onClick={() => openPopup()}>
+                    <a  onClick={() => openPopup()}>
                       <li className="sizeMenu">💁🏻‍♀️ About Me</li>
                     </a>
                     <a href="/EditInformation" >
