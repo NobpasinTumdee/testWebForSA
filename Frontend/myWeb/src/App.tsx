@@ -32,8 +32,8 @@ const App: React.FC = () => {
     const location = useLocation();
 
     const IntroLogo = ['/'].includes(location.pathname);
-    const hideNavbar = [ '/','/login', '/forget-password', '/signup','/MainWeb','/PreviewSubscription'].includes(location.pathname);
-    const hideSocial = [ '/MainWeb','/WatchMovie','/subscription'].includes(location.pathname);
+    const hideNavbar = [ '/','/login', '/forget-password', '/signup','/MainWeb','/PreviewSubscription','/Payment'].includes(location.pathname);
+    const hideSocial = [ '/MainWeb','/WatchMovie','/subscription','/Payment'].includes(location.pathname);
 
 
     return (

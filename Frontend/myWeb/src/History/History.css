@@ -7,6 +7,15 @@
     flex-direction: column;
     align-items: center;
   }
+.History-container-payment {
+    background: linear-gradient(to bottom, #000, #025908);
+    color: white;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   
   .History-title {
     font-size: 4rem;

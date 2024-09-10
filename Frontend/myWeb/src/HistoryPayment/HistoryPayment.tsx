@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import '../History/History.css';
-import { LoadingCamp } from '../Component/Loading/LoadingCamp';
+import { LoadingStarWar } from '../Component/Loading/LoadingStarWar';
 // API
 import { PaymentsInterface } from "../interfaces/IMoviePackage";
 import { GetPaymentById } from "../services/https/index";
@@ -45,11 +45,11 @@ const HistoryPayment: React.FC = () => {
   return (
     <>
       {isLoading ? (
-        <div style={{ position: 'fixed', top: '30%', left: '47%', marginTop: '-50px', marginLeft: '-100px' }}>
-          <LoadingCamp />
+        <div style={{ position: 'fixed', top: '50%', left: '55%', marginTop: '-50px', marginLeft: '-100px' }}>
+          <LoadingStarWar />
         </div>
       ) : (
-        <div className="History-container">
+        <div className="History-container-payment">
           <h1 className="History-title">Payment</h1>
           <div className="movies-list">
             {history.length > 0 ? (
