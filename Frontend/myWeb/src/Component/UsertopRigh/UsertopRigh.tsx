@@ -37,6 +37,7 @@ export const UsertopRigh: React.FC = () => {
     return (
         <>
         {user ? (
+            <>
             <div className="cardU">
                 <div className="imgU"><img style={{width: '90%'}} src='https://media.tenor.com/Rp0U7bdOhSUAAAAj/anime.gif' /></div>
                 <div className="textBoxU">
@@ -44,6 +45,8 @@ export const UsertopRigh: React.FC = () => {
                     <div>Status: {user.status}</div>
                 </div>
             </div>
+            <div className="cardPayment"></div>
+            </>
         ) : (
             <div>Loading user data...</div>
         )}

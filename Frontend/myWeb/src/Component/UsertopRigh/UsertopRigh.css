@@ -15,6 +15,21 @@
     backdrop-filter: blur(10px);
     transition: 0.5s ease-in-out;
   }
+
+  .cardPayment{
+    position: fixed;
+    margin-left: 95%;
+    margin-top: 20px;
+    width: 40px;
+    height: 40px;
+    background: #523283;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    backdrop-filter: blur(10px);
+    transition: 0.5s ease-in-out;
+  }
   
   .cardU:hover {
     cursor: pointer;

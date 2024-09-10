@@ -1,5 +1,5 @@
 import './Login1.css';
-import Gojo from '../assets/Anime/gojoPoster.png';
+//import Gojo from '../assets/Anime/gojoPoster.png';
 //import kamado from '../assets/Anime/tanjiroPoster.png';
 
 // recomment movie
@@ -8,6 +8,7 @@ import yourname from "../assets/yourname.jpg"
 import rezero from "../assets/rezero.jpg"
 import evangelion from "../assets/evangelion.jpg"
 
+import Carousels from "../Component/Carousels/Carousels";
 
 // popup
 import { ToastContainer, toast } from 'react-toastify';
@@ -43,8 +44,8 @@ function Login1() {
                 </div>
 
                 <div>
-
-                    <img className='PosterINFO' src={Gojo}></img>
+                    <Carousels />
+                    {/* <img className='PosterINFO' src={Gojo}></img> */}
 
                     <div className="text-overlay-infodate">since March 2018 </div>
                     <div className="text-overlay-forPoster">Jujutsu Kaisen</div>
