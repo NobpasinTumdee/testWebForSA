@@ -8,7 +8,7 @@ import yournameBig from "../assets/Anime/yournamePosterBig4.png";
 
 import { useNavigate } from 'react-router-dom';
 /*❤️💁🏻‍♀️🎞️✨*/
-
+import {UsertopRigh} from '../Component/UsertopRigh/UsertopRigh';
 
 // ข้อมูลหนัง และ อนิเมะ
 import {  moviesMain } from "./DataMovie";
@@ -120,7 +120,7 @@ const MainWeb: React.FC = () => {
       {isLoading ? (<div style={{
         position: 'fixed', top: '50%', left: '55%', marginTop: '-50px', marginLeft: '-100px'
       }}><LoadingStarWar /></div>) : (
-        <div className="app">
+        <div className="app"><UsertopRigh />
           <aside className={`sidebar ${isSidebarOpen ? '' : 'hidden'}`}>
             <div className="toggle-button" onClick={toggleSidebar}>
               {isSidebarOpen ? '⬅️' : '➡️'}

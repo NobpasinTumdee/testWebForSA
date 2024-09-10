@@ -1,0 +1,47 @@
+/* From Uiverse.io by JohnnyCSilva */ 
+.cardU {
+    position: fixed;
+    margin-left: 75%;
+    margin-top: 20px;
+    width: auto;
+    max-width: 350px;
+    min-width: 280px;
+    height: 40px;
+    background: #2f2e67;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    backdrop-filter: blur(10px);
+    transition: 0.5s ease-in-out;
+  }
+  
+  .cardU:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+  }
+  
+  .imgU {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    border-radius: 10px;
+    background: linear-gradient(#d7cfcf, #9198e5);
+  }
+  
+  .cardU:hover > .imgU {
+    transition: 0.5s ease-in-out;
+    background: linear-gradient(#fefce3, #e6b656);
+  }
+  
+  .textBoxU {
+    width: calc(100% - 90px);
+    margin-left: 10px;
+    color: white;
+    font-size: 15px;
+    font-family: 'Poppins' sans-serif;
+  }
+  
+  
+  
+  

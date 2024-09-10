@@ -1,6 +1,7 @@
 import React from 'react';
 import './AboutMe.css';
-import {APItestMoviePackage} from "../testApi/Apitest"
+//import {APItestMoviePackage} from "../testApi/Apitest"
+import {UsertopRigh} from "../Component/UsertopRigh/UsertopRigh";
 
 
 const AboutMe: React.FC = () => {
@@ -8,7 +9,8 @@ const AboutMe: React.FC = () => {
     
     return (
         <>
-        <APItestMoviePackage />
+        {/* <APItestMoviePackage /> */}
+        <UsertopRigh />
         </>
         
     );

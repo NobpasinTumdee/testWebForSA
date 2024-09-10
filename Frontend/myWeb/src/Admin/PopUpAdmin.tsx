@@ -50,7 +50,7 @@ export const PopUpAdmin: React.FC = () => {
           Movie_information: '',
           Movie_length: '',
           Movie_poster: '',
-          Movie_video: ''
+          Movie_video: ''+'&autoplay=1'
         }}
       >
         <Form.Item
