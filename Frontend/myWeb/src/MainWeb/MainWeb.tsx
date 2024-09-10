@@ -96,6 +96,7 @@ const MainWeb: React.FC = () => {
         MovieID: movie.ID,
         movie_name: movie.Movie_name,
         poster: movie.Movie_poster,
+        new: Date().toString() // เพิ่มวันที่ในรูปแบบ ISO string
       };
       CreateHistory(historyData);
     }

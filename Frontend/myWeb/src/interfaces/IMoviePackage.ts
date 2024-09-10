@@ -27,7 +27,7 @@ export interface PaymentsInterface {
     id?: number;
     Payment_method?: string;
     Payment_status?: string;
-    Date?: Date;
+    Date?: string;
     UserID?: number;
     Username?: string;
     PackageID?: number;

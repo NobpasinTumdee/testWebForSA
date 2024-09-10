@@ -22,7 +22,7 @@ func CreateHistory(c *gin.Context) {
 
 	// สร้าง User
 	u := entity.History{
-		Date: History.Date, 
+		Date: time.Now(), 
 		UserID:  History.UserID,  
 		MovieID:  History.MovieID,
 	}

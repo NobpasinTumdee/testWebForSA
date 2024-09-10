@@ -32,7 +32,6 @@ const History: React.FC = () => {
       setHistory([]); // กำหนดให้เป็น array ว่างเมื่อมี error
       message.error("Your viewing history is not yet available.");
     }
-    
   };
 
   useEffect(() => {
@@ -71,31 +70,33 @@ const History: React.FC = () => {
           <h1 className="History-title">HISTORY</h1>
           <div className="movies-list">
             {history.length > 0 ? (
-              history.reverse().map((historyItem) => (
-                <div className="movie-card-Adminpage" key={historyItem.id}>
-                  <img src={historyItem.poster} alt={historyItem.movie_name} className="movie-image" />
-                  <div className="movie-info">
-                    <h2>Movie: {historyItem.movie_name || "No Movie Name"}</h2>
-                    <p>User Name: {historyItem.user_name || "No Username"}</p>
-                    <p>Date: {historyItem.date ? new Date(historyItem.date).toLocaleDateString() : "No Date Available"}</p>
+              history
+                .sort((a, b) => new Date(b.date || "").getTime() - new Date(a.date || "").getTime()) // เรียงข้อมูลจากวันที่มากไปน้อย
+                .map((historyItem) => (
+                  <div className="movie-card-Adminpage" key={historyItem.id}>
+                    <img src={historyItem.poster} alt={historyItem.movie_name} className="movie-image" />
+                    <div className="movie-info">
+                      <h2>Movie: {historyItem.movie_name || "No Movie Name"}</h2>
+                      <p>User Name: {historyItem.user_name || "No Username"}</p>
+                      <p>Date: {historyItem.date ? new Date(historyItem.date).toLocaleDateString() : "No Date Available"}</p>
+                    </div>
+                    <button className="edit-button" onClick={() => handleDelete(historyItem.id)}>
+                      🗑️
+                    </button>
                   </div>
-                  <button className="edit-button" onClick={() => handleDelete(historyItem.id)}>
-                    🗑️
-                  </button>
-                </div>
-              ))
+                ))
             ) : (
               <>
-              <div style={{ textAlign: 'center', fontSize: '44px' }}>
-                <h1 style={{ textAlign: 'center', fontSize: '34px' }}>Your viewing history is not yet available.</h1>
-                <a href="/MainWeb">✨Watch now✨</a>
-              </div>
-              <div style={{ textAlign: 'center' }}>
-                <img style={{width: '20%'}} src='https://media.tenor.com/Comp_iIhz44AAAAi/yui-yui-hirasawa.gif' />
-                {/* <img style={{width: '20%'}} src='https://media.tenor.com/Rp0U7bdOhSUAAAAj/anime.gif' />
+                <div style={{ textAlign: 'center', fontSize: '44px' }}>
+                  <h1 style={{ textAlign: 'center', fontSize: '34px' }}>Your viewing history is not yet available.</h1>
+                  <a href="/MainWeb">✨Watch now✨</a>
+                </div>
+                <div style={{ textAlign: 'center' }}>
+                  {/* <img style={{width: '20%'}} src='https://media.tenor.com/Rp0U7bdOhSUAAAAj/anime.gif' />
                 <img style={{width: '20%'}} src='https://i.giphy.com/boOoHL2PAFXahZyObR.webp' />
                 <img style={{width: '20%'}} src='https://i.pinimg.com/originals/b2/80/b6/b280b67696c1a7d17a6d26e46ff9f254.gif' /> */}
-              </div>
+                  <img style={{width: '20%'}} src='https://media.tenor.com/Comp_iIhz44AAAAi/yui-yui-hirasawa.gif' />
+                </div>
               </>
             )}
           </div>
