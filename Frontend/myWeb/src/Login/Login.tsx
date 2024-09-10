@@ -23,7 +23,7 @@ const Login: React.FC = () => {
     
             setTimeout(() => {
                 location.href = "/MainWeb";
-            }, 2000);
+            }, 1000);
         } else {
             messageApi.error(res.data.error);
         }
