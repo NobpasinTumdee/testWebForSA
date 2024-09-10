@@ -22,6 +22,8 @@ import { MovieInterface } from "../interfaces/IMoviePackage";
 import axios from 'axios';
 import {CreateHistory} from "../services/https/index"
 
+
+//import Carousels from "../Component/Carousels/Carousels";
 const MainWeb: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isPosterVisible, setIsPosterVisible] = useState(false);  // เพิ่ม state สำหรับ Poster
