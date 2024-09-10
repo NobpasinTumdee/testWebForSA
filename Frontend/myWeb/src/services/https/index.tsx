@@ -1,5 +1,5 @@
 import {UsersInterface} from "../../interfaces/IUser";
-import {MovieInterface,HistoryInterface} from "../../interfaces/IMoviePackage";
+import {MovieInterface,HistoryInterface,PaymentsInterface} from "../../interfaces/IMoviePackage";
 import {SignInInterface} from "../../interfaces/SignIn";
 //import {PackageInterface} from "../../interfaces/IMoviePackage"
 import axios from 'axios';
@@ -196,8 +196,23 @@ async function GetUsers() {
       })
       .catch((e) => e.response);
   }
+  //===========================================================================================================⬆️
 
+  // payment
+  async function CreatePayment(data: PaymentsInterface) {
 
+    return await axios
+  
+      .post(`${apiUrl}/Payments`, data, requestOptions)
+      .then((res) => {
+        if (res) {
+          //window.location.reload(); // reload หลังจากลบเสร็จ
+        }
+        return res;
+      })
+      .catch((e) => e.response);
+  
+  }
 
   async function UpdateUser(data: UsersInterface) {
     const requestOptions = {
@@ -235,5 +250,7 @@ async function GetUsers() {
     GetHistoryById,//GetHistoryByIduser
     CreateHistory,//สร้างประวัติ
     DeleteHistoryByID,//ลบประวัติ
+
+    CreatePayment,
   };
   

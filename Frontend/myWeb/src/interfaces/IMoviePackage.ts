@@ -23,3 +23,13 @@ export interface HistoryInterface {
     movie_name?: string;
     poster?: string;
 }
+export interface PaymentsInterface {
+    id?: number;
+    Payment_method?: string;
+    Payment_status?: string;
+    Date?: Date;
+    UserID?: number;
+    Username?: string;
+    PackageID?: number;
+    Package_name?: string;
+}
