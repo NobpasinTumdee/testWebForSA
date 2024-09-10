@@ -25,7 +25,7 @@ func CreatePayment(c *gin.Context) {
 	u := entity.Payment{
 		Payment_method: Payment.Payment_method, 
 		Payment_status:  Payment.Payment_status,  
-		Date:  Payment.Date,
+		Date:  time.Now(),
 		UserID:  Payment.UserID,
 		PackageID:  Payment.PackageID,
 	}
@@ -72,6 +72,42 @@ func ListPayments(c *gin.Context) {
     // Return the results as JSON
     c.JSON(http.StatusOK, payments)
 }
+//get by id user
+func ListPaymentByID(c *gin.Context) {
+    // รับค่า userID จากพารามิเตอร์ใน URL
+    userID := c.Param("id")
+
+    // กำหนด struct สำหรับเก็บผลลัพธ์ที่จะ return
+    var payments []struct {
+        ID              uint      `json:"id"`
+        PaymentMethod   string    `json:"Payment_method"`
+        PaymentStatus   string    `json:"Payment_status"`
+        Date            time.Time `json:"DateP"`
+        Username        string    `json:"username"`
+        PackageName     string    `json:"Package_name"`
+    }
+
+    // Get the database connection
+    db := config.DB()
+
+    // Query with joins to get payment, user, and package details, filtered by userID
+    results := db.Table("payments").
+        Select("payments.id, payments.payment_method, payments.payment_status, payments.date, users.username, movie_packages.package_name").
+        Joins("left join users on users.id = payments.user_id").
+        Joins("left join movie_packages on movie_packages.id = payments.package_id").
+        Where("payments.user_id = ?", userID).
+        Scan(&payments)
+
+    // Check for errors in the query
+    if results.Error != nil {
+        c.JSON(http.StatusNotFound, gin.H{"error": results.Error.Error()})
+        return
+    }
+
+    // Return the results as JSON
+    c.JSON(http.StatusOK, payments)
+}
+
 
 
 // DELETE /Payments/:id

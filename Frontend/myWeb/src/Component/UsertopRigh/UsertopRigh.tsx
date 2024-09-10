@@ -45,7 +45,9 @@ export const UsertopRigh: React.FC = () => {
                     <div>Status: {user.status}</div>
                 </div>
             </div>
-            <div className="cardPayment"></div>
+            <div  className="cardPayment">
+                <a style={{fontSize: '30px'}}  href="/Payment">💸</a>
+            </div>
             </>
         ) : (
             <div>Loading user data...</div>

@@ -33,6 +33,9 @@
   flex-direction: column;
   width: 45%;
 }
+.input-group input{
+  height: 35px;
+}
 
 label {
   margin-bottom: 5px;

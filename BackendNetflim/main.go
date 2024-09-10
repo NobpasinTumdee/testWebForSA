@@ -55,6 +55,7 @@ func main() {
 		router.DELETE("/Historys/:id", controller.DeleteHistory)
 		// Payments Routes
 		router.GET("/Payments", controller.ListPayments)
+		router.GET("/Payments/:id", controller.ListPaymentByID)
 		router.POST("/Payments", controller.CreatePayment)
 		router.PATCH("/Payments", controller.UpdatePayment)
 		router.DELETE("/Payments/:id", controller.DeletePayment)

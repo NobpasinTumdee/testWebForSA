@@ -2,6 +2,8 @@ import {UsersInterface} from "../../interfaces/IUser";
 import {MovieInterface,HistoryInterface,PaymentsInterface} from "../../interfaces/IMoviePackage";
 import {SignInInterface} from "../../interfaces/SignIn";
 //import {PackageInterface} from "../../interfaces/IMoviePackage"
+import { message } from "antd"; // Ant Design message for notifications
+
 import axios from 'axios';
 const apiUrl = "http://localhost:8000";
 const Authorization = localStorage.getItem("token");
@@ -147,6 +149,7 @@ async function GetUsers() {
       .delete(`${apiUrl}/Movies/${id}`, requestOptions)
       .then((res) => {
         if (res) {
+          message.success("ลบ");
           window.location.reload(); // reload หลังจากลบเสร็จ
         }
         return res;
@@ -213,6 +216,18 @@ async function GetUsers() {
       .catch((e) => e.response);
   
   }
+  // get Payment by id user
+  async function GetPaymentById(id: string) {
+
+    return await axios
+  
+      .get(`${apiUrl}/Payments/${id}`, requestOptions)
+  
+      .then((res) => res)
+  
+      .catch((e) => e.response);
+  
+  }
 
   async function UpdateUser(data: UsersInterface) {
     const requestOptions = {
@@ -252,5 +267,6 @@ async function GetUsers() {
     DeleteHistoryByID,//ลบประวัติ
 
     CreatePayment,
+    GetPaymentById,
   };
   

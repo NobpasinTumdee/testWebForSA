@@ -17,6 +17,7 @@ import { Navbar } from './Component/Navbar/Navbar';
 import Social from "./Component/Social/Social"
 import Intro from './Component/Intro/Intro';
 import PopUpAdminUpdate from './Admin/PopUpAdminUpdate';
+import Payment from './HistoryPayment/Payment';
 // import {PopUpAdmin} from './Component/PopUpAdmin';
 // <PopUpAdmin /> 
  
@@ -56,6 +57,7 @@ const App: React.FC = () => {
                 <Route path="/AboutMe" element={<AboutMe />} />
                 <Route path="/PreviewSubscription" element={<PreviewSubscription />} />
                 <Route path="/PopUpAdminUpdate/:id" element={<PopUpAdminUpdate />} />
+                <Route path="/Payment" element={<Payment />} />
             </Routes>
         </div>
     );

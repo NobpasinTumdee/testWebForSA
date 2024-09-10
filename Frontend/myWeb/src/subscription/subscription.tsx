@@ -49,6 +49,7 @@ const Subscription = () => {
         Package_name: selectedPlan.Package_name,
         Payment_method: selectedPaymentMethod, // เพิ่มวิธีการชำระเงินที่ผู้ใช้เลือก
         Payment_status: "paid",
+        DateP: new Date(),
       };
       CreatePayment(paymentData);
     }
