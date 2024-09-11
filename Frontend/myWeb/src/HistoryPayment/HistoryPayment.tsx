@@ -80,7 +80,7 @@ const HistoryPayment: React.FC = () => {
               </>
             )}
           </div>
-          <a href="/MainWeb" className="return-button-Admin">Return to home page</a>
+          <a href="/subscription" className="return-button-Admin">Return to home page</a>
         </div>
       )}
     </>

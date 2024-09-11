@@ -19,14 +19,16 @@ import { LoadingStarWar } from '../Component/Loading/LoadingStarWar';
 
 //API
 import { MovieInterface } from "../interfaces/IMoviePackage";
+import { UsersInterface } from "../interfaces/IUser";
 import axios from 'axios';
 import {CreateHistory} from "../services/https/index"
-
+import { GetUserById } from "../services/https/index"; // นำเข้า GetUserById
 
 //import Carousels from "../Component/Carousels/Carousels";
 const MainWeb: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isPosterVisible, setIsPosterVisible] = useState(false);  // เพิ่ม state สำหรับ Poster
+  const [status, setStatus] = useState<string | undefined>(''); // เก็บ status ของผู้ใช้
   const userIdstr = localStorage.getItem("id");
   
   const [isLoading, setLoading] = useState(true);
@@ -37,6 +39,21 @@ const MainWeb: React.FC = () => {
       setLoading(false);
     }, 1000)
   })
+
+  useEffect(() => {//โหลดข้อมูลของผู้ใช้และเอาแค่ status
+    if (userIdstr) {
+      GetUserById(userIdstr)
+        .then((response) => {
+          const user = response.data as UsersInterface;
+          setStatus(user.status); // ตั้งค่าสถานะของผู้ใช้
+        })
+        .catch((error) => {
+          console.error('มีข้อผิดพลาดในการดึงข้อมูลผู้ใช้:', error);
+        });
+    }
+  }, [userIdstr]);
+
+
   const [Movies, setMovie] = useState<MovieInterface[]>([]); //API
   useEffect(() => {
     const Authorization = localStorage.getItem("token");
@@ -122,7 +139,7 @@ const MainWeb: React.FC = () => {
       {isLoading ? (<div style={{
         position: 'fixed', top: '50%', left: '55%', marginTop: '-50px', marginLeft: '-100px'
       }}><LoadingStarWar /></div>) : (
-        <div className="app"><UsertopRigh />
+        <div className="app">{status !== 'Admin' && ( <UsertopRigh />)}
           <aside className={`sidebar ${isSidebarOpen ? '' : 'hidden'}`}>
             <div className="toggle-button" onClick={toggleSidebar}>
               {isSidebarOpen ? '⬅️' : '➡️'}
@@ -147,10 +164,13 @@ const MainWeb: React.FC = () => {
                     <a href="/History" >
                       <li className="sizeMenu">👜 History</li>
                     </a>
-                    <a href="/Admin" >
-                      <li className="sizeMenu">💻 Admin</li>
-                    </a>
-                    <button onClick={subscription} className="button-85" >✨Subscribe✨</button>
+                    {status === 'Admin' && ( //ใช่Adminอะป่าว
+                      <a href="/Admin">
+                        <li className="sizeMenu">💻 Admin</li>
+                      </a>
+                    )}
+                    {status !== 'Admin' && ( //ใช่Adminอะป่าว
+                    <button onClick={subscription} className="button-85" >✨Subscribe✨</button>)}
                     <a href="/" className="signup-link">🔙</a>
                   </ul>
                 </nav>

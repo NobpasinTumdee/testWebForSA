@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import "./Navbar.css"
 // about me
@@ -6,11 +6,28 @@ import "./Navbar.css"
 //import userPhoto from './User.png';
 import AboutMeCom from '../../AboutMe/AboutMeCom'
 
+
+import { UsersInterface } from "../../interfaces/IUser";
+import { GetUserById } from "../../services/https/index"; // นำเข้า GetUserById
+
 export const Navbar: React.FC = () => {
   const navigate = useNavigate();
-
+  const [status, setStatus] = useState<string | undefined>(''); // เก็บ status ของผู้ใช้
   const location = useLocation();
+  const userIdstr = localStorage.getItem("id");
 
+  useEffect(() => {//โหลดข้อมูลของผู้ใช้และเอาแค่ status
+    if (userIdstr) {
+      GetUserById(userIdstr)
+        .then((response) => {
+          const user = response.data as UsersInterface;
+          setStatus(user.status); // ตั้งค่าสถานะของผู้ใช้
+        })
+        .catch((error) => {
+          console.error('มีข้อผิดพลาดในการดึงข้อมูลผู้ใช้:', error);
+        });
+    }
+  }, [userIdstr]);
   // popup
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -48,9 +65,10 @@ export const Navbar: React.FC = () => {
           <Link to="/History">
             <li className={`sizeMenuComponent ${location.pathname === "/History" ? "active" : ""}`}>👜</li>
           </Link>
+          {status === 'Admin' && (
           <Link to="/Admin">
             <li className={`sizeMenuComponent ${location.pathname === "/Admin" ? "active" : ""}`}>💻</li>
-          </Link>
+          </Link>)}
           <Link to="/">
             <li className="sizeMenuComponent">🔙</li>
           </Link>
