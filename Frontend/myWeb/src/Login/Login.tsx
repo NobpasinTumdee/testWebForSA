@@ -5,6 +5,7 @@ import { SignInInterface } from "../interfaces/SignIn";
 import { SignIn } from "../services/https/index";
 import { GetUserById } from "../services/https/index"; // Assuming this is the API to get user data
 import { UsersInterface } from "../interfaces/IUser";
+import video from "../assets/video/jjk.mp4"
 
 const Login: React.FC = () => {
     const [messageApi, contextHolder] = message.useMessage();
@@ -46,6 +47,10 @@ const Login: React.FC = () => {
     return (
         <>
             {contextHolder}
+            <video autoPlay loop muted playsInline>
+                <source src={video} type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
             <div className="login-container">
                 <div className="login-box">
                     <h1 className='colortext'>NetFlim</h1>

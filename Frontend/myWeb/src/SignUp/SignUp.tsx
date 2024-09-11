@@ -4,7 +4,7 @@ import { Form, Input , message } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { UsersInterface } from '../interfaces/IUser';
 import { CreateUser } from '../services/https/index';
-
+import video from "../assets/video/jjk.mp4"
 const SignUp: React.FC = () => {
   const navigate = useNavigate();
   //const [loading, setLoading] = useState(false);
@@ -36,6 +36,11 @@ const SignUp: React.FC = () => {
   };
 
   return (
+    <>
+    <video autoPlay loop muted playsInline>
+                <source src={video} type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
     <div className="signup-container">
       {contextHolder}
       <div className="signup-box">
@@ -46,7 +51,7 @@ const SignUp: React.FC = () => {
             name="username"
             rules={[{ required: true, message: 'Please input your username!' }]}
           >
-            <Input placeholder="Username" className="form-group" />
+            <Input placeholder="Username" className="form-groupS" />
           </Form.Item>
 
           <Form.Item
@@ -54,7 +59,7 @@ const SignUp: React.FC = () => {
             name="email"
             rules={[{ required: true, message: 'Please input your email!', type: 'email' }]}
           >
-            <Input placeholder="Email" className="form-group" />
+            <Input placeholder="Email" className="form-groupS" />
           </Form.Item>
 
           <Form.Item
@@ -62,7 +67,7 @@ const SignUp: React.FC = () => {
             name="password"
             rules={[{ required: true, message: 'Please input your password!' }]}
           >
-            <Input.Password placeholder="Password" className="form-group" />
+            <Input.Password placeholder="Password" className="form-groupS" />
           </Form.Item>
 
           <Form.Item
@@ -81,7 +86,7 @@ const SignUp: React.FC = () => {
               }),
             ]}
           >
-            <Input.Password placeholder="confirm your Password" className="form-group" />
+            <Input.Password placeholder="confirm your Password" className="form-groupS" />
           </Form.Item>
 
           <div className="signup-buttonDIV">
@@ -93,6 +98,7 @@ const SignUp: React.FC = () => {
         <a href="/login" className="login-link">BACK TO LOGIN</a>
       </div>
     </div>
+    </>
   );
 };
 

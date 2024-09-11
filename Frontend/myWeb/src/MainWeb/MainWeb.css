@@ -2,7 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: #17153B;
+  background-color: #17153b;
   /*font-family: Arial, sans-serif;*/
   overflow-x: hidden; /* ป้องกันการเลื่อนแนวนอน */
 }

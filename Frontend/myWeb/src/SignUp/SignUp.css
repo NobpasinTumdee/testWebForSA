@@ -13,14 +13,16 @@ body, html {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(to bottom,#403ECC , #192546,#000000 );
+    /*background: linear-gradient(to bottom,#403ECC , #192546,#000000 );*/
     width: 100vw;
 }
 /* กล่องสมัครสมาชิก */
 .signup-box {
+    z-index: 1;
+    border-radius: 20px;
     width: 350px;
     padding: 30px;
-    
+    background-color: rgba(0, 0, 0, 0.599);
     align-items: center;
     display: flex; /* ใช้ Flexbox */
     flex-direction: column; /* จัดวางในแนวตั้ง */
@@ -44,15 +46,17 @@ body, html {
     font-family: 'pkmaehongson';
     font-size: 17px;
 }
-.form-group{
-    width: 100%;
-    padding: 10px;
-    margin: 12px 0;
+
+.form-groupS {
+    width: 380px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
     border: 2px solid #969696;
     border-radius: 20px;
-}
+  }
 /* ปรับช่องกรอกข้อมูล */
-.form-group input {
+.form-groupS input {
     width: 100%;
     border: 2px solid #969696;
     border-radius: 20px;
@@ -61,14 +65,14 @@ body, html {
 }
 
 /* เมื่อ textbox ถูกโฟกัส */
-.form-group input:focus {
+.form-groupS input:focus {
     background-color: #ffffff; /* พื้นหลังเปลี่ยนเป็นขาว */
     border-color: #403ECC; /* เส้นขอบเปลี่ยนเป็นสีน้ำเงิน */
     outline: none;
 }
 
 /* เมื่อ textbox ถูกโฮเวอร์ */
-.form-group input:hover {
+.form-groupS input:hover {
     box-shadow: 0 0px 7px #ffc107;
     outline: none;
 }

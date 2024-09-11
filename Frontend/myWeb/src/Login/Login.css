@@ -8,7 +8,8 @@ body, html {
 .textSize {
     font-size: 50px;
     color: rgb(255, 255, 255);
-    
+    text-shadow: #000000aa;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.651);
 }
 
 /* รีเซ็ต margin และ padding ของ container */
@@ -27,10 +28,11 @@ body, html {
 .login-box {
     width: 350px;
     padding: 30px;
-    /*background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);*/
+    background-color: rgba(0, 0, 0, 0.599);
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);/**/
     text-align: center;
+    z-index: 1;
 }
 
 /* ส่วนของ h2 */
@@ -53,8 +55,8 @@ h2 {
 /* เมื่อ textbox ถูกโฟกัส */
 .input-field:focus {
     background-color: #ffffff; /* พื้นหลังเปลี่ยนเป็นสีน้ำเงินอ่อน */
-    border-color: #403ECC; /* เส้นขอบเปลี่ยนเป็นสีน้ำเงิน */
-    border: 2px solid #ffc107;
+    border-color: #bf0404; /* เส้นขอบเปลี่ยนเป็นสีน้ำเงิน */
+    border: 2px solid #bf0404;
     outline: none;
     
 }
@@ -62,7 +64,7 @@ h2 {
 .input-field:hover{
     /*opacity: 0.6;
     border-color: #22044d;*/
-    box-shadow: 0 0px 7px #ffc107;
+    box-shadow: 0 0px 7px #bf0404;
     outline: none;
     
 }
@@ -107,6 +109,7 @@ h2 {
     color: rgb(255, 255, 255);
     font-size: 80px;
     font-family: 'pkmaehongson';
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.651);
 }
 
 
@@ -133,3 +136,15 @@ h2 {
 }
 
 
+video{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+@media(min-aspect-ratio: 16/9){
+    video{
+        width: 100%;
+        height: auto;
+    }
+}
