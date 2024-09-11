@@ -34,3 +34,11 @@ export interface PaymentsInterface {
     PackageID?: number;
     Package_name?: string;
 }
+
+export interface CollectionsInterface {
+    ID?: number;
+    Collection_name?: string;
+    //CollectionName?: string;
+    UserID?: number;
+    Username?: string;
+}

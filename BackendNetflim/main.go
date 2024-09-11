@@ -60,10 +60,11 @@ func main() {
 		router.PATCH("/Payments", controller.UpdatePayment)
 		router.DELETE("/Payments/:id", controller.DeletePayment)
 		// Collection Routes
-		router.GET("/Collections", controller.ListCollection)
-		router.POST("/Collections", controller.CreateCollection)
+		router.GET("/Collections", controller.ListCollection)//ทั้งหมด ไม่ได้ใช้
+		router.GET("/Collections/:id", controller.ListCollectionByID)// หาจาก UserID
+		router.POST("/Collections", controller.CreateCollection)//สร้าง
 		router.PATCH("/Collections", controller.UpdateCollection)
-		router.DELETE("/Collections/:id", controller.DeleteCollectiont)
+		router.DELETE("/Collections/:id", controller.DeleteCollectiont)// ลบ
 		// CollectionMovie Routes
 		router.GET("/CollectionMovies", controller.ListCollectionMovie)
 		router.POST("/CollectionMovies", controller.CreateCollectionMovie)

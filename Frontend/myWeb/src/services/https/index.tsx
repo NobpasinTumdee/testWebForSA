@@ -200,33 +200,61 @@ async function GetUsers() {
       .catch((e) => e.response);
   }
   //===========================================================================================================⬆️
-
+  
   // payment
   async function CreatePayment(data: PaymentsInterface) {
-
+    
     return await axios
-  
-      .post(`${apiUrl}/Payments`, data, requestOptions)
-      .then((res) => {
-        if (res) {
-          //window.location.reload(); // reload หลังจากลบเสร็จ
-        }
-        return res;
-      })
-      .catch((e) => e.response);
-  
+    
+    .post(`${apiUrl}/Payments`, data, requestOptions)
+    .then((res) => {
+      if (res) {
+        //window.location.reload(); // reload หลังจากลบเสร็จ
+      }
+      return res;
+    })
+    .catch((e) => e.response);
+    
   }
   // get Payment by id user
   async function GetPaymentById(id: string) {
-
+    
     return await axios
-  
-      .get(`${apiUrl}/Payments/${id}`, requestOptions)
-  
-      .then((res) => res)
-  
-      .catch((e) => e.response);
-  
+    
+    .get(`${apiUrl}/Payments/${id}`, requestOptions)
+    
+    .then((res) => res)
+    
+    .catch((e) => e.response);
+    
+  }
+  //===========================================================================================================⬆️
+  // get Collection by id user
+  async function GetCollectionById(id: string) {
+    
+    return await axios
+    
+    .get(`${apiUrl}/Collections/${id}`, requestOptions)
+    
+    .then((res) => res)
+    
+    .catch((e) => e.response);
+    
+  }
+  // สร้าง collection
+  async function CreateCollection(data: PaymentsInterface) {
+    
+    return await axios
+    
+    .post(`${apiUrl}/Collections`, data, requestOptions)
+    .then((res) => {
+      if (res) {
+        //window.location.reload(); // reload หลังจากลบเสร็จ
+      }
+      return res;
+    })
+    .catch((e) => e.response);
+    
   }
 
   async function UpdateUser(data: UsersInterface) {
@@ -262,11 +290,14 @@ async function GetUsers() {
     DeleteMovieById,//ลบหนัง
     GetMovieById,//แสดงหนังด้วยไอดี
 
-    GetHistoryById,//GetHistoryByIduser
     CreateHistory,//สร้างประวัติ
+    GetHistoryById,//GetHistoryByIduser
     DeleteHistoryByID,//ลบประวัติ
 
     CreatePayment,
     GetPaymentById,
+
+    CreateCollection,
+    GetCollectionById,
   };
   

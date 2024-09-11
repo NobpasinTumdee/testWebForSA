@@ -20,7 +20,8 @@ body, html {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(to bottom, #000000, #1C1C1C, #403ECC);
+    /*background: linear-gradient(to bottom, #000000, #1C1C1C, #403ECC);*/
+    background: #000000;
 }
 
 

@@ -1,38 +1,76 @@
 import React from 'react';
 import './CollectionComponent.css';
+import { Form, Input, Button, message } from 'antd';
+import {CollectionsInterface} from '../interfaces/IMoviePackage'
+import {CreateCollection} from '../services/https/index'
+import { useNavigate } from 'react-router-dom';
+
 
 const CollectionComponent: React.FC = () => {
+    const [messageApi, contextHolder] = message.useMessage();
+    const navigate = useNavigate();
+    const [form] = Form.useForm();
+    const userIdstr = localStorage.getItem("id");
+    const UserId = Number(userIdstr);
+
+    const onFinish = async (values: CollectionsInterface) => {
+        // Ensure UserID is added to the form values
+        const payload = { ...values, UserId };
+    
+        let res = await CreateCollection(payload);
+    
+        if (res.status === 201) {
+          messageApi.open({
+            type: 'success',
+            content: res.data.message,
+          });
+    
+          setTimeout(() => {
+            navigate('/Collection');
+          }, 500);
+        } else {
+          messageApi.open({
+            type: 'error',
+            content: res.data.error,
+          });
+        }
+    };
+    
     return (
         <>
-            <div className="form-container">
-                <form className="form">
-                    
-                        
-                    
-                    <input className="toggle-input" id="toggle-checkbox" type="checkbox" />
-                    <p className="form-title">Name Collection</p>
-                    <p className="form-sub-title">
-                        Lorem ipsum dolor sit amet.
-                    </p>
-                    <div className="login-card">
-                        <div className="field-container">
-                            <input placeholder="" className="input" type="email" />
-                            <span className="placeholder">Collection Name</span>
-                        </div>
-                        <button className="btn" type="button">
-                            <label className="btn-label" htmlFor="toggle-checkbox">Create</label>
-                        </button>
-                    </div>
-                    <div className="password-card">
-                        <div className="field-container">
-                            <input placeholder="" className="input" type="password" />
-                            <span className="placeholder">Password</span>
-                        </div>
-                        <button className="btn" type="button">
-                            <label className="btn-label" htmlFor="toggle-checkbox">Login</label>
-                        </button>
-                    </div>
-                </form>
+            {contextHolder}
+            <div className="PopUpAdmin">
+                <div className="textAdmin">
+                    <h1>Create Collection</h1>
+                    <Form
+                        form={form}
+                        layout="vertical"
+                        onFinish={onFinish}
+                        initialValues={{
+                            CollectionName: '',
+                            UserID: UserId,
+                        }}
+                    >
+                        <Form.Item
+                            label="Name Collection:"
+                            name="CollectionName"
+                            rules={[{ required: true, message: 'Please input the Collection name!' }]}
+                        >
+                            <Input />
+                        </Form.Item>
+
+                        <Form.Item>
+                            <Button
+                                type="primary"
+                                htmlType="submit"
+                                className="submit-button"
+
+                            >
+                                Confirm
+                            </Button>
+                        </Form.Item>
+                    </Form>
+                </div>
             </div>
         </>
     );

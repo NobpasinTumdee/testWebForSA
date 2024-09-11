@@ -66,6 +66,41 @@ func ListCollection(c *gin.Context) {
 }
 
 
+//get by id user
+func ListCollectionByID(c *gin.Context) {
+    // รับค่า userID จากพารามิเตอร์ใน URL
+    userID := c.Param("id")
+
+    // กำหนด struct สำหรับเก็บผลลัพธ์
+    var collections []struct {
+        ID              uint   `json:"id"`
+        Collection_name string `json:"Collection_name"`
+        UserID          uint   `json:"UserID"`
+        Username        string `json:"Username"` // เอา username ของ user มาแสดง
+    }
+
+    // Get the database connection
+    db := config.DB()
+
+    // Query with joins to get user and collection details, filtered by userID
+    results := db.Table("collections").
+        Select("collections.id, collections.collection_name, collections.user_id, users.username").
+        Joins("left join users on users.id = collections.user_id").
+        Where("collections.user_id = ?", userID).
+        Scan(&collections)
+
+    // Check for errors in the query
+    if results.Error != nil {
+        c.JSON(http.StatusNotFound, gin.H{"error": results.Error.Error()})
+        return
+    }
+
+    // Return the results as JSON
+    c.JSON(http.StatusOK, collections)
+}
+
+
+
 // DELETE /Collections/:id
 func DeleteCollectiont(c *gin.Context) {
 

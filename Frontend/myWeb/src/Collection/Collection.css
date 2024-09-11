@@ -13,13 +13,19 @@
     margin-bottom: 30px;
   }
   
-  .movies-list {
+  .movies-listCollection {
     width: 100%;
-    max-width: 900px;
+    margin-left: 80px;
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
+    flex-wrap: wrap; /* ทำให้ flex items สามารถขึ้นแถวใหม่ได้ */
+    gap: 60px;
+}
+
+.movies-listCollection-item {
+    flex: 1 1 calc(25% - 60px); /* ให้แต่ละ item มีความกว้าง 25% ลบด้วย gap */
+    box-sizing: border-box; /* ทำให้ padding/margin รวมเข้ากับขนาด */
+}
+
   /**/
   .movie-card-Adminpage {
     display: flex;
@@ -83,3 +89,73 @@
   .return-button-Collection:hover {
     background-color: rgba(255, 255, 255, 0.1);
   }
+
+
+
+  /* From Uiverse.io by vamsidevendrakumar */ 
+.cardCollection {
+  width: 300px;
+  height: 200px;
+  perspective: 1000px;
+}
+
+.card-innerCollection {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.999s;
+}
+
+.cardCollection:hover .card-innerCollection {
+  transform: rotateY(180deg);
+}
+
+.card-frontCollection,
+.card-backCollection {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card-frontCollection {
+  background-color: #dab86b;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  border: 10px solid #72440b;
+  border-radius: 10px;
+  justify-content: center;
+  font-size: 24px;
+  transform: rotateY(0deg);
+}
+
+.card-backCollection {
+  background-color: #72440b;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  border: 10px solid #72440b;
+  border-radius: 10px;
+  justify-content: center;
+  font-size: 24px;
+  transform: rotateY(180deg);
+}
+
+
+.AddCollection {
+  margin-top: 0px;
+  margin-bottom: 30px;
+  border-radius: 20px;
+  padding: 10px 70px;
+  font-family: pkmaehongson;
+  font-size: 24px;
+  border-color: #ffffff;
+  transition: 0.5s;
+ }
+
+ .AddCollection:hover {
+  background-color: #f4d57a;
+  box-shadow: 0 0px 7px #ffc107;
+ }

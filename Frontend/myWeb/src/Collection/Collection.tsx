@@ -1,76 +1,49 @@
 import { useState, useEffect } from 'react';
 import './Collection.css';
-import VioletEvergarden from "../assets/VioletEvergarden.jpg";
-import rezero from "../assets/rezero.jpg"
-import Cm5 from "../assets/Cm5persec.jpg"
-import icon from "../assets/icon/RedHeart.png"
-import fullmetal from "../assets/Fullmetal.jpg"
+
+//import icon from "../assets/icon/RedHeart.png"
+
 
 import { LoadingHart } from '../Component/Loading/LoadingHart';
 
 import CollectionComponent from './CollectionComponent';
+import { message } from "antd"; // Ant Design message for notifications
 
-
-const movies = [
-  {
-    id: 1,
-    title: 'Violet Evergarden',
-    description: 'A touching story about a young girl who used to be a weapon...',
-    date: '15/July/2024',
-    image: VioletEvergarden,
-  },
-  {
-    id: 2,
-    title: 'Haikyuu!!',
-    description: 'An inspiring sports anime about volleyball...',
-    date: '15/July/2024',
-    image: rezero,
-  },
-  {
-    id: 3,
-    title: 'Bocchi the Rock!',
-    description: 'A story of a shy girl who starts a rock band...',
-    date: '15/July/2024',
-    image: Cm5,
-  },
-  {
-    id: 4,
-    title: 'fullmetal',
-    description: 'A story of a shy girl who starts a rock band...',
-    date: '15/July/2024',
-    image: fullmetal,
-  },
-  {
-    id: 5,
-    title: 'fullmetal',
-    description: 'A story of a shy girl who starts a rock band...',
-    date: '15/July/2024',
-    image: fullmetal,
-  },
-  {
-    id: 6,
-    title: 'fullmetal',
-    description: 'A story of a shy girl who starts a rock band...',
-    date: '15/July/2024',
-    image: fullmetal,
-  },
-  {
-    id: 7,
-    title: 'fullmetal',
-    description: 'A story of a shy girl who starts a rock band...',
-    date: '15/July/2024',
-    image: fullmetal,
-  },
-];
+//API
+import { CollectionsInterface } from '../interfaces/IMoviePackage';
+import { GetCollectionById } from '../services/https/index';
 
 const Collection: React.FC = () => {
   const [isLoading, setLoading] = useState(true);
+  const [Collections, setCollection] = useState<CollectionsInterface[]>([]); // ตั้งค่าเริ่มต้นให้เป็น array ว่าง
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [InfoCollection, setInfoCollection] = useState('');
+  const userIdstr = localStorage.getItem("id");
 
-  const openPopup = (movie: string) => {
-    setInfoCollection(movie)
+  useEffect(() => {
+    if (userIdstr) {
+      fetchUserData(userIdstr);
+    } else {
+      message.error("ไม่พบ ID ของผู้ใช้ใน localStorage");
+    }
+  }, [userIdstr]);
+
+  const fetchUserData = async (userIdstr: string) => {
+    try {
+      const res = await GetCollectionById(userIdstr);
+      if (res.status === 200 && res.data) {
+        setCollection(res.data); // กำหนดให้เป็น array ที่ได้จาก API
+      } else {
+        setCollection([]); // ถ้าไม่มีข้อมูล ให้กำหนดเป็น array ว่าง
+        message.error("ยังไม่มี Collection !!!");
+      }
+    } catch (error) {
+      setCollection([]); // กำหนดให้เป็น array ว่างเมื่อมี error
+      message.error("Your viewing history is not yet available.");
+    }
+  };
+
+  const openPopup = () => {
     setIsPopupOpen(true);
   };
 
@@ -91,18 +64,22 @@ const Collection: React.FC = () => {
       }}><LoadingHart /></div>) : (
         <div className="Collection-container">
           <h1 className="Collection-title">COLLECTION</h1>
-          <div className="movies-list">
-            {movies.map((movie) => (
-              <div className="movie-card-Adminpage" key={movie.id}>
-                <img src={movie.image} alt={movie.title} className="movie-image" />
-                <div className="movie-info">
-                  <h2 >{movie.title}</h2>
-                  <p >{movie.description}</p>
-                  <p >Date: {movie.date}</p>
+          <button className="AddCollection" onClick={() => openPopup()}>
+            Add Collection !!!
+          </button>
+          <div className="movies-listCollection">
+            {Collections.map((Collection) => (
+              <div key={Collection.ID}>
+                <div className="cardCollection">
+                  <div className="card-innerCollection">
+                    <div className="card-frontCollection">
+                      <p> {Collection.Collection_name}</p>
+                    </div>
+                    <div className="card-backCollection">
+                      <p>By {Collection.UserID} {Collection.Username}</p>
+                    </div>
+                  </div>
                 </div>
-                <button className="edit-button" onClick={() => openPopup(movie.title)}>
-                  <img src={icon} className='edit-icon-Collection'></img>
-                </button>
               </div>
             ))}
 
@@ -110,13 +87,10 @@ const Collection: React.FC = () => {
           <a href="/MainWeb" className="return-button-Collection">Return to home page</a>
           {isPopupOpen && (
             <div className='popup-container'>
-              <h1>{InfoCollection}</h1>
-              <div style={{
-                position: 'fixed', top: '20%', left: '42%', marginTop: '-50px', marginLeft: '-100px'
-              }}><CollectionComponent /></div>
+              <CollectionComponent />
 
               <button onClick={closePopup} className="close-popup-button">
-                Close
+                X
               </button>
             </div>
           )}
