@@ -1,12 +1,12 @@
 import React from 'react';
 import { Form, Input, message } from 'antd';
 import './Login.css';
-//import { useNavigate } from 'react-router-dom';
 import { SignInInterface } from "../interfaces/SignIn";
 import { SignIn } from "../services/https/index";
+import { GetUserById } from "../services/https/index"; // Assuming this is the API to get user data
+import { UsersInterface } from "../interfaces/IUser";
 
 const Login: React.FC = () => {
-    //const navigate = useNavigate();
     const [messageApi, contextHolder] = message.useMessage();
 
     const onFinish = async (values: SignInInterface) => {
@@ -16,14 +16,28 @@ const Login: React.FC = () => {
             messageApi.success("Sign-in successful");
     
             localStorage.setItem("isLogin", "true");
-            localStorage.setItem("page", "MainWeb");
             localStorage.setItem("token_type", res.data.token_type);
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("id", res.data.id);
-    
-            setTimeout(() => {
-                location.href = "/MainWeb";
-            }, 1000);
+            
+            // Fetch user data by Uid
+            const userId = res.data.id;
+            let userResponse = await GetUserById(userId); // Assuming this function exists in your service layer
+
+            if (userResponse.status === 200) {
+                const user: UsersInterface = userResponse.data;
+
+                // Check the status and redirect accordingly
+                setTimeout(() => {
+                    if (user.status === "User") {
+                        location.href = "/MainWeb";
+                    } else if (user.status === "Admin") {
+                        location.href = "/Admin";
+                    }
+                }, 1000);
+            } else {
+                messageApi.error("Failed to retrieve user data");
+            }
         } else {
             messageApi.error(res.data.error);
         }
@@ -54,12 +68,11 @@ const Login: React.FC = () => {
                         </Form.Item>
                         <a href="/forget-password" className="forgot-password">FORGOT PASSWORD</a>
                         <Form.Item>
-                            <button  className="login-button">
+                            <button className="login-button">
                                 LOG IN
                             </button>
                         </Form.Item>
                     </Form>
-                    {/* <a href="/MainWeb" className="signup-link">เข้าหน้า main ชั่วคราว</a> */}
                     <a href="/signup" className="signup-link">SIGN UP NOW</a>
                 </div>
             </div>
