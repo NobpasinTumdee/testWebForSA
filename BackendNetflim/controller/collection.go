@@ -22,7 +22,7 @@ func CreateCollection(c *gin.Context) {
 
 	// สร้าง User
 	u := entity.Collection{
-		Collection_name: Collection.Collection_name,  
+		CollectionName: Collection.CollectionName,  
 		UserID:  Collection.UserID,
 	}
 

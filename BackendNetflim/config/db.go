@@ -184,16 +184,22 @@ func SetupDatabase() {
 
 	//Collection
 	Collections := []entity.Collection{
-		{Collection_name: "MyCollection1", UserID: 1,},
+		{CollectionName: "MyCollection1", UserID: 1,},
 	}
 	for _, CollectionLoop := range Collections {
-		db.FirstOrCreate(&CollectionLoop, entity.Collection{Collection_name: CollectionLoop.Collection_name})
+		db.FirstOrCreate(&CollectionLoop, entity.Collection{CollectionName: CollectionLoop.CollectionName})
 	}
 
 
 	//collection_movies
 	collection_movies := []entity.CollectionMovie{
 		{CollectionID: 1, MovieID: 1,},
+		{CollectionID: 1, MovieID: 2,},
+		{CollectionID: 1, MovieID: 3,},
+		{CollectionID: 2, MovieID: 3,},
+		{CollectionID: 16, MovieID: 3,},
+		{CollectionID: 16, MovieID: 4,},
+		{CollectionID: 16, MovieID: 5,},
 	}
 	for _, collection_moviesLoop := range collection_movies {
 		db.FirstOrCreate(&collection_moviesLoop, entity.CollectionMovie{CollectionID: collection_moviesLoop.CollectionID , MovieID: collection_moviesLoop.MovieID})

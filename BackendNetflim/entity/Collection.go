@@ -6,7 +6,7 @@ import (
 
 type Collection struct {
 	gorm.Model
-	Collection_name  string `json:"CollectionName"`
+	CollectionName  string `json:"CollectionName"`
 	
 	UserID uint `json:"UserID"`
 	User   User `gorm:"foreignKey:UserID"`

@@ -43,3 +43,13 @@ export interface CollectionsInterface {
     UserID?: number;
     Username?: string;
 }
+
+export interface CollectionMovieInterface {
+    ID?: number;
+    id?: number;
+    collection_id?: number;
+    collection_name?: string;
+    movie_id?: number;
+    movie_name?: string;
+    MoviePoster?: string;
+}

@@ -1,5 +1,5 @@
 import {UsersInterface} from "../../interfaces/IUser";
-import {MovieInterface,HistoryInterface,PaymentsInterface} from "../../interfaces/IMoviePackage";
+import {MovieInterface,HistoryInterface,PaymentsInterface,CollectionMovieInterface} from "../../interfaces/IMoviePackage";
 import {SignInInterface} from "../../interfaces/SignIn";
 //import {PackageInterface} from "../../interfaces/IMoviePackage"
 import { message } from "antd"; // Ant Design message for notifications
@@ -256,28 +256,84 @@ async function GetUsers() {
     .catch((e) => e.response);
     
   }
-  //ลบประวัติ
+  //ลบcollection
   async function DeleteCollectionByID(id: string) {
     return await axios
-      .delete(`${apiUrl}/Collections/${id}`, requestOptions)
-      .then((res) => {
-        // if (res) {
+    .delete(`${apiUrl}/Collections/${id}`, requestOptions)
+    .then((res) => {
+      // if (res) {
         //   window.location.reload(); // reload หลังจากลบเสร็จ
         // }
         return res;
       })
       .catch((e) => e.response);
-  }
-
-  async function UpdateUser(data: UsersInterface) {
-    const requestOptions = {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    };
-  
-    let res = await fetch(`${apiUrl}/users`, requestOptions)
+    }
+    //===========================================================================================================⬆️
+    //collectionMovie
+    //collectionMovieGet by collcet id
+    async function GetcollectionMovieById(id: string) {
+      
+      return await axios
+      
+      .get(`${apiUrl}/CollectionMovies/${id}`, requestOptions)
+      
+      .then((res) => res)
+      
+      .catch((e) => e.response);
+      
+    }
+    
+    //get collectionMovie
+    async function GetcollectionMovie() {
+      
+      return await axios
+      
+      .get(`${apiUrl}/CollectionMovies`, requestOptions)
+      
+      .then((res) => res)
+      
+      .catch((e) => e.response);
+      
+    }
+    //ลบmovie in collection
+    async function DeleteCollectionMovieByID(id: string) {
+      return await axios
+      .delete(`${apiUrl}/CollectionMovies/${id}`, requestOptions)
       .then((res) => {
+        // if (res) {
+          //   window.location.reload(); // reload หลังจากลบเสร็จ
+          // }
+          return res;
+        })
+        .catch((e) => e.response);
+      }
+      // เพิ่มหนังin collection
+      async function CreateCollectionMovie(data: CollectionMovieInterface) {
+        
+        return await axios
+        
+        .post(`${apiUrl}/CollectionMovies`, data, requestOptions)
+        .then((res) => {
+          if (res) {
+            window.location.reload(); // reload หลังจากลบเสร็จ
+          }
+          return res;
+        })
+        .catch((e) => e.response);
+        
+      }
+      
+      //===========================================================================================================⬆️
+      
+      async function UpdateUser(data: UsersInterface) {
+        const requestOptions = {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        };
+        
+        let res = await fetch(`${apiUrl}/users`, requestOptions)
+        .then((res) => {
         if (res.status == 200) {
           return res.json();
         } else {
@@ -312,5 +368,11 @@ async function GetUsers() {
     CreateCollection,
     GetCollectionById,
     DeleteCollectionByID,
+
+    
+    CreateCollectionMovie,
+    GetcollectionMovieById,
+    GetcollectionMovie,
+    DeleteCollectionMovieByID,
   };
   

@@ -67,6 +67,7 @@ func main() {
 		router.DELETE("/Collections/:id", controller.DeleteCollectiont)// ลบ
 		// CollectionMovie Routes
 		router.GET("/CollectionMovies", controller.ListCollectionMovie)
+		router.GET("/CollectionMovies/:id", controller.ListCollectionByIDcollection)
 		router.POST("/CollectionMovies", controller.CreateCollectionMovie)
 		router.PATCH("/CollectionMovies", controller.UpdateCollectionMovie)
 		router.DELETE("/CollectionMovies/:id", controller.DeleteCollectionMovie)

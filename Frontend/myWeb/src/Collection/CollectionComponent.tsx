@@ -18,7 +18,10 @@ const CollectionComponent: React.FC = () => {
         const payload = { ...values, UserId };
     
         let res = await CreateCollection(payload);
-    
+        
+        if (res){
+            window.location.reload(); // reload หลังจากลบเสร็จ
+        }
         if (res.status === 201) {
           messageApi.open({
             type: 'success',

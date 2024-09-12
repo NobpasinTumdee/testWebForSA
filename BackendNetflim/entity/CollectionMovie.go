@@ -6,7 +6,7 @@ import (
 
 type CollectionMovie struct {
 	gorm.Model
-	ID           uint `json:"ID"`
+	//ID           uint `json:"ID"`
 	CollectionID uint `json:"CollectionID"`
 	Collection   Collection `gorm:"foreignKey:CollectionID"`
 

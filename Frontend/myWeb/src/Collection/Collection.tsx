@@ -12,8 +12,10 @@ import { message } from "antd"; // Ant Design message for notifications
 //API
 import { CollectionsInterface } from '../interfaces/IMoviePackage';
 import { GetCollectionById,DeleteCollectionByID } from '../services/https/index';
+import { useNavigate } from "react-router-dom";
 
 const Collection: React.FC = () => {
+  const navigate = useNavigate();
   const [isLoading, setLoading] = useState(true);
   const [Collections, setCollection] = useState<CollectionsInterface[]>([]); // ตั้งค่าเริ่มต้นให้เป็น array ว่าง
 
@@ -98,6 +100,7 @@ const Collection: React.FC = () => {
                       <p>By {Collection.UserID} {Collection.Username}</p>
                     </div>
                   </div>
+                  <button className="edit-button" onClick={() => navigate(`/CollectionUpdate/${Collection.id}`)}>กดดิวะ</button>
                   <button className="edit-button" onClick={() => handleDelete(Collection.id)}>
                     🗑️
                   </button>

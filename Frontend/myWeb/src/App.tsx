@@ -18,6 +18,7 @@ import Social from "./Component/Social/Social"
 import Intro from './Component/Intro/Intro';
 import PopUpAdminUpdate from './Admin/PopUpAdminUpdate';
 import Payment from './HistoryPayment/Payment';
+import CollectionUpdate from './Collection/CollectionUpdate';
 // import {PopUpAdmin} from './Component/PopUpAdmin';
 // <PopUpAdmin /> 
  
@@ -42,7 +43,6 @@ const App: React.FC = () => {
             {!hideNavbar && <Navbar />}
             {!hideSocial && <Social /> }
             <Routes>
-                
                 <Route path="/" element={<Login1 />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/Forget-password" element={<ForgetPassword />} />
@@ -58,6 +58,7 @@ const App: React.FC = () => {
                 <Route path="/PreviewSubscription" element={<PreviewSubscription />} />
                 <Route path="/PopUpAdminUpdate/:id" element={<PopUpAdminUpdate />} />
                 <Route path="/Payment" element={<Payment />} />
+                <Route path="/CollectionUpdate/:id" element={<CollectionUpdate />} />
             </Routes>
         </div>
     );
