@@ -256,6 +256,18 @@ async function GetUsers() {
     .catch((e) => e.response);
     
   }
+  //ลบประวัติ
+  async function DeleteCollectionByID(id: string) {
+    return await axios
+      .delete(`${apiUrl}/Collections/${id}`, requestOptions)
+      .then((res) => {
+        // if (res) {
+        //   window.location.reload(); // reload หลังจากลบเสร็จ
+        // }
+        return res;
+      })
+      .catch((e) => e.response);
+  }
 
   async function UpdateUser(data: UsersInterface) {
     const requestOptions = {
@@ -299,5 +311,6 @@ async function GetUsers() {
 
     CreateCollection,
     GetCollectionById,
+    DeleteCollectionByID,
   };
   

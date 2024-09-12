@@ -19,7 +19,7 @@ const SocialIcons: React.FC = () => {
     });
   return (
     <>
-      <ul style={{ listStyle: 'none', display: 'flex', gap: '20px', position: 'fixed', right: '15px', bottom: '0' }}>
+      <ul style={{ listStyle: 'none', display: 'flex', gap: '20px', position: 'fixed', right: '15px', bottom: '0' ,zIndex: '1000'}}>
         <li className={`${styles.item} ${styles.first}`}>
           <a onClick={notify}>
             <i className={`fa-brands fa-instagram ${styles.icon}`}></i>

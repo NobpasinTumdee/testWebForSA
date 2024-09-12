@@ -37,6 +37,7 @@ export interface PaymentsInterface {
 
 export interface CollectionsInterface {
     ID?: number;
+    id?: number; //keyprop from controler
     Collection_name?: string;
     //CollectionName?: string;
     UserID?: number;

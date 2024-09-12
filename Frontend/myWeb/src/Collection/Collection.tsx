@@ -11,7 +11,7 @@ import { message } from "antd"; // Ant Design message for notifications
 
 //API
 import { CollectionsInterface } from '../interfaces/IMoviePackage';
-import { GetCollectionById } from '../services/https/index';
+import { GetCollectionById,DeleteCollectionByID } from '../services/https/index';
 
 const Collection: React.FC = () => {
   const [isLoading, setLoading] = useState(true);
@@ -57,6 +57,25 @@ const Collection: React.FC = () => {
     }, 1000)
   })
 
+  const handleDelete = async (id: number | undefined) => {
+    if (id) {
+      try {
+        const res = await DeleteCollectionByID(String(id));
+        if (res.status === 200) {
+          // อัปเดต state เพื่อลบประวัติจากหน้าจอทันที
+          setCollection((prevHistory) => prevHistory.filter(item => item.id !== id));
+          message.success("ลบประวัติสำเร็จ");
+        } else {
+          message.error("ไม่สามารถลบประวัติได้");
+        }
+      } catch (error) {
+        message.error("เกิดข้อผิดพลาดในการลบประวัติ");
+      }
+    } else {
+      message.error("ID ของประวัติไม่ถูกต้อง");
+    }
+  };
+
   return (
     <>
       {isLoading ? (<div style={{
@@ -69,7 +88,7 @@ const Collection: React.FC = () => {
           </button>
           <div className="movies-listCollection">
             {Collections.map((Collection) => (
-              <div key={Collection.ID}>
+              <div key={Collection.id}>
                 <div className="cardCollection">
                   <div className="card-innerCollection">
                     <div className="card-frontCollection">
@@ -79,6 +98,9 @@ const Collection: React.FC = () => {
                       <p>By {Collection.UserID} {Collection.Username}</p>
                     </div>
                   </div>
+                  <button className="edit-button" onClick={() => handleDelete(Collection.id)}>
+                    🗑️
+                  </button>
                 </div>
               </div>
             ))}
