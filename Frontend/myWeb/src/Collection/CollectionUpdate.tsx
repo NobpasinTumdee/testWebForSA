@@ -4,7 +4,7 @@ import {  useParams } from "react-router-dom";
 import { GetcollectionMovieById,DeleteCollectionMovieByID } from "../services/https/index";
 import { message } from "antd"; // Ant Design message for notifications
 import { CollectionMovieInterface } from "../interfaces/IMoviePackage";
-
+import './Collection.css'
 
 
 export const CollectionUpdate: React.FC = () => {
@@ -61,11 +61,12 @@ export const CollectionUpdate: React.FC = () => {
       {/* <div>Hello</div>
       {id} */}
       <div className="History-container">
-          <h1 className="History-title">Collection</h1>
-          <div className="movies-list">
+        {CollectM.length > 0 && <h1 className="History-title">{CollectM[0].collection_name}</h1>}
+          <div className="movie-gridCollection" >
             {CollectM.length > 0 ? (
               CollectM.map((CollectM) => (
-                  <div className="movie-card-Adminpage" key={CollectM.id}>
+              <div key={CollectM.id} >
+                  <div className="movie-cardCollection" >
                     <img src={CollectM.MoviePoster} alt={CollectM.movie_name} className="movie-image" />
                     <div className="movie-info">
                       <h2>Movie Name: {CollectM.movie_name || "No Movie Name"}</h2>
@@ -74,6 +75,8 @@ export const CollectionUpdate: React.FC = () => {
                       🗑️
                     </button>
                   </div>
+                </div>
+                
                 ))
             ) : (
               <>
@@ -88,7 +91,7 @@ export const CollectionUpdate: React.FC = () => {
             )}
           </div>
           <a href="/MainWeb" className="return-button-Admin">Return to home page</a>
-        </div>
+      </div>
     </>
   );
 };

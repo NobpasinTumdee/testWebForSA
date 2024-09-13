@@ -243,6 +243,19 @@ async function GetUsers() {
     
   }
   //===========================================================================================================⬆️
+  //get collection
+  async function Getcollection() {
+      
+    return await axios
+    
+    .get(`${apiUrl}/CollectionMovies`, requestOptions)
+    
+    .then((res) => res)
+    
+    .catch((e) => e.response);
+    
+  }
+  
   // get Collection by id user
   async function GetCollectionById(id: string) {
     
@@ -380,6 +393,7 @@ async function GetUsers() {
     CreatePayment,
     GetPaymentById,
 
+    Getcollection,
     CreateCollection,
     GetCollectionById,
     DeleteCollectionByID,
