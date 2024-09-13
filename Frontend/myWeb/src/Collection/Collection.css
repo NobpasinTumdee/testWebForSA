@@ -15,7 +15,7 @@
   
   .movies-listCollection {
     width: 100%;
-    margin-left: 80px;
+    margin-left: 22%;
     display: flex;
     flex-wrap: wrap; /* ทำให้ flex items สามารถขึ้นแถวใหม่ได้ */
     gap: 60px;
@@ -96,7 +96,10 @@
 .cardCollection {
   width: 300px;
   height: 200px;
+  background-color: #ffe2bf5d;
+  border-radius: 20px;
   perspective: 1000px;
+  box-shadow: #ffe2bf50 0px 30px 20px 0px;
 }
 
 .card-innerCollection {
@@ -120,11 +123,11 @@
 }
 
 .card-frontCollection {
-  background-color: #dab86b;
+  background-color: #1a023f;
   color: #fff;
   display: flex;
   align-items: center;
-  border: 10px solid #72440b;
+  border: 10px solid #ffd8a9;
   border-radius: 10px;
   justify-content: center;
   font-size: 24px;
@@ -132,11 +135,11 @@
 }
 
 .card-backCollection {
-  background-color: #72440b;
+  background-color: #ffd8a9;
   color: #fff;
   display: flex;
   align-items: center;
-  border: 10px solid #72440b;
+  border: 10px solid #ffd8a9;
   border-radius: 10px;
   justify-content: center;
   font-size: 24px;
@@ -156,8 +159,8 @@
  }
 
  .AddCollection:hover {
-  background-color: #f4d57a;
-  box-shadow: 0 0px 7px #ffc107;
+  background-color: #ffb356;
+  box-shadow: 0 0px 7px #FFE2BF;
  }
 
 

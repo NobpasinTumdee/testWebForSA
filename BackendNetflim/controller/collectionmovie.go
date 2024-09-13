@@ -38,9 +38,9 @@ func CreateCollectionMovie(c *gin.Context) {
 func ListCollectionMovie(c *gin.Context) {
 	var CollectionMovies []struct {
 		ID              uint   `json:"id"`
-		CollectionID    uint   `json:"collection_id"`
+		CollectionID    uint   `json:"CollectionID"`
 		CollectionName  string `json:"collection_name"`
-		MovieID         uint   `json:"movie_id"`
+		MovieID         uint   `json:"MovieID"`
 		MovieName       string `json:"movie_name"` 
 	}
 

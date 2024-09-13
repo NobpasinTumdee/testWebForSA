@@ -47,9 +47,9 @@ export interface CollectionsInterface {
 export interface CollectionMovieInterface {
     ID?: number;
     id?: number;
-    collection_id?: number;
+    CollectionID?: number;
     collection_name?: string;
-    movie_id?: number;
+    MovieID?: number;
     movie_name?: string;
     MoviePoster?: string;
 }

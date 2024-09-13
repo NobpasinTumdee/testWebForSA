@@ -133,6 +133,18 @@ async function GetUsers() {
       .catch((e) => e.response);
   
   }
+  // get movie all 
+  async function GetMovie() {
+      
+    return await axios
+    
+    .get(`${apiUrl}/Movies`, requestOptions)
+    
+    .then((res) => res)
+    
+    .catch((e) => e.response);
+    
+  }
   // update movie
   async function UpdateMovieByid(id: string, data: MovieInterface) {
 
@@ -381,6 +393,7 @@ async function GetUsers() {
     CreateUser,//sign Up
     GetUserById,// get User by id
 
+    GetMovie,//หาหนังทั้งหมดที่มี
     CreateMovie,//เพิ่มหนัง
     UpdateMovieByid,//แก้ไขข้อมูลหนัง
     DeleteMovieById,//ลบหนัง

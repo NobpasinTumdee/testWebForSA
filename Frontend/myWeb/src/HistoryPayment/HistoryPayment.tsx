@@ -15,7 +15,7 @@ const HistoryPayment: React.FC = () => {
     if (userIdstr) {
       fetchUserData(userIdstr);
     } else {
-      message.error("ไม่พบ ID ของผู้ใช้ใน localStorage");
+      message.error("The user ID was not found in localStorage😭");
     }
   }, [userIdstr]);
 
@@ -26,11 +26,11 @@ const HistoryPayment: React.FC = () => {
         setHistorypay(res.data); // กำหนดให้เป็น array ที่ได้จาก API
       } else {
         setHistorypay([]); // ถ้าไม่มีข้อมูล ให้กำหนดเป็น array ว่าง
-        message.error("ยังไม่มีประวัติการรับชม!!!");
+        message.error("There is no order history yet💸");
       }
     } catch (error) {
       setHistorypay([]); // กำหนดให้เป็น array ว่างเมื่อมี error
-      message.error("Your viewing history is not yet available.");
+      message.error("Error detected🤯");
     }
   };
 

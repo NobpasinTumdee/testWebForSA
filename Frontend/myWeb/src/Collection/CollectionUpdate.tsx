@@ -1,17 +1,19 @@
 
 import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-import { GetcollectionMovieById, DeleteCollectionMovieByID } from "../services/https/index";
-import { message, Select, Space } from "antd"; // Ant Design message for notifications
-import { CollectionMovieInterface } from "../interfaces/IMoviePackage";
+import { GetcollectionMovieById, DeleteCollectionMovieByID,CreateCollectionMovie,GetMovie } from "../services/https/index";
+import { message, Select, Space, Button } from "antd"; // Ant Design message for notifications
+import { CollectionMovieInterface,MovieInterface } from "../interfaces/IMoviePackage";
+
 import './Collection.css'
 
 export const CollectionUpdate: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [CollectM, setCollectM] = useState<CollectionMovieInterface[]>([]); // ตั้งค่าเริ่มต้นให้เป็น array ว่าง
-  //const [Packages, setPackage] = useState<CollectionsInterface[]>([]);
-
+  const [movies, setMovies] = useState<MovieInterface[]>([]); // List of all movies
+  const [selectedMovie, setSelectedMovie] = useState<number | null>(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+
   const openPopup = () => {
     setIsPopupOpen(true);
   };
@@ -19,34 +21,76 @@ export const CollectionUpdate: React.FC = () => {
     setIsPopupOpen(false);
   };
 
+  
 
+  // Handle select change
+  const handleChange = (value: number) => {
+    setSelectedMovie(value); // Update selected movie ID
+  };
 
-  const handleChange = (value: string) => {
-    console.log(`selected ${value}`);
+  // Fetch all movies for dropdown
+  const fetchMovies = async () => {
+    try {
+      const res = await GetMovie();
+      if (res.status === 200 && res.data) {
+        setMovies(res.data); // Store movies in state
+      } else {
+        message.error("I can't retrieve any movie information.😭");
+      }
+    } catch (error) {
+      message.error("I found the Error🤯");
+    }
   };
 
 
-
+  // Fetch movies when component mounts
   useEffect(() => {
     if (id) {
-      fetchUserData(id);
+      fetchCollectionMovies(id);
+      fetchMovies(); // Fetch movies for the select dropdown
     } else {
-      message.error("ไม่พบ ID ของ Collection ใน localStorage");
+      message.error("Collection ID not found in localStorage🥹");
     }
   }, [id]);
 
+  // Add movie to collection
+  const handleAddMovie = async () => {
+    if (selectedMovie && id) {
+      const newCollectionMovie: CollectionMovieInterface = {
+        CollectionID: parseInt(id), // Collection ID from route params
+        MovieID: selectedMovie, // Selected movie ID
+      };
 
-  const fetchUserData = async (id: string) => {
+      try {
+        const res = await CreateCollectionMovie(newCollectionMovie);
+        if (res.status === 200) {
+          message.success("เพิ่มหนังสำเร็จ");
+          closePopup(); // Close the popup after success
+          fetchCollectionMovies(id); // Refresh collection movies
+        } else {
+          message.error("I can't Add Movie Sorry😭");
+        }
+      } catch (error) {
+        message.error("I found the Error🤯");
+      }
+    } else {
+      message.error("Please add the movie first😘");
+    }
+  };
+
+
+  // Fetch collection movies
+  const fetchCollectionMovies = async (id: string) => {
     try {
       const res = await GetcollectionMovieById(id);
       if (res.status === 200 && res.data) {
-        setCollectM(res.data); // กำหนดให้เป็น array ที่ได้จาก API
+        setCollectM(res.data);
       } else {
-        setCollectM([]); // ถ้าไม่มีข้อมูล ให้กำหนดเป็น array ว่าง
-        message.error("ยังไม่มีข้อมูล!!!");
+        setCollectM([]);
+        message.error("No Data Collection💁🏻‍♀️");
       }
     } catch (error) {
-      setCollectM([]); // กำหนดให้เป็น array ว่างเมื่อมี error
+      setCollectM([]);
       message.error("No Data.");
     }
   };
@@ -58,15 +102,15 @@ export const CollectionUpdate: React.FC = () => {
         if (res.status === 200) {
           // อัปเดต state เพื่อลบประวัติจากหน้าจอทันที
           setCollectM((prevMovie) => prevMovie.filter(item => item.id !== id));
-          message.success("ลบประวัติสำเร็จ");
+          message.success("Deleted💪🏻");
         } else {
-          message.error("ไม่สามารถลบประวัติได้");
+          message.error("Can't deleted😭");
         }
       } catch (error) {
-        message.error("เกิดข้อผิดพลาดในการลบประวัติ");
+        message.error("Error!!!");
       }
     } else {
-      message.error("ID ของประวัติไม่ถูกต้อง");
+      message.error("I can't see your id collection🤯");
     }
   };
 
@@ -112,26 +156,23 @@ export const CollectionUpdate: React.FC = () => {
 
       {isPopupOpen && (
         <div className="popup-overlay-collection">
-          <div className="popup-content-collection">
-            <button onClick={closePopup} className="popup-close-button-collection">
-              X
-            </button>
-            <h3>Add Movie to Collection</h3>
-            <Space wrap>
-              <Select
-                defaultValue="lucy"
-                style={{ width: 300 }}
-                onChange={handleChange}
-                options={[
-                  { value: 'jack', label: 'Jack' },
-                  { value: 'lucy', label: 'Lucy' },
-                  { value: 'Yiminghe', label: 'yiminghe' },
-                ]}
-              />
-            </Space>
-
-          </div>
+        <div className="popup-content-collection">
+          <button onClick={closePopup} className="popup-close-button-collection">X</button>
+          <h3>Add Movie to Collection</h3>
+          <Space wrap>
+            <Select
+              style={{ width: 300 ,height: 50}}
+              onChange={handleChange}
+              placeholder="Select a movie"
+              options={movies.map((movie) => ({
+                label: movie.Movie_name,
+                value: movie.ID,
+              }))}
+            />
+            <Button type="primary" onClick={handleAddMovie}>Add</Button>
+          </Space>
         </div>
+      </div>
       )}
     </>
   );

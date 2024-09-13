@@ -98,7 +98,7 @@ const Collection: React.FC = () => {
                       <p> {Collection.Collection_name}</p>
                     </div>
                     <div className="card-backCollection">
-                      <p>By {Collection.UserID} {Collection.Username}</p>
+                      <p>By {Collection.Username} ✨</p>
                     </div>
                   </div>
                   

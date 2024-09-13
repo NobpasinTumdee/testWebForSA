@@ -13,10 +13,10 @@ const WatchMovie: React.FC = () => {
   const location = useLocation();
   const { videoUrl, movieName, Movie_poster, Movie_information } = location.state as { videoUrl: string; movieName: string; Movie_poster: string; Movie_information: string; };
   useEffect(() => {
-    message.loading({ content: 'กำลังส่งมอบความสุขให้คุณ...', key });
+    message.loading({ content: 'กำลังส่งมอบความสุขให้คุณ😍', key });
     setTimeout(() => {
       message.success({ content: 'เย่! ขอให้สนุกนะ😘', key, duration: 2 });
-    }, 3000);
+    }, 2000);
     //message.success("Update your History!!!");
   })
 
