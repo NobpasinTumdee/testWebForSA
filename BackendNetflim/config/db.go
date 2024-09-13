@@ -140,6 +140,16 @@ func SetupDatabase() {
 		Movie_information:  "Jujutsu Kaisen Wiki, a community created by the fans, for the fans, and is dedicated to housing everything about Jujutsu Kaisen created by Gege Akutami. Our goal is to become the best source of information on the series. Please help us by creating or editing any of our articles! We currently have 68,685 edits to 986 articles and 5,824 images on this wiki.",
 		Movie_video: "https://www.youtube.com/embed/X8xLl_802UU?si=YzztegzJOvaGZsep&autoplay=1" , 
 		Movie_length: "20:30"},//17
+		{Movie_name: "Kyoukai no Kanata", 
+		Movie_poster: "https://img.amiami.com/images/product/main/134/MED-DVD2-22037.jpg", 
+		Movie_information:  "Jujutsu Kaisen Wiki, a community created by the fans, for the fans, and is dedicated to housing everything about Jujutsu Kaisen created by Gege Akutami. Our goal is to become the best source of information on the series. Please help us by creating or editing any of our articles! We currently have 68,685 edits to 986 articles and 5,824 images on this wiki.",
+		Movie_video: "https://www.youtube.com/embed/s1JoJ7FdYcU?si=LjSKtFnzA8ahBv1u&autoplay=1" , 
+		Movie_length: "2:30"},//18
+		{Movie_name: "Aishang Ta de Liyou", 
+		Movie_poster: "https://www.faselhds.care/wp-content/uploads/2023/09/53e59c94bb092540e8cdd526ae9d250d-400x600.jpg", 
+		Movie_information:  "Jujutsu Kaisen Wiki, a community created by the fans, for the fans, and is dedicated to housing everything about Jujutsu Kaisen created by Gege Akutami. Our goal is to become the best source of information on the series. Please help us by creating or editing any of our articles! We currently have 68,685 edits to 986 articles and 5,824 images on this wiki.",
+		Movie_video: "https://www.youtube.com/embed/KhymVsLJjCc?si=va6ziFz82RwGI7O_&autoplay=1" , 
+		Movie_length: "2:30"},//18
 	}
 	for _, pkg := range Movie {
 		db.FirstOrCreate(&pkg,entity.Movie{Movie_name: pkg.Movie_name})
