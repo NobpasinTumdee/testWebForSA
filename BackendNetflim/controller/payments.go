@@ -83,7 +83,9 @@ func ListPaymentByID(c *gin.Context) {
         PaymentMethod   string    `json:"Payment_method"`
         PaymentStatus   string    `json:"Payment_status"`
         Date            time.Time `json:"DateP"`
+        UserID          uint      `json:"UserID"`
         Username        string    `json:"username"`
+        PackageID       uint      `json:"PackageID"`
         PackageName     string    `json:"Package_name"`
     }
 
@@ -92,7 +94,7 @@ func ListPaymentByID(c *gin.Context) {
 
     // Query with joins to get payment, user, and package details, filtered by userID
     results := db.Table("payments").
-        Select("payments.id, payments.payment_method, payments.payment_status, payments.date, users.username, movie_packages.package_name").
+        Select("payments.id, payments.payment_method, payments.payment_status, payments.date,payments.user_id, users.username,payments.package_id, movie_packages.package_name").
         Joins("left join users on users.id = payments.user_id").
         Joins("left join movie_packages on movie_packages.id = payments.package_id").
         Where("payments.user_id = ?", userID).

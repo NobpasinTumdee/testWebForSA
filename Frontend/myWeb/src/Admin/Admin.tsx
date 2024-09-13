@@ -10,7 +10,7 @@ import LoadingScreen from '../Component/Loading/LoadingScreen';
 import { MovieInterface } from "../interfaces/IMoviePackage";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-
+//import { Image } from 'antd';
 import {DeleteMovieById} from "../services/https/index";
 
 
