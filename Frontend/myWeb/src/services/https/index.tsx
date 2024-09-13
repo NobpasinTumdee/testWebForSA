@@ -103,6 +103,20 @@ async function GetUsers() {
       .catch((e) => e.response);
   
   }
+
+
+  // update user
+  async function UpdateUserByid(id: string, data: MovieInterface) {
+
+    return await axios
+  
+      .put(`${apiUrl}/users/${id}`, data, requestOptions)
+  
+      .then((res) => res)
+  
+      .catch((e) => e.response);
+  
+  }
   //===========================================================================================================⬇️
   // เพิ่มหนัง
   async function CreateMovie(data: MovieInterface) {
@@ -348,6 +362,7 @@ async function GetUsers() {
     GetUsers,
     DeleteUserByID,
     UpdateUser,
+    UpdateUserByid,
     
     SignIn,//sign in 
     CreateUser,//sign Up

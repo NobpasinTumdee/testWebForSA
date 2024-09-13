@@ -128,3 +128,50 @@ func UpdateUser(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"message": "Updated successful"})
 }
+
+// PUT update user ใช้อันนี้นะจ๊ะ
+func UpdateUserByid(c *gin.Context) {
+
+
+	var user entity.User
+ 
+ 
+	UserID := c.Param("id")
+ 
+ 
+	db := config.DB()
+ 
+	result := db.First(&user, UserID)
+ 
+	if result.Error != nil {
+ 
+		c.JSON(http.StatusNotFound, gin.H{"error": "NameUser not found"})
+ 
+		return
+ 
+	}
+ 
+ 
+	if err := c.ShouldBindJSON(&user); err != nil {
+ 
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request, unable to map payload"})
+ 
+		return
+ 
+	}
+ 
+ 
+	result = db.Save(&user)
+ 
+	if result.Error != nil {
+ 
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request"})
+ 
+		return
+ 
+	}
+ 
+ 
+	c.JSON(http.StatusOK, gin.H{"message": "Updated successful"})
+ 
+ }

@@ -33,7 +33,7 @@ func main() {
 		router.GET("/users", user.ListUsers) //getAll
 		router.GET("/users/:id", user.GetUser) //getOnlyID
 		router.POST("/users", user.CreateUser)
-		router.PUT("/users/:id", user.UpdateUser)
+		router.PUT("/users/:id", user.UpdateUserByid)
 		router.DELETE("/users/:id", user.DeleteUser)
 		// Movie Routes
 		router.GET("/Movies", controller.ListMovies)
