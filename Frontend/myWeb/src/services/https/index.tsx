@@ -117,6 +117,14 @@ async function GetUsers() {
       .catch((e) => e.response);
   
   }
+
+  //gender user
+  async function GetGenders() {
+    return await axios
+      .get(`${apiUrl}/genders`, requestOptions) // ปรับ URL ให้ตรงกับที่ API ใช้
+      .then((res) => res)
+      .catch((e) => e.response);
+  }
   //===========================================================================================================⬇️
   // เพิ่มหนัง
   async function CreateMovie(data: MovieInterface) {
@@ -384,37 +392,37 @@ async function GetUsers() {
   }
   
   export {
-    GetUsers,
-    DeleteUserByID,
-    UpdateUser,
-    UpdateUserByid,
-    
-    SignIn,//sign in 
-    CreateUser,//sign Up
-    GetUserById,// get User by id
+  GetUsers,
+  DeleteUserByID,
+  UpdateUser,
+  UpdateUserByid,
 
-    GetMovie,//หาหนังทั้งหมดที่มี
-    CreateMovie,//เพิ่มหนัง
-    UpdateMovieByid,//แก้ไขข้อมูลหนัง
-    DeleteMovieById,//ลบหนัง
-    GetMovieById,//แสดงหนังด้วยไอดี
+  SignIn, //sign in 
+  CreateUser, //sign Up
+  GetUserById, // get User by id
 
-    CreateHistory,//สร้างประวัติ
-    GetHistoryById,//GetHistoryByIduser
-    DeleteHistoryByID,//ลบประวัติ
+  GetMovie, //หาหนังทั้งหมดที่มี
+  CreateMovie, //เพิ่มหนัง
+  UpdateMovieByid, //แก้ไขข้อมูลหนัง
+  DeleteMovieById, //ลบหนัง
+  GetMovieById, //แสดงหนังด้วยไอดี
 
-    CreatePayment,
-    GetPaymentById,
+  CreateHistory, //สร้างประวัติ
+  GetHistoryById, //GetHistoryByIduser
+  DeleteHistoryByID, //ลบประวัติ
 
-    Getcollection,
-    CreateCollection,
-    GetCollectionById,
-    DeleteCollectionByID,
+  CreatePayment,
+  GetPaymentById,
 
-    
-    CreateCollectionMovie,
-    GetcollectionMovieById,
-    GetcollectionMovie,
-    DeleteCollectionMovieByID,
-  };
+  Getcollection,
+  CreateCollection,
+  GetCollectionById,
+  DeleteCollectionByID,
+
+
+  CreateCollectionMovie,
+  GetcollectionMovieById,
+  GetcollectionMovie,
+  DeleteCollectionMovieByID, GetGenders,
+};
   

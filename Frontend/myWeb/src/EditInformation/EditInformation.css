@@ -1,16 +1,13 @@
-
-
 .containerEdit {
-  /*background: linear-gradient(180deg, #403ECC 0%, black 58%);*/
   padding: 10px;
   color: white;
   text-align: center;
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column; /* จัดเรียงเนื้อหาภายในในแนวตั้ง */
-  justify-content: center; /* จัดให้อยู่กลางในแนวตั้ง */
-  align-items: center; /* จัดให้อยู่กลางในแนวนอน */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .edit-h2 {
@@ -26,16 +23,73 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+  flex-wrap: wrap; /* เพิ่มเพื่อรองรับฟิลด์ที่ยาว */
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
   width: 45%;
+  margin-bottom: 20px; /* เพิ่มเพื่อให้ฟิลด์ไม่ชนกัน */
 }
-.input-group input{
+
+.input-group input {
+  width: 100%;
   height: 35px;
+  padding: 8px;
+  border-radius: 20px; /* Rounded corners */
+  border: 1px solid #ccc; /* Light border color */
+  background: white; /* Background color */
+  color: black; /* Text color */
+  font-size: 16px; /* Font size */
+  font-family: 'pkmaehongson'; /* Font family */
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2); /* Light shadow for better visibility */
 }
+
+/* CSS for the gender dropdown */
+.input-group select {
+  width: 100%;
+  height: 35px;
+  padding: 8px;
+  border-radius: 20px; /* Rounded corners */
+  border: 1px solid #ccc; /* Light border color */
+  background: white; /* Background color */
+  color: black; /* Text color */
+  font-size: 16px; /* Font size */
+  font-family: 'pkmaehongson'; /* Font family */
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2); /* Light shadow for better visibility */
+}
+
+.input-group select:focus {
+  outline: none; /* Remove default outline */
+  border-color: #FFA726; /* Highlight border color on focus */
+  box-shadow: 0px 1px 5px rgba(255, 165, 38, 0.5); /* Highlight shadow on focus */
+}
+
+.input-group select option {
+  font-family: 'pkmaehongson'; /* Font family for options */
+}
+
+/* CSS for phone number input */
+.input-group input[type="text"].phone-number {
+  width: 100%;
+  height: 35px;
+  padding: 8px;
+  border-radius: 20px; /* Rounded corners */
+  border: 1px solid #ccc; /* Light border color */
+  background: white; /* Background color */
+  color: black; /* Text color */
+  font-size: 16px; /* Font size */
+  font-family: 'pkmaehongson'; /* Font family */
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2); /* Light shadow for better visibility */
+}
+
+.input-group input[type="text"].phone-number:focus {
+  outline: none; /* Remove default outline */
+  border-color: #FFA726; /* Highlight border color on focus */
+  box-shadow: 0px 1px 5px rgba(255, 165, 38, 0.5); /* Highlight shadow on focus */
+}
+
 
 label {
   margin-bottom: 5px;
@@ -44,33 +98,18 @@ label {
   font-family: 'pkmaehongson';
 }
 
-/*
-input[type="text"],
-input[type="password"] {
-    width: 100%;
-    padding: 8px; 
-    border-radius: 20px; 
-    border: none;
-    font-size: 14px; 
-    background: white; 
-    color: black; 
-    
-}
-*/
-
-
 .editinformation-button {
   margin-top: 70px;
   padding: 15px 30px;
   background-color: #FFA726;
   border: none;
-  border-radius: 20px; /* เพิ่มมุมโค้ง */
+  border-radius: 20px;
   color: white;
   font-size: 20px;
   font-family: 'pkmaehongson';
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0px 1px 24px rgba(248, 148, 26, 0.7); /* เพิ่มเงาให้ปุ่ม */
+  box-shadow: 0px 1px 24px rgba(248, 148, 26, 0.7);
   transition: background-color 0.3s ease;
 }
 
@@ -83,3 +122,12 @@ input[type="password"] {
   src: url(../src/PK-Maehongson-Medium.ttf);
 }
 
+.no-spinner::-webkit-inner-spin-button, 
+.no-spinner::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+  margin: 0; 
+}
+
+.no-spinner {
+  -moz-appearance: textfield;
+}

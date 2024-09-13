@@ -35,6 +35,10 @@ func main() {
 		router.POST("/users", user.CreateUser)
 		router.PUT("/users/:id", user.UpdateUserByid)
 		router.DELETE("/users/:id", user.DeleteUser)
+
+		// Gender Routes
+		router.GET("/genders", controller.ListGenders)
+		
 		// Movie Routes
 		router.GET("/Movies", controller.ListMovies)
 		router.GET("/Movies/:id", controller.GetMovieByid)
