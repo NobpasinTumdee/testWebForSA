@@ -33,9 +33,19 @@ func SetupDatabase() {
 		&entity.Payment{},
 		&entity.Collection{},
 		&entity.CollectionMovie{},
+		&entity.Gender{},
 	)
 
-
+	Gender := []entity.Gender{
+		{Gender: "Male"},
+		{Gender: "Female"},
+		{Gender: "God"},
+		{Gender: "LGBTQ+"},
+		
+	}
+	for _, pkg := range Gender {
+		db.FirstOrCreate(&pkg,entity.Gender{Gender: pkg.Gender})
+	}
 
 	hashedPassword, _ := HashPassword("123456")
 	//BirthDay, _ := time.Parse("2006-01-02", "1988-11-12")
