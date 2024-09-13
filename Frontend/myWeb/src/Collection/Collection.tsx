@@ -91,6 +91,7 @@ const Collection: React.FC = () => {
           <div className="movies-listCollection">
             {Collections.map((Collection) => (
               <div key={Collection.id}>
+                <button style={{background: 'transparent',border: 'transparent'}} onClick={() => navigate(`/CollectionUpdate/${Collection.id}`)}>
                 <div className="cardCollection">
                   <div className="card-innerCollection">
                     <div className="card-frontCollection">
@@ -100,11 +101,12 @@ const Collection: React.FC = () => {
                       <p>By {Collection.UserID} {Collection.Username}</p>
                     </div>
                   </div>
-                  <button className="edit-button" onClick={() => navigate(`/CollectionUpdate/${Collection.id}`)}>กดดิวะ</button>
+                  
+                </div>
+              </button>
                   <button className="edit-button" onClick={() => handleDelete(Collection.id)}>
                     🗑️
                   </button>
-                </div>
               </div>
             ))}
 

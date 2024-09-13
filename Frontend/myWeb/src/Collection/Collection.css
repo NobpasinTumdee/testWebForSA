@@ -1,5 +1,5 @@
 .Collection-container {
-    background: linear-gradient(to bottom, #000, #FFB154);
+    background: linear-gradient(to bottom, #000, #4c3283);
     color: white;
     min-height: 100vh;
     padding: 20px;
@@ -167,19 +167,21 @@
 
 
 
-
+/* Card */
 
  .movie-gridCollection {
-  
-  margin-bottom: 20px;
-  margin-left: 60px;
+  width: 100%;
+    margin-left: 20%;
+    display: flex;
+    flex-wrap: wrap; /* ทำให้ flex items สามารถขึ้นแถวใหม่ได้ */
+    gap: 60px;
 }
 
 .movie-cardCollection {
   background-color: #FFE2BF;
   padding: 0%;
   width: 250px;
-  height: 400px;
+  height: 370px;
   border-radius: 10px;
   /* text-align: center; */
   transition: 0.5s;
@@ -196,3 +198,42 @@
   outline: none;
   padding: 2%;
 }
+
+
+/* popup */
+.popup-overlay-collection {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's on top */
+}
+
+.popup-content-collection {
+  position: relative; /* Ensure relative positioning for absolute child */
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  width: 300px;
+  height: 300px;
+}
+
+.popup-close-button-collection {
+  position: absolute; /* This makes the button stay inside the popup */
+  top: 10px;
+  right: 10px;
+  background-color: rgb(218, 30, 30);
+  border: none;
+  font-size: 20px;
+  color: white;
+  padding: 0px 5px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
