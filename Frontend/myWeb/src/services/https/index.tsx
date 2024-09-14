@@ -262,6 +262,18 @@ async function GetUsers() {
     .catch((e) => e.response);
     
   }
+  // update Payment
+  async function UpdatePaymenteByidUser(id: string, data: PaymentsInterface) {
+
+    return await axios
+  
+      .put(`${apiUrl}/Payments/${id}`, data, requestOptions)
+  
+      .then((res) => res)
+  
+      .catch((e) => e.response);
+  
+  }
   //===========================================================================================================⬆️
   //get collection
   async function Getcollection() {
@@ -413,6 +425,7 @@ async function GetUsers() {
 
   CreatePayment,
   GetPaymentById,
+  UpdatePaymenteByidUser,
 
   Getcollection,
   CreateCollection,

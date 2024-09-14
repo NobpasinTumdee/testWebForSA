@@ -125,7 +125,52 @@ func DeletePayment(c *gin.Context) {
 
 }
 
+// PUT update Payment ใช้อันนี้นะจ๊ะ
+func UpdatePaymentByid(c *gin.Context) {
 
+
+	var Payment entity.Payment
+ 
+ 
+	PaymentID := c.Param("id")
+ 
+ 
+	db := config.DB()
+ 
+	result := db.First(&Payment, PaymentID)
+ 
+	if result.Error != nil {
+ 
+		c.JSON(http.StatusNotFound, gin.H{"error": "NameUser not found"})
+ 
+		return
+ 
+	}
+ 
+ 
+	if err := c.ShouldBindJSON(&Payment); err != nil {
+ 
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request, unable to map payload"})
+ 
+		return
+ 
+	}
+ 
+ 
+	result = db.Save(&Payment)
+ 
+	if result.Error != nil {
+ 
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request"})
+ 
+		return
+ 
+	}
+ 
+ 
+	c.JSON(http.StatusOK, gin.H{"message": "Updated successful"})
+ 
+ }
 // PATCH /Payments
 func UpdatePayment(c *gin.Context) {
 	var Payment entity.Payment

@@ -7,7 +7,7 @@ import visa from "../assets/payment/visa.png";
 import Prompay from "../assets/payment/Prompay.png";
 //API
 import { PackageInterface, PaymentsInterface } from "../interfaces/IMoviePackage";
-import { CreatePayment } from "../services/https/index";
+import { UpdatePaymenteByidUser } from "../services/https/index";
 import axios from 'axios';
 
 const Subscription = () => {
@@ -51,7 +51,7 @@ const Subscription = () => {
         Payment_status: "paid",
         DateP: new Date(),
       };
-      CreatePayment(paymentData);
+      UpdatePaymenteByidUser(userIdstr,paymentData);
     }
   };
 

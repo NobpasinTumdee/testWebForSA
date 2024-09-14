@@ -3,6 +3,7 @@ import './AboutMe.css';
 //import {APItestMoviePackage} from "../testApi/Apitest"
 import {UsertopRigh} from "../Component/UsertopRigh/UsertopRigh";
 import Carousels from "../Component/Carousels/Carousels";
+import Mastercard from "../Component/Card/Mastercard";
 
 
 const AboutMe: React.FC = () => {
@@ -10,9 +11,10 @@ const AboutMe: React.FC = () => {
     
     return (
         <>
-        {/* <APItestMoviePackage /> */}
+        {/* <APItestMoviePackage /> 
         <UsertopRigh />
-        <Carousels />
+        <Carousels />*/}
+        <Mastercard />
         </>
         
     );

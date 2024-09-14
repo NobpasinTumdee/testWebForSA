@@ -60,8 +60,9 @@ func main() {
 		// Payments Routes
 		router.GET("/Payments", controller.ListPayments)
 		router.GET("/Payments/:id", controller.ListPaymentByID)
-		router.POST("/Payments", controller.CreatePayment)//อัพเดท payment
-		router.PATCH("/Payments", controller.UpdatePayment)
+		router.POST("/Payments", controller.CreatePayment)
+		router.PUT("/Payments/:id", controller.UpdatePaymentByid)
+		//router.PATCH("/Payments", controller.UpdatePayment)//อัพเดท payment
 		router.DELETE("/Payments/:id", controller.DeletePayment)
 		// Collection Routes
 		router.GET("/Collections", controller.ListCollection)//ทั้งหมด ไม่ได้ใช้

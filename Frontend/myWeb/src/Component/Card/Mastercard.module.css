@@ -1,0 +1,77 @@
+.containerM {
+    padding: 1em;
+  }
+  
+  .frontCard {
+    margin: 18% auto;
+    padding: 0.1em 1em;
+    color: white;
+    max-width: 450px;
+    height: 235px;
+    border-radius: 11px;
+    background: linear-gradient(135deg, #45484d 0%, #000000 100%);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+    transition: transform 0.3s ease, box-shadow 0.2s ease-in;
+  }
+  
+  .frontCard:hover {
+    cursor: pointer;
+    transform: scale(1.015);
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.45);
+  }
+  
+  .globe {
+    float: right;
+    margin-top: -1.7em;
+    margin-right: 0.2em;
+    font-size: 1.6em;
+  }
+  
+  .SpanM span {
+    font-weight: normal;
+    color: #ffffff;
+  }
+  
+  .chip {
+    width: 50px;
+    height: 50px;
+    margin-top: 2.3em;
+    margin-left: 0.4em;
+    background: url(https://www.thebeneficial.com/portals/beneficialbankwebsite/images/chip.png)
+      no-repeat center;
+    background-size: cover;
+  }
+  
+  .cardInfo .no {
+    font-size: 1.25em;
+    font-family: 'Cutive Mono';
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+  }
+  
+  .cardInfo .name {
+    font-family: 'Cutive Mono';
+    font-weight: bold;
+    font-size: 1.3em;
+    margin-top: -0.5em;
+  }
+  
+  .cardInfo .expDate {
+    position: relative;
+    left: 11.5em;
+    bottom: 3em;
+    font-size: 0.8em;
+    opacity: 0.9;
+  }
+  
+  .mastercard {
+    float: right;
+    margin-top: -6.3em;
+    width: 80px;
+    height: 65px;
+    background: url('http://www.pngall.com/wp-content/uploads/2016/07/Mastercard-PNG-Clipart.png')
+      no-repeat center;
+    background-size: cover;
+  }
+  

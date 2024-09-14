@@ -52,7 +52,7 @@ func SetupDatabase() {
 
 	//User
 	User := []entity.User{
-		{Email: "B6506407@g.sut.ac.th",Username:  "Nobpasin Tumdee",Password:    hashedPassword ,Status:  "User"},
+		{Email: "B6506407@g.sut.ac.th",Username:  "Nobpasin Tumdee",Password:    hashedPassword ,Status:  "User" , Firstname: "Nobpasin" , Lastname: "Tumdee" ,Age: "21" , Phonenumber: "0616918493"},
 		{Email: "B6525972@g.sut.ac.th",Username:  "Nichakorn Chanyutha",Password:    hashedPassword ,Status:  "User"},
 		{Email: "B6511975@g.sut.ac.th",Username:  "Supaluck Tohthong",Password:    hashedPassword ,Status:  "User"},
 		{Email: "B6515454@g.sut.ac.th",Username:  "ธนวัฒน์ วัฒนกิจจา",Password:    hashedPassword ,Status:  "User"},
