@@ -1,18 +1,15 @@
+import { message, Select, Button, Form, Input } from "antd";
 import React, { FC, useState, useEffect } from 'react';
-import { UsersInterface } from '../interfaces/IUser';
-import { GetUserById , GetGenders } from '../services/https';
+import { UsersInterface, GenderInterface } from '../interfaces/IUser';
+import { GetUserById, GetGenders } from '../services/https';
 import './EditInformation.css';
 import { Loading } from '../Component/Loading/Loading';
 
+const { Option } = Select;
+
 const EditInformation: FC = () => {
-  const [oldUsername, setOldUsername] = useState('');
-  const [oldPassword, setOldPassword] = useState('');
-  const [firstname, setFirstname] = useState('');
-  const [lastname, setLastname] = useState('');
-  const [gender, setGender] = useState('');
-  const [genderList, setGenderList] = useState<string[]>([]); 
-  const [age, setAge] = useState('');
-  const [phonenumber, setPhonenumber] = useState('');
+  const [form] = Form.useForm();
+  const [genderList, setGenderList] = useState<GenderInterface[]>([]);
   const [isLoading, setLoading] = useState(true);
   const userIdstr = localStorage.getItem("id");
 
@@ -21,156 +18,109 @@ const EditInformation: FC = () => {
       try {
         if (userIdstr) {
           const response = await GetUserById(userIdstr);
-
           if (response && response.status === 200) {
             const userData: UsersInterface = response.data;
-            setOldUsername(userData.username || '');
-            setOldPassword(userData.password || '');
-            setFirstname(userData.firstname || '');
-            setLastname(userData.lastname || '');
-            setGender(userData.gender || '');
-            setAge(userData.age ? userData.age.toString() : '');
-            setPhonenumber(userData.phonenumber || '');
+            form.setFieldsValue({
+              oldUsername: userData.username || '',
+              oldPassword: userData.password || '',
+              firstname: userData.firstname || '',
+              lastname: userData.lastname || '',
+              gender: userData.GenderID || '',
+              age: userData.age ? userData.age.toString() : '',
+              phonenumber: userData.phonenumber || '',
+            });
           } else {
-            console.error('Error retrieving user data');
+            message.error('Error retrieving user data');
           }
         } else {
-          console.error('UserId not found in localStorage');
+          message.error('UserId not found in localStorage');
         }
       } catch (error) {
-        console.error('Error fetching user data:', error);
+        message.error('Error fetching user data');
+      }
+    };
+
+    const fetchGenders = async () => {
+      try {
+        const res = await GetGenders();
+        if (res.status === 200 && res.data) {
+          setGenderList(res.data);
+        } else {
+          message.error("I can't retrieve any Gender information.😭");
+        }
+      } catch (error) {
+        message.error("I found the Error🤯");
       }
     };
 
     fetchUserData();
-    GetGenders();
+    fetchGenders();
+    setLoading(false);
   }, [userIdstr]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 300);
-  }, []);
-
-  const handleFirstnameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    if (/^[a-zA-Z]*$/.test(value)) { // Allow only letters
-      setFirstname(value);
-    }
-  };
-
-  const handleLastnameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    if (/^[a-zA-Z]*$/.test(value)) { // Allow only letters
-      setLastname(value);
-    }
-  };
-
-  const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    // Check if the input starts with '0' and has up to 10 digits
-    if (/^0\d{0,9}$/.test(value) || value === '') {
-      setPhonenumber(value);
-    }
-  };
-
-  const handleEditInformation = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleEditInformation = (values: any) => {
     // Handle user information update logic here
+    console.log('Updated Information:', values);
   };
 
   return (
     <>
       {isLoading ? (
-        <div
-          style={{
-            position: 'fixed', top: '50%', left: '55%',
-            marginTop: '-50px', marginLeft: '-100px'
-          }}
-        >
+        <div style={{ position: 'fixed', top: '50%', left: '50%', marginTop: '-50px', marginLeft: '-100px' }}>
           <Loading />
         </div>
       ) : (
         <div className="containerEdit">
           <h2 className='edit-h2'>EDIT INFORMATION</h2>
-          <form className="edit-form" onSubmit={handleEditInformation}>
-            <div className="form-group">
-              <div className="input-group">
-                <label>Old USERNAME</label>
-                <input type="text" name="oldUsername" value={oldUsername} readOnly />
-              </div>
-              <div className="input-group">
-                <label>New USERNAME</label>
-                <input type="text" name="newUsername" required />
-              </div>
-            </div>
-            <div className="form-group">
-              <div className="input-group">
-                <label>Old PASSWORD</label>
-                <input type="password" name="oldPassword" value={oldPassword} readOnly />
-              </div>
-              <div className="input-group">
-                <label>New PASSWORD</label>
-                <input type="password" name="newPassword" required />
-              </div>
-            </div>
-            <div className='form-group'>
-              <div className="input-group">
-                <label>Confirm PASSWORD</label>
-                <input type="password" name="confirmPassword" required />
-              </div>
-            </div>
-            <div className="form-group">
-              <div className="input-group">
-                <label>Firstname</label>
-                <input type="text" name="firstname" value={firstname} onChange={handleFirstnameChange}  />
-              </div>
-              <div className="input-group">
-                <label>Lastname</label>
-                <input type="text" name="lastname" value={lastname} onChange={handleLastnameChange}  />
-              </div>
-            </div>
-            <div className="form-group">
-              <div className="input-group">
-                <label>Gender</label>
-                <select
-                  name="gender"
-                  value={gender}
-                  onChange={(e) => setGender(e.target.value)}
-                  required
-                >
-                  <option value="">Select Gender</option>
-                  {genderList.map((genderOption, index) => (
-                    <option key={index} value={genderOption}>
-                      {genderOption}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="input-group">
-                <label>Age</label>
-                <input type="number" name="age" value={age} 
-               onChange={(e) => {
-                const value = e.target.value;
-                if (value === '' || /^[1-9]\d*$/.test(value)) {
-                  // เช็คว่าเป็นตัวเลขตั้งแต่ 1 ขึ้นไป
-                  setAge(value);
-                }
-              }}
-              min="1" // กำหนดค่าอายุน้อยที่สุดคือ 1
-              required
-              className="no-spinner"/>
-              </div>
-              <div className="input-group">
-                <label>Phone Number</label>
-                <input type="text" name="phonenumber" value={phonenumber} onChange={handlePhoneNumberChange} className="phone-number"/>
-              </div>
-            </div>
-            
-            <button type="submit" className="editinformation-button">
-              Edit Information
-            </button>
-          </form>
+          <Form
+            form={form}
+            className="edit-form"
+            onFinish={handleEditInformation}
+            layout="vertical"
+          >
+            <Form.Item label="Old USERNAME" name="oldUsername">
+              <Input readOnly />
+            </Form.Item>
+            <Form.Item label="New USERNAME" name="newUsername" rules={[{ required: false, message: 'Please input your new username!' }]}>
+              <Input />
+            </Form.Item>
+            <Form.Item label="Old PASSWORD" name="oldPassword">
+              <Input.Password readOnly />
+            </Form.Item>
+            <Form.Item label="New PASSWORD" name="newPassword" rules={[{ required: false, message: 'Please input your new password!' }]}>
+              <Input.Password />
+            </Form.Item>
+            <Form.Item label="Confirm PASSWORD" name="confirmPassword" rules={[{ required: false, message: 'Please confirm your password!' }]}>
+              <Input.Password />
+            </Form.Item>
+            <Form.Item label="Firstname" name="firstname">
+              <Input onChange={(e) => form.setFieldsValue({ firstname: e.target.value })} />
+            </Form.Item>
+            <Form.Item label="Lastname" name="lastname">
+              <Input onChange={(e) => form.setFieldsValue({ lastname: e.target.value })} />
+            </Form.Item>
+            <Form.Item label="Gender" name="gender">
+              <Select
+                placeholder="Select a Gender"
+                style={{ width: '100%' }}
+              >
+                {genderList.map(gender => (
+                  <Option key={gender.ID} value={gender.ID}>
+                    {gender.gender}
+                  </Option>
+                ))}
+              </Select>
+            </Form.Item>
+            <Form.Item label="Age" name="age" rules={[{ required: false, message: 'Please input your age!' }]}>
+              <Input type="number" min="1" />
+            </Form.Item>
+            <Form.Item label="Phone Number" name="phonenumber">
+              <Input onChange={(e) => form.setFieldsValue({ phonenumber: e.target.value })} />
+            </Form.Item>
+            <Form.Item>
+              <Button type="primary" htmlType="submit">Edit Information</Button>
+            </Form.Item>
+          </Form>
           <a href="/MainWeb" className="return-button-Admin">Return to home page</a>
         </div>
       )}

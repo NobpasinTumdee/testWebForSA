@@ -11,3 +11,8 @@ export interface UsersInterface {
     age?:Int16Array;
     phonenumber?: string;
 }
+
+export interface GenderInterface {
+    ID?: number;
+    gender?: string;
+}
