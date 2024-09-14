@@ -52,4 +52,6 @@ export interface CollectionMovieInterface {
     MovieID?: number;
     movie_name?: string;
     MoviePoster?: string;
+    Movie_information?: string;
+    Movie_video?: string;
 }

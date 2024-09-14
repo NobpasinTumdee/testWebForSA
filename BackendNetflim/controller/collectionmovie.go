@@ -74,8 +74,9 @@ func ListCollectionByIDcollection(c *gin.Context) {
 		CollectionID    uint   `json:"collection_id"`
 		CollectionName  string `json:"collection_name"`
 		MovieID         uint   `json:"movie_id"`
-		MovieName       string `json:"movie_name"` 
 		MoviePoster    string `json:"MoviePoster"`
+		Movie_information   string  `json:"Movie_information"`
+		Movie_video 		string  `json:"Movie_video"`
 	}
 
 	// Get the database connection
@@ -83,7 +84,7 @@ func ListCollectionByIDcollection(c *gin.Context) {
 
 	// Query with joins to get collection and movie details
 	results := db.Table("collection_movies").
-		Select("collection_movies.id, collection_movies.collection_id, collections.collection_name, collection_movies.movie_id, movies.movie_name, movies.movie_poster AS MoviePoster").
+		Select("collection_movies.id, collection_movies.collection_id, collections.collection_name, collection_movies.movie_id, movies.movie_name, movies.movie_poster AS MoviePoster, movies.Movie_information, movies.Movie_video").
 		Joins("left join collections on collections.id = collection_movies.collection_id").
 		Joins("left join movies on movies.id = collection_movies.movie_id").
 		Where("collection_movies.collection_id = ?", CollectID).

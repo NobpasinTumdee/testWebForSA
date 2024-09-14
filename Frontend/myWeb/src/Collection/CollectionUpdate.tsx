@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
-import { GetcollectionMovieById, DeleteCollectionMovieByID,CreateCollectionMovie,GetMovie } from "../services/https/index";
+import { useNavigate, useParams } from "react-router-dom";
+import { GetcollectionMovieById, DeleteCollectionMovieByID,CreateCollectionMovie,GetMovie, CreateHistory } from "../services/https/index";
 import { message, Select, Space, Button } from "antd"; // Ant Design message for notifications
 import { CollectionMovieInterface,MovieInterface } from "../interfaces/IMoviePackage";
 
@@ -13,6 +13,9 @@ export const CollectionUpdate: React.FC = () => {
   const [movies, setMovies] = useState<MovieInterface[]>([]); // List of all movies
   const [selectedMovie, setSelectedMovie] = useState<number | null>(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const navigate = useNavigate();
+  const userIdstr = localStorage.getItem("id");
 
   const openPopup = () => {
     setIsPopupOpen(true);
@@ -114,6 +117,30 @@ export const CollectionUpdate: React.FC = () => {
     }
   };
 
+  const handleMovieClick = (CollectM: CollectionMovieInterface) => {
+    // เรียกใช้ฟังก์ชัน CreateHistory เมื่อผู้ใช้คลิกหนัง
+    if (userIdstr && CollectM.id) {
+      const historyData = {
+        UserID: parseInt(userIdstr), // เปลี่ยน string เป็น number
+        MovieID: CollectM.MovieID,
+        movie_name: CollectM.movie_name,
+        poster: CollectM.MoviePoster,
+        new: Date().toString() // เพิ่มวันที่ในรูปแบบ ISO string
+      };
+      CreateHistory(historyData);
+    }
+    
+    navigate('/WatchMovie', { 
+      state: { 
+        videoUrl: CollectM.Movie_video, 
+        movieName: CollectM.movie_name, 
+        Movie_poster: CollectM.MoviePoster, 
+        Movie_information: CollectM.Movie_information 
+      } 
+    });
+  };
+
+
 
   return (
     <>
@@ -125,7 +152,7 @@ export const CollectionUpdate: React.FC = () => {
         <div className="movie-gridCollection" >
           {CollectM.length > 0 ? (
             CollectM.map((CollectM) => (
-              <div key={CollectM.id} >
+              <div key={CollectM.id} onClick={() => handleMovieClick(CollectM)}>
                 <div className="movie-cardCollection" >
                   <img src={CollectM.MoviePoster} alt={CollectM.movie_name} className="movie-image" />
                   <div className="movie-info">
