@@ -36,7 +36,8 @@ const EditInformation: FC = () => {
           form.setFieldsValue({
             oldUsername: userData.username || '',
             oldPassword: userData.password || '',
-            newUsername: '',
+            oldEmail : userData.email || '',
+            newEmail: '',
             newPassword: '',
             confirmPassword: '',
             firstname: userData.firstname || '',
@@ -123,33 +124,50 @@ const EditInformation: FC = () => {
             onFinish={handleEditInformation}
             layout="vertical"
           >
+           <Form.Item label={<span style={{ color: 'white' }}>USERNAME</span>} name="oldUsername">
+                  <Input readOnly />
+                </Form.Item>
+                
             <Row gutter={16}>
               <Col span={12}>
-                <Form.Item label="Old USERNAME" name="oldUsername">
+                <Form.Item label={<span style={{ color: 'white' }}>Old Email</span>} name="oldEmail"  > 
                   <Input readOnly />
                 </Form.Item>
               </Col>
               <Col span={12}>
-                <Form.Item label="New USERNAME" name="newUsername" rules={[{ required: true, message: 'Please input your new username!' }]}>
-                  <Input />
+                <Form.Item label={<span style={{ color: 'white' }}>New Email</span>}  name="newEmail"
+                  rules={[
+                    { required: true, message: 'Please input your new email!' },
+                    { type: 'email', message: 'Please enter a valid email!' }
+                  ]}
+                >
+                  <Input 
+                    type="email" 
+                    onKeyPress={(e) => {
+                      const char = String.fromCharCode(e.which);
+                      if (!/^[a-zA-Z0-9@.]+$/.test(char)) {
+                        e.preventDefault(); // Block input if character is not allowed
+                      }
+                    }} 
+                  />
                 </Form.Item>
               </Col>
             </Row>
             <Row gutter={16}>
               <Col span={12}>
-                <Form.Item label="Old PASSWORD" name="oldPassword">
+                <Form.Item label={<span style={{ color: 'white' }}>Old Password</span>} name="oldPassword">
                   <Input.Password readOnly />
                 </Form.Item>
               </Col>
               <Col span={12}>
-                <Form.Item label="New PASSWORD" name="newPassword" rules={[{ required: true, message: 'Please input your new password!' }]}>
+                <Form.Item label={<span style={{ color: 'white' }}>New Password</span>} name="newPassword" rules={[{ required: true, message: 'Please input your new password!' }]}>
                   <Input.Password />
                 </Form.Item>
               </Col>
             </Row>
             <Row gutter={16}>
               <Col span={12}>
-                <Form.Item label="Confirm PASSWORD" name="confirmPassword" rules={[{ required: true, message: 'Please confirm your password!' }]}>
+                <Form.Item label={<span style={{ color: 'white' }}>Confirm Password</span>}  name="confirmPassword" rules={[{ required: true, message: 'Please confirm your password!' }]}>
                   <Input.Password />
                 </Form.Item>
               </Col>
@@ -157,7 +175,7 @@ const EditInformation: FC = () => {
             <Row gutter={16}>
               <Col span={12}>
                 <Form.Item
-                  label="Firstname"
+                  label={<span style={{ color: 'white' }}>Firstname</span>} 
                   name="firstname"
                   rules={[
                     { required: true, message: 'Please input your firstname!' },
@@ -171,7 +189,7 @@ const EditInformation: FC = () => {
               </Col>
               <Col span={12}>
                 <Form.Item
-                  label="Lastname"
+                  label={<span style={{ color: 'white' }}>Lastname</span>} 
                   name="lastname"
                   rules={[
                     { required: true, message: 'Please input your lastname!' },
@@ -189,7 +207,7 @@ const EditInformation: FC = () => {
 
             <Row gutter={16}>
               <Col span={12}>
-              <Form.Item label="Gender" name="gender">
+              <Form.Item label={<span style={{ color: 'white' }}>Gender</span>}  name="gender">
               <Select
                 placeholder="Select a Gender"
                 style={{ width: '100%' }}
@@ -203,24 +221,55 @@ const EditInformation: FC = () => {
               </Form.Item>
               </Col>
               <Col span={12}>
-                <Form.Item
-                  label="Age"
-                  name="age"
-                  rules={[{ required: true, message: 'Please input your age !' }]}
-                >
-                  <Input
-                    type="number"
-                    min={1} // Ensure the minimum age is 1
-                    onKeyPress={preventNonNumeric} // Only allow numeric input
-                    onChange={handleAgeChange} // Prevent leading zeros
-                  />
-                </Form.Item>
-              </Col>
+              <Form.Item
+            label={<span style={{ color: 'white' }}>Age</span>}
+            name="age"
+            rules={[
+              { required: true, message: 'Please input your age!' },
+              {
+                validator: (_, value) => {
+                  if (value && Number(value) > 100) {
+                    return Promise.reject(new Error('Age cannot exceed 100!'));
+                  }
+                  return Promise.resolve();
+                },
+              },
+            ]}
+          >
+            <Input
+              type="number"
+              min={1}
+              max={100}
+              onKeyPress={(e) => {
+                const char = String.fromCharCode(e.which);
+                // Allow only numeric characters
+                if (!/[0-9]/.test(char)) {
+                  e.preventDefault();
+                }
+              }}
+              onChange={(e) => {
+                const value = e.target.value;
+                // Remove leading zeros
+                if (value.startsWith('0')) {
+                  e.target.value = value.replace(/^0+/, '');
+                }
+                // Ensure value does not exceed 100
+                if (Number(e.target.value) > 100) {
+                  e.target.value = '100';
+                }
+              }}
+            />
+          </Form.Item>
+
+
+
+            </Col>
+
             </Row>
             <Row gutter={16}>
               <Col span={12}>
                 <Form.Item
-                  label="Phone Number"
+                  label={<span style={{ color: 'white' }}>Phone Number</span>} 
                   name="phonenumber"
                   rules={[
                     { required: true, message: 'Please input your phone number!' },

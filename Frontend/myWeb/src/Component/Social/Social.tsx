@@ -31,7 +31,7 @@ const SocialIcons: React.FC = () => {
           </a>
         </li>
         <li className={`${styles.item} ${styles.third}`}>
-          <a href="https://www.youtube.com/watch?v=KEbQnH3UaZs" target="_blank" rel="noopener noreferrer">
+          <a href="https://youtu.be/oQVAudSAuQM?si=RXAGDcQqmTilwWry" target="_blank" rel="noopener noreferrer">
             <i className={`fa-brands fa-youtube ${styles.icon}`}></i>
           </a>
         </li>
