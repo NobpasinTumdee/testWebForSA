@@ -194,7 +194,7 @@ func SetupDatabase() {
 
 	//Payment , payments
 	payments := []entity.Payment{
-		{Payment_method: "PaymentMethodTest", Payment_status: "payStatusTest", Date: time.Now(),UserID: 1,PackageID:1},
+		{Payment_method: "PaymentMethodTest", Payment_status: "paid", Date: time.Now(),UserID: 1,PackageID:1},
 	}
 	for _, PaymentLoop  := range payments {
 		// ใช้ UserID และ PackageID เป็นเงื่อนไขในการค้นหา

@@ -7,8 +7,10 @@ import visa from "../assets/payment/visa.png";
 import Prompay from "../assets/payment/Prompay.png";
 //API
 import { PackageInterface, PaymentsInterface } from "../interfaces/IMoviePackage";
-import { UpdatePaymenteByidUser } from "../services/https/index";
+import { UpdatePaymenteByidUser , GetPaymentById , CreatePayment} from "../services/https/index";
 import axios from 'axios';
+import { message } from "antd"; // Ant Design message for notifications
+
 
 const Subscription = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -17,6 +19,30 @@ const Subscription = () => {
   const [selectedPlan, setSelectedPlan] = useState<PackageInterface | null>(null);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string>(''); // เพิ่มสถานะการเลือกการชำระเงิน
   const userIdstr = localStorage.getItem("id");
+  const [infoyourpay, setinfo] = useState<PackageInterface[]>([]);
+
+  useEffect(() => {
+    if (userIdstr) {
+      fetchUserData(userIdstr);
+    } else {
+      message.error("The user ID was not found in localStorage😭");
+    }
+  }, [userIdstr]);
+
+  const fetchUserData = async (userIdstr: string) => {
+    try {
+      const res = await GetPaymentById(userIdstr);
+      if (res.status === 200 && res.data) {
+        setinfo(res.data); // กำหนดให้เป็น array ที่ได้จาก API
+      } else {
+        setinfo([]); // ถ้าไม่มีข้อมูล ให้กำหนดเป็น array ว่าง
+        message.error("There is no order history yet💸");
+      }
+    } catch (error) {
+      setinfo([]); // กำหนดให้เป็น array ว่างเมื่อมี error
+      message.error("Error detected🤯");
+    }
+  };
 
   //Form API
   const [Packages, setPackage] = useState<PackageInterface[]>([]);
@@ -51,9 +77,34 @@ const Subscription = () => {
         Payment_status: "paid",
         DateP: new Date(),
       };
-      UpdatePaymenteByidUser(userIdstr,paymentData);
+  
+      if (infoyourpay && infoyourpay.length > 0) {
+        // ถ้ามีข้อมูลใน infoyourpay ให้ทำการอัปเดตข้อมูลการชำระเงิน
+        UpdatePaymenteByidUser(userIdstr, paymentData)
+          .then(() => {
+            message.success("Payment information updated successfully!💳");
+          })
+          .catch((error) => {
+            console.error("Error updating payment:", error); // ใช้ error ในการแสดงผลใน console
+            message.error("Failed to update payment information😢");
+          });
+      } else {
+        // ถ้าไม่มีข้อมูลใน infoyourpay ให้สร้างข้อมูลการชำระเงินใหม่
+        CreatePayment(paymentData)
+          .then(() => {
+            message.success("Payment created successfully!💸");
+          })
+          .catch((error) => {
+            console.error("Error creating payment:", error); // ใช้ error ในการแสดงผลใน console
+            message.error("Failed to create payment😢");
+          });
+      }
+    } else {
+      message.error("Please select a plan and make sure you're logged in!🙄");
     }
   };
+  
+  
 
   const openPopup = (Package: PackageInterface) => {
     setSelectedPlan(Package); // เก็บข้อมูล package ที่เลือก

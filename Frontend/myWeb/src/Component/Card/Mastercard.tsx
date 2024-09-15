@@ -44,7 +44,7 @@ const Mastercard: React.FC = () => {
         </h3>
         
         <i className={`fa fa-globe ${styles.globe}`}></i>
-        <div className={styles.chip}><h3>{history[0]?.username ?? 'No Data'}</h3></div>
+        <div className={styles.chip}><h3 style={{width: '450px'}}>{history[0]?.username ?? 'No Data'}</h3></div>
         <div className={styles.cardInfo}>
           <p className={styles.no}>5423 4426 6230 0041</p>
           <p className={styles.name}>{history[0]?.Package_name ?? 'No Data'}</p>
