@@ -47,6 +47,9 @@ func main() {
 		router.PATCH("/Movies", controller.UpdateMovie)
 		router.DELETE("/Movies/:id", controller.DeleteMovie)
 		router.PUT("/Movies/:id" , controller.UpdateMovieByid)
+		router.GET("/ListsearchMovies", controller.ListsearchMovies)
+
+
 		// MoviePackage Routes
 		router.GET("/MoviePackages", controller.ListMoviePackages)
 		router.POST("/MoviePackages", controller.CreateMoviePackage)

@@ -11,6 +11,39 @@ import (
 	"gorm.io/gorm" // เพิ่ม import สำหรับ gorm
 )
 
+//ค้นหา
+// GET /ListsearchMovies
+func ListsearchMovies(c *gin.Context) {
+    filter := c.Query("filter") // รับค่าพารามิเตอร์ 'filter' จาก query string
+
+    // Define a slice to hold movie records
+    var movies []entity.Movie
+
+    // Get the database connection
+    db := config.DB()
+
+    // ใช้ GORM Query แบบปลอดภัย
+    query := db.Select("id, Movie_name, Movie_poster, Movie_information, Movie_video, Movie_length")
+
+    // ถ้ามี filter ให้เพิ่มเงื่อนไขการค้นหา
+    if filter != "" {
+        query = query.Where("Movie_name LIKE ?", "%"+filter+"%")
+    }
+
+    // Execute the query
+    result := query.Find(&movies)
+
+    // Check for errors in the query
+    if result.Error != nil {
+        c.JSON(http.StatusNotFound, gin.H{"error": result.Error.Error()})
+        return
+    }
+
+    // Return the results as JSON
+    c.JSON(http.StatusOK, movies)
+}
+
+
 // POST /Movies
 func CreateMovie(c *gin.Context) {
 	var Movie entity.Movie

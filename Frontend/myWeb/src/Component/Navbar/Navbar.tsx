@@ -78,11 +78,11 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-    <div className="sidebarComponent">
+    <div className={`sidebarComponent ${location.pathname === "/History" ? "active" : ""}`}>
       <div className="logoComponent"></div>
       <nav>
         <ul>
-          {/*หาก location.pathname ตรงกับ "/EditInformation", จะเพิ่มคลาส active ให้กับไอคอนนั้น*/}
+          {/*หาก location.pathname ตรงกับ "/EditInformation", จะเพิ่มคลาส active ให้กับไอคอนนั้น sidebarComponent*/}
           <Link to="/MainWeb">
             <li className={`sizeMenuComponent ${location.pathname === "/MainWeb" ? "active" : ""}`}>🎞️</li>
           </Link>

@@ -126,7 +126,9 @@ header {             /*top*/
   outline: none;
   box-shadow: 0 0px 30px #00000077;
   margin-left: 30px;
-  
+  color: #ffffff;
+  font-family: pkmaehongson;
+  font-size: 19px;
 }
 
 .search-button {

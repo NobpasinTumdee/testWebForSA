@@ -4,6 +4,7 @@
   background: linear-gradient(to bottom, #060036, #010010);
   padding: 0px;
   position: fixed;
+  box-shadow: 0 0px 30px #000000;
   /* เปลี่ยนเป็น fixed เพื่อให้ Sidebar ตรึงอยู่กับหน้าจอ */
   height: auto;
   /* ให้ Sidebar มีความสูงเต็มหน้าจอ */
@@ -11,6 +12,9 @@
   z-index: 999;
   /* เพื่อให้ Sidebar อยู่ด้านหน้าเสมอ */
   border-radius: 0px 15px 15px 0px;
+}
+.sidebarComponent.active {
+  background: linear-gradient(to bottom, #f9d8b3,#ab804d, #190e00);
 }
 
 .sidebarComponent.hidden {

@@ -99,6 +99,7 @@ const MainWeb: React.FC = () => {
 
   // popup
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  
 
   const openPopup = () => {
     setIsPopupOpen(true);
@@ -147,6 +148,43 @@ const MainWeb: React.FC = () => {
         Movie_information: movie.Movie_information 
       } 
     });
+  };
+
+  // ฟังก์ชันค้นหาหนัง
+  const [isSearchresults, setSearchresults] = useState(false);
+  const searchMovies = () => {
+    const Authorization = localStorage.getItem("token");
+    const Bearer = localStorage.getItem("token_type");
+
+    const requestOptions = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `${Bearer} ${Authorization}`,
+      },
+    };
+
+    axios.get<MovieInterface[]>(`http://localhost:8000/ListsearchMovies?filter=${searchQuery}`, requestOptions)
+  .then(response => {
+    console.log(response.data);
+    setMovies(response.data);
+    setSearchresults(true);
+  })
+  .catch(error => {
+    console.error("Error fetching movies:", error);
+  });
+
+  };
+
+  // เก็บค่าคำค้นหา
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [Moviess, setMovies] = useState<MovieInterface[]>([]); // API
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value); // เก็บค่าจากช่องค้นหา
+  };
+
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // ป้องกันการรีเฟรชหน้า
+    searchMovies(); // เรียกฟังก์ชันค้นหาหนัง
   };
 
   // if (isLoading) {
@@ -219,8 +257,16 @@ const MainWeb: React.FC = () => {
 
           <main className={`main-content ${isSidebarOpen ? '' : 'expanded'}`}>
             <header>
-              <input type="text" placeholder="Search for movie" className="search-bar" />
-              <button className="search-button">🔍</button>
+            <form onSubmit={handleSearch}>
+                <input
+                  type="text"
+                  placeholder="Search for movie"
+                  className="search-bar"
+                  value={searchQuery}
+                  onChange={handleSearchInputChange}
+                />
+                <button type="submit" className="search-button">🔍</button>
+              </form>
             </header>
 
             <section className="movies">
@@ -233,6 +279,18 @@ const MainWeb: React.FC = () => {
                 </div>
               )}
 
+              {isSearchresults && (
+                <>
+                  <h3 className='titile'>Search results</h3>
+                  <div className="movie-grid">
+                    {Moviess.map((movie) => (
+                      <div className="movie-card" key={movie.ID} onClick={() => handleMovieClick(movie)}>
+                        <img src={movie.Movie_poster} alt={movie.Movie_name} />
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
 
               {paymentInfo ? (
                 <>
