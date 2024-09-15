@@ -26,7 +26,7 @@ const SocialIcons: React.FC = () => {
           </a>
         </li>
         <li className={`${styles.item} ${styles.second}`}>
-          <a onClick={notify}>
+          <a href='https://th.linkedin.com/company/suranaree-university-of-technology'>
             <i className={`fa-brands fa-linkedin ${styles.icon}`}></i>
           </a>
         </li>

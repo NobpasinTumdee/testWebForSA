@@ -4,6 +4,7 @@ import './AboutMe.css';
 import {UsertopRigh} from "../Component/UsertopRigh/UsertopRigh";
 import Carousels from "../Component/Carousels/Carousels";
 import Mastercard from "../Component/Card/Mastercard";
+import PaymentCard from "../Component/Card/PaymentCard";
 
 
 const AboutMe: React.FC = () => {
@@ -15,6 +16,7 @@ const AboutMe: React.FC = () => {
         <UsertopRigh />
         <Carousels />*/}
         <Mastercard />
+        <PaymentCard />
         </>
         
     );

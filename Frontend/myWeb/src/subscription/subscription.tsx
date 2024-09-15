@@ -11,11 +11,13 @@ import { UpdatePaymenteByidUser , GetPaymentById , CreatePayment} from "../servi
 import axios from 'axios';
 import { message } from "antd"; // Ant Design message for notifications
 
+import PaymentCard from '../Component/Card/PaymentCard';
 
 const Subscription = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
+  const [isImagePopupCardOpen, setIsImagePopupCardOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<PackageInterface | null>(null);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string>(''); // เพิ่มสถานะการเลือกการชำระเงิน
   const userIdstr = localStorage.getItem("id");
@@ -118,6 +120,7 @@ const Subscription = () => {
   const proceedToPayment = () => {
     setIsPopupOpen(false);
     setIsImagePopupOpen(false);
+    setIsImagePopupCardOpen(false)
     handlePaymentsClick(); // ส่งข้อมูลการชำระเงิน
     setIsSuccessPopupOpen(true);
     setTimeout(() => {
@@ -129,9 +132,14 @@ const Subscription = () => {
     setSelectedPaymentMethod(method); // บันทึกวิธีการชำระเงินที่เลือก
     setIsImagePopupOpen(true);
   };
+  const PayPopupCard = (method: string) => {
+    setSelectedPaymentMethod(method); // บันทึกวิธีการชำระเงินที่เลือก
+    setIsImagePopupCardOpen(true);
+  };
 
   const closeImagePopup = () => {
     setIsImagePopupOpen(false);
+    setIsImagePopupCardOpen(false)
   };
 
   return (
@@ -159,12 +167,12 @@ const Subscription = () => {
             <h2>Payment for {selectedPlan.Package_name} Plan</h2>
             <p>Total amount: {selectedPlan.Price}</p>
             <div>
-              <img src={mastercard} className="imgPayment" onClick={() => PayPopup('MasterCard')} alt="Payment" />
+              <img src={mastercard} className="imgPayment" onClick={() => PayPopupCard('MasterCard')} alt="Payment" />
               <img src={Prompay} className="imgPayment" onClick={() => PayPopup('PromptPay')} alt="Payment" />
             </div>
             <div>
-              <img src={Gpay} className="imgPayment" onClick={() => PayPopup('Google Pay')} alt="Payment" />
-              <img src={visa} className="imgPayment" onClick={() => PayPopup('Visa')} alt="Payment" />
+              <img src={Gpay} className="imgPayment" onClick={() => PayPopupCard('Google Pay')} alt="Payment" />
+              <img src={visa} className="imgPayment" onClick={() => PayPopupCard('Visa')} alt="Payment" />
             </div>
 
             <button className="close-button" onClick={closePopup}>Close</button>
@@ -189,6 +197,21 @@ const Subscription = () => {
             </div>
             <div>
               <button className="payment-button" onClick={proceedToPayment}>Proceed to Payment</button>
+              <button className="close-button" onClick={closeImagePopup}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
+      {isImagePopupCardOpen && selectedPlan &&(
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <h1>Payment</h1>
+            <h3>{selectedPlan.Package_name} <span>Price {selectedPlan.Price} Bath</span></h3>
+            
+            <div onClick={proceedToPayment} style={{boxShadow: '0 0px 20px #0000002e', margin: '100px 60px'}}>
+              <PaymentCard />
+            </div>
+            <div>
               <button className="close-button" onClick={closeImagePopup}>Close</button>
             </div>
           </div>
