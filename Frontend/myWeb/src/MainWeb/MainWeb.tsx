@@ -181,9 +181,19 @@ const MainWeb: React.FC = () => {
                     <div onClick={toggleSidebar}>
                       <li className="sizeMenu">🎞️ Movie</li>
                     </div>
-                    <a href='./Collection'>
-                      <li className="sizeMenu">❤️ Collection</li>
-                    </a>
+                    {paymentInfo ? (
+                      <>
+                        <a href='./Collection'>
+                          <li className="sizeMenu">❤️ Collection</li>
+                        </a>
+                      </>
+                    ) : ( 
+                      <>
+                        <a onClick={notify}>
+                          <li className="sizeMenu">❤️ Collection</li>
+                        </a>
+                      </>
+                    )}
                     <a  onClick={() => openPopup()}>
                       <li className="sizeMenu">💁🏻‍♀️ About Me</li>
                     </a>

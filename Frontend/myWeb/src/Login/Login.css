@@ -89,7 +89,7 @@ h2 {
 .login-button {
     width: 70%;
     padding: 10px;
-    background-color: #ffc107;
+    background-color: #d60000;
     color: white;
     border: none;
     border-radius: 20px;
@@ -99,7 +99,7 @@ h2 {
     font-family: 'pkmaehongson';
 }
 .login-button:hover{
-    box-shadow: 0 0px 7px #ffc107;
+    box-shadow: 0 0px 7px #d60000;
     outline: none;
     
 }
