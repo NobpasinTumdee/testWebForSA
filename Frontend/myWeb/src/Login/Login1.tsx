@@ -25,7 +25,7 @@ function Login1() {
     };
 
     const notify = () => toast.warn('For Members', {
-        position: "bottom-right",
+        position: "top-right",
         autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -70,18 +70,7 @@ function Login1() {
                         </div>
                     </div>
                 </div>
-                <ToastContainer
-                    position="bottom-right"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="colored"
-                />
+                <ToastContainer/>
             </div>
         </>
     );

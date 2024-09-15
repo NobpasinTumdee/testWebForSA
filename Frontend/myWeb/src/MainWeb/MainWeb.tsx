@@ -24,6 +24,11 @@ import axios from 'axios';
 import {CreateHistory} from "../services/https/index"
 import { GetUserById , GetPaymentById} from "../services/https/index"; // นำเข้า GetUserById
 
+
+// popup
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 //import Carousels from "../Component/Carousels/Carousels";
 const MainWeb: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -147,6 +152,16 @@ const MainWeb: React.FC = () => {
   // if (isLoading) {
   //   return <LoadingScreen />; // แสดง LoadingScreen ขณะที่ isLoading เป็น true
   // }
+  const notify = () => toast('💸 Please subscribe!', {
+    position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+  });
 
   return (
     <>
@@ -222,9 +237,17 @@ const MainWeb: React.FC = () => {
                 </>
               ) : (
                 <>
-                <h1 className='titile'>Please Subscription first so you can watch our movies.</h1>
-                <img style={{width: '20%' , margin: '40px 40% '}} src='https://media.tenor.com/Comp_iIhz44AAAAi/yui-yui-hirasawa.gif' />
-
+                {/* <h1 className='titile'>Please subscribe before watching the the movie✨</h1>
+                <img style={{width: '20%' , margin: '40px 40% '}} src='https://media.tenor.com/Comp_iIhz44AAAAi/yui-yui-hirasawa.gif' /> */}
+                  <h1 className='titile'>ANIME</h1>
+                  <h1 style={{color: "#ffff"}}>Please subscribe before watching the the movie✨</h1>
+                  <div className="movie-grid">
+                    {Movies.map((movie) => (
+                      <div className="movie-card" key={movie.ID} onClick={notify}>
+                        <img src={movie.Movie_poster} alt={movie.Movie_name} />
+                      </div>
+                    ))}
+                  </div>
                 </>
               )}
 
@@ -276,6 +299,7 @@ const MainWeb: React.FC = () => {
 
         </div>
       )}
+          <ToastContainer/>
     </>
   );
 };

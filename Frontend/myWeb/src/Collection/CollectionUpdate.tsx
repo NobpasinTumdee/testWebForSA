@@ -152,9 +152,9 @@ export const CollectionUpdate: React.FC = () => {
         <div className="movie-gridCollection" >
           {CollectM.length > 0 ? (
             CollectM.map((CollectM) => (
-              <div key={CollectM.id} onClick={() => handleMovieClick(CollectM)}>
+              <div key={CollectM.id} >
                 <div className="movie-cardCollection" >
-                  <img src={CollectM.MoviePoster} alt={CollectM.movie_name} className="movie-image" />
+                  <img src={CollectM.MoviePoster} alt={CollectM.movie_name} className="movie-image" onClick={() => handleMovieClick(CollectM)} />
                   <div className="movie-info">
                     <h2 style={{ fontSize: '20px', textAlign: 'center' }}>{CollectM.movie_name || "No Movie Name"}</h2>
                   </div>
