@@ -24,6 +24,7 @@ func main() {
 
 	r.POST("/signup", user.SignUp) //สมัคร
     r.POST("/signin", user.SignIn) //Sign in == login 
+    r.PUT("/ResetPasswordUser", user.ResetPasswordUser) //Sign in == login 
 
 	router := r.Group("")
   {

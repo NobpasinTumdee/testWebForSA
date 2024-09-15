@@ -105,6 +105,18 @@ async function GetUsers() {
   }
 
 
+  // ResetPassword
+  async function ResetPassword( data: MovieInterface) {
+
+    return await axios
+  
+      .put(`${apiUrl}/ResetPasswordUser`, data, requestOptions)
+  
+      .then((res) => res)
+  
+      .catch((e) => e.response);
+  
+  }
   // update user
   async function UpdateUserByid(id: string, data: MovieInterface) {
 
@@ -412,6 +424,7 @@ async function GetUsers() {
   SignIn, //sign in 
   CreateUser, //sign Up
   GetUserById, // get User by id
+  ResetPassword,
 
   GetMovie, //หาหนังทั้งหมดที่มี
   CreateMovie, //เพิ่มหนัง

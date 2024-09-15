@@ -1,31 +1,102 @@
 import React from 'react';
 import './ForgetPassword.css';
 import { useNavigate } from 'react-router-dom';
-import video from "../assets/video/jjk.mp4"
+import video from "../assets/video/jjk.mp4";
+import { Form, Input, message } from 'antd';
+import { UsersInterface } from '../interfaces/IUser';
+import { ResetPassword } from '../services/https/index';
 
 const ForgetPassword: React.FC = () => {
     const navigate = useNavigate();
+    const [messageApi, contextHolder] = message.useMessage();
 
-    const COMFIRM = () => {
-        // Logic สำหรับการรีเซ็ตรหัสผ่าน (เช่น การ validate ข้อมูล)
-
-        // นำทางกลับไปที่หน้า login
-        navigate('/');
+    const onFinish = async (values: UsersInterface) => {
+        // ส่งข้อมูลไปที่ API เพื่อรีเซ็ตรหัสผ่าน
+        let res = await ResetPassword(values);
+    
+        if (res.status === 200) {
+            messageApi.open({
+                type: 'success',
+                content: res.data.message,
+            });
+    
+            // หลังจากรีเซ็ตเสร็จ นำทางไปที่หน้า login
+            setTimeout(() => {
+                navigate('/login');
+            }, 1000);
+        } else {
+            messageApi.open({
+                type: 'error',
+                content: res.data.error,
+            });
+        }
     };
+
     return (
         <>
+            {contextHolder}
             <video autoPlay loop muted playsInline>
                 <source src={video} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
             <div className="forget-container">
                 <div className="forget-box">
-                    <h1 className='textSize' >Reset Password</h1>
-                    <input type="text" placeholder="Username" className="input-field" />
-                    <input type="email" placeholder="Gmail" className="input-field" />
-                    <input type="password" placeholder="New Password" className="input-field" />
-                    <input type="password" placeholder="Confirm Password" className="input-field" />
-                    <button onClick={COMFIRM} className="confirm-button">CONFIRM</button>
+                    <h1 className='textSize'>Reset Password</h1>
+                    <Form style={{margin: '0px'}}
+                        name="resetPassword"
+                        onFinish={onFinish}
+                        layout="vertical"
+                        requiredMark={false}
+                    >
+                        <Form.Item style={{margin: '0px'}}
+                            name="username"
+                            label={<span style={{ color: '#ffff' ,fontSize: "15px" ,fontFamily: 'fantasy' , margin: '0px' }}>USERNAME</span>} 
+                            rules={[{ required: true, message: 'Please enter your username' }]}
+                        >
+                            <Input placeholder="Username" className="form-groupF" />
+                        </Form.Item>
+
+                        <Form.Item style={{margin: '0px'}}
+                            name="email"
+                            label={<span style={{ color: '#ffff' ,fontSize: "15px" ,fontFamily: 'fantasy' , margin: '0px' , }}>Email</span>}
+                            rules={[{ required: true, message: 'Please enter your email', type: 'email' }]}
+                        >
+                            <Input placeholder="Email" className="form-groupF" />
+                        </Form.Item>
+
+                        <Form.Item style={{margin: '0px'}}
+                            name="password"
+                            label={<span style={{ color: '#ffff' ,fontSize: "15px" ,fontFamily: 'fantasy' , margin: '0px'}}>NEW PASSWORD</span>}
+                            rules={[{ required: true, message: 'Please enter your new password' }]}
+                        >
+                            <Input.Password placeholder="New Password" className="form-groupF" />
+                        </Form.Item>
+
+                        <Form.Item style={{margin: '0px'}}
+                            name="confirmPassword"
+                            label={<span style={{ color: '#ffff' ,fontSize: "15px" ,fontFamily: 'fantasy' , margin: '0px'}}>CONFIRM PASSWORD</span>}
+                            dependencies={['password']}
+                            rules={[
+                                { required: true, message: 'Please confirm your password' },
+                                ({ getFieldValue }) => ({
+                                    validator(_, value) {
+                                        if (!value || getFieldValue('password') === value) {
+                                            return Promise.resolve();
+                                        }
+                                        return Promise.reject(new Error('Passwords do not match!'));
+                                    },
+                                }),
+                            ]}
+                        >
+                            <Input.Password placeholder="Confirm Password" className="form-groupF" />
+                        </Form.Item>
+
+                        <Form.Item>
+                            <button className="confirm-button" >
+                                CONFIRM
+                            </button>
+                        </Form.Item>
+                    </Form>
                     <a href="/login" className="signup-link">BACK TO LOGIN</a>
                 </div>
             </div>

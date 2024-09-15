@@ -42,8 +42,54 @@ type (
         // Age string			`json:"age"`
         // Phonenumber string	`json:"phonenumber"`
     }
+
+    ResetPassword struct {
+        Username string `json:"username"`  // แก้เป็น backticks
+        Email     string `json:"email"`
+        Password  string `json:"password"`
+    }
  )
  
+ func ResetPasswordUser(c *gin.Context) {
+    var payload ResetPassword
+
+    // Bind JSON payload to the struct
+    if err := c.ShouldBindJSON(&payload); err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+        return
+    }
+
+    var user entity.User
+    db := config.DB()
+
+    // ค้นหาผู้ใช้ด้วย Username และ Email ที่ผู้ใช้กรอกเข้ามา
+    result := db.Where("username = ? AND email = ?", payload.Username, payload.Email).First(&user)
+    if result.Error != nil {
+        if errors.Is(result.Error, gorm.ErrRecordNotFound) {
+            c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
+        } else {
+            c.JSON(http.StatusInternalServerError, gin.H{"error": result.Error.Error()})
+        }
+        return
+    }
+
+    // แฮชรหัสผ่านใหม่
+    hashedPassword, err := config.HashPassword(payload.Password)
+    if err != nil {
+        c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to hash password"})
+        return
+    }
+
+    // อัปเดตรหัสผ่านในฐานข้อมูล
+    user.Password = hashedPassword
+    if err := db.Save(&user).Error; err != nil {
+        c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to update password"})
+        return
+    }
+
+    c.JSON(http.StatusOK, gin.H{"message": "Password reset successful"})
+}
+
 
 func SignUp(c *gin.Context) {
 

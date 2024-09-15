@@ -51,7 +51,7 @@ body, html {
     width: 380px;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     border: 2px solid #969696;
     border-radius: 20px;
   }

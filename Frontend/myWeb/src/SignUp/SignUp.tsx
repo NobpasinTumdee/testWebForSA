@@ -45,9 +45,9 @@ const SignUp: React.FC = () => {
       {contextHolder}
       <div className="signup-box">
         <h1 className="signUpHeader">SIGN UP</h1>
-        <Form layout="vertical" onFinish={onFinish}>
+        <Form layout="vertical" onFinish={onFinish} requiredMark={false}> 
           <Form.Item
-            //label={<label className="labelSignUp">Username</label>}
+            label={<span style={{ color: '#ffff' ,fontSize: "15px" ,fontFamily: 'fantasy' , margin: '0px' }}>USERNAME</span>}
             name="username"
             rules={[{ required: true, message: 'Please input your username!' }]}
           >
@@ -55,7 +55,7 @@ const SignUp: React.FC = () => {
           </Form.Item>
 
           <Form.Item
-            //label={<label className="labelSignUp">Email</label>}
+            label={<span style={{ color: '#ffff' ,fontSize: "15px" ,fontFamily: 'fantasy' , margin: '0px' }}>EMAIL</span>}
             name="email"
             rules={[{ required: true, message: 'Please input your email!', type: 'email' }]}
           >
@@ -63,7 +63,7 @@ const SignUp: React.FC = () => {
           </Form.Item>
 
           <Form.Item
-            //label={<label className="labelSignUp">Password</label>}
+            label={<span style={{ color: '#ffff' ,fontSize: "15px" ,fontFamily: 'fantasy' , margin: '0px' }}>PASSWORD</span>}
             name="password"
             rules={[{ required: true, message: 'Please input your password!' }]}
           >
@@ -71,7 +71,7 @@ const SignUp: React.FC = () => {
           </Form.Item>
 
           <Form.Item
-            //label={<label className="labelSignUp">Confirm Password</label>}
+            label={<span style={{ color: '#ffff' ,fontSize: "15px" ,fontFamily: 'fantasy' , margin: '0px' }}>CONFIRM PASSWORD</span>}
             name="confirmPassword"
             dependencies={['password']}
             rules={[

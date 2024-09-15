@@ -68,15 +68,18 @@ const Login: React.FC = () => {
                         name="login"
                         onFinish={onFinish}
                         className="login-form"
+                        requiredMark={false}
                     >
                         <Form.Item
                             name="username"
+                            label={<span style={{ color: '#ffff' ,fontSize: "15px" ,fontFamily: 'fantasy' , marginLeft: '25px' ,position: 'fixed',top: '40%'}}>USERNAME</span>}
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
                             <Input placeholder="username" className="input-field" />
                         </Form.Item>
                         <Form.Item
                             name="password"
+                            label={<span style={{ color: '#ffff' ,fontSize: "15px" ,fontFamily: 'fantasy' ,marginLeft: '25px',position: 'fixed',top: '52%'}}>PASSWORD</span>}
                             rules={[{ required: true, message: 'Please input your password!' }]}
                         >
                             <Input.Password placeholder="password" className="input-field" />
