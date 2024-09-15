@@ -89,6 +89,39 @@ const SignUp: React.FC = () => {
             <Input.Password placeholder="confirm your Password" className="form-groupS" />
           </Form.Item>
 
+
+          {/* <Form.Item
+            //label={<label className="labelSignUp">Password</label>}
+            name="firstname"
+            rules={[{ required: false, message: 'Please input your firstname!' }]}
+          >
+            <Input placeholder="Your Firstname" className="form-groupS" />
+          </Form.Item>
+
+          <Form.Item
+            //label={<label className="labelSignUp">Password</label>}
+            name="lastname"
+            rules={[{ required: false, message: 'Please input your lastname!' }]}
+          >
+            <Input placeholder="Your lastname" className="form-groupS" />
+          </Form.Item>
+
+          <Form.Item
+            //label={<label className="labelSignUp">Password</label>}
+            name="age"
+            rules={[{ required: false, message: 'Please input your age!' }]}
+          >
+            <Input placeholder="Your age" className="form-groupS" />
+          </Form.Item>
+
+          <Form.Item
+            //label={<label className="labelSignUp">Password</label>}
+            name="phonenumber"
+            rules={[{ required: false, message: 'Please input your phonenumber!' }]}
+          >
+            <Input placeholder="Your phonenumber" className="form-groupS" />
+          </Form.Item> */}
+
           <div className="signup-buttonDIV">
             <button  className="signup-button">
               SIGN UP

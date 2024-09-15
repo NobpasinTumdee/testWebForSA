@@ -37,6 +37,10 @@ type (
         Email     string `json:"email"`
         Password  string `json:"password"`
         Status string `json:"status"`
+        // Firstname string	`json:"firstname"`
+        // Lastname string		`json:"lastname"`
+        // Age string			`json:"age"`
+        // Phonenumber string	`json:"phonenumber"`
     }
  )
  
@@ -105,6 +109,13 @@ func SignUp(c *gin.Context) {
 
     Status:       "User",
 
+    // Firstname: payload.Firstname,
+
+    // Lastname: payload.Lastname,
+
+    // Age: payload.Age,
+
+    // Phonenumber: payload.Phonenumber,
 
    }
    
