@@ -21,7 +21,7 @@ const SocialIcons: React.FC = () => {
     <>
       <ul style={{ listStyle: 'none', display: 'flex', gap: '20px', position: 'fixed', right: '15px', bottom: '0', zIndex: '1000' }}>
         <li className={`${styles.item} ${styles.first}`}>
-          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/cpelnwza027/" target="_blank" rel="noopener noreferrer">
             <i className={`fa-brands fa-instagram ${styles.icon}`}></i>
           </a>
         </li>

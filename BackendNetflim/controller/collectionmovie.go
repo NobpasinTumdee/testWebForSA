@@ -73,9 +73,9 @@ func ListCollectionByIDcollection(c *gin.Context) {
 		ID              uint   `json:"id"`
 		CollectionID    uint   `json:"collection_id"`
 		CollectionName  string `json:"collection_name"`
-		MovieID         uint   `json:"movie_id"`
-		MovieName       string `json:"movie_name"` 
-		MoviePoster    string `json:"MoviePoster"`
+		MovieID         uint   `json:"MovieID"`
+		MovieName       string `json:"Movie_name"` 
+		MoviePoster    string `json:"Movie_poster"`
 		Movie_information   string  `json:"Movie_information"`
 		Movie_video 		string  `json:"Movie_video"`
 	}

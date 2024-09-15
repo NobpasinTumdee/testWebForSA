@@ -50,8 +50,8 @@ export interface CollectionMovieInterface {
     CollectionID?: number;
     collection_name?: string;
     MovieID?: number;
-    movie_name?: string;
-    MoviePoster?: string;
+    Movie_name?: string;
+    Movie_poster?: string;
     Movie_information?: string;
     Movie_video?: string;
 }

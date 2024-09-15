@@ -123,8 +123,8 @@ export const CollectionUpdate: React.FC = () => {
       const historyData = {
         UserID: parseInt(userIdstr), // เปลี่ยน string เป็น number
         MovieID: CollectM.MovieID,
-        movie_name: CollectM.movie_name,
-        poster: CollectM.MoviePoster,
+        movie_name: CollectM.Movie_name,
+        poster: CollectM.Movie_poster,
         new: Date().toString() // เพิ่มวันที่ในรูปแบบ ISO string
       };
       CreateHistory(historyData);
@@ -133,8 +133,8 @@ export const CollectionUpdate: React.FC = () => {
     navigate('/WatchMovie', { 
       state: { 
         videoUrl: CollectM.Movie_video, 
-        movieName: CollectM.movie_name, 
-        Movie_poster: CollectM.MoviePoster, 
+        movieName: CollectM.Movie_name, 
+        Movie_poster: CollectM.Movie_poster, 
         Movie_information: CollectM.Movie_information 
       } 
     });
@@ -154,9 +154,9 @@ export const CollectionUpdate: React.FC = () => {
             CollectM.map((CollectM) => (
               <div key={CollectM.id} >
                 <div className="movie-cardCollection" >
-                  <img src={CollectM.MoviePoster} alt={CollectM.movie_name} className="movie-image" onClick={() => handleMovieClick(CollectM)} />
+                  <img src={CollectM.Movie_poster} alt={CollectM.Movie_name} className="movie-image" onClick={() => handleMovieClick(CollectM)} />
                   <div className="movie-info">
-                    <h2 style={{ fontSize: '20px', textAlign: 'center' }}>{CollectM.movie_name || "No Movie Name"}</h2>
+                    <h2 style={{ fontSize: '20px', textAlign: 'center' }}>{CollectM.Movie_name || "No Movie Name"}</h2>
                   </div>
                   <button className="edit-button" onClick={() => handleDelete(CollectM.id)}>
                     🗑️
