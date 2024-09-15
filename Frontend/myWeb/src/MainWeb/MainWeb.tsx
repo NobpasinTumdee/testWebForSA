@@ -18,11 +18,11 @@ import AboutMeCom from '../AboutMe/AboutMeCom'
 import { LoadingStarWar } from '../Component/Loading/LoadingStarWar';
 
 //API
-import { MovieInterface } from "../interfaces/IMoviePackage";
+import { MovieInterface , PaymentsInterface } from "../interfaces/IMoviePackage";
 import { UsersInterface } from "../interfaces/IUser";
 import axios from 'axios';
 import {CreateHistory} from "../services/https/index"
-import { GetUserById } from "../services/https/index"; // นำเข้า GetUserById
+import { GetUserById , GetPaymentById} from "../services/https/index"; // นำเข้า GetUserById
 
 //import Carousels from "../Component/Carousels/Carousels";
 const MainWeb: React.FC = () => {
@@ -30,8 +30,9 @@ const MainWeb: React.FC = () => {
   const [isPosterVisible, setIsPosterVisible] = useState(false);  // เพิ่ม state สำหรับ Poster
   const [status, setStatus] = useState<string | undefined>(''); // เก็บ status ของผู้ใช้
   const userIdstr = localStorage.getItem("id");
-  
+  const [paymentInfo, setPaymentInfo] = useState<PaymentsInterface | null>(null); // เพิ่ม state สำหรับการชำระเงิน
   const [isLoading, setLoading] = useState(true);
+  
 
 
   useEffect(() => {
@@ -39,6 +40,19 @@ const MainWeb: React.FC = () => {
       setLoading(false);
     }, 1000)
   })
+
+  useEffect(() => {
+    if (userIdstr) {
+      GetPaymentById(userIdstr)
+        .then((response) => {
+          const payment = response.data as PaymentsInterface;
+          setPaymentInfo(payment); // ตั้งค่าข้อมูลการชำระเงิน
+        })
+        .catch((error) => {
+          console.error('มีข้อผิดพลาดในการดึงข้อมูลการชำระเงิน:', error);
+        });
+    }
+  }, [userIdstr]);
 
   useEffect(() => {//โหลดข้อมูลของผู้ใช้และเอาแค่ status
     if (userIdstr) {
@@ -195,16 +209,24 @@ const MainWeb: React.FC = () => {
               )}
 
 
-              <h1 className='titile'>ANIME</h1>
-              <div className="movie-grid">
-                {/* Repeat this block for each movie */}
-                {Movies.map((movie) => (
-                  <div className="movie-card" key={movie.ID} onClick={() => handleMovieClick(movie)}>
+              {paymentInfo ? (
+                <>
+                  <h1 className='titile'>ANIME</h1>
+                  <div className="movie-grid">
+                    {Movies.map((movie) => (
+                      <div className="movie-card" key={movie.ID} onClick={() => handleMovieClick(movie)}>
+                        <img src={movie.Movie_poster} alt={movie.Movie_name} />
+                      </div>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <>
+                <h1 className='titile'>Please Subscription first so you can watch our movies.</h1>
+                <img style={{width: '20%' , margin: '40px 40% '}} src='https://media.tenor.com/Comp_iIhz44AAAAi/yui-yui-hirasawa.gif' />
 
-                    <img src={movie.Movie_poster} alt={movie.Movie_name} />
-
-                  </div>))}
-              </div>
+                </>
+              )}
 
 
               {isPosterVisible && (  // แสดง PosterBIG เมื่อ isPosterVisible เป็น true
@@ -216,7 +238,7 @@ const MainWeb: React.FC = () => {
                 </div>
               )}
 
-
+            {paymentInfo && (<>
               <h1 className='titile'>MOVIE</h1>
               <div className="movie-grid">
                 {/* Repeat this block for each movie */}
@@ -226,7 +248,8 @@ const MainWeb: React.FC = () => {
                     <img src={movies.image} alt={movies.title} />
 
                   </div>))}
-              </div>
+              </div></>
+            )}
 
             </section>
           </main>
