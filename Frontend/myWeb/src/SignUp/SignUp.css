@@ -94,7 +94,7 @@ body, html {
     font-family: 'pkmaehongson';
     width: 40%;
     padding: 10px;
-    background-color: #ffc107;
+    background-color: #bf0404;
     color: white;
     border: none;
     border-radius: 20px;
@@ -108,7 +108,7 @@ body, html {
 
 /* ปุ่มเมื่อโฮเวอร์ */
 .signup-button:hover {
-    box-shadow: 0 0px 7px #ff9900;
+    box-shadow: 0 0px 7px #bf0404;
     outline: none;
 }
 
@@ -125,7 +125,7 @@ body, html {
 }
 
 .login-link:hover {
-    text-shadow: 0 0px 7px #ffc107;
+    text-shadow: 0 0px 7px #bf0404;
 }
 
 @font-face {

@@ -39,7 +39,7 @@ const Mastercard: React.FC = () => {
     <div className={styles.containerM}>
       <div className={styles.frontCard}>
         <h3 className={styles.mainTitle}>
-          {history[0]?.Payment_method ?? 'No Data'} | <span className='SpanM'>{history[0]?.Payment_status ?? 'No Data'}</span>
+          {history[0]?.Payment_method ?? 'Please Subscribtion'} | <span className='SpanM'>{history[0]?.Payment_status ?? 'No Data'}</span>
         
         </h3>
         
