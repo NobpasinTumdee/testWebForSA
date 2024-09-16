@@ -66,8 +66,8 @@ func main() {
 		router.GET("/Payments/:id", controller.ListPaymentByID)
 		router.POST("/Payments", controller.CreatePayment)
 		router.PUT("/Payments/:id", controller.UpdatePaymentByid)
-		//router.PATCH("/Payments", controller.UpdatePayment)//อัพเดท payment
 		router.DELETE("/Payments/:id", controller.DeletePayment)
+		//router.PATCH("/Payments", controller.UpdatePayment)//อัพเดท payment
 		// Collection Routes
 		router.GET("/Collections", controller.ListCollection)//ทั้งหมด ไม่ได้ใช้
 		router.GET("/Collections/:id", controller.ListCollectionByID)// หาจาก UserID

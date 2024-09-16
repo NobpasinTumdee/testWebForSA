@@ -278,19 +278,35 @@ const MainWeb: React.FC = () => {
                   </div>
                 </div>
               )}
-
               {isSearchresults && (
-                <>
-                  <h3 className='titile'>Search results</h3>
-                  <div className="movie-grid">
-                    {Moviess.map((movie) => (
-                      <div className="movie-card" key={movie.ID} onClick={() => handleMovieClick(movie)}>
-                        <img src={movie.Movie_poster} alt={movie.Movie_name} />
-                      </div>
-                    ))}
-                  </div>
-                </>
-              )}
+  <>
+    {paymentInfo ? (
+      <>
+        <h3 className='titile'>Search results</h3>
+        <div className="movie-grid">
+          {Moviess.map((movie) => (
+            <div className="movie-card" key={movie.ID} onClick={() => handleMovieClick(movie)}>
+              <img src={movie.Movie_poster} alt={movie.Movie_name} />
+            </div>
+          ))}
+        </div>
+      </>
+    ) : (
+      <>
+        <h1 className='titile'>Search results</h1>
+        <h1 style={{color: "#ffff"}}>Please subscribe before watching the movie✨</h1>
+        <div className="movie-grid">
+          {Moviess.map((movie) => (
+            <div className="movie-card" key={movie.ID} onClick={notify}>
+              <img src={movie.Movie_poster} alt={movie.Movie_name} />
+            </div>
+          ))}
+        </div>
+      </>
+    )}
+  </>
+)}
+
 
               {paymentInfo ? (
                 <>

@@ -2,20 +2,20 @@ import React from 'react';
 import styles from './SocialIcons.module.css';
 
 // popup
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const SocialIcons: React.FC = () => {
-  const notify = () => toast.info('🦄 We do not have any contact channels at this time.!', {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-  });
+  // const notify = () => toast.info('🦄 We do not have any contact channels at this time.!', {
+  //   position: "top-right",
+  //   autoClose: 5000,
+  //   hideProgressBar: false,
+  //   closeOnClick: true,
+  //   pauseOnHover: true,
+  //   draggable: true,
+  //   progress: undefined,
+  //   theme: "light",
+  // });
 
   return (
     <>
@@ -41,18 +41,7 @@ const SocialIcons: React.FC = () => {
           </a>
         </li>
       </ul>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+      {/* <ToastContainer /> */}
     </>
   );
 };

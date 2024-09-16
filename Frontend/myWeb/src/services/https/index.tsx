@@ -286,6 +286,19 @@ async function GetUsers() {
       .catch((e) => e.response);
   
   }
+
+  //ยกเลิกสมาชิก
+  async function DeletePaymenteByidUser(id: string) {
+    return await axios
+      .delete(`${apiUrl}/Payments/${id}`, requestOptions)
+      .then((res) => {
+        if (res) {
+          window.location.reload(); // reload หลังจากลบเสร็จ
+        }
+        return res;
+      })
+      .catch((e) => e.response);
+  }
   //===========================================================================================================⬆️
   //get collection
   async function Getcollection() {
@@ -439,6 +452,7 @@ async function GetUsers() {
   CreatePayment,
   GetPaymentById,
   UpdatePaymenteByidUser,
+  DeletePaymenteByidUser,
 
   Getcollection,
   CreateCollection,
