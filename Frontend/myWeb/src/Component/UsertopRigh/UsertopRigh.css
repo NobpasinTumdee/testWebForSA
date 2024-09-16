@@ -30,6 +30,11 @@
     backdrop-filter: blur(10px);
     transition: 0.5s ease-in-out;
   }
+
+  .cardPayment:hover .textpayment{
+    visibility: visible;
+    opacity: 1;
+  }
   
   .cardU:hover {
     cursor: pointer;
@@ -58,5 +63,19 @@
   }
   
   
+  .textpayment {
+    visibility: hidden;
+    background-color: #0000003d;
+    border-radius: 20px 0px 20px 20px;
+    padding: 10px;
+    opacity: 0;
+    transition:  0.3s ease-in-out;
+    font-family: pkmaehongson;
+  }
   
+
+  @font-face {
+    font-family: pkmaehongson;
+    src: url(../src/PK-Maehongson-Medium.ttf);
+  }
   

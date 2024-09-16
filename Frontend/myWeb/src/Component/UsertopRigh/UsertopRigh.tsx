@@ -47,6 +47,7 @@ export const UsertopRigh: React.FC = () => {
             </div>
             <div  className="cardPayment">
                 <a style={{fontSize: '30px'}}  href="/Payment">💸</a>
+                <p style={{color: '#ffff' ,position: 'fixed' ,right: "15px" ,top: '30px'}} className='textpayment'>Payment</p>
             </div>
             </>
         ) : (
