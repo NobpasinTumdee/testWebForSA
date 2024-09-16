@@ -65,7 +65,7 @@ func main() {
 		router.GET("/Payments", controller.ListPayments)
 		router.GET("/Payments/:id", controller.ListPaymentByID)
 		router.POST("/Payments", controller.CreatePayment)
-		router.PUT("/Payments/:id", controller.UpdatePaymentByid)
+		router.PUT("/Payments/:id", controller.UpdatePaymentByUserID)
 		router.DELETE("/Payments/:id", controller.DeletePayment)
 		//router.PATCH("/Payments", controller.UpdatePayment)//อัพเดท payment
 		// Collection Routes

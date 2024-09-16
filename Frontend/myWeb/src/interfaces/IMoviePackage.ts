@@ -28,6 +28,7 @@ export interface PaymentsInterface {
     Payment_method?: string;
     Payment_status?: string;
     DateP?: Date;
+    Expiration?: Date;
     //date?: Date;
     UserID?: number;
     username?: string;

@@ -26,6 +26,7 @@ func CreatePayment(c *gin.Context) {
 		Payment_method: Payment.Payment_method, 
 		Payment_status:  Payment.Payment_status,  
 		Date:  time.Now(),
+		Expiration: Payment.Expiration,
 		UserID:  Payment.UserID,
 		PackageID:  Payment.PackageID,
 	}
@@ -83,6 +84,7 @@ func ListPaymentByID(c *gin.Context) {
         PaymentMethod   string    `json:"Payment_method"`
         PaymentStatus   string    `json:"Payment_status"`
         Date            time.Time `json:"DateP"`
+		Expiration 		time.Time `json:"Expiration"`
         UserID          uint      `json:"UserID"`
         Username        string    `json:"username"`
         PackageID       uint      `json:"PackageID"`
@@ -94,7 +96,7 @@ func ListPaymentByID(c *gin.Context) {
 
     // Query with joins to get payment, user, and package details, filtered by userID
     results := db.Table("payments").
-        Select("payments.id, payments.payment_method, payments.payment_status, payments.date,payments.user_id, users.username,payments.package_id, movie_packages.package_name").
+        Select("payments.id, payments.payment_method, payments.payment_status, payments.date , payments.expiration,payments.user_id, users.username,payments.package_id, movie_packages.package_name").
         Joins("left join users on users.id = payments.user_id").
         Joins("left join movie_packages on movie_packages.id = payments.package_id").
         Where("payments.user_id = ?", userID).
@@ -125,52 +127,84 @@ func DeletePayment(c *gin.Context) {
 
 }
 
-// PUT update Payment ใช้อันนี้นะจ๊ะ
-func UpdatePaymentByid(c *gin.Context) {
+// PUT update Payment 
+// func UpdatePaymentByid(c *gin.Context) {
 
 
-	var Payment entity.Payment
+// 	var Payment entity.Payment
  
  
-	PaymentID := c.Param("id")
+// 	PaymentID := c.Param("id")
  
  
-	db := config.DB()
+// 	db := config.DB()
  
-	result := db.First(&Payment, PaymentID)
+// 	result := db.First(&Payment, PaymentID)
  
-	if result.Error != nil {
+// 	if result.Error != nil {
  
-		c.JSON(http.StatusNotFound, gin.H{"error": "NameUser not found"})
+// 		c.JSON(http.StatusNotFound, gin.H{"error": "NameUser not found"})
  
-		return
+// 		return
  
-	}
- 
- 
-	if err := c.ShouldBindJSON(&Payment); err != nil {
- 
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request, unable to map payload"})
- 
-		return
- 
-	}
+// 	}
  
  
-	result = db.Save(&Payment)
+// 	if err := c.ShouldBindJSON(&Payment); err != nil {
  
-	if result.Error != nil {
+// 		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request, unable to map payload"})
  
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request"})
+// 		return
  
-		return
- 
-	}
+// 	}
  
  
-	c.JSON(http.StatusOK, gin.H{"message": "Updated successful"})
+// 	result = db.Save(&Payment)
  
- }
+// 	if result.Error != nil {
+ 
+// 		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request"})
+ 
+// 		return
+ 
+// 	}
+ 
+ 
+// 	c.JSON(http.StatusOK, gin.H{"message": "Updated successful"})
+ 
+//  }
+
+// PUT update Payment by UserID
+func UpdatePaymentByUserID(c *gin.Context) {
+    var payment entity.Payment
+    userID := c.Param("id") // รับค่า UserID จาก URL
+
+    db := config.DB()
+
+    // ค้นหาข้อมูล Payment ที่ตรงกับ UserID
+    result := db.Where("user_id = ?", userID).First(&payment)
+    if result.Error != nil {
+        c.JSON(http.StatusNotFound, gin.H{"error": "Payment not found for this user"})
+        return
+    }
+
+    // ตรวจสอบว่าข้อมูลที่ส่งมามีปัญหาหรือไม่
+    if err := c.ShouldBindJSON(&payment); err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request, unable to map payload"})
+        return
+    }
+
+    // อัปเดตข้อมูล Payment
+    result = db.Save(&payment)
+    if result.Error != nil {
+        c.JSON(http.StatusBadRequest, gin.H{"error": "Failed to update payment"})
+        return
+    }
+
+    c.JSON(http.StatusOK, gin.H{"message": "Updated successfully", "data": payment})
+}
+
+
 // PATCH /Payments
 func UpdatePayment(c *gin.Context) {
 	var Payment entity.Payment

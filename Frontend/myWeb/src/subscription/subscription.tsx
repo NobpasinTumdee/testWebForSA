@@ -10,11 +10,9 @@ import { PackageInterface, PaymentsInterface } from "../interfaces/IMoviePackage
 import { UpdatePaymenteByidUser , GetPaymentById , CreatePayment} from "../services/https/index";
 import axios from 'axios';
 import { message } from "antd"; // Ant Design message for notifications
-import { useNavigate } from 'react-router-dom';
 import PaymentCard from '../Component/Card/PaymentCard';
 
 const Subscription = () => {
-  const navigate = useNavigate();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
@@ -71,7 +69,8 @@ const Subscription = () => {
   }, []);
 
   const handlePaymentsClick = () => {
-    if (userIdstr && selectedPlan) {
+    const currentDate = new Date(); // วันที่สมัครตอนนี้
+    if (userIdstr && selectedPlan && selectedPlan.Duration) {
       const paymentData: PaymentsInterface = {
         UserID: parseInt(userIdstr),
         PackageID: selectedPlan.ID,
@@ -79,6 +78,7 @@ const Subscription = () => {
         Payment_method: selectedPaymentMethod, // เพิ่มวิธีการชำระเงินที่ผู้ใช้เลือก
         Payment_status: "paid",
         DateP: new Date(),
+        Expiration: new Date(currentDate.setDate(currentDate.getDate() + selectedPlan.Duration)), // คำนวณวันหมดอายุ
       };
   
       if (infoyourpay && infoyourpay.length > 0) {
@@ -124,9 +124,6 @@ const Subscription = () => {
     setIsImagePopupCardOpen(false)
     handlePaymentsClick(); // ส่งข้อมูลการชำระเงิน
     setIsSuccessPopupOpen(true);
-    if (selectedPlan) {
-      navigate(`/payment?duration=${selectedPlan.Duration}`);
-    }
     setTimeout(() => {
       setIsSuccessPopupOpen(false);
     }, 2000);

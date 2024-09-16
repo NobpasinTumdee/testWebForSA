@@ -10,6 +10,7 @@ type Payment struct {
 	Payment_method  string `json:"Payment_method"`
 	Payment_status  string `json:"Payment_status"`
 	Date  time.Time        `json:"DateP"`
+	Expiration time.Time   `json:"Expiration"`
 	
 	UserID uint 		   `json:"UserID"`
 	User   User `gorm:"foreignKey:UserID"`
