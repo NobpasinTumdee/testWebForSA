@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import { MovieInterface } from '../interfaces/IMoviePackage';
 import { UpdateMovieByid, GetMovieById } from '../services/https/index';
-import { message, Form, Input, Button ,Space } from "antd";
+import { message, Form, Input, Button, Space, Upload } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
 
 export const PopUpAdminUpdate: React.FC = () => {
   const navigate = useNavigate();
@@ -11,11 +12,13 @@ export const PopUpAdminUpdate: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [loading, setLoading] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
+  const [profileImageUrl, setProfileImageUrl] = useState<string>(""); // Holds the uploaded image URL
 
   const fetchMovieData = async (id: string) => {
     try {
       const res = await GetMovieById(id);
       if (res.status === 200) {
+        setProfileImageUrl(res.data.Movie_poster); // Set the Movie_poster URL
         form.setFieldsValue({
           Movie_name: res.data.Movie_name,
           Movie_information: res.data.Movie_information,
@@ -39,6 +42,7 @@ export const PopUpAdminUpdate: React.FC = () => {
       });
     }
   };
+
   const onFinish = async (values: MovieInterface) => {
     setLoading(true);
     if (!id) {
@@ -49,11 +53,11 @@ export const PopUpAdminUpdate: React.FC = () => {
       setLoading(false);
       return;
     }
-  
+    const valuesWithImage = { ...values, Movie_poster: profileImageUrl }; // Include image URL
     try {
-      const res = await UpdateMovieByid(id, values);
+      const res = await UpdateMovieByid(id, valuesWithImage);
       setLoading(false);
-  
+
       if (res.status === 200) {
         messageApi.open({
           type: "success",
@@ -76,22 +80,28 @@ export const PopUpAdminUpdate: React.FC = () => {
       });
     }
   };
-  
+
+  // Handle image upload
+  const handleUpload = (file: any) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      setProfileImageUrl(reader.result as string); // Update image URL when uploaded
+    };
+    reader.readAsDataURL(file);
+    return false; // Prevent default upload behavior
+  };
 
   useEffect(() => {
     if (id) {
-      fetchMovieData(id); 
+      fetchMovieData(id);
     }
-}, [id]);
-
+  }, [id]);
 
   return (
     <>
       {contextHolder}
       <div className="PopUpAdmin">
-        <div className="textAdmin">
-          Edit Movie Information
-        </div>
+        <div className="textAdmin">Edit Movie Information</div>
         <Form
           form={form}
           layout="vertical"
@@ -100,7 +110,6 @@ export const PopUpAdminUpdate: React.FC = () => {
             Movie_name: '',
             Movie_information: '',
             Movie_length: '',
-            Movie_poster: '',
             Movie_video: ''
           }}
         >
@@ -129,11 +138,29 @@ export const PopUpAdminUpdate: React.FC = () => {
           </Form.Item>
 
           <Form.Item
-            label="Movie Poster URL:"
+            label="Upload Poster"
             name="Movie_poster"
-            rules={[{ required: true, message: 'Please input the movie poster URL!' }]}
+            rules={[{ required: true, message: "Please Upload Movie Poster !" }]}
           >
-            <Input />
+            <Upload
+              beforeUpload={handleUpload}
+              listType="picture"
+              maxCount={1}
+              defaultFileList={
+                profileImageUrl
+                  ? [
+                      {
+                        uid: '-1',
+                        name: 'Movie Poster',
+                        status: 'done',
+                        url: profileImageUrl, // Display the image preview
+                      },
+                    ]
+                  : []
+              }
+            >
+              <Button icon={<UploadOutlined />}>Upload Poster</Button>
+            </Upload>
           </Form.Item>
 
           <Form.Item
@@ -145,17 +172,19 @@ export const PopUpAdminUpdate: React.FC = () => {
           </Form.Item>
 
           <Form.Item>
-          <Space size={[8, 16]} wrap>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="submit-button"
-              loading={loading}
-            >
-              Confirm
-            </Button>
-            <Button danger type="primary" onClick={() => navigate(`/Admin`)}>Return</Button>
-        </Space>
+            <Space size={[8, 16]} wrap>
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="submit-button"
+                loading={loading}
+              >
+                Confirm
+              </Button>
+              <Button danger type="primary" onClick={() => navigate(`/Admin`)}>
+                Return
+              </Button>
+            </Space>
           </Form.Item>
         </Form>
       </div>
