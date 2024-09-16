@@ -10,10 +10,11 @@ import { PackageInterface, PaymentsInterface } from "../interfaces/IMoviePackage
 import { UpdatePaymenteByidUser , GetPaymentById , CreatePayment} from "../services/https/index";
 import axios from 'axios';
 import { message } from "antd"; // Ant Design message for notifications
-
+import { useNavigate } from 'react-router-dom';
 import PaymentCard from '../Component/Card/PaymentCard';
 
 const Subscription = () => {
+  const navigate = useNavigate();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
@@ -123,6 +124,9 @@ const Subscription = () => {
     setIsImagePopupCardOpen(false)
     handlePaymentsClick(); // ส่งข้อมูลการชำระเงิน
     setIsSuccessPopupOpen(true);
+    if (selectedPlan) {
+      navigate(`/payment?duration=${selectedPlan.Duration}`);
+    }
     setTimeout(() => {
       setIsSuccessPopupOpen(false);
     }, 2000);
