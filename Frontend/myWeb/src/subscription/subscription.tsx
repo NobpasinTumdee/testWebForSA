@@ -5,6 +5,8 @@ import mastercard from "../assets/payment/mastercard.png";
 import Gpay from "../assets/payment/Gpay.png";
 import visa from "../assets/payment/visa.png";
 import Prompay from "../assets/payment/Prompay.png";
+import {UsertopRigh} from '../Component/UsertopRigh/UsertopRigh';
+
 //API
 import { PackageInterface, PaymentsInterface } from "../interfaces/IMoviePackage";
 import { UpdatePaymenteByidUser , GetPaymentById , CreatePayment} from "../services/https/index";
@@ -144,6 +146,7 @@ const Subscription = () => {
   };
 
   return (
+    <> <UsertopRigh />
     <div className="subscription-container">
       <h1 className="subscription-title">SUBSCRIPTION</h1>
       <div className="plans-container">
@@ -219,6 +222,7 @@ const Subscription = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

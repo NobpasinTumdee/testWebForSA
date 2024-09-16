@@ -22,12 +22,13 @@ import { MovieInterface , PaymentsInterface } from "../interfaces/IMoviePackage"
 import { UsersInterface } from "../interfaces/IUser";
 import axios from 'axios';
 import {CreateHistory} from "../services/https/index"
-import { GetUserById , GetPaymentById} from "../services/https/index"; // นำเข้า GetUserById
+import { GetUserById , GetPaymentById ,DeletePaymenteByidUser} from "../services/https/index"; // นำเข้า GetUserById
 
 
 // popup
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { message } from "antd"; // Ant Design message for notifications
 
 //import Carousels from "../Component/Carousels/Carousels";
 const MainWeb: React.FC = () => {
@@ -58,6 +59,52 @@ const MainWeb: React.FC = () => {
         });
     }
   }, [userIdstr]);
+
+
+  //ตรวจสอบวันหมดอายุสมาชิก
+  const [history, setHistorypay] = useState<PaymentsInterface[]>([]);
+  const [isDeleting, setIsDeleting] = useState(false);
+  useEffect(() => {
+    if (userIdstr) {
+      fetchUserData(userIdstr);
+    } else {
+
+    }
+  }, [userIdstr]);
+
+  const fetchUserData = async (userIdstr: string) => {
+    try {
+      const res = await GetPaymentById(userIdstr);
+      setHistorypay(res.status === 200 && res.data ? res.data : []);
+    } catch {
+      setHistorypay([]);
+    }
+  };
+
+  useEffect(() => {
+    if (history.length > 0) {
+      const { DateP, Expiration } = history[0];
+      if (DateP && Expiration && DateP > Expiration && userIdstr) {
+        setIsDeleting(true);
+        message.error("สมาชิกของคุณหมดอายุแล้ว");
+        setTimeout(() => {
+          if (isDeleting) {
+            DeletePaymenteByidUser(userIdstr)
+              .then(() => {
+                setPaymentInfo(null); // assuming `setPaymentInfo` is defined elsewhere
+              })
+              .catch(error => console.error('Error deleting payment info:', error))
+              .finally(() => setIsDeleting(false));
+          }
+        }, 3000);
+      }
+    }
+  }, [history, userIdstr, isDeleting]);
+  
+  
+  
+  
+  
 
   useEffect(() => {//โหลดข้อมูลของผู้ใช้และเอาแค่ status
     if (userIdstr) {
@@ -278,6 +325,8 @@ const MainWeb: React.FC = () => {
                   </div>
                 </div>
               )}
+
+
               {isSearchresults && (
                 <>
                   {paymentInfo ? (

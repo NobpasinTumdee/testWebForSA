@@ -32,7 +32,6 @@ const Payment: React.FC = () => {
         setHistorypay(res.data); // กำหนดให้เป็น array ที่ได้จาก API
       } else {
         setHistorypay([]); // ถ้าไม่มีข้อมูล ให้กำหนดเป็น array ว่าง
-        message.error("There is no order history yet💸");
       }
     } catch (error) {
       setHistorypay([]); // กำหนดให้เป็น array ว่างเมื่อมี error
@@ -100,7 +99,7 @@ const Payment: React.FC = () => {
         Right Now: {getFormattedDateTime(currentTime)}
       </div>
       <div style={{ color: '#fc3f3f', margin: "5px 43%", width: '300px' }}>
-        Expiration date: {history[0]?.Expiration ? formatExpirationDate(String(history[0].Expiration)) : "N/A"} 
+        Expiration date: {history[0]?.Expiration ? formatExpirationDate(String(history[0].Expiration)) : "Please Subscribtion!!!"} 
       </div>
 
       <Mastercard />
