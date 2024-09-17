@@ -1,11 +1,11 @@
 import React from 'react';
 import './AboutMe.css';
 //import {APItestMoviePackage} from "../testApi/Apitest"
-import {UsertopRigh} from "../Component/UsertopRigh/UsertopRigh";
-import Carousels from "../Component/Carousels/Carousels";
+//import {UsertopRigh} from "../Component/UsertopRigh/UsertopRigh";
+//import Carousels from "../Component/Carousels/Carousels";
 import Mastercard from "../Component/Card/Mastercard";
 import PaymentCard from "../Component/Card/PaymentCard";
-
+import {CommentCom} from "../Comment/ComponentComment/CommentCom";
 
 const AboutMe: React.FC = () => {
 
@@ -15,6 +15,7 @@ const AboutMe: React.FC = () => {
         {/* <APItestMoviePackage /> 
         <UsertopRigh />
         <Carousels />*/}
+        <CommentCom />
         <Mastercard />
         <PaymentCard />
         </>

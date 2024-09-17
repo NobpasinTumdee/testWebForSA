@@ -56,3 +56,10 @@ export interface CollectionMovieInterface {
     Movie_information?: string;
     Movie_video?: string;
 }
+export interface ReviewInterface {
+    ID?: number;
+    DateReview?: Date;
+    Comment?: string;
+    MovieID?: number;
+    UserID?: number;
+}

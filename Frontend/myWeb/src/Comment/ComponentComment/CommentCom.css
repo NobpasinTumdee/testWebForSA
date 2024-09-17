@@ -1,0 +1,35 @@
+.CommentContener {
+    visibility:hidden;
+    opacity: 0;
+    transition:  0.3s ease-in-out;
+    width: 450px;
+    min-height: 250px;
+    height: auto;
+    background-color: aliceblue;
+    position: fixed;
+    right: 20px;
+    border-radius: 10px 0px 10px 10px;
+    padding: 30px;
+    font-family: pkmaehongson;
+    font-size: 30px;
+}
+
+.BtnComment {
+    position: fixed;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(43, 47, 175);
+    border-radius: 20px;
+    font-size: 30px;
+    margin: 10px;
+    z-index: 1000;
+}
+.BtnComment:hover .CommentContener{
+    visibility: visible;
+    opacity: 1;
+}
+@font-face {
+    font-family: pkmaehongson;
+    src: url(../src/PK-Maehongson-Medium.ttf);
+  }

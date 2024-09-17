@@ -27,6 +27,9 @@ type User struct {
 
 	// 1 User เป็นเจ้าของได้หลาย Payment
 	Payment []Payment `gorm:"foreignKey:UserID"`
+	
+	// 1 User เป็นเจ้าของได้หลาย Review
+	Review []Review `gorm:"foreignKey:UserID"`
 
 
 }

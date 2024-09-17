@@ -1,5 +1,5 @@
 import {UsersInterface} from "../../interfaces/IUser";
-import {MovieInterface,HistoryInterface,PaymentsInterface,CollectionMovieInterface} from "../../interfaces/IMoviePackage";
+import {MovieInterface,HistoryInterface,PaymentsInterface,CollectionMovieInterface,ReviewInterface} from "../../interfaces/IMoviePackage";
 import {SignInInterface} from "../../interfaces/SignIn";
 //import {PackageInterface} from "../../interfaces/IMoviePackage"
 import { message } from "antd"; // Ant Design message for notifications
@@ -233,6 +233,8 @@ async function GetUsers() {
       .catch((e) => e.response);
   
   }
+
+  
   //ลบประวัติ
   async function DeleteHistoryByID(id: string) {
     return await axios
@@ -427,6 +429,22 @@ async function GetUsers() {
   
     return res;
   }
+  // ===================================================================================
+  // create Review 
+  async function CreateReview(data: ReviewInterface) {
+
+    return await axios
+  
+      .post(`${apiUrl}/Review`, data, requestOptions)
+      .then((res) => {
+        if (res) {
+          window.location.reload(); // reload หลังจากลบเสร็จ
+        }
+        return res;
+      })
+      .catch((e) => e.response);
+  
+  }
   
   export {
   GetUsers,
@@ -464,5 +482,7 @@ async function GetUsers() {
   GetcollectionMovieById,
   GetcollectionMovie,
   DeleteCollectionMovieByID, GetGenders,
+
+  CreateReview,
 };
   

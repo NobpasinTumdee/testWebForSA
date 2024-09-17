@@ -34,6 +34,7 @@ func SetupDatabase() {
 		&entity.Collection{},
 		&entity.CollectionMovie{},
 		&entity.Gender{},
+		&entity.Review{},
 	)
 
 	Gender := []entity.Gender{

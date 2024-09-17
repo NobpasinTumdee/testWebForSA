@@ -80,6 +80,10 @@ func main() {
 		router.POST("/CollectionMovies", controller.CreateCollectionMovie)
 		router.PATCH("/CollectionMovies", controller.UpdateCollectionMovie)
 		router.DELETE("/CollectionMovies/:id", controller.DeleteCollectionMovie)
+
+		//Review Routes
+		router.POST("/Review", controller.CreateReview)
+		router.GET("/Review", controller.ListReview)
 	}
 
   r.GET("/", func(c *gin.Context) {
