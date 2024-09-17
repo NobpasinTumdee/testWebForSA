@@ -96,14 +96,15 @@
  }
 
  .close-popup-button {
-  width: 30px;
-  height: 30px;
-  margin: 2% 68%;
-  background-color: rgb(173, 10, 37);
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  /* background-color: rgb(173, 10, 37); */
+  background-color: rgba(173, 10, 37, 0);
   border-color: #ffffff;
+  border: #ffffff00;
   border-radius: 20px;
   color: #ffffff;
-  
  }
 
  .AddMovie {

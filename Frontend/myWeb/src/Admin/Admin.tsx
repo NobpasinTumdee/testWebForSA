@@ -88,7 +88,7 @@ const AdminManageMovies: React.FC = () => {
             <div className='popup-container'>
               <PopUpAdmin />
               <button onClick={closePopup} className="close-popup-button">
-                X
+                Click on it to close it.
               </button>
             </div>
           )}

@@ -117,7 +117,7 @@ const Collection: React.FC = () => {
               <CollectionComponent />
 
               <button onClick={closePopup} className="close-popup-button">
-                X
+              Click on it to close it.
               </button>
             </div>
           )}
