@@ -61,6 +61,7 @@ export interface ReviewInterface {
     username?: string;
     status?: string;
     DateReview?: Date;
+    Rating?: number;
     Comment?: string;
     MovieID?: number;
     UserID?: number;
