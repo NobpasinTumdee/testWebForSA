@@ -8,6 +8,7 @@ export const CommentCom: React.FC = () => {
     const userIdstr = localStorage.getItem("id");
     const [form] = Form.useForm();
     const [movies, setMovies] = useState<MovieInterface[]>([]); // List of all movies
+    const [isPopupopen, setPopup] = useState(false); // List of all movies
     const [selectedMovie, setSelectedMovie] = useState<number | null>(null);
     
     const onFinish = async (values: ReviewInterface) => {
@@ -59,12 +60,21 @@ export const CommentCom: React.FC = () => {
     }
   };
 
+  const openpopup = () => {
+    if (isPopupopen){
+      setPopup(false)
+    }else{
+      setPopup(true)
+    }
+  }
+
 
     return (
         <>
 
-            <div className='BtnComment' >😍
-                <div className='CommentContener' style={{ marginTop: '10px', marginRight: '20px' }}>Comment Movie
+            <div className='BtnComment' onClick={openpopup} style={{cursor: 'pointer'}}><span className='textComment'>Comment</span></div>
+              {isPopupopen && 
+                <div className='CommentContener' style={{ marginTop: '60px', marginRight: '20px' }}>Comment Movie
                     <Form
                         form={form}
                         layout="vertical"
@@ -100,13 +110,14 @@ export const CommentCom: React.FC = () => {
                                 type="primary"
                                 htmlType="submit"
                                 className="submit-button"
+                                style={{background: "#ff7f50 "}}
                             >
                                 Confirm
                             </Button>
                         </Form.Item>
                     </Form>
-                </div>
-            </div>
+                </div>}
+            
         </>
     );
 };

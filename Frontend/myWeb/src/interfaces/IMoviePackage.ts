@@ -58,6 +58,8 @@ export interface CollectionMovieInterface {
 }
 export interface ReviewInterface {
     ID?: number;
+    username?: string;
+    status?: string;
     DateReview?: Date;
     Comment?: string;
     MovieID?: number;

@@ -84,6 +84,8 @@ func main() {
 		//Review Routes
 		router.POST("/Review", controller.CreateReview)
 		router.GET("/Review", controller.ListReview)
+		//router.GET("/Review/:id", controller.GetCommentByidMovie)
+		router.GET("/Review/:id", controller.GetCommentByidMovieRaw)
 	}
 
   r.GET("/", func(c *gin.Context) {

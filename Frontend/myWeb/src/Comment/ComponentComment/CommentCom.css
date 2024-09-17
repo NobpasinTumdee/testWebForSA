@@ -1,13 +1,13 @@
 .CommentContener {
-    visibility:hidden;
-    opacity: 0;
     transition:  0.3s ease-in-out;
     width: 450px;
     min-height: 250px;
     height: auto;
-    background-color: aliceblue;
+    background: linear-gradient(to right, #dee4ff,#5654C0, #080129);
+    box-shadow: 0px 0px 40px #000000;
     position: fixed;
-    right: 20px;
+    right: 0px;
+    top: 20%;
     border-radius: 10px 0px 10px 10px;
     padding: 30px;
     font-family: pkmaehongson;
@@ -17,18 +17,39 @@
 .BtnComment {
     position: fixed;
     right: 20px;
-    width: 40px;
-    height: 40px;
-    background-color: rgb(43, 47, 175);
-    border-radius: 20px;
-    font-size: 30px;
-    margin: 10px;
+    width: 10px;
+    height: 80px;
+    top: 45%;
+    background-color: rgb(255, 76, 76);
+    border-radius: 20px 0 0 20px;
+    font-size: 15px;
+    margin: 0px;
     z-index: 1000;
+    transition:  0.3s ease-in-out;
 }
-.BtnComment:hover .CommentContener{
+.BtnComment:hover {
+    box-shadow: 0px 0px 40px #e30000;
+}
+
+.textComment {
+    visibility: hidden;
+    opacity: 0;
+    font-size: 16px;
+    font-family: pkmaehongson;
+    color: cornsilk;
+    position: absolute;
+    right: 15px;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.388);
+    padding: 5px 15px;
+    border-radius: 20px 0px 20px 20px;
+    transition:  0.3s ease-in-out;
+}
+.BtnComment:hover .textComment{
     visibility: visible;
     opacity: 1;
 }
+
 @font-face {
     font-family: pkmaehongson;
     src: url(../src/PK-Maehongson-Medium.ttf);

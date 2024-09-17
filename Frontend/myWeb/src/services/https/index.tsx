@@ -445,6 +445,18 @@ async function GetUsers() {
       .catch((e) => e.response);
   
   }
+  //get Review by movie id 
+  async function GetReviewtByMovieId(id: string) {
+    
+    return await axios
+    
+    .get(`${apiUrl}/Review/${id}`, requestOptions)
+    
+    .then((res) => res)
+    
+    .catch((e) => e.response);
+    
+  }
   
   export {
   GetUsers,
@@ -484,5 +496,6 @@ async function GetUsers() {
   DeleteCollectionMovieByID, GetGenders,
 
   CreateReview,
+  GetReviewtByMovieId,
 };
   

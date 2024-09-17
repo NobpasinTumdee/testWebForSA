@@ -95,3 +95,65 @@
     font-size: 40px;
     margin-left: 30px;
   }
+
+
+
+
+/* สไตล์สำหรับส่วนคอมเมนต์ */
+.comments-section {
+  margin: 0 60px  ;
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ทำให้คำว่า "Comments" อยู่ตรงกลาง */
+.comments-title {
+  font-size: 24px;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* จัดเรียงคอมเมนต์เป็น 2 คอลัมน์ */
+.comment-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 คอลัมน์ */
+  gap: 20px;
+}
+
+/* สไตล์สำหรับคอมเมนต์แต่ละรายการ */
+.comment-container {
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
+  border-left: 5px solid #6176ff;
+}
+
+.comment-container p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.comment-container p strong {
+  font-weight: 600;
+  color: #333;
+}
+
+/* สไตล์สำหรับแสดงวันที่ */
+.comment-date {
+  font-size: 14px;
+  color: #999;
+}
+
+/* เมื่อไม่มีคอมเมนต์ */
+.comments-section p {
+  font-size: 18px;
+  font-family: 'Arial', sans-serif;
+  color: #777;
+}

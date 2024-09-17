@@ -9,7 +9,7 @@ import yournameBig from "../assets/Anime/yournamePosterBig4.png";
 import { useNavigate } from 'react-router-dom';
 /*❤️💁🏻‍♀️🎞️✨*/
 import {UsertopRigh} from '../Component/UsertopRigh/UsertopRigh';
-
+import {CommentCom} from '../Comment/ComponentComment/CommentCom';
 // ข้อมูลหนัง และ อนิเมะ
 import {  moviesMain } from "./DataMovie";
 
@@ -189,6 +189,7 @@ const MainWeb: React.FC = () => {
     
     navigate('/WatchMovie', { 
       state: { 
+        IDMOVIE: movie.ID,
         videoUrl: movie.Movie_video, 
         movieName: movie.Movie_name, 
         Movie_poster: movie.Movie_poster, 
@@ -253,7 +254,7 @@ const MainWeb: React.FC = () => {
       {isLoading ? (<div style={{
         position: 'fixed', top: '50%', left: '55%', marginTop: '-50px', marginLeft: '-100px'
       }}><LoadingStarWar /></div>) : (
-        <div className="app">{status !== 'Admin' && ( <UsertopRigh />)}
+        <div className="app">{status !== 'Admin' && ( <UsertopRigh />)} <CommentCom />
           <aside className={`sidebar ${isSidebarOpen ? '' : 'hidden'}`}>
             <div className="toggle-button" onClick={toggleSidebar}>
               {isSidebarOpen ? '⬅️' : '➡️'}
