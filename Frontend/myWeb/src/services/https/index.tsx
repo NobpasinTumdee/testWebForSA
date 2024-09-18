@@ -106,7 +106,7 @@ async function GetUsers() {
 
 
   // ResetPassword
-  async function ResetPassword( data: MovieInterface) {
+  async function ResetPassword( data: UsersInterface) {
 
     return await axios
   
@@ -118,7 +118,7 @@ async function GetUsers() {
   
   }
   // update user
-  async function UpdateUserByid(id: string, data: MovieInterface) {
+  async function UpdateUserByid(id: string, data: UsersInterface) {
 
     return await axios
   

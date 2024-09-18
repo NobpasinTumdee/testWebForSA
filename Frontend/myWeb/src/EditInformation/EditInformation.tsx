@@ -1,25 +1,23 @@
-import React, { FC, useState, useEffect } from 'react';
-import { Form, Input, Button, Select, Row, Col, message, InputNumber } from 'antd';
+import { FC, useState, useEffect } from 'react';
+import { Form, Input, Button, Select, Row, Col, message } from 'antd';
 import { UsersInterface, GenderInterface } from '../interfaces/IUser';
 import { GetUserById, GetGenders, UpdateUserByid } from '../services/https';
 import './EditInformation.css';
 import { Loading } from '../Component/Loading/Loading';
-import { useNavigate, useParams } from "react-router-dom";
 
 const { Option } = Select;
 
 const EditInformation: FC = () => {
-  const [form] = Form.useForm();
-  const [genderList, setGenderList] = useState<GenderInterface[]>([]);
-  const [isLoading, setLoading] = useState(true);
+  const [form] = Form.useForm(); //ตั้งค่า form
+  const [genderList, setGenderList] = useState<GenderInterface[]>([]); //เก็บข้อมูลเพศเป็น array
+  const [isLoading, setLoading] = useState(true); //หน้าโหลดตอนเปิด
   const userIdstr = localStorage.getItem("id");
-  const [messageApi, contextHolder] = message.useMessage();
-  const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
-
+  //===========================เปิดหน้ามาจะโหลดข้อมูลจาก เพศ และ ผู้ใช้ลง textbox ===========================================
   useEffect(() => {
-    fetchUserData();
-    fetchGenders();
+    if (userIdstr) {
+      fetchGenders();
+      fetchUserData(userIdstr);
+    }
   }, [userIdstr]);
 
   useEffect(() => {
@@ -27,54 +25,7 @@ const EditInformation: FC = () => {
       setLoading(false);
     }, 300);
   }, []);
-
-  const fetchUserData = async () => {
-    try {
-      if (userIdstr) {
-        const response = await GetUserById(userIdstr);
-
-        if (response && response.status === 200) {
-          const userData: UsersInterface = response.data;
-          form.setFieldsValue({
-            oldUsername: userData.username || '',
-            oldPassword: userData.password || '',
-            oldEmail: userData.email || '',
-            newEmail: '',
-            newPassword: '',
-            confirmPassword: '',
-            firstname: userData.firstname || '',
-            lastname: userData.lastname || '',
-            gender: userData.gender || '',
-            age: userData.age ? userData.age.toString() : '',
-            phonenumber: userData.phonenumber || '',
-          });
-        } else {
-          message.error('Error retrieving user data');
-        }
-      } else {
-        message.error('UserId not found in localStorage');
-      }
-    } catch (error) {
-      message.error('Error fetching user data');
-    }
-  };
-
-  const fetchGenders = async () => {
-    try {
-      const res = await GetGenders();
-      if (res.status === 200 && res.data) {
-        setGenderList(res.data);
-      } else {
-        message.error("I can't retrieve any Gender information.😭");
-      }
-    } catch (error) {
-      message.error("I found the Error🤯");
-    }
-  };
-
-  const handleEditInformation = (values: any) => {
-    console.log('Updated Information:', values);
-  };
+  //=========================== เงื่อนไขการกรอกข้อมูลต่างๆ  ================================================================
 
   const preventNonAlphabetic = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (!/^[a-zA-Z]+$/.test(e.key)) {
@@ -87,7 +38,7 @@ const EditInformation: FC = () => {
       e.preventDefault();
     }
   };
-  
+
   const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const phoneNumber = e.target.value;
     if (!/^\d*$/.test(phoneNumber)) {
@@ -120,73 +71,87 @@ const EditInformation: FC = () => {
       ]);
     }
   };
+  //=========================== ฟังก์ชั่นโหลดข้อมูลต่างๆ  ================================================================
+
+  const fetchUserData = async (userIdstr: string) => {
+    try {
+      const res = await GetUserById(userIdstr);
+      if (res.status === 200) {
+        form.setFieldsValue({
+          email: res.data.email,
+          username: res.data.username,
+          password: res.data.password,
+          firstname: res.data.firstname,
+          lastname: res.data.lastname,
+          GenderID: res.data.GenderID,
+          age: res.data.age,
+          phonenumber: res.data.phonenumber,
+        });
+      } else {
+        message.open({
+          type: "error",
+          content: "ไม่พบข้อมูลผู้ใช้",
+        });
+      }
+    } catch (error) {
+      message.open({
+        type: "error",
+        content: "เกิดข้อผิดพลาดในการดึงข้อมูลผู้ใช้",
+      });
+    }
+  };
+
+  const fetchGenders = async () => {
+    try {
+      const res = await GetGenders();
+      if (res.status === 200 && res.data) {
+        setGenderList(res.data);
+      } else {
+        message.error("I can't retrieve any Gender information.😭");
+      }
+    } catch (error) {
+      message.error("I found the Error🤯");
+    }
+  };
+  //=========================== ถ้ากดปุ่มจะทำการนำข้อมูลส่งไปยัง backend  ================================================================
 
   const onFinish = async (values: UsersInterface) => {
     setLoading(true);
-
-    if (!id) {
-      messageApi.open({
+    if (!userIdstr) {//เช็คว่ามีไอดีของผู้ใช้เข้ามาไหม
+      message.open({
         type: "error",
         content: "ไม่พบ ID ของผู้ใช้",
       });
       setLoading(false);
       return;
     }
-
     try {
-      const res = await UpdateUserByid(id, values);
+      const res = await UpdateUserByid(userIdstr, values); //ส่งข้อมูลที่กรอกเข้าไปยังฟังก์ชั่น update user
       setLoading(false);
 
       if (res.status === 200) {
-        messageApi.open({
+        message.open({
           type: "success",
-          content: "ข้อมูลของคุณถูกอัพเดตเรียบร้อยแล้ว!",
+          content: res.data.message,
         });
 
-        // บันทึกข้อมูลผู้ใช้ใน localStorage
-        localStorage.setItem("userData", JSON.stringify(values));
-
-        // เปลี่ยนเส้นทางหลังจากอัพเดตเสร็จสิ้น
-        setTimeout(() => {
-          navigate("/MainWeb");
-        }, 2000);
       } else {
-        messageApi.open({
+        message.open({
           type: "error",
           content: res.data.error,
         });
       }
     } catch (error) {
       setLoading(false);
-      messageApi.open({
+      message.open({
         type: "error",
-        content: "เกิดข้อผิดพลาดขณะอัพเดตข้อมูล",
+        content: "เกิดข้อผิดพลาดในการอัปเดตข้อมูล",
       });
     }
   };
 
-  const handleAgeChange = (value: number | null) => {
-    const numberValue = value === null ? NaN : Number(value);
-    
-    if (isNaN(numberValue) || numberValue < 1 || numberValue > 100) {
-      form.setFields([
-        {
-          name: 'age',
-          errors: ['Age must be between 1 and 100.'],
-        },
-      ]);
-    } else {
-      form.setFields([
-        {
-          name: 'age',
-          errors: [],
-        },
-      ]);
-    }
-  };
-
   return (
-    <>
+    <>{/* แสดงหน้าโหลด */}
       {isLoading ? (
         <div
           style={{
@@ -202,78 +167,73 @@ const EditInformation: FC = () => {
           <Form
             form={form}
             className="edit-form"
-            onFinish={onFinish}
             layout="vertical"
+            onFinish={onFinish}
+            initialValues={{
+              email: '',
+              username: '',
+              password: '',
+              firstname: '',
+              lastname: '',
+              GenderID: 1,
+              age: '',
+              phonenumber: '',
+            }}
           >
-            <Form.Item label={<span style={{ color: 'white' }}>Username</span>} name="oldUsername">
-              <Input readOnly style={{ width: '100%' }} />
-            </Form.Item>
-
             <Row gutter={[16, 16]}>
               <Col span={12}>
-                <Form.Item label={<span style={{ color: 'white' }}>Old Email</span>} name="oldEmail">
-                  <Input readOnly style={{ width: '100%' }} />
+                <Form.Item
+                  label={<span style={{ color: 'white', fontSize: '20px' }}>Username</span>}
+                  name="username"
+                >
+                  <Input readOnly onKeyPress={preventNonAlphabetic} />
                 </Form.Item>
               </Col>
+
               <Col span={12}>
-                <Form.Item label={<span style={{ color: 'white' }}>New Email</span>} name="newEmail"
-                  rules={[
-                    { required: true, message: "Please input your new email" },
-                    { type: 'email', message: 'Invalid email format!' }
-                  ]}
+                <Form.Item
+                  label={<span style={{ color: 'white', fontSize: '20px' }}>Email</span>}
+                  name="email"
+                rules={[{type: 'email'}]}
                 >
-                  <Input style={{ width: '100%' }} />
+                  <Input placeholder="Email" />
                 </Form.Item>
               </Col>
             </Row>
 
-            <Row gutter={[16, 16]}>
-              <Col span={12}>
-                <Form.Item label={<span style={{ color: 'white' }}>Old Password</span>} name="oldPassword">
-                  <Input.Password readOnly style={{ width: '100%' }} />
-                </Form.Item>
-              </Col>
-              <Col span={12}>
-                <Form.Item label={<span style={{ color: 'white' }}>New Password</span>} name="newPassword"
-                  rules={[{ required: true, message: "Please input your new password" }]}
-                >
-                  <Input.Password style={{ width: '100%' }} />
-                </Form.Item>
-              </Col>
-            </Row>
-
-            <Form.Item label={<span style={{ color: 'white' }}>Confirm Password</span>} name="confirmPassword" dependencies={['newPassword']} hasFeedback
-              rules={[
-                { required: true, message: 'Please confirm your password' },
-                ({ getFieldValue }) => ({
-                  validator(_, value) {
-                    if (!value || getFieldValue('newPassword') === value) {
-                      return Promise.resolve();
-                    }
-                    return Promise.reject(new Error('Passwords do not match!'));
-                  },
-                }),
-              ]}
+            <Form.Item
+              label={<span style={{ color: 'white', fontSize: '20px' }}>Password Hash</span>}
+              name="password"
             >
-              <Input.Password style={{ width: '100%' }} />
+              <Input.Password readOnly/>
             </Form.Item>
 
             <Row gutter={[16, 16]}>
               <Col span={12}>
-                <Form.Item label={<span style={{ color: 'white' }}>Firstname</span>} name="firstname">
-                  <Input onKeyPress={preventNonAlphabetic} style={{ width: '100%' }} />
+                <Form.Item
+                  label={<span style={{ color: 'white', fontSize: '20px' }}>Firstname</span>}
+                  name="firstname"
+                >
+                  <Input onKeyPress={preventNonAlphabetic} />
                 </Form.Item>
               </Col>
+
               <Col span={12}>
-                <Form.Item label={<span style={{ color: 'white' }}>Lastname</span>} name="lastname">
-                  <Input onKeyPress={preventNonAlphabetic} style={{ width: '100%' }} />
+                <Form.Item
+                  label={<span style={{ color: 'white', fontSize: '20px' }}>Lastname</span>}
+                  name="lastname"
+                >
+                  <Input onKeyPress={preventNonAlphabetic} />
                 </Form.Item>
               </Col>
             </Row>
 
             <Row gutter={[16, 16]}>
               <Col span={12}>
-                <Form.Item label={<span style={{ color: 'white' }}>Gender</span>} name="gender">
+                <Form.Item
+                  label={<span style={{ color: 'white', fontSize: '20px' }}>Gender</span>}
+                  name="GenderID"
+                >
                   <Select style={{ width: '100%' }}>
                     {genderList.map((gender) => (
                       <Option key={gender.ID} value={gender.ID}>
@@ -283,46 +243,36 @@ const EditInformation: FC = () => {
                   </Select>
                 </Form.Item>
               </Col>
+
               <Col span={12}>
                 <Form.Item
-                  label={<span style={{ color: 'white' }}>Age</span>}
+                  label={<span style={{ color: 'white', fontSize: '20px' }}>Age</span>}
                   name="age"
-                  rules={[
-                    {
-                      validator(_, value) {
-                        const numberValue = Number(value);
-                        if (isNaN(numberValue) || numberValue < 1 || numberValue > 100) {
-                          return Promise.reject(new Error('Age must be between 1 and 100!'));
-                        }
-                        return Promise.resolve();
-                      },
-                    },
-                  ]}
                 >
-                  <InputNumber
-                    min={1}
-                    max={100}
-                    style={{ width: '100%' }}
-                    onChange={handleAgeChange}
-                  />
+                  <Input onKeyPress={preventNonNumeric} />
                 </Form.Item>
               </Col>
             </Row>
 
-            <Form.Item label={<span style={{ color: 'white' }}>Phone Number</span>} name="phonenumber">
-              <Input
-                onKeyPress={preventNonNumeric}
-                onChange={handlePhoneNumberChange}
-                style={{ width: '100%' }}
-              />
+            <Form.Item
+              label={<span style={{ color: 'white', fontSize: '20px' }}>Phonenumber</span>}
+              name="phonenumber"
+              rules={[{ required: false, message: 'Please input your phone number!' }]}
+            >
+              <Input onChange={handlePhoneNumberChange} onKeyPress={preventNonNumeric} />
             </Form.Item>
 
             <Form.Item>
-              <Button type="primary" htmlType="submit" className="editinformation-button">
-                Edit Information
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="editinformation-button"
+              >
+                Confirm
               </Button>
             </Form.Item>
           </Form>
+
           <a href="/MainWeb" className="return-button-Admin">Return to home page</a>
         </div>
       )}

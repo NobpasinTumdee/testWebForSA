@@ -8,7 +8,7 @@ export interface UsersInterface {
     lastname?: string;
     GenderID?: string;
     gender?: string;
-    age?:Int16Array;
+    age?:string;
     phonenumber?: string;
 }
 

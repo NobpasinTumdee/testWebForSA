@@ -31,6 +31,10 @@ func CreateUser(c *gin.Context) {
 		Username:  user.Username,  
 		Password:  hashedPassword,     
 		Status:  "User",
+		Firstname:  "ไม่ได้ระบุ",
+		Lastname:  "ไม่ได้ระบุ",
+		Age:  "ไม่ได้ระบุ",
+		Phonenumber:  "ไม่ได้ระบุ",
 	}
 
 	// บันทึก
@@ -76,7 +80,7 @@ func ListUsers(c *gin.Context) {
 	db := config.DB()
 
 	// Query the user table for basic user data
-	results := db.Select("id, email, username, password, status").Find(&users)
+	results := db.Select("id, email, username, password, status, firstname, lastname ,age , phonenumber").Find(&users)
 
 	// Check for errors in the query
 	if results.Error != nil {

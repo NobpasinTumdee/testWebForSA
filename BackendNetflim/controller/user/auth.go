@@ -37,10 +37,11 @@ type (
         Email     string `json:"email"`
         Password  string `json:"password"`
         Status string `json:"status"`
-        // Firstname string	`json:"firstname"`
-        // Lastname string		`json:"lastname"`
-        // Age string			`json:"age"`
-        // Phonenumber string	`json:"phonenumber"`
+         Firstname string	`json:"firstname"`
+         Lastname string		`json:"lastname"`
+         Age string			`json:"age"`
+         Phonenumber string	`json:"phonenumber"`
+         GenderID uint 		`json:"GenderID"`
     }
 
     ResetPassword struct {
@@ -155,13 +156,15 @@ func SignUp(c *gin.Context) {
 
     Status:       "User",
 
-    // Firstname: payload.Firstname,
+    Firstname: "There is no information yet.",
 
-    // Lastname: payload.Lastname,
+    Lastname: "There is no information yet.",
 
-    // Age: payload.Age,
+    Age: "not set",
 
-    // Phonenumber: payload.Phonenumber,
+    Phonenumber: "There is no information yet.",
+
+    GenderID: 1,
 
    }
    
