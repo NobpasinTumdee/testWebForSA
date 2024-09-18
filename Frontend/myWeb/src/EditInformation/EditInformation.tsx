@@ -4,6 +4,7 @@ import { UsersInterface, GenderInterface } from '../interfaces/IUser';
 import { GetUserById, GetGenders, UpdateUserByid } from '../services/https';
 import './EditInformation.css';
 import { Loading } from '../Component/Loading/Loading';
+import {EditInfo} from './EditInfoCom';
 
 const { Option } = Select;
 
@@ -12,6 +13,13 @@ const EditInformation: FC = () => {
   const [genderList, setGenderList] = useState<GenderInterface[]>([]); //เก็บข้อมูลเพศเป็น array
   const [isLoading, setLoading] = useState(true); //หน้าโหลดตอนเปิด
   const userIdstr = localStorage.getItem("id");
+
+  //===========================popup ===========================================
+  const [isPopup, setPopup] = useState(false); //popupEditPassword
+  const Openpopup = () => {
+    setPopup(!isPopup);
+  }
+
   //===========================เปิดหน้ามาจะโหลดข้อมูลจาก เพศ และ ผู้ใช้ลง textbox ===========================================
   useEffect(() => {
     if (userIdstr) {
@@ -152,6 +160,10 @@ const EditInformation: FC = () => {
 
   return (
     <>{/* แสดงหน้าโหลด */}
+
+      {isPopup && (
+        <EditInfo />
+      )}
       {isLoading ? (
         <div
           style={{
@@ -164,6 +176,7 @@ const EditInformation: FC = () => {
       ) : (
         <div className="containerEdit">
           <h2 className='edit-h2'>EDIT INFORMATION</h2>
+          <div onClick={Openpopup} className='BtnReset'><div className='textEdit'>Edit Password</div></div>
           <Form
             form={form}
             className="edit-form"
