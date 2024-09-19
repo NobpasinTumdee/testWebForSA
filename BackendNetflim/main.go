@@ -28,6 +28,7 @@ func main() {
 	r.GET("/users/:id", user.GetUser) //getOnlyID
 	r.GET("/Payments/:id", controller.ListPaymentByID)
 	r.GET("/MoviePackages", controller.ListMoviePackages)
+	r.GET("/Movies", controller.ListMovies)
 
 	router := r.Group("")
   {
@@ -44,7 +45,7 @@ func main() {
 		router.GET("/genders", controller.ListGenders)
 		
 		// Movie Routes
-		router.GET("/Movies", controller.ListMovies)
+		//router.GET("/Movies", controller.ListMovies) //getOnlyID ย้ายไปไว้ข้างนอกเพื่อให้มันแสดงตัวอย่างหนังได้
 		router.GET("/Movies/:id", controller.GetMovieByid)
 		router.POST("/Movies", controller.CreateMovie)
 		router.PATCH("/Movies", controller.UpdateMovie) //ไม่ได้เรียกใช้

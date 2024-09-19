@@ -1,7 +1,7 @@
 import './Login1.css';
 //import Gojo from '../assets/Anime/gojoPoster.png';
 //import kamado from '../assets/Anime/tanjiroPoster.png';
-
+import { useState, useEffect } from 'react';
 // recomment movie
 import VioletEvergarden from "../assets/VioletEvergarden.jpg"; // นำเข้ารูปภาพ
 import yourname from "../assets/yourname.jpg"
@@ -17,7 +17,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { useNavigate } from 'react-router-dom';
 
-
+import { MovieInterface } from "../interfaces/IMoviePackage";
+import axios from 'axios';
 function Login1() {
     const navigate = useNavigate();
     const subscription = () => {
@@ -34,8 +35,55 @@ function Login1() {
         progress: undefined,
         theme: "colored",
     });
+
+
+
+
+    //================================ตัวอย่างข้อมูลหนัง=====================================
+    const [Movies, setMovie] = useState<MovieInterface[]>([]); //API
+    useEffect(() => {
+        const Authorization = localStorage.getItem("token");
+        const Bearer = localStorage.getItem("token_type");
+
+        const requestOptions = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `${Bearer} ${Authorization}`,
+            },
+        };
+
+        axios.get<MovieInterface[]>('http://localhost:8000/Movies', requestOptions)
+            .then(response => {
+                console.log(response.data);
+                setMovie(response.data);
+            })
+            .catch(error => {
+                console.error('มีข้อผิดพลาดในการดึงข้อมูล:', error);
+            });
+    }, []);
     return (
         <>
+            <div className='showMovieEx'>
+                <div className='BtnShowMovie'>⏫</div>
+                <h1>Movie</h1>
+                <div>
+                    <div className="movie-grid-recommendPopup" id='Movie'>
+                        {Movies ? (
+                            <>
+                                {Movies.map((movie) => (
+                                    <div className="movie-card-recommendPopup" onClick={notify}>
+                                        <img src={movie.Movie_poster} alt="Violet Evergarden" />
+                                    </div>
+                                ))}
+                            </>
+                        ) : (
+                            <>
+                                <h1 style={{color: '#fffff'}}>No Movie😭</h1>
+                            </>
+                        )}
+                    </div>
+                </div>
+            </div>
             <div className='pageLogin1'>
                 <div className="topnav">
                     <a className="active" href="/login">Login</a>
@@ -70,7 +118,7 @@ function Login1() {
                         </div>
                     </div>
                 </div>
-                <ToastContainer/>
+                <ToastContainer />
             </div>
         </>
     );

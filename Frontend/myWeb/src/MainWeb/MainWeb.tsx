@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./MainWeb.css";
 
 //โปสเตอร์
-import Xmen from "../assets/Movie/xmen.jpg"
+//import Xmen from "../assets/Movie/xmen.jpg"
 import yournameBig from "../assets/Anime/yournamePosterBig4.png";
 
 
@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import {UsertopRigh} from '../Component/UsertopRigh/UsertopRigh';
 import {CommentCom} from '../Comment/ComponentComment/CommentCom';
 // ข้อมูลหนัง และ อนิเมะ
-import {  moviesMain } from "./DataMovie";
+//import {  moviesMain } from "./DataMovie";
 
 import AboutMeCom from '../AboutMe/AboutMeCom'
 
@@ -171,9 +171,9 @@ const MainWeb: React.FC = () => {
   };
 
   // ข้อมูล หนัง อนิเมะ
-  const handleMovieClick1 = (movie: { id: number; title: string; image: string }) => {
-    navigate('/WatchMovie', { state: movie });
-  };
+  // const handleMovieClick1 = (movie: { id: number; title: string; image: string }) => {
+  //   navigate('/WatchMovie', { state: movie });
+  // };
   const handleMovieClick = (movie: MovieInterface) => {
     // เรียกใช้ฟังก์ชัน CreateHistory เมื่อผู้ใช้คลิกหนัง
     if (userIdstr && movie.ID) {
@@ -401,20 +401,19 @@ const MainWeb: React.FC = () => {
                 </>
               )}
 
-
-              {isPosterVisible && (  // แสดง PosterBIG เมื่อ isPosterVisible เป็น true
+              {/* หนังดัมมี่ */}
+              {/* {isPosterVisible && (  // แสดง PosterBIG เมื่อ isPosterVisible เป็น true
                 <div className='PosterBIG'>
                   <div className='image-container'>
                     <img src={Xmen} alt="Xmen" />
                     <div className="text-overlay">X MEN</div>
                   </div>
                 </div>
-              )}
+              )} */}
 
-            {paymentInfo && (<>
+            {/* {paymentInfo && (<>
               <h1 className='titile'>MOVIE</h1>
               <div className="movie-grid">
-                {/* Repeat this block for each movie */}
                 {moviesMain.map((movies) => (
                   <div className="movie-card" key={movies.id} onClick={() => handleMovieClick1(movies)}>
 
@@ -422,7 +421,7 @@ const MainWeb: React.FC = () => {
 
                   </div>))}
               </div></>
-            )}
+            )} */}
 
             </section>
           </main>
