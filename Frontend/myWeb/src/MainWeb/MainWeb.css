@@ -318,6 +318,8 @@ header {             /*top*/
 .imgAboutME {
   float:left;
   margin-right: 40px;
+  width: 150px;
+  height: 150px;
 }
 
 @font-face {
