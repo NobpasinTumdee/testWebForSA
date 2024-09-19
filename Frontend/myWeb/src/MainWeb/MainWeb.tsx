@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import "./MainWeb.css";
 
 //โปสเตอร์
@@ -30,6 +30,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { message } from "antd"; // Ant Design message for notifications
 
+
+//audio
+import lofi from '../assets/audio/Lofijazz.mp3';
 //import Carousels from "../Component/Carousels/Carousels";
 const MainWeb: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -265,12 +268,65 @@ const MainWeb: React.FC = () => {
       theme: "dark",
   });
 
+
+  //==============================================เปิดเพลงหน้าหลัก====================================
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(0.3); // ตั้งค่าเริ่มต้นที่ 0.3 (30%)
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // ตั้งค่า volume ของ audio element ตอนเริ่มต้น component
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.3; // ตั้งค่า volume ของ audio เริ่มที่ 0.3
+    }
+  }, []); // ทำงานแค่ครั้งเดียวตอน mount component
+
+  const handlePlayPause = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newVolume = parseFloat(event.target.value);
+    setVolume(newVolume);
+    if (audioRef.current) {
+      audioRef.current.volume = newVolume;
+    }
+  };
+
   return (
     <>
       {isLoading ? (<div style={{
         position: 'fixed', top: '50%', left: '55%', marginTop: '-50px', marginLeft: '-100px'
       }}><LoadingStarWar /></div>) : (
         <div className="app">{status !== 'Admin' && ( <UsertopRigh />)} <CommentCom />
+
+        <div className='audioMain1' style={{margin: '0% 0%' ,zIndex: '1001' ,backgroundColor: '#2F2E67' ,borderRadius: '20px' , height: '40px'}} >
+              <audio ref={audioRef} src={lofi} /> 
+              <button onClick={handlePlayPause} className='audioMain'>
+                  {isPlaying ? '🥳' : '🔇'}
+              </button>
+          <span>
+            <input
+              style={{color: '#000'}}
+              id="volume-control"
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value={volume}
+              onChange={handleVolumeChange}
+              className="volume-slider"
+            />
+          </span>
+        </div>
+
           <aside className={`sidebar ${isSidebarOpen ? '' : 'hidden'}`}>
             <div className="toggle-button" onClick={toggleSidebar}>
               {isSidebarOpen ? '⬅️' : '➡️'}

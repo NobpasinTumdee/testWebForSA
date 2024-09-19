@@ -326,3 +326,68 @@ header {             /*top*/
   font-family: pkmaehongson;
   src: url(../src/PK-Maehongson-Medium.ttf);
 }
+
+
+
+/* การปรับแต่งสีแทบ slider */
+.volume-slider {
+  width: 150px; /* ความกว้างของแทบ */
+  appearance: none;
+  height: 5px; /* ความสูงของแทบ */
+  background: linear-gradient(to right, #2F2E67, #2F2E67); /* สีแทบ (เริ่มจากสีเขียวไปแดง) */
+  border-radius: 5px;
+  outline: none;
+  opacity: 0.3;
+  transition: opacity 0.2s ease-in-out;
+  position: fixed;
+  bottom: 35px;
+  margin-left: 15px;
+}
+
+.volume-slider:hover {
+  opacity: 1;
+}
+
+/* การปรับแต่งปุ่มควบคุม slider */
+.volume-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 10px; /* ขนาดของปุ่มควบคุม */
+  height: 10px;
+  background-color: #2F2E67; /* สีของปุ่มควบคุม */
+  border-radius: 50%; /* ทำให้เป็นวงกลม */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+  background-color: #2F2E67; /* เปลี่ยนสีเมื่อ hover */
+}
+
+
+.audioMain {
+  background-color: transparent;
+  width: auto;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  border-radius: 20px;
+}
+
+
+
+
+.audioMain1 {
+  background-color: #48ff00;
+  width: auto;
+  border: none;
+  font-size: 29px;
+  transition:  0.2s ease-in-out;
+  border-radius: 20px;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+}
+
+.audioMain1:hover {
+  box-shadow: 0 0 20px #ffdf80;
+}
