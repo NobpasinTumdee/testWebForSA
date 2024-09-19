@@ -15,6 +15,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { UsersInterface } from "../../interfaces/IUser";
 import { GetUserById } from "../../services/https/index"; // นำเข้า GetUserById
+import { message } from "antd"; // Ant Design message for notifications
+
 
 export const Navbar: React.FC = () => {
   const navigate = useNavigate();
@@ -75,6 +77,19 @@ export const Navbar: React.FC = () => {
     setIsPopupOpen(false);
   }
 
+  //=================================Login out=================================
+  const Logout = () => {
+
+    localStorage.clear();
+
+    message.success("Logout successful");
+
+    setTimeout(() => {
+      navigate("/");
+    }, 2000);
+
+  };
+
 
   return (
     <>
@@ -107,9 +122,9 @@ export const Navbar: React.FC = () => {
           <Link to="/Admin">
             <li className={`sizeMenuComponent ${location.pathname === "/Admin" ? "active" : ""}`}>💻<span className='Navtext'>Admin</span></li>
           </Link>)}
-          <Link to="/">
-            <li className="sizeMenuComponent">🔙<span className='Navtext'>Log out!!!</span></li>
-          </Link>
+          
+            <li onClick={Logout} className="sizeMenuComponent">🔙<span className='Navtext'>Log out!!!</span></li>
+          
         </ul>
       </nav>
       {isPopupOpen && (

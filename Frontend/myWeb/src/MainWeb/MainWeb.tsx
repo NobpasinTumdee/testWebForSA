@@ -235,6 +235,22 @@ const MainWeb: React.FC = () => {
     searchMovies(); // เรียกฟังก์ชันค้นหาหนัง
   };
 
+
+  //====================================Login out=====================================
+  const Logout = () => {
+
+    localStorage.clear();
+
+    message.success("Logout successful");
+
+    setTimeout(() => {
+
+      location.href = "/";
+
+    }, 1000);
+
+  };
+
   // if (isLoading) {
   //   return <LoadingScreen />; // แสดง LoadingScreen ขณะที่ isLoading เป็น true
   // }
@@ -296,7 +312,7 @@ const MainWeb: React.FC = () => {
                     )}
                     {status !== 'Admin' && ( //ใช่Adminอะป่าว
                     <button onClick={subscription} className="button-85" >✨Subscribe✨</button>)}
-                    <a href="/" className="signup-link">🔙</a>
+                    <a onClick={Logout} style={{cursor: 'pointer' }} className="signup-link">🔙</a>
                   </ul>
                 </nav>
               </>
