@@ -258,22 +258,34 @@ const EditInformation: FC = () => {
               </Col>
 
               <Col span={12}>
-                <Form.Item
+              <Form.Item
                   label={<span style={{ color: 'white', fontSize: '20px' }}>Age</span>}
                   name="age"
                 >
-                  <Input onKeyPress={preventNonNumeric} />
+                  <Input
+                    type="number"
+                    min={1} // Ensure the minimum age is 1
+                    max={100}
+                    onKeyPress={preventNonNumeric} // Only allow numeric input
+                  />
                 </Form.Item>
               </Col>
             </Row>
 
             <Form.Item
-              label={<span style={{ color: 'white', fontSize: '20px' }}>Phonenumber</span>}
-              name="phonenumber"
-              rules={[{ required: false, message: 'Please input your phone number!' }]}
-            >
-              <Input onChange={handlePhoneNumberChange} onKeyPress={preventNonNumeric} />
-            </Form.Item>
+                  label={<span style={{ color: 'white', fontSize: '20px' }}>Phone Number</span>}
+                  name="phonenumber"
+                  rules={[
+                    { required: false, message: 'Please input your phone number!' },
+                    { pattern: /^0\d{9}$/, message: 'Phone number must start with 0 and be exactly 10 digits long' }
+                  ]}
+                >
+                  <Input
+                    maxLength={10}
+                    onKeyPress={preventNonNumeric}  // Prevent non-numeric characters
+                    onChange={handlePhoneNumberChange} // Ensure only numbers are allowed
+                  />
+                </Form.Item>
 
             <Form.Item>
               <Button

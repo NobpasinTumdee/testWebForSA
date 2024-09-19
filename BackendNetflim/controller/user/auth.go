@@ -156,13 +156,13 @@ func SignUp(c *gin.Context) {
 
     Status:       "User",
 
-    Firstname: "There is no information yet.",
+    Firstname: "",
 
-    Lastname: "There is no information yet.",
+    Lastname: "",
 
-    Age: "not set",
+    Age: "",
 
-    Phonenumber: "There is no information yet.",
+    Phonenumber: "",
 
     GenderID: 1,
 
