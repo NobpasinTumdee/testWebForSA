@@ -49,13 +49,31 @@
   transition: 0.5s;
 
 }
+.Navtext {
+  position: fixed;
+  left: 50px;
+  background-color: #00000047;
+  color: #ffffff;
+  width: auto;
+  font-size: 17px;
+  padding: 5px;
+  border-radius: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s ease-in-out;
+}
+
+.sizeMenuComponent:hover .Navtext{
+  opacity: 1;
+  visibility: visible;
+  text-shadow: 0 0 20px #ffe5bd;
+}
 
 .sizeMenuComponent:hover {
   text-decoration: none;
   border-radius: 10px;
   background-color: #9E9EE2;
   font-size: 24px;
-  color: #FFA726;
 }
 
 .sizeMenuComponent.active {
@@ -93,4 +111,10 @@ a {
   padding: 10px;
   border-radius: 5px;
   text-align: center;
+}
+
+
+@font-face {
+  font-family: pkmaehongson;
+  src: url(../src/PK-Maehongson-Medium.ttf);
 }

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import './EditInformation.css';
-import { useNavigate } from 'react-router-dom';
 import { Form, Input, message, Button } from 'antd';
 import { UsersInterface } from '../interfaces/IUser';
 import { ResetPassword } from '../services/https/index';
@@ -8,7 +7,6 @@ import { GetUserById } from '../services/https';
 
 export const EditInfo: React.FC = () => {
     const [form] = Form.useForm(); //ตั้งค่า form
-    const navigate = useNavigate();
     const [messageApi, contextHolder] = message.useMessage();
     const userIdstr = localStorage.getItem("id");
 

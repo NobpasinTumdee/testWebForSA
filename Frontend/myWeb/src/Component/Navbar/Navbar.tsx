@@ -84,31 +84,31 @@ export const Navbar: React.FC = () => {
         <ul>
           {/*หาก location.pathname ตรงกับ "/EditInformation", จะเพิ่มคลาส active ให้กับไอคอนนั้น sidebarComponent*/}
           <Link to="/MainWeb">
-            <li className={`sizeMenuComponent ${location.pathname === "/MainWeb" ? "active" : ""}`}>🎞️</li>
+            <li className={`sizeMenuComponent ${location.pathname === "/MainWeb" ? "active" : ""}`}>🎞️<span className='Navtext'>Movie</span></li>
           </Link>
-          <li className={`sizeMenuComponent ${isPopupOpen ? "active" : ""}`} onClick={openPopup}>💁🏻‍♀️</li>
+          <li className={`sizeMenuComponent ${isPopupOpen ? "active" : ""}`} onClick={openPopup}>💁🏻‍♀️<span className='Navtext'>About Me</span></li>
 
           {paymentInfo ? (
             <>
             <Link to="/Collection">
-              <li className={`sizeMenuComponent ${location.pathname === "/Collection" ? "active" : ""}`}>❤️</li>
+              <li className={`sizeMenuComponent ${location.pathname === "/Collection" ? "active" : ""}`}>❤️<span className='Navtext'>Collection</span></li>
             </Link>
             </>
           ) : ( 
-            <li onClick={notify} className="sizeMenuComponent">❤️</li>
+            <li onClick={notify} className="sizeMenuComponent">❤️<span className='Navtext'>Movie</span></li>
           )}
           <Link to="/EditInformation">
-            <li className={`sizeMenuComponent ${location.pathname === "/EditInformation" ? "active" : ""}`}>👔</li>
+            <li className={`sizeMenuComponent ${location.pathname === "/EditInformation" ? "active" : ""}`}>👔<span className='Navtext'>Edit InfoMation</span></li>
           </Link>
           <Link to="/History">
-            <li className={`sizeMenuComponent ${location.pathname === "/History" ? "active" : ""}`}>👜</li>
+            <li className={`sizeMenuComponent ${location.pathname === "/History" ? "active" : ""}`}>👜<span className='Navtext'>History</span></li>
           </Link>
           {status === 'Admin' && (
           <Link to="/Admin">
-            <li className={`sizeMenuComponent ${location.pathname === "/Admin" ? "active" : ""}`}>💻</li>
+            <li className={`sizeMenuComponent ${location.pathname === "/Admin" ? "active" : ""}`}>💻<span className='Navtext'>Admin</span></li>
           </Link>)}
           <Link to="/">
-            <li className="sizeMenuComponent">🔙</li>
+            <li className="sizeMenuComponent">🔙<span className='Navtext'>Log out!!!</span></li>
           </Link>
         </ul>
       </nav>
