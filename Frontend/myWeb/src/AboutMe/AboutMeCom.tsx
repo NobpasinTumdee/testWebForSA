@@ -44,6 +44,10 @@ const AboutMeCom: React.FC = () => {
                         <div>Name: {user.username}</div>
                         <div>Email: {user.email}</div>
                         <div>Status: {user.status}</div>
+                        <div>Firstname: {user.firstname}</div>
+                        <div>Lastname: {user.lastname}</div>
+                        <div>Age: {user.age}</div>
+                        <div>Phone Number: {user.phonenumber}</div>
                     </div>
                 </div>
             ) : (
