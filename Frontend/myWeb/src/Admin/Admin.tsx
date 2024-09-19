@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 //import { Image } from 'antd';
 import {DeleteMovieById} from "../services/https/index";
 
-
+import pic from '../assets/icon/Error.png';
 const AdminManageMovies: React.FC = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const navigate = useNavigate();
@@ -67,11 +67,11 @@ const AdminManageMovies: React.FC = () => {
           <button onClick={openPopup} className='AddMovie'>Add New Movie</button>
             {Movies.map((movie) => (
               <div className="movie-card-Adminpage" key={movie.ID}>
-                <img src={movie.Movie_poster} alt={movie.Movie_name} className="movie-image" />
+                <img src={movie.Movie_poster ? movie.Movie_poster : pic} alt={movie.Movie_name} className="movie-image" />
                 <div className="movie-info">
-                  <h2>{movie.ID}. {movie.Movie_name}</h2>
-                  <p style={{color: "green"}}>length: {movie.Movie_length} minute.</p>
-                  <p>description: {movie.Movie_information}</p>
+                  <h2>{movie.ID}. {movie.Movie_name ? movie.Movie_name : 'No Data Name'}</h2>
+                  <p style={{color: "green"}}>length: {movie.Movie_length ? movie.Movie_length : 'Loading...'} minute.</p>
+                  <p>description: {movie.Movie_information ? movie.Movie_information : 'Loading.....'}</p>
                 </div>
                   <button className="edit-button" onClick={() => navigate(`/PopUpAdminUpdate/${movie.ID}`)}>
                     <img src={icon} className='edit-icon-Admin' alt="Edit Icon" />
