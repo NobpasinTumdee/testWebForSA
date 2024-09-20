@@ -10,6 +10,7 @@ export interface UsersInterface {
     gender?: string;
     age?:string;
     phonenumber?: string;
+    userphoto?: string;
 }
 
 export interface GenderInterface {

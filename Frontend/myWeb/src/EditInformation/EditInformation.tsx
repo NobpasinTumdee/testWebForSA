@@ -1,10 +1,11 @@
 import { FC, useState, useEffect } from 'react';
-import { Form, Input, Button, Select, Row, Col, message } from 'antd';
+import { Form, Input, Button, Select, Row, Col, message , Upload} from 'antd';
 import { UsersInterface, GenderInterface } from '../interfaces/IUser';
 import { GetUserById, GetGenders, UpdateUserByid } from '../services/https';
 import './EditInformation.css';
 import { Loading } from '../Component/Loading/Loading';
 import {EditInfo} from './EditInfoCom';
+import { UploadOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 
@@ -12,6 +13,7 @@ const EditInformation: FC = () => {
   const [form] = Form.useForm(); //ตั้งค่า form
   const [genderList, setGenderList] = useState<GenderInterface[]>([]); //เก็บข้อมูลเพศเป็น array
   const [isLoading, setLoading] = useState(true); //หน้าโหลดตอนเปิด
+  const [profileImageUrl, setProfileImageUrl] = useState<string>(""); // Holds the uploaded image URL
   const userIdstr = localStorage.getItem("id");
 
   //===========================popup ===========================================
@@ -94,6 +96,7 @@ const EditInformation: FC = () => {
           GenderID: res.data.GenderID,
           age: res.data.age,
           phonenumber: res.data.phonenumber,
+          userphoto: res.data.userphoto,
         });
       } else {
         message.open({
@@ -122,8 +125,9 @@ const EditInformation: FC = () => {
     }
   };
   //=========================== ถ้ากดปุ่มจะทำการนำข้อมูลส่งไปยัง backend  ================================================================
-
+  
   const onFinish = async (values: UsersInterface) => {
+    const valuesWithImage = { ...values, userphoto: profileImageUrl }; // Include image URL
     setLoading(true);
     if (!userIdstr) {//เช็คว่ามีไอดีของผู้ใช้เข้ามาไหม
       message.open({
@@ -134,15 +138,15 @@ const EditInformation: FC = () => {
       return;
     }
     try {
-      const res = await UpdateUserByid(userIdstr, values); //ส่งข้อมูลที่กรอกเข้าไปยังฟังก์ชั่น update user
+      const res = await UpdateUserByid(userIdstr, valuesWithImage); //ส่งข้อมูลที่กรอกเข้าไปยังฟังก์ชั่น update user
       setLoading(false);
-
+      
       if (res.status === 200) {
         message.open({
           type: "success",
           content: res.data.message,
         });
-
+        
       } else {
         message.open({
           type: "error",
@@ -157,7 +161,16 @@ const EditInformation: FC = () => {
       });
     }
   };
-
+  //=========================== Upload userPhoto  ================================================================
+  // Handle image upload
+  const handleUpload = (file: any) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      setProfileImageUrl(reader.result as string); // Update image URL when uploaded
+    };
+    reader.readAsDataURL(file);
+    return false; // Prevent default upload behavior
+  };
   return (
     <>{/* แสดงหน้าโหลด */}
 
@@ -191,6 +204,7 @@ const EditInformation: FC = () => {
               GenderID: 1,
               age: '',
               phonenumber: '',
+              userphoto: '',
             }}
           >
             <Row gutter={[16, 16]}>
@@ -215,11 +229,30 @@ const EditInformation: FC = () => {
             </Row>
 
             <Form.Item
-              label={<span style={{ color: 'white', fontSize: '20px' }}>Password Hash</span>}
-              name="password"
+            label={<span style={{ color: 'white', fontSize: '20px' }}>Upload Your Photo.</span>}
+            name="userphoto"
+            rules={[{ required: false, message: "Please Upload Your Photo !" }]}
+          >
+            <Upload
+              beforeUpload={handleUpload}
+              listType="picture"
+              maxCount={1}
+              defaultFileList={
+                profileImageUrl
+                  ? [
+                      {
+                        uid: '-1',
+                        name: 'user photo',
+                        status: 'done',
+                        url: profileImageUrl, // Display the image preview
+                      },
+                    ]
+                  : []
+              }
             >
-              <Input.Password readOnly/>
-            </Form.Item>
+              <Button style={{position: 'absolute',top: '0' , left: '0'}} icon={<UploadOutlined />}>Upload Your Photo</Button>
+            </Upload>
+          </Form.Item>
 
             <Row gutter={[16, 16]}>
               <Col span={12}>

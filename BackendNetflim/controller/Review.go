@@ -107,6 +107,7 @@ func GetCommentByidMovieRaw(c *gin.Context) {
 		Username  string 	`json:"username"`
 		Status string 		`json:"status"`
 		MovieID uint 		`json:"MovieID"`
+		UserPhoto string	`json:"userphoto"`
 	}
 
 	// Get the database connection
@@ -114,7 +115,7 @@ func GetCommentByidMovieRaw(c *gin.Context) {
 
 	// Query with joins to get collection and movie details
 	results := db.Table("reviews").
-		Select("reviews.id, reviews.Comment, reviews.rating, reviews.date_review, reviews.movie_id, reviews.user_id, users.username , users.status").
+		Select("reviews.id, reviews.Comment, reviews.rating, reviews.date_review, reviews.movie_id, reviews.user_id, users.username , users.status , users.user_photo").
 		Joins("left join users on users.id = reviews.user_id").
 		Joins("left join movies on movies.id = reviews.movie_id").
 		Where("reviews.movie_id = ?", MovieID).

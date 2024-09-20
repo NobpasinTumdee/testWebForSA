@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import userPhoto from '../Component/Navbar/User.png';
+//import userPhoto from '../Component/Navbar/User.png';
 import { UsersInterface } from "../interfaces/IUser";
 import { GetUserById } from "../services/https/index";
 import { message } from "antd"; // Ant Design message for notifications
@@ -39,7 +39,7 @@ const AboutMeCom: React.FC = () => {
         <>
             {user ? (
                 <div>
-                    <img src={userPhoto} className='imgAboutME' alt="User" />
+                    <img style={{borderRadius: '100px'}} src={user.userphoto ? user.userphoto : "https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg"} className='imgAboutME' alt="User" />
                     <div className='dataAboutME'>
                         <div>Name: {user.username}</div>
                         <div>Email: {user.email}</div>
