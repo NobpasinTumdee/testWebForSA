@@ -5,6 +5,7 @@ import "./MainWeb.css";//branch testฟีเจอร์ใหม่
 //โปสเตอร์
 //import Xmen from "../assets/Movie/xmen.jpg"
 import yournameBig from "../assets/Anime/yournamePosterBig4.png";
+import Adverties from "../assets/Anime/PosterAdverties.png";
 
 
 import { useNavigate } from 'react-router-dom';
@@ -301,12 +302,36 @@ const MainWeb: React.FC = () => {
     }
   };
 
+  //==============================================โฆษณา====================================
+  const [isAdver, setAdver] = useState(false);
+
+useEffect(() => {
+  const timer = setTimeout(() => {
+    handleAdver(); // เรียกใช้ฟังก์ชัน
+  }, 3000); // รอ 2 วินาที (2000 มิลลิวินาที)
+
+  return () => clearTimeout(timer); // ทำการล้าง timer เมื่อคอมโพเนนต์ถูก unmount
+}, []); // ใช้ dependency array เพื่อให้ useEffect ทำงานครั้งเดียว
+
+const handleAdver = () => {
+  setAdver(!isAdver);
+};
+
+
   return (
     <>
       {isLoading ? (<div style={{
         position: 'fixed', top: '50%', left: '55%', marginTop: '-50px', marginLeft: '-100px'
       }}><LoadingStarWar /></div>) : (
         <div className="app">{status !== 'Admin' && ( <UsertopRigh />)} <CommentCom />
+
+        {isAdver && (
+          <>
+            <button onClick={handleAdver} style={{zIndex: '1005',top: '50%' ,left: '50%',transform:'translate(-50%, -50%)' ,position: 'fixed',width: '100%' ,backgroundColor: '#0007',height: '100%' ,border: 'none'}}>
+              <img style={{zIndex: '1005',top: '50%' ,left: '50%',transform:'translate(-50%, -50%)' ,position: 'fixed',width: '700px'}} src={Adverties} alt="โฆษณา" />
+            </button>
+          </>
+        )}
 
         <div className='audioMain1' style={{margin: '0% 0%' ,zIndex: '1001' ,backgroundColor: '#2F2E67' ,borderRadius: '20px' , height: '40px'}} >
               <audio ref={audioRef} src={lofi} /> 
