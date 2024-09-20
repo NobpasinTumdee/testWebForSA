@@ -148,7 +148,7 @@ export const CollectionUpdate: React.FC = () => {
       {id} */}
       <div className="History-container">
         {CollectM.length > 0 && <h1 className="History-title">{CollectM[0].collection_name}</h1>}
-        <button onClick={openPopup} className='AddMovie' style={{ color: '#ffff', marginBottom: '40px', background: '#201536', padding: '10px' }}>Add Movie in your Collection</button>
+        <button onClick={openPopup} className='AddMovie' style={{ color: '#ffff', marginBottom: '40px', background: '#bd9d3d', padding: '10px' }}>Add Movie in your Collection</button>
         <div className="movie-gridCollection" >
           {CollectM.length > 0 ? (
             CollectM.map((CollectM) => (

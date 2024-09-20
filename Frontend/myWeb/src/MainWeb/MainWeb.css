@@ -5,6 +5,7 @@ html, body {
   background-color: #17153b;
   /*font-family: Arial, sans-serif;*/
   overflow-x: hidden; /* ป้องกันการเลื่อนแนวนอน */
+  scrollbar-width: none;
 }
 
 .app {
