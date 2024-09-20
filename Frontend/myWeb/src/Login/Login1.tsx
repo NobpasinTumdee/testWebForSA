@@ -71,7 +71,7 @@ function Login1() {
                         {Movies ? (
                             <>
                                 {Movies.map((movie) => (
-                                    <div className="movie-card-recommendPopup" onClick={notify}>
+                                    <div key={movie.ID} className="movie-card-recommendPopup" onClick={notify}>
                                         <img src={movie.Movie_poster} alt="Violet Evergarden" />
                                     </div>
                                 ))}
