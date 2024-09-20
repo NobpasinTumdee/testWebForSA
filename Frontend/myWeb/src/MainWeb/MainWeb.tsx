@@ -34,6 +34,8 @@ import { message } from "antd"; // Ant Design message for notifications
 //audio
 import lofi from '../assets/audio/Lofijazz.mp3';
 //import Carousels from "../Component/Carousels/Carousels";
+
+
 const MainWeb: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isPosterVisible, setIsPosterVisible] = useState(false);  // เพิ่ม state สำหรับ Poster
@@ -64,7 +66,7 @@ const MainWeb: React.FC = () => {
   }, [userIdstr]);
 
 
-  //ตรวจสอบวันหมดอายุสมาชิก
+  //======================================= ตรวจสอบวันหมดอายุสมาชิก ===============================================
   const [history, setHistorypay] = useState<PaymentsInterface[]>([]);
   const [isDeleting, setIsDeleting] = useState(false);
   useEffect(() => {
@@ -147,7 +149,7 @@ const MainWeb: React.FC = () => {
 
 
 
-  // popup
+  //========================================================== popup ========================================================
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   
 
@@ -173,7 +175,7 @@ const MainWeb: React.FC = () => {
     navigate('/subscription');
   };
 
-  // ข้อมูล หนัง อนิเมะ
+  //======================================================= ข้อมูล หนัง อนิเมะ ===================================================
   // const handleMovieClick1 = (movie: { id: number; title: string; image: string }) => {
   //   navigate('/WatchMovie', { state: movie });
   // };
@@ -201,7 +203,7 @@ const MainWeb: React.FC = () => {
     });
   };
 
-  // ฟังก์ชันค้นหาหนัง
+  //=================================================== ฟังก์ชันค้นหาหนัง ======================================================
   const [isSearchresults, setSearchresults] = useState(false);
   const searchMovies = () => {
     const Authorization = localStorage.getItem("token");
@@ -239,7 +241,7 @@ const MainWeb: React.FC = () => {
   };
 
 
-  //====================================Login out=====================================
+  //=================================================== Login out ============================================
   const Logout = () => {
 
     localStorage.clear();
@@ -268,7 +270,7 @@ const MainWeb: React.FC = () => {
       theme: "dark",
   });
 
-  //==============================================โฆษณา====================================
+  //==================================================== โฆษณา ===========================================
   const [isAdver, setAdver] = useState(false);
 
 useEffect(() => {
@@ -455,7 +457,7 @@ const handleAdver = () => {
 
               {paymentInfo ? (
                 <>
-                  <h1 className='titile'>ANIME</h1>
+                  <h1 className='titile'>Movie</h1>
                   <div className="movie-grid">
                     {Movies.map((movie) => (
                       <div className="movie-card" key={movie.ID} onClick={() => handleMovieClick(movie)}>
@@ -468,7 +470,7 @@ const handleAdver = () => {
                 <>
                 {/* <h1 className='titile'>Please subscribe before watching the the movie✨</h1>
                 <img style={{width: '20%' , margin: '40px 40% '}} src='https://media.tenor.com/Comp_iIhz44AAAAi/yui-yui-hirasawa.gif' /> */}
-                  <h1 className='titile'>ANIME</h1>
+                  <h1 className='titile'>Movie</h1>
                   <h1 style={{color: "#ffff"}}>Please subscribe before watching the the movie✨</h1>
                   <div className="movie-grid">
                     {Movies.map((movie) => (
@@ -507,17 +509,6 @@ const handleAdver = () => {
           {isPopupOpen && (
             <div className="popup-overlay">
               <div className="popup-content">
-                {/* {DataUser.map((User) => (
-
-                  <div key={User.id}>
-                    <img src={userPhoto} className='imgAboutME' />
-                    <div className='dataAboutME'>
-                      <div>Name : {User.USERNAME}</div>
-                      <div>Gmail : {User.Gmail}</div>
-                      <div>Duration : {User.Duration}</div>
-                      <div>Expire : {User.Expire}</div>
-                    </div>
-                  </div>))} */}
                 <AboutMeCom />
                 <button className="payment-button" onClick={() => Edit()}> Edit your Information </button>
                 <button className="close-button" onClick={() => closePopup()}> Close </button>
