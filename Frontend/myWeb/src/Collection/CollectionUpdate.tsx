@@ -132,6 +132,7 @@ export const CollectionUpdate: React.FC = () => {
     
     navigate('/WatchMovie', { 
       state: { 
+        IDMOVIE: CollectM.MovieID,
         videoUrl: CollectM.Movie_video, 
         movieName: CollectM.Movie_name, 
         Movie_poster: CollectM.Movie_poster, 
