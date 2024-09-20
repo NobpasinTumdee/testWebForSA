@@ -59,6 +59,13 @@ export const CollectionUpdate: React.FC = () => {
   // Add movie to collection
   const handleAddMovie = async () => {
     if (selectedMovie && id) {
+      const movieAlreadyInCollection = CollectM.some((movie) => movie.MovieID === selectedMovie);
+
+      if (movieAlreadyInCollection) {
+        message.error("This movie is already in your collection. I can't add it again😭");
+        return;
+      }
+
       const newCollectionMovie: CollectionMovieInterface = {
         CollectionID: parseInt(id), // Collection ID from route params
         MovieID: selectedMovie, // Selected movie ID
