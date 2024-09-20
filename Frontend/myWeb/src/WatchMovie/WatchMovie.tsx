@@ -126,7 +126,7 @@ const WatchMovie: React.FC = () => {
             <div key={review.id} className="comment-container">
               {/* <p><strong>User ID:</strong> {review.UserID}</p> */}
               <img style={{borderRadius: '100px'
-                , width: '30px' , height: '30px' , marginRight: '10px' 
+                , width: '30px' , height: '30px' , marginRight: '10px' ,pointerEvents: 'none'
               }} src={review.userphoto ? review.userphoto : "https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg"} className='imgAboutME' alt="User" />
               <p><strong>{review.status}:</strong> {review.username}</p>
               <p><strong>Comment:</strong> {review.Comment}</p>

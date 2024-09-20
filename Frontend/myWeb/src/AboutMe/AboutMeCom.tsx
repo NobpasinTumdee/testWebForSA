@@ -39,7 +39,7 @@ const AboutMeCom: React.FC = () => {
         <>
             {user ? (
                 <div>
-                    <img style={{borderRadius: '100px'}} src={user.userphoto ? user.userphoto : "https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg"} className='imgAboutME' alt="User" />
+                    <img style={{borderRadius: '100px',pointerEvents: 'none'}} src={user.userphoto ? user.userphoto : "https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg"} className='imgAboutME' alt="User" />
                     <div className='dataAboutME'>
                         <div>Name: {user.username}</div>
                         <div>Email: {user.email}</div>
