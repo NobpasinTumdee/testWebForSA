@@ -26,7 +26,7 @@ const Collection: React.FC = () => {
     if (userIdstr) {
       fetchUserData(userIdstr);
     } else {
-      message.error("ไม่พบ ID ของผู้ใช้ใน localStorage");
+      message.error("The user ID was not found in localStorage.");
     }
   }, [userIdstr]);
 
@@ -37,11 +37,11 @@ const Collection: React.FC = () => {
         setCollection(res.data); // กำหนดให้เป็น array ที่ได้จาก API
       } else {
         setCollection([]); // ถ้าไม่มีข้อมูล ให้กำหนดเป็น array ว่าง
-        message.error("ยังไม่มี Collection !!!");
+        message.error("No Collection !!!");
       }
     } catch (error) {
       setCollection([]); // กำหนดให้เป็น array ว่างเมื่อมี error
-      message.error("Your viewing history is not yet available.");
+      message.error("Your viewing collection is not yet available.");
     }
   };
 
@@ -66,15 +66,15 @@ const Collection: React.FC = () => {
         if (res.status === 200) {
           // อัปเดต state เพื่อลบประวัติจากหน้าจอทันที
           setCollection((prevHistory) => prevHistory.filter(item => item.id !== id));
-          message.success("ลบประวัติสำเร็จ");
+          message.success("Delete Success");
         } else {
-          message.error("ไม่สามารถลบประวัติได้");
+          message.error("Unable to delete collection");
         }
       } catch (error) {
-        message.error("เกิดข้อผิดพลาดในการลบประวัติ");
+        message.error("An error occurred deleting collection.");
       }
     } else {
-      message.error("ID ของประวัติไม่ถูกต้อง");
+      message.error("ID is invalid.");
     }
   };
 

@@ -3,10 +3,10 @@
     width: 450px;
     min-height: 250px;
     height: auto;
-    background: linear-gradient(to right, #7388e6,#5654C0, #080129);
+    background: linear-gradient(to right, #2F2E67,#44438c, #080129);
     box-shadow: 0px 0px 40px #000000;
     position: fixed;
-    right: 0px;
+    right: -10px;
     top: 20%;
     border-radius: 10px 0px 10px 10px;
     padding: 30px;
@@ -22,7 +22,7 @@
     background: linear-gradient(to right, #dee4ff,#ffffff, #d3caff);
     box-shadow: 0px 0px 40px #000000;
     position: fixed;
-    right: 0px;
+    right: -20px;
     top: 20%;
     border-radius: 10px 0px 10px 10px;
     padding: 30px;
@@ -32,7 +32,7 @@
 
 .BtnComment {
     position: fixed;
-    right: 20px;
+    right: 0px;
     width: 10px;
     height: 80px;
     top: 45%;

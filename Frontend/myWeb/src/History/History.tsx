@@ -3,8 +3,9 @@ import './History.css';
 import { LoadingCamp } from '../Component/Loading/LoadingCamp';
 // API
 import { HistoryInterface } from "../interfaces/IMoviePackage";
-import { GetHistoryById, DeleteHistoryByID } from "../services/https/index";
+import { GetHistoryById, DeleteHistoryByID ,CreateHistory} from "../services/https/index";
 import { message } from "antd"; // Ant Design message for notifications
+import { useNavigate } from 'react-router-dom';
 
 const History: React.FC = () => {
   const [history, setHistory] = useState<HistoryInterface[]>([]); // ตั้งค่าเริ่มต้นให้เป็น array ว่าง
@@ -15,7 +16,9 @@ const History: React.FC = () => {
     if (userIdstr) {
       fetchUserData(userIdstr);
     } else {
-      message.error("User ID is not found is storage!");
+
+      message.error("The user ID was not found in localStorage.");
+
     }
   }, [userIdstr]);
 
@@ -26,7 +29,7 @@ const History: React.FC = () => {
         setHistory(res.data); // กำหนดให้เป็น array ที่ได้จาก API
       } else {
         setHistory([]); // ถ้าไม่มีข้อมูล ให้กำหนดเป็น array ว่าง
-        message.error("There is no history!😝");
+        message.error("There is no viewing history yet.😝");
       }
     } catch (error) {
       setHistory([]); // กำหนดให้เป็น array ว่างเมื่อมี error
@@ -47,16 +50,42 @@ const History: React.FC = () => {
         if (res.status === 200) {
           // อัปเดต state เพื่อลบประวัติจากหน้าจอทันที
           setHistory((prevHistory) => prevHistory.filter(item => item.id !== id));
-          message.success("Delete history is success😚");
+
+          message.success("Viewing history deleted successfully.😚");
         } else {
-          message.error("Cannot delete history🥹");
+          message.error("Unable to delete viewing history.🥹");
         }
       } catch (error) {
-        message.error("There is error for delete history😭");
+        message.error("An error occurred while deleting the viewing history.😭");
       }
     } else {
-      message.error("History ID is incorrect!🫥");
+      message.error("The history ID is invalid.🫥");
     }
+  };
+  //=================================== ดูหนังจากหน้าประวัติ =======================================
+  const navigate = useNavigate();
+  const handleMovieClick = (historyItem: HistoryInterface) => {
+    // เรียกใช้ฟังก์ชัน CreateHistory เมื่อผู้ใช้คลิกหนัง
+    if (userIdstr && historyItem.id) {
+      const historyData = {
+        UserID: parseInt(userIdstr), // เปลี่ยน string เป็น number
+        MovieID: historyItem.movie_id,
+        movie_name: historyItem.movie_name,
+        poster: historyItem.poster,
+        new: Date().toString() // เพิ่มวันที่ในรูปแบบ ISO string
+      };
+      CreateHistory(historyData);
+    }
+    
+    navigate('/WatchMovie', { 
+      state: { 
+        IDMOVIE: historyItem.movie_id,
+        videoUrl: historyItem.movie_video, 
+        movieName: historyItem.movie_name, 
+        Movie_poster: historyItem.poster, 
+        Movie_information: historyItem.movie_information 
+      } 
+    });
   };
 
   return (
@@ -73,8 +102,8 @@ const History: React.FC = () => {
               history
                 .sort((a, b) => new Date(b.date || "").getTime() - new Date(a.date || "").getTime()) // เรียงข้อมูลจากวันที่มากไปน้อย
                 .map((historyItem) => (
-                  <div className="movie-card-Adminpage" key={historyItem.id}>
-                    <img src={historyItem.poster} alt={historyItem.movie_name} className="movie-image" />
+                  <div className="movie-card-Adminpage" key={historyItem.id} >
+                    <img onClick={() => handleMovieClick(historyItem)} src={historyItem.poster} alt={historyItem.movie_name} className="movie-image" />
                     <div className="movie-info">
                       <h2>Movie: {historyItem.movie_name || "No Movie Name"}</h2>
                       <p>User Name: {historyItem.user_name || "No Username"}</p>

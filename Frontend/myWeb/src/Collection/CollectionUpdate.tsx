@@ -59,6 +59,13 @@ export const CollectionUpdate: React.FC = () => {
   // Add movie to collection
   const handleAddMovie = async () => {
     if (selectedMovie && id) {
+      const movieAlreadyInCollection = CollectM.some((movie) => movie.MovieID === selectedMovie);
+
+      if (movieAlreadyInCollection) {
+        message.error("This movie is already in your collection. I can't add it again😭");
+        return;
+      }
+
       const newCollectionMovie: CollectionMovieInterface = {
         CollectionID: parseInt(id), // Collection ID from route params
         MovieID: selectedMovie, // Selected movie ID
@@ -67,7 +74,7 @@ export const CollectionUpdate: React.FC = () => {
       try {
         const res = await CreateCollectionMovie(newCollectionMovie);
         if (res.status === 200) {
-          message.success("เพิ่มหนังสำเร็จ");
+          message.success("Add movie success");
           closePopup(); // Close the popup after success
           fetchCollectionMovies(id); // Refresh collection movies
         } else {
@@ -132,6 +139,7 @@ export const CollectionUpdate: React.FC = () => {
     
     navigate('/WatchMovie', { 
       state: { 
+        IDMOVIE: CollectM.MovieID,
         videoUrl: CollectM.Movie_video, 
         movieName: CollectM.Movie_name, 
         Movie_poster: CollectM.Movie_poster, 
@@ -148,7 +156,7 @@ export const CollectionUpdate: React.FC = () => {
       {id} */}
       <div className="History-container">
         {CollectM.length > 0 && <h1 className="History-title">{CollectM[0].collection_name}</h1>}
-        <button onClick={openPopup} className='AddMovie' style={{ color: '#ffff', marginBottom: '40px', background: '#201536', padding: '10px' }}>Add Movie in your Collection</button>
+        <button onClick={openPopup} className='AddMovie' style={{ color: '#ffff', marginBottom: '40px', background: '#bd9d3d', padding: '10px' }}>Add Movie in your Collection</button>
         <div className="movie-gridCollection" >
           {CollectM.length > 0 ? (
             CollectM.map((CollectM) => (

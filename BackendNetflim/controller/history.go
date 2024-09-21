@@ -80,6 +80,8 @@ func ListHistorysByID(c *gin.Context) {
         UserName  string    `json:"user_name"`
         MovieName string    `json:"movie_name"`
 		Poster	  string	`json:"poster"`
+		Movie_video 		string  `json:"movie_video"`
+		Movie_information   string  `json:"movie_information"`
     }
 
     // Get the database connection
@@ -87,7 +89,7 @@ func ListHistorysByID(c *gin.Context) {
 
     // Query with joins to get user and movie details, filtered by userID
     results := db.Table("histories").
-        Select("histories.id, histories.date, histories.user_id, histories.movie_id, users.username AS user_name, movies.movie_name AS movie_name ,movies.movie_poster AS poster").
+        Select("histories.id, histories.date, histories.user_id, histories.movie_id, users.username AS user_name, movies.movie_name AS movie_name ,movies.movie_poster AS poster , movies.movie_information AS Movie_information, movies.movie_video AS Movie_video").
         Joins("left join users on users.id = histories.user_id").
         Joins("left join movies on movies.id = histories.movie_id").
         Where("histories.user_id = ?", userID).

@@ -17,9 +17,9 @@ const WatchMovie: React.FC = () => {
   const location = useLocation();
   const { IDMOVIE, videoUrl, movieName, Movie_poster, Movie_information } = location.state as {IDMOVIE: number; videoUrl: string; movieName: string; Movie_poster: string; Movie_information: string; };
   useEffect(() => {
-    message.loading({ content: 'กำลังส่งมอบความสุขให้คุณ😍', key });
+    message.loading({ content: 'Delivering happiness to you.😍', key });
     setTimeout(() => {
-      message.success({ content: 'เย่! ขอให้สนุกนะ😘', key, duration: 2 });
+      message.success({ content: 'Yay! Have fun!😘', key, duration: 3 });
     }, 2000);
     //message.success("Update your History!!!");
   })
@@ -28,7 +28,7 @@ const WatchMovie: React.FC = () => {
     if (IDMOVIE) {
       fetchUserData(String(IDMOVIE));
     } else {
-      message.error("ไม่พบ ID ของ movie localStorage");
+      message.error("The movie ID was not found in localStorage.");
     }
   }, [IDMOVIE]);
   const fetchUserData = async (IDMOVIE: string) => {
@@ -38,7 +38,7 @@ const WatchMovie: React.FC = () => {
         setComment(res.data); // กำหนดให้เป็น array ที่ได้จาก API
       } else {
         setComment([]); // ถ้าไม่มีข้อมูล ให้กำหนดเป็น array ว่าง
-        message.error("This Movie is not have some Comment😝");
+        //message.error("This Movie is not have some Comment😝");
       }
     } catch (error) {
       setComment([]); // กำหนดให้เป็น array ว่างเมื่อมี error
@@ -57,7 +57,7 @@ const WatchMovie: React.FC = () => {
 
   const onFinish = async (values: ReviewInterface) => {
     if (IDMOVIE === null || !userIdstr) {
-      message.error('กรุณาเลือกภาพยนตร์ก่อน');
+      message.error('Please select a movie first.');
       return; // หยุดการทำงานหากไม่มีการเลือกภาพยนตร์
     }
 
@@ -70,9 +70,9 @@ const WatchMovie: React.FC = () => {
 
     const res = await CreateReview(selectMovieForComment);
     if (res.status === 201) {
-      message.success('สำเร็จ');
+      message.success('success');
     } else {
-      message.error('มีข้อผิดพลาด');
+      message.error('error');
     }
   };
 

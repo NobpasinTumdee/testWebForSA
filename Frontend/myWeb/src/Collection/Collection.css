@@ -172,12 +172,13 @@
 
 /* Card */
 
- .movie-gridCollection {
-  width: 100%;
-    margin-left: 20%;
-    display: flex;
-    flex-wrap: wrap; /* ทำให้ flex items สามารถขึ้นแถวใหม่ได้ */
-    gap: 60px;
+.movie-gridCollection {
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-bottom: 5%;
+  display: flex;
+  flex-wrap: wrap; /* ทำให้ flex items สามารถขึ้นแถวใหม่ได้ */
+  gap: 60px;
 }
 
 .movie-cardCollection {
@@ -194,6 +195,7 @@
   width: 250px;
   height: 300px;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .movie-cardCollection:hover {

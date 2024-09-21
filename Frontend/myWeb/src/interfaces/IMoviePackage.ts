@@ -19,9 +19,11 @@ export interface HistoryInterface {
     date?: Date;
     UserID?: number;
     user_name?: string;
-    MovieID?: number;
+    movie_id?: number;
     movie_name?: string;
     poster?: string;
+    movie_video?: string;
+    movie_information?: string;
 }
 export interface PaymentsInterface {
     id?: number;

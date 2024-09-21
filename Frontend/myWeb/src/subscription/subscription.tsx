@@ -6,11 +6,12 @@ import Gpay from "../assets/payment/Gpay.png";
 import visa from "../assets/payment/visa.png";
 import Prompay from "../assets/payment/Prompay.png";
 import {UsertopRigh} from '../Component/UsertopRigh/UsertopRigh';
+import { useNavigate } from "react-router-dom";
 
-//API
+//API eveeee
 import { PackageInterface, PaymentsInterface } from "../interfaces/IMoviePackage";
 import { UpdatePaymenteByidUser , GetPaymentById , CreatePayment} from "../services/https/index";
-import axios from 'axios';
+import axios from 'axios'; //เชื่อมกับ Backend
 import { message } from "antd"; // Ant Design message for notifications
 import PaymentCard from '../Component/Card/PaymentCard';
 
@@ -23,6 +24,8 @@ const Subscription = () => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string>(''); // เพิ่มสถานะการเลือกการชำระเงิน
   const userIdstr = localStorage.getItem("id");
   const [infoyourpay, setinfo] = useState<PackageInterface[]>([]);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     if (userIdstr) {
@@ -128,6 +131,7 @@ const Subscription = () => {
     setIsSuccessPopupOpen(true);
     setTimeout(() => {
       setIsSuccessPopupOpen(false);
+      navigate('/MainWeb');
     }, 2000);
   };
 

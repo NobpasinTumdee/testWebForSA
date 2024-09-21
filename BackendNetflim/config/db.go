@@ -161,6 +161,62 @@ func SetupDatabase() {
 		Movie_information:  "Jujutsu Kaisen Wiki, a community created by the fans, for the fans, and is dedicated to housing everything about Jujutsu Kaisen created by Gege Akutami. Our goal is to become the best source of information on the series. Please help us by creating or editing any of our articles! We currently have 68,685 edits to 986 articles and 5,824 images on this wiki.",
 		Movie_video: "https://www.youtube.com/embed/KhymVsLJjCc?si=va6ziFz82RwGI7O_&autoplay=1" , 
 		Movie_length: "2:30"},//18
+		{Movie_name: "Bocchi The Rock!", 
+		Movie_poster: "https://upload.wikimedia.org/wikipedia/th/0/08/Bocchi_The_Rock%21_volume_1_cover.jpg", 
+		Movie_information:  "วงสายรัด หรือวงผูกมัด (結束バンド Kessoku Bando) เป็นวงดนตรีหลักของเรื่อง มีฐานที่ STARRY ไลฟ์เฮาส์ในชิมาคิตาซาวะ นามสกุลของสมาชิกวงผูกมัดอ้างอิงมาจากนามสกุลของสมาชิกวงเอเชียนกังฟูเจเนเรชัน วงเจร็อกในชีวิตจริง รวมถึงอ้างอิงบทบาทในวงดนตรีด้วย",
+		Movie_video: "https://www.youtube.com/embed/jjuyj9F42vc?si=ccC8WZZ4rMDE7tgO&autoplay=1" , 
+		Movie_length: "20:30"},//19
+		{Movie_name: "Hyouka", 
+		Movie_poster: "https://upload.wikimedia.org/wikipedia/th/4/45/HyoukaBD.jpg", 
+		Movie_information:  "ปริศนาความทรงจำ (ญี่ปุ่น: 氷菓; โรมาจิ: Hyōka; มีความหมายตรงตัวว่า ของหวานเย็น เปรียบเปรยถึง ไอศกรีม) เป็นนวนิยายแนวลึกลับ แต่งโดย โฮโนบุ โยเนซาวะ (ญี่ปุ่น: 米澤 穂信; โรมาจิ: Yonezawa Honobu) เป็นหนังสือเล่มแรกในชุด นักสืบแห่งชมรมวรรณกรรมคลาสสิก (ญี่ปุ่น: 古典部; โรมาจิ: Koten-bu; ทับศัพท์: Classic Literature Club)",
+		Movie_video: "https://www.youtube.com/embed/G7PkTYT_2e0?si=VUbma3TL17nNOZ2M&autoplay=1" , 
+		Movie_length: "20:30"},//20
+		{Movie_name: "Harry Potter and the Sorcerer's Stone (2001)", 
+		Movie_poster: "https://m.media-amazon.com/images/M/MV5BNmQ0ODBhMjUtNDRhOC00MGQzLTk5MTAtZDliODg5NmU5MjZhXkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_FMjpg_UX1000_.jpg", 
+		Movie_information:  "Harry Potter and the Philosopher's Stone is a fantasy novel written by the British author J. K. Rowling. It is the first novel in the Harry Potter series and was Rowling's debut novel. It follows Harry Potter, a young wizard who discovers his magical heritage on his eleventh birthday when he receives a letter of acceptance to Hogwarts School of Witchcraft and Wizardry.",
+		Movie_video: "https://www.youtube.com/embed/VyHV0BRtdxo?si=UuzolzjG0RBvMTYr&autoplay=1" , 
+		Movie_length: "20:30"},//21
+		{Movie_name: "Harry Potter and the Chamber of Secrets (2002)", 
+		Movie_poster: "https://m.media-amazon.com/images/I/91VSGpMLrvL._AC_UF894,1000_QL80_.jpg", 
+		Movie_information:  "Harry Potter lives his second year at Hogwarts with Ron and Hermione when a message on the wall announces that the legendary Chamber of Secrets has been opened. The trio soon realize that, to save the school, it will take a lot of courage.",
+		Movie_video: "https://www.youtube.com/embed/nE11U5iBnH0?si=3Qq1YVcHT6016t36&autoplay=1" , 
+		Movie_length: "20:30"},//22
+		{Movie_name: "Harry Potter and the Prisoner of Azkaban (2004)", 
+		Movie_poster: "https://upload.wikimedia.org/wikipedia/th/3/38/%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%A2%E0%B8%99%E0%B8%95%E0%B8%A3%E0%B9%8C%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B9%82%E0%B8%97%E0%B8%A9%E0%B9%81%E0%B8%AB%E0%B9%88%E0%B8%87%E0%B8%AD%E0%B8%B1%E0%B8%8B%E0%B8%84%E0%B8%B2%E0%B8%9A%E0%B8%B1%E0%B8%99.jpg", 
+		Movie_information:  "Harry Potter lives his second year at Hogwarts with Ron and Hermione when a message on the wall announces that the legendary Chamber of Secrets has been opened. The trio soon realize that, to save the school, it will take a lot of courage.",
+		Movie_video: "https://www.youtube.com/embed/bUhWKZgfsbI?si=hmv9HAuGyclTXV-o&autoplay=1" , 
+		Movie_length: "20:30"},//23
+		{Movie_name: "Harry Potter and the Goblet of Fire", 
+		Movie_poster: "https://upload.wikimedia.org/wikipedia/th/a/aa/%E0%B8%96%E0%B9%89%E0%B8%A7%E0%B8%A2%E0%B8%AD%E0%B8%B1%E0%B8%84%E0%B8%99%E0%B8%B5%E0%B9%83%E0%B8%9A%E0%B8%9B%E0%B8%B4%E0%B8%94.jpg", 
+		Movie_information:  "Harry Potter and the Goblet of Fire is a 2005 fantasy film directed by Mike Newell from a screenplay by Steve Kloves. It is based on the 2000 novel Harry Potter and the Goblet of Fire by J. K. Rowling. It is the sequel to Harry Potter and the Prisoner of Azkaban (2004) and the fourth instalment in the Harry Potter film series.",
+		Movie_video: "https://www.youtube.com/embed/XkfKuJckaW4?si=JAmfEhuZj47X9kex&autoplay=1" , 
+		Movie_length: "20:30"},//24
+		{Movie_name: "Harry Potter and the Order of the Phoenix", 
+		Movie_poster: "https://upload.wikimedia.org/wikipedia/vi/3/3e/Harry_Potter_5_VN_re-release_poster.jpg", 
+		Movie_information:  "Harry Potter and the Goblet of Fire is a 2005 fantasy film directed by Mike Newell from a screenplay by Steve Kloves. It is based on the 2000 novel Harry Potter and the Goblet of Fire by J. K. Rowling. It is the sequel to Harry Potter and the Prisoner of Azkaban (2004) and the fourth instalment in the Harry Potter film series.",
+		Movie_video: "https://www.youtube.com/embed/2PZNLTJlMQU?si=ZvDNjZVcegGua0K0&autoplay=1" , 
+		Movie_length: "20:30"},//25
+		{Movie_name: "Classic Again", 
+		Movie_poster: "https://m.media-amazon.com/images/M/MV5BMGVjZTA5ZjItMzliZS00NzIxLTk5MTMtYzBiMmM5MGEwZjAyXkEyXkFqcGc@._V1_.jpg", 
+		Movie_information:  "Classic Again จดหมาย สายฝน ร่มวิเศษ ชวนคุณมาซาบซึ้งกับเรื่องราวความรัก 2 กาลเวลา ที่ตรึงอยู่ในความทรงจำไม่มีวันลืมเลือน ของ โบต้า สาวมหาลัยวัยใส ที่แอบหลงรัก นน ชายหนุ่มหน้าตาดีในมหาวิทยาลัยเดียวกัน แต่เธอไม่อาจบอกความในใจครั้งนี้กับเขาได้เพราะเพื่อนสนิทของเธอก็ชอบผู้ชายคนนี้เช่นกัน จนกระทั่งวันหนึ่งเธอได้ค้นพบกล่องลับของคุณแม่",
+		Movie_video: "https://www.youtube.com/embed/HbJxeD7Iqrk?si=bNuy8H0eRfwF19yb&autoplay=1" , 
+		Movie_length: "20:30"},//26
+		{Movie_name: "20th century girl", 
+		Movie_poster: "https://m.media-amazon.com/images/M/MV5BMTk3NWVhNjQtNzVjYi00NzkwLThhMmEtMjUxMzUzMWMxMGIzXkEyXkFqcGc@._V1_.jpg", 
+		Movie_information:  "เรื่องราวความรักในยุคศตวรรษที่ 20 นาโบรา ช่วยเพื่อนเป็นแม่สื่อ ตามคำขอของเพื่อนสนิทที่ไปตกหลุมรักผู้ชายคนหนึ่ง นาโบราค่อยติดตามเรื่องราวของเด็กหนุ่มในโรงเรียน ครั้งที่เพื่อนของเธอต้องไปผ่าตัดหัวใจที่ต่างประเทศ แต่แล้วจู่ๆ เธอกลับหลงรักพุงอุงโฮ และความรักครั้งนั้น ทำให้เกิดความเข้าใจผิด นาโบราต้องเลือกระหว่างมิตรภาพและความรัก",
+		Movie_video: "https://www.youtube.com/embed/KFS4_qevE7M?si=nuvivL0L1OI6enIJ&autoplay=1" , 
+		Movie_length: "20:30"},//27
+		{Movie_name: "LAHN MAH", 
+		Movie_poster: "https://m.media-amazon.com/images/M/MV5BZmYzYjIwNjktYzRhMC00MzNkLThjMTQtZmM2ZWUxOWMyMmZiXkEyXkFqcGdeQXVyNzEyMTA5MTU@._V1_.jpg", 
+		Movie_information:  "เอ็ม (บิวกิ้น พุฒิพงศ์) ตัดสินใจดรอปเรียนตอนปีสี่ เพื่อมาเอาดีทางการแคสต์เกมแต่ทำยังไงก็ไม่รุ่ง เอ็มเลยคิดว่าจะรวยด้วยการทำงานสบายๆ แบบ มุ่ย (ตู ต้นตะวัน) ลูกพี่ลูกน้อง ที่รับหน้าที่ดูแลอากงที่ป่วยระยะสุดท้าย จนกลายเป็นทายาทเพียงคนเดียวที่ได้รับมรดกเป็นบ้านราคากว่าสิบล้าน",
+		Movie_video: "https://www.youtube.com/embed/0fksoEJvdLE?si=qizPybRa4HO8Ljlr&autoplay=1" , 
+		Movie_length: "20:30"},//28
+		{Movie_name: "Tee Yod", 
+		Movie_poster: "https://m.media-amazon.com/images/M/MV5BZmYzYjIwNjktYzRhMC00MzNkLThjMTQtZmM2ZWUxOWMyMmZiXkEyXkFqcGdeQXVyNzEyMTA5MTU@._V1_.jpg", 
+		Movie_information:  "เอ็ม (บิวกิ้น พุฒิพงศ์) ตัดสินใจดรอปเรียนตอนปีสี่ เพื่อมาเอาดีทางการแคสต์เกมแต่ทำยังไงก็ไม่รุ่ง เอ็มเลยคิดว่าจะรวยด้วยการทำงานสบายๆ แบบ มุ่ย (ตู ต้นตะวัน) ลูกพี่ลูกน้อง ที่รับหน้าที่ดูแลอากงที่ป่วยระยะสุดท้าย จนกลายเป็นทายาทเพียงคนเดียวที่ได้รับมรดกเป็นบ้านราคากว่าสิบล้าน",
+		Movie_video: "https://www.youtube.com/embed/0fksoEJvdLE?si=qizPybRa4HO8Ljlr&autoplay=1" , 
+		Movie_length: "20:30"},//28
+		
 	}
 	for _, pkg := range Movie {
 		db.FirstOrCreate(&pkg,entity.Movie{Movie_name: pkg.Movie_name})
