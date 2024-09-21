@@ -27,13 +27,13 @@ export const EditInfo: React.FC = () => {
             } else {
                 message.open({
                     type: "error",
-                    content: "ไม่พบข้อมูลผู้ใช้",
+                    content: "User information is not found!",
                 });
             }
         } catch (error) {
             message.open({
                 type: "error",
-                content: "เกิดข้อผิดพลาดในการดึงข้อมูลผู้ใช้",
+                content: "Fetching User information is error!",
             });
         }
     };

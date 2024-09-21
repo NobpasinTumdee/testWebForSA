@@ -15,7 +15,7 @@ const History: React.FC = () => {
     if (userIdstr) {
       fetchUserData(userIdstr);
     } else {
-      message.error("ไม่พบ ID ของผู้ใช้ใน localStorage");
+      message.error("User ID is not found is storage!");
     }
   }, [userIdstr]);
 
@@ -26,7 +26,7 @@ const History: React.FC = () => {
         setHistory(res.data); // กำหนดให้เป็น array ที่ได้จาก API
       } else {
         setHistory([]); // ถ้าไม่มีข้อมูล ให้กำหนดเป็น array ว่าง
-        message.error("ยังไม่มีประวัติการรับชม😝");
+        message.error("There is no history!😝");
       }
     } catch (error) {
       setHistory([]); // กำหนดให้เป็น array ว่างเมื่อมี error
@@ -47,15 +47,15 @@ const History: React.FC = () => {
         if (res.status === 200) {
           // อัปเดต state เพื่อลบประวัติจากหน้าจอทันที
           setHistory((prevHistory) => prevHistory.filter(item => item.id !== id));
-          message.success("ลบประวัติสำเร็จ😚");
+          message.success("Delete history is success😚");
         } else {
-          message.error("ไม่สามารถลบประวัติได้🥹");
+          message.error("Cannot delete history🥹");
         }
       } catch (error) {
-        message.error("เกิดข้อผิดพลาดในการลบประวัติ😭");
+        message.error("There is error for delete history😭");
       }
     } else {
-      message.error("ID ของประวัติไม่ถูกต้อง🫥");
+      message.error("History ID is incorrect!🫥");
     }
   };
 

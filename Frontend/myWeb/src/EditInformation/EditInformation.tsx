@@ -98,13 +98,13 @@ const EditInformation: FC = () => {
       } else {
         message.open({
           type: "error",
-          content: "ไม่พบข้อมูลผู้ใช้",
+          content: "User information is not found!",
         });
       }
     } catch (error) {
       message.open({
         type: "error",
-        content: "เกิดข้อผิดพลาดในการดึงข้อมูลผู้ใช้",
+        content: "Fetching User information is error!",
       });
     }
   };
@@ -128,7 +128,7 @@ const EditInformation: FC = () => {
     if (!userIdstr) {//เช็คว่ามีไอดีของผู้ใช้เข้ามาไหม
       message.open({
         type: "error",
-        content: "ไม่พบ ID ของผู้ใช้",
+        content: "User ID is not found!",
       });
       setLoading(false);
       return;
@@ -153,7 +153,7 @@ const EditInformation: FC = () => {
       setLoading(false);
       message.open({
         type: "error",
-        content: "เกิดข้อผิดพลาดในการอัปเดตข้อมูล",
+        content: "Update information is error!",
       });
     }
   };
