@@ -1,9 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import "./Navbar.css"
-// about me
-//import { DataUser } from '../../AboutMe/DataUser';
-//import userPhoto from './User.png';
+
 import AboutMeCom from '../../AboutMe/AboutMeCom'
 //API
 import { PaymentsInterface } from "../../interfaces/IMoviePackage";
@@ -130,17 +128,6 @@ export const Navbar: React.FC = () => {
       {isPopupOpen && (
         <div className="popup-overlay">
           <div className="popup-content">
-            {/* {DataUser.map((User) => (
-              <div key={User.id}>
-                <img src={userPhoto} className='imgAboutME' />
-                <div className='dataAboutME'>
-                  <div>Name : {User.USERNAME}</div>
-                  <div>Gmail : {User.Gmail}</div>
-                  <div>Duration : {User.Duration}</div>
-                  <div>Expire : {User.Expire}</div>
-                </div>
-              </div>
-            ))} */}
             <AboutMeCom />
             <button className="payment-button" onClick={Edit}>Edit your Information</button>
             <button className="close-button" onClick={closePopup}>Close</button>

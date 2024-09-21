@@ -1,3 +1,5 @@
+//หน้านี้ไม่ได้ใช้เพราะต่อbackend แล้วโค้ดนี้ใช้เพื่อเป็นการแสดงข้อมูลตัวอย่างตอนยังไม่เได้เชื่อมbackend
+
 //Anime
 import VioletEvergarden from "../assets/VioletEvergarden.jpg"; // นำเข้ารูปภาพ
 import yourname from "../assets/yourname.jpg"

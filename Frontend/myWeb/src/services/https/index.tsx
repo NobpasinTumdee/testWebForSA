@@ -22,7 +22,7 @@ const requestOptions = {
   },
 
 };
-
+//==================================ไม่ใด้ใช้งาน======================================⏬
 async function GetUsers() {
     const requestOptions = {
       method: "GET",
@@ -42,7 +42,12 @@ async function GetUsers() {
   
     return res;
   }
+//==================================ไม่ใด้ใช้งาน======================================⏫
 
+
+
+
+//==================================Login======================================⏬
   async function SignIn(data: SignInInterface) {
 
     return await axios
@@ -54,9 +59,49 @@ async function GetUsers() {
       .catch((e) => e.response);
   
   }
+  //signus
+  async function CreateUser(data: UsersInterface) {
 
-
+    return await axios
   
+      .post(`${apiUrl}/signup`, data, requestOptions)
+  
+      .then((res) => res)
+  
+      .catch((e) => e.response);
+  
+  }
+  // ResetPassword
+  async function ResetPassword( data: UsersInterface) {
+
+    return await axios
+  
+      .put(`${apiUrl}/ResetPasswordUser`, data, requestOptions)
+  
+      .then((res) => res)
+  
+      .catch((e) => e.response);
+  
+  }
+  //==================================Login======================================⏫
+
+
+
+
+
+  //=====================================================User===================================================
+  // get User by id
+  async function GetUserById(id: string) {
+
+    return await axios
+  
+      .get(`${apiUrl}/users/${id}`, requestOptions)
+  
+      .then((res) => res)
+  
+      .catch((e) => e.response);
+  
+  }
   async function DeleteUserByID(id: Number | undefined) {
     const requestOptions = {
       method: "DELETE"
@@ -73,50 +118,6 @@ async function GetUsers() {
   
     return res;
   }
-  
-  //===========================================================================================================
-
-  // get User by id
-  async function GetUserById(id: string) {
-
-    return await axios
-  
-      .get(`${apiUrl}/users/${id}`, requestOptions)
-  
-      .then((res) => res)
-  
-      .catch((e) => e.response);
-  
-  }
-  
-  //===========================================================================================================
-
-  //signus
-  async function CreateUser(data: UsersInterface) {
-
-    return await axios
-  
-      .post(`${apiUrl}/signup`, data, requestOptions)
-  
-      .then((res) => res)
-  
-      .catch((e) => e.response);
-  
-  }
-
-
-  // ResetPassword
-  async function ResetPassword( data: UsersInterface) {
-
-    return await axios
-  
-      .put(`${apiUrl}/ResetPasswordUser`, data, requestOptions)
-  
-      .then((res) => res)
-  
-      .catch((e) => e.response);
-  
-  }
   // update user
   async function UpdateUserByid(id: string, data: UsersInterface) {
 
@@ -130,6 +131,26 @@ async function GetUsers() {
   
   }
 
+  //ไม่ได้ใช้
+  async function UpdateUser(data: UsersInterface) {
+    const requestOptions = {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    };
+    
+    let res = await fetch(`${apiUrl}/users`, requestOptions)
+    .then((res) => {
+    if (res.status == 200) {
+      return res.json();
+    } else {
+      return false;
+    }
+  });
+
+  return res;
+}
+
   //gender user
   async function GetGenders() {
     return await axios
@@ -137,7 +158,12 @@ async function GetUsers() {
       .then((res) => res)
       .catch((e) => e.response);
   }
-  //===========================================================================================================⬇️
+
+
+
+
+
+  //===================================================Movie========================================================⬇️
   // เพิ่มหนัง
   async function CreateMovie(data: MovieInterface) {
 
@@ -203,7 +229,9 @@ async function GetUsers() {
       .catch((e) => e.response);
   }
   
-  //===========================================================================================================⬆️
+  //==================================================History=========================================================⬆️
+
+
 
   //History
   // get History by id user
@@ -247,7 +275,11 @@ async function GetUsers() {
       })
       .catch((e) => e.response);
   }
-  //===========================================================================================================⬆️
+
+
+
+
+  //===============================================payment============================================================
   
   // payment
   async function CreatePayment(data: PaymentsInterface) {
@@ -301,7 +333,10 @@ async function GetUsers() {
       })
       .catch((e) => e.response);
   }
-  //===========================================================================================================⬆️
+
+
+
+  //====================================================collection=======================================================
   //get collection
   async function Getcollection() {
       
@@ -354,7 +389,12 @@ async function GetUsers() {
       })
       .catch((e) => e.response);
     }
-    //===========================================================================================================⬆️
+
+
+
+
+
+    //==================================================collectionMovie=========================================================
     //collectionMovie
     //collectionMovieGet by collcet id
     async function GetcollectionMovieById(id: string) {
@@ -409,27 +449,11 @@ async function GetUsers() {
         
       }
       
-      //===========================================================================================================⬆️
+
+
+  //===========================================================================================================⬆️
       
-      async function UpdateUser(data: UsersInterface) {
-        const requestOptions = {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        };
-        
-        let res = await fetch(`${apiUrl}/users`, requestOptions)
-        .then((res) => {
-        if (res.status == 200) {
-          return res.json();
-        } else {
-          return false;
-        }
-      });
-  
-    return res;
-  }
-  // ===================================================================================
+  // ==========================================create Review =========================================
   // create Review 
   async function CreateReview(data: ReviewInterface) {
 

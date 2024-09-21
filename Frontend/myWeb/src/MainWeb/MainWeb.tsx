@@ -60,7 +60,7 @@ const MainWeb: React.FC = () => {
           setPaymentInfo(payment); // ตั้งค่าข้อมูลการชำระเงิน
         })
         .catch((error) => {
-          console.error('มีข้อผิดพลาดในการดึงข้อมูลการชำระเงิน:', error);
+          console.error('An error occurred while retrieving payment information:', error);
         });
     }
   }, [userIdstr]);
@@ -91,7 +91,7 @@ const MainWeb: React.FC = () => {
       const { DateP, Expiration } = history[0];
       if (DateP && Expiration && DateP > Expiration && userIdstr) {
         setIsDeleting(true);
-        message.error("สมาชิกของคุณหมดอายุแล้ว");
+        message.error("Your membership has expired.");
         setTimeout(() => {
           if (isDeleting) {
             DeletePaymenteByidUser(userIdstr)
@@ -119,7 +119,7 @@ const MainWeb: React.FC = () => {
           setStatus(user.status); // ตั้งค่าสถานะของผู้ใช้
         })
         .catch((error) => {
-          console.error('มีข้อผิดพลาดในการดึงข้อมูลผู้ใช้:', error);
+          console.error('An error occurred while retrieving user information:', error);
         });
     }
   }, [userIdstr]);
@@ -143,7 +143,7 @@ const MainWeb: React.FC = () => {
             setMovie(response.data);
         })
         .catch(error => {
-            console.error('มีข้อผิดพลาดในการดึงข้อมูล:', error);
+            console.error('An error occurred while retrieving data:', error);
         });
   }, []);
 

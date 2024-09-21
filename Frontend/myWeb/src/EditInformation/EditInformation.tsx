@@ -176,7 +176,7 @@ const EditInformation: FC = () => {
       ) : (
         <div className="containerEdit">
           <h2 className='edit-h2'>EDIT INFORMATION</h2>
-          <div onClick={Openpopup} className='BtnReset'><div className='textEdit'>Edit Password</div></div>
+          <div onClick={Openpopup} className='BtnReset'><span style={{position: 'absolute' , right: '100%' ,top: '25%' , opacity: '0.8'}}>EditPassword➡️</span><div className='textEdit'>Edit Password</div></div>
           <Form
             form={form}
             className="edit-form"
