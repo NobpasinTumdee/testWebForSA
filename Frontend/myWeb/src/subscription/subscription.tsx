@@ -8,7 +8,7 @@ import Prompay from "../assets/payment/Prompay.png";
 import {UsertopRigh} from '../Component/UsertopRigh/UsertopRigh';
 import { useNavigate } from "react-router-dom";
 
-//API
+//API eveeee
 import { PackageInterface, PaymentsInterface } from "../interfaces/IMoviePackage";
 import { UpdatePaymenteByidUser , GetPaymentById , CreatePayment} from "../services/https/index";
 import axios from 'axios';
