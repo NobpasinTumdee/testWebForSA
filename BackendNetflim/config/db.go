@@ -195,7 +195,27 @@ func SetupDatabase() {
 		Movie_poster: "https://upload.wikimedia.org/wikipedia/vi/3/3e/Harry_Potter_5_VN_re-release_poster.jpg", 
 		Movie_information:  "Harry Potter and the Goblet of Fire is a 2005 fantasy film directed by Mike Newell from a screenplay by Steve Kloves. It is based on the 2000 novel Harry Potter and the Goblet of Fire by J. K. Rowling. It is the sequel to Harry Potter and the Prisoner of Azkaban (2004) and the fourth instalment in the Harry Potter film series.",
 		Movie_video: "https://www.youtube.com/embed/2PZNLTJlMQU?si=ZvDNjZVcegGua0K0&autoplay=1" , 
-		Movie_length: "20:30"},//24
+		Movie_length: "20:30"},//25
+		{Movie_name: "Classic Again", 
+		Movie_poster: "https://m.media-amazon.com/images/M/MV5BMGVjZTA5ZjItMzliZS00NzIxLTk5MTMtYzBiMmM5MGEwZjAyXkEyXkFqcGc@._V1_.jpg", 
+		Movie_information:  "Classic Again จดหมาย สายฝน ร่มวิเศษ ชวนคุณมาซาบซึ้งกับเรื่องราวความรัก 2 กาลเวลา ที่ตรึงอยู่ในความทรงจำไม่มีวันลืมเลือน ของ โบต้า สาวมหาลัยวัยใส ที่แอบหลงรัก นน ชายหนุ่มหน้าตาดีในมหาวิทยาลัยเดียวกัน แต่เธอไม่อาจบอกความในใจครั้งนี้กับเขาได้เพราะเพื่อนสนิทของเธอก็ชอบผู้ชายคนนี้เช่นกัน จนกระทั่งวันหนึ่งเธอได้ค้นพบกล่องลับของคุณแม่",
+		Movie_video: "https://www.youtube.com/embed/HbJxeD7Iqrk?si=bNuy8H0eRfwF19yb&autoplay=1" , 
+		Movie_length: "20:30"},//26
+		{Movie_name: "20th century girl", 
+		Movie_poster: "https://m.media-amazon.com/images/M/MV5BMTk3NWVhNjQtNzVjYi00NzkwLThhMmEtMjUxMzUzMWMxMGIzXkEyXkFqcGc@._V1_.jpg", 
+		Movie_information:  "เรื่องราวความรักในยุคศตวรรษที่ 20 นาโบรา ช่วยเพื่อนเป็นแม่สื่อ ตามคำขอของเพื่อนสนิทที่ไปตกหลุมรักผู้ชายคนหนึ่ง นาโบราค่อยติดตามเรื่องราวของเด็กหนุ่มในโรงเรียน ครั้งที่เพื่อนของเธอต้องไปผ่าตัดหัวใจที่ต่างประเทศ แต่แล้วจู่ๆ เธอกลับหลงรักพุงอุงโฮ และความรักครั้งนั้น ทำให้เกิดความเข้าใจผิด นาโบราต้องเลือกระหว่างมิตรภาพและความรัก",
+		Movie_video: "https://www.youtube.com/embed/KFS4_qevE7M?si=nuvivL0L1OI6enIJ&autoplay=1" , 
+		Movie_length: "20:30"},//27
+		{Movie_name: "LAHN MAH", 
+		Movie_poster: "https://m.media-amazon.com/images/M/MV5BZmYzYjIwNjktYzRhMC00MzNkLThjMTQtZmM2ZWUxOWMyMmZiXkEyXkFqcGdeQXVyNzEyMTA5MTU@._V1_.jpg", 
+		Movie_information:  "เอ็ม (บิวกิ้น พุฒิพงศ์) ตัดสินใจดรอปเรียนตอนปีสี่ เพื่อมาเอาดีทางการแคสต์เกมแต่ทำยังไงก็ไม่รุ่ง เอ็มเลยคิดว่าจะรวยด้วยการทำงานสบายๆ แบบ มุ่ย (ตู ต้นตะวัน) ลูกพี่ลูกน้อง ที่รับหน้าที่ดูแลอากงที่ป่วยระยะสุดท้าย จนกลายเป็นทายาทเพียงคนเดียวที่ได้รับมรดกเป็นบ้านราคากว่าสิบล้าน",
+		Movie_video: "https://www.youtube.com/embed/0fksoEJvdLE?si=qizPybRa4HO8Ljlr&autoplay=1" , 
+		Movie_length: "20:30"},//28
+		{Movie_name: "Tee Yod", 
+		Movie_poster: "https://m.media-amazon.com/images/M/MV5BZmYzYjIwNjktYzRhMC00MzNkLThjMTQtZmM2ZWUxOWMyMmZiXkEyXkFqcGdeQXVyNzEyMTA5MTU@._V1_.jpg", 
+		Movie_information:  "เอ็ม (บิวกิ้น พุฒิพงศ์) ตัดสินใจดรอปเรียนตอนปีสี่ เพื่อมาเอาดีทางการแคสต์เกมแต่ทำยังไงก็ไม่รุ่ง เอ็มเลยคิดว่าจะรวยด้วยการทำงานสบายๆ แบบ มุ่ย (ตู ต้นตะวัน) ลูกพี่ลูกน้อง ที่รับหน้าที่ดูแลอากงที่ป่วยระยะสุดท้าย จนกลายเป็นทายาทเพียงคนเดียวที่ได้รับมรดกเป็นบ้านราคากว่าสิบล้าน",
+		Movie_video: "https://www.youtube.com/embed/0fksoEJvdLE?si=qizPybRa4HO8Ljlr&autoplay=1" , 
+		Movie_length: "20:30"},//28
 		
 	}
 	for _, pkg := range Movie {
