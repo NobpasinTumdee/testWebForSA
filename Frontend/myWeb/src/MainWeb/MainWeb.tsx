@@ -32,7 +32,7 @@ import { message } from "antd"; // Ant Design message for notifications
 
 
 //audio
-import lofi from '../assets/audio/Lofijazz.mp3';
+import lofi from '../assets/audio/SwaytoMyBeat.mp3';
 //import Carousels from "../Component/Carousels/Carousels";
 
 
