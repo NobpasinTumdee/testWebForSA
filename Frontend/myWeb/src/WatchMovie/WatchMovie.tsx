@@ -19,7 +19,7 @@ const WatchMovie: React.FC = () => {
   useEffect(() => {
     message.loading({ content: 'Delivering happiness to you.😍', key });
     setTimeout(() => {
-      message.success({ content: 'Yay! Have fun!😘', key, duration: 2 });
+      message.success({ content: 'Yay! Have fun!😘', key, duration: 3 });
     }, 2000);
     //message.success("Update your History!!!");
   })
