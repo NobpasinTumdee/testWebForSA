@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 //API eveeee
 import { PackageInterface, PaymentsInterface } from "../interfaces/IMoviePackage";
 import { UpdatePaymenteByidUser , GetPaymentById , CreatePayment} from "../services/https/index";
-import axios from 'axios';
+import axios from 'axios'; //เชื่อมกับ Backend
 import { message } from "antd"; // Ant Design message for notifications
 import PaymentCard from '../Component/Card/PaymentCard';
 
