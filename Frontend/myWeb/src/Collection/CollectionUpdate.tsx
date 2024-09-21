@@ -74,7 +74,7 @@ export const CollectionUpdate: React.FC = () => {
       try {
         const res = await CreateCollectionMovie(newCollectionMovie);
         if (res.status === 200) {
-          message.success("Add movie success");
+          message.success("เพิ่มหนังสำเร็จ");
           closePopup(); // Close the popup after success
           fetchCollectionMovies(id); // Refresh collection movies
         } else {
