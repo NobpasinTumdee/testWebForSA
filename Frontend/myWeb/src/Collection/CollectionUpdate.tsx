@@ -175,7 +175,7 @@ export const CollectionUpdate: React.FC = () => {
             ))
           ) : (
             <>
-              <div style={{ textAlign: 'center', fontSize: '44px', marginLeft: '15%' }}>
+              <div style={{ textAlign: 'center', fontSize: '44px' }}>
                 <h1 style={{ textAlign: 'center', fontSize: '34px' }}>Your viewing history is not yet available.</h1>
                 <a href="/MainWeb">✨Add Movie in your Collection now✨</a>
 

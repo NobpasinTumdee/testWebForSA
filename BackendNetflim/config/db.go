@@ -212,10 +212,35 @@ func SetupDatabase() {
 		Movie_video: "https://www.youtube.com/embed/0fksoEJvdLE?si=qizPybRa4HO8Ljlr&autoplay=1" , 
 		Movie_length: "20:30"},//28
 		{Movie_name: "Tee Yod", 
-		Movie_poster: "https://m.media-amazon.com/images/M/MV5BZmYzYjIwNjktYzRhMC00MzNkLThjMTQtZmM2ZWUxOWMyMmZiXkEyXkFqcGdeQXVyNzEyMTA5MTU@._V1_.jpg", 
-		Movie_information:  "เอ็ม (บิวกิ้น พุฒิพงศ์) ตัดสินใจดรอปเรียนตอนปีสี่ เพื่อมาเอาดีทางการแคสต์เกมแต่ทำยังไงก็ไม่รุ่ง เอ็มเลยคิดว่าจะรวยด้วยการทำงานสบายๆ แบบ มุ่ย (ตู ต้นตะวัน) ลูกพี่ลูกน้อง ที่รับหน้าที่ดูแลอากงที่ป่วยระยะสุดท้าย จนกลายเป็นทายาทเพียงคนเดียวที่ได้รับมรดกเป็นบ้านราคากว่าสิบล้าน",
-		Movie_video: "https://www.youtube.com/embed/0fksoEJvdLE?si=qizPybRa4HO8Ljlr&autoplay=1" , 
-		Movie_length: "20:30"},//28
+		Movie_poster: "https://upload.wikimedia.org/wikipedia/th/8/88/%E0%B9%83%E0%B8%9A%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%A2%E0%B8%99%E0%B8%95%E0%B8%A3%E0%B9%8C_%E0%B8%98%E0%B8%B5%E0%B9%88%E0%B8%AB%E0%B8%A2%E0%B8%94.jpg", 
+		Movie_information:  "ปีพุทธศักราช 2515 เกิดเหตุการณ์สุดสะพรึงขวัญขึ้น เด็กสาวในหมู่บ้านห่างไกลแถบ จ.กาญจนบุรี เสียชีวิตอย่างเป็นปริศนา ข่าวเด็กสาวตายอย่างน่าสยดสยองแพร่สะพัดไปอย่างรวดเร็วในขณะเดียวกัน หลังจาก “ยักษ์” ปลดประจำการ เขากลับมาช่วยงานที่บ้านตามคำสั่งของผู้เป็นพ่อ “หยาด”",
+		Movie_video: "https://www.youtube.com/embed/4MFA-ZhsK0c?si=lGGn_6bhH9SSEKAH&autoplay=1" , 
+		Movie_length: "20:30"},//29
+		{Movie_name: "Long Live Love!", 
+		Movie_poster: "https://m.media-amazon.com/images/M/MV5BZDUzOTBjMjktOTU4NS00MmM3LWJjZjYtYWZhZGUwMjhjZTc1XkEyXkFqcGc@._V1_.jpg", 
+		Movie_information:  "ภาพยนตร์เรื่องนี้จะบอกเล่าเรื่องราวของคู่รักที่ความรักจืดจาง สติ (รับบทโดย ซันนี่ สุวรรณเมธานนท์) และ เมตตา (รับบทโดย อารยา เอ. ฮาร์เก็ต) คู่สามีที่คบกันมานานกว่า 10 ปี มีลูกสาวด้วยกันหนึ่งคนชื่อ นะโม",
+		Movie_video: "https://www.youtube.com/embed/U9O2zR4D3Jw?si=1OjOpscejM-vDOTo&autoplay=1" , 
+		Movie_length: "20:30"},//30
+		{Movie_name: "Welcome to Waikiki", 
+		Movie_poster: "https://m.media-amazon.com/images/M/MV5BYjY3MmRhZjQtMzUxNS00ZTA3LTkwZGEtMTFmYjgwOGIwYTQ1XkEyXkFqcGc@._V1_.jpg", 
+		Movie_information:  "ในยุคที่คนวัยหนุ่มสาวต่างก็วุ่นกับการเรียน การหางานทำ หรือการทำงานกันอยู่ ซีรีส์เรื่องนี้จะนำความสดชื่นมาให้คุณเอง นี่คือเรื่องราวของความรัก มิตรภาพ และความฝัน ดงกู หนุ่มดวงซวยตัวพ่อที่ใฝ่ฝันอยากจะเป็นผู้กำกับหนัง จุนกิ",
+		Movie_video: "https://www.youtube.com/embed/AJ_eVJp-IuQ?si=Zf6iDbi17BdnngA9&autoplay=1" , 
+		Movie_length: "6:21"},//31
+		{Movie_name: "Guardian: The Lonely and Great God", 
+		Movie_poster: "https://m.media-amazon.com/images/M/MV5BNWIyNTA3MmItNzY5ZS00NmZhLThjMWYtZjIxYzllZWU5YWIzXkEyXkFqcGc@._V1_.jpg", 
+		Movie_information:  "คำสาปรักผู้พิทักษ์วิญญาณ เป็นเรื่องราวของ แม่ทัพ  (กงยู) ถูกกษัตริย์ฆ่าตายและกลายเป็น โทแกบี (Goblin) ผู้พิทักษ์วิญญาณที่ไม่มีวันตายและใช้ชีวิตอยู่มานานกว่า 900 ปี เพื่อเฝ้ารอเจ้าสาวของเขามาเป็นผู้ถอนคำสาปนี้ และแล้วในยุคปัจจุบัน เขาก็ได้มาเจอกับ จีอึนทัก",
+		Movie_video: "https://www.youtube.com/embed/8AcNEVUzV4o?si=TrV4M8DiPUqASLbg&autoplay=1" , 
+		Movie_length: "3:54"},//32
+		{Movie_name: "the uncanny counter", 
+		Movie_poster: "https://m.media-amazon.com/images/M/MV5BOGQ5ZTc0MjktOGU4YS00YzVlLWE0NWUtZTIzMzhkOTc4YTM0XkEyXkFqcGdeQXVyNjgyMTI1MDE@._V1_.jpg", 
+		Movie_information:  "โซมุน เป็นเด็กนักเรียนหนุ่มที่ความแข็งแกร่งทางกายภาพเหนือกว่าคนทั่วไป หลังจากเผชิญหน้ากับอุบัติเหตุลึกลับ กาโมทัค เคยเป็นตำรวจ แต่เลิกไปเพราะอุบัติเหตุที่ทำให้เขาเสียความทรงจำ เขากลายเป็นคนตรงไปตรงมา ขณะที่ โดฮานา เธอมีสัมผัสอันแรงกล้าที่สามารถติดต่อกับดวงวิญญาณได้ระยะไกลถึง 100 กิโลเมตร",
+		Movie_video: "https://www.youtube.com/embed/6P2m9PptDjo?si=D_X9UJpoMcExmGP1&autoplay=1" , 
+		Movie_length: "2:59"},//33
+		{Movie_name: "Love in the Moonligh", 
+		Movie_poster: "https://upload.wikimedia.org/wikipedia/en/5/55/Love_in_the_Moonlight-official_poster.jpg", 
+		Movie_information:  "ซีรีส์เรื่องนี้เป็นเรื่องราวความรักโรแมนติกของชายและหญิงที่มีสถานะแตกต่างกัน อียอง องค์ชายรัชทายาทแห่งราชวงศ์โชซอนผู้อยากหลีกหนีจากชีวิตแสนน่าเบื่อในวังหลวง ฮงราอน หญิงสาวที่มาจากครอบครัวที่มีฐานะยากจนปลอมตัวเป็นผู้ชายเพื่อทำงานหาเลี้ยงตัวเอง",
+		Movie_video: "https://www.youtube.com/embed/-Yfv8T3rChs?si=qcDuzZy5Lz6K805N&autoplay=1" , 
+		Movie_length: "2:20"},//34
 		
 	}
 	for _, pkg := range Movie {
