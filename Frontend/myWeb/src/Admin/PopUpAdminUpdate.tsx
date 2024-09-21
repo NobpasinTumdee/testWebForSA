@@ -29,7 +29,7 @@ export const PopUpAdminUpdate: React.FC = () => {
       } else {
         messageApi.open({
           type: "error",
-          content: "ไม่พบข้อมูลหนัง",
+          content: "Movie information is not found!",
         });
         setTimeout(() => {
           navigate("/Admin");
@@ -38,7 +38,7 @@ export const PopUpAdminUpdate: React.FC = () => {
     } catch (error) {
       messageApi.open({
         type: "error",
-        content: "เกิดข้อผิดพลาดในการดึงข้อมูลหนัง",
+        content: "Fetching Movie information is error!",
       });
     }
   };
@@ -48,7 +48,7 @@ export const PopUpAdminUpdate: React.FC = () => {
     if (!id) {
       messageApi.open({
         type: "error",
-        content: "ไม่พบ ID ของหนัง",
+        content: "Movie ID is not found!",
       });
       setLoading(false);
       return;
@@ -76,7 +76,7 @@ export const PopUpAdminUpdate: React.FC = () => {
       setLoading(false);
       messageApi.open({
         type: "error",
-        content: "เกิดข้อผิดพลาดในการอัปเดตข้อมูลหนัง",
+        content: "Update Movie information is error!",
       });
     }
   };

@@ -51,7 +51,7 @@ const AdminManageMovies: React.FC = () => {
             setMovie(response.data);
         })
         .catch(error => {
-            console.error('มีข้อผิดพลาดในการดึงข้อมูล:', error);
+            console.error('Fetching User information is error!:', error);
         });
   }, []);
 

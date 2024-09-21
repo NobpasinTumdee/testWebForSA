@@ -12,7 +12,7 @@ const AboutMeCom: React.FC = () => {
         if (userIdstr) {
             fetchUserData(userIdstr);
         } else {
-            message.error("ไม่พบ ID ของผู้ใช้ใน localStorage");
+            message.error("User ID is not found in localStorage!");
         }
     }, [userIdstr]);
     
@@ -26,11 +26,11 @@ const AboutMeCom: React.FC = () => {
                 setUser(res.data);
                 //message.success("พบข้อมูลUser");
             } else {
-                message.error("ไม่พบข้อมูลUser");
+                message.error("User information is not found!");
             }
         } catch (error) {
             console.error("Error fetching user data:", error); // Debug
-            message.error("เกิดข้อผิดพลาดในการดึงข้อมูลUser");
+            message.error("Fetching User information is error!");
         }
     };
     

@@ -16,7 +16,9 @@ const History: React.FC = () => {
     if (userIdstr) {
       fetchUserData(userIdstr);
     } else {
+
       message.error("The user ID was not found in localStorage.");
+
     }
   }, [userIdstr]);
 
@@ -48,6 +50,7 @@ const History: React.FC = () => {
         if (res.status === 200) {
           // อัปเดต state เพื่อลบประวัติจากหน้าจอทันที
           setHistory((prevHistory) => prevHistory.filter(item => item.id !== id));
+
           message.success("Viewing history deleted successfully.😚");
         } else {
           message.error("Unable to delete viewing history.🥹");

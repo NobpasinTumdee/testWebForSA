@@ -15,7 +15,7 @@ export const CommentCom: React.FC = () => {
 
   const onFinish = async (values: ReviewInterface) => {
     if (selectedMovie === null || !userIdstr) {
-      message.error('กรุณาเลือกภาพยนตร์ก่อน');
+      message.error('Please select the movie!');
       return; // หยุดการทำงานหากไม่มีการเลือกภาพยนตร์
     }
 
@@ -28,9 +28,9 @@ export const CommentCom: React.FC = () => {
 
     const res = await CreateReview(selectMovieForComment);
     if (res.status === 201) {
-      message.success('สำเร็จ');
+      message.success('success');
     } else {
-      message.error('มีข้อผิดพลาด');
+      message.error('error');
     }
   };
 
