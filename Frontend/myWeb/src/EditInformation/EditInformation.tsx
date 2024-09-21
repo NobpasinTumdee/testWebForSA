@@ -214,12 +214,12 @@ const EditInformation: FC = () => {
               </Col>
             </Row>
 
-            <Form.Item
+            {/* <Form.Item
               label={<span style={{ color: 'white', fontSize: '20px' }}>Password Hash</span>}
               name="password"
             >
               <Input.Password readOnly/>
-            </Form.Item>
+            </Form.Item> */}
 
             <Row gutter={[16, 16]}>
               <Col span={12}>
