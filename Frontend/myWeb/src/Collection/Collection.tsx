@@ -41,7 +41,7 @@ const Collection: React.FC = () => {
       }
     } catch (error) {
       setCollection([]); // กำหนดให้เป็น array ว่างเมื่อมี error
-      message.error("Your viewing history is not yet available.");
+      message.error("Your viewing collection is not yet available.");
     }
   };
 
@@ -68,10 +68,10 @@ const Collection: React.FC = () => {
           setCollection((prevHistory) => prevHistory.filter(item => item.id !== id));
           message.success("Delete Success");
         } else {
-          message.error("Unable to delete history");
+          message.error("Unable to delete collection");
         }
       } catch (error) {
-        message.error("An error occurred deleting history.");
+        message.error("An error occurred deleting collection.");
       }
     } else {
       message.error("ID is invalid.");
