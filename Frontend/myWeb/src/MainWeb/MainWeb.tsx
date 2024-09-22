@@ -35,6 +35,8 @@ import { message } from "antd"; // Ant Design message for notifications
 import lofi from '../assets/audio/SwaytoMyBeat.mp3';
 //import Carousels from "../Component/Carousels/Carousels";
 
+//IncognitoMode
+import {IncognitoMode} from './IncognitoMode';
 
 const MainWeb: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -322,7 +324,7 @@ const handleAdver = () => {
       {isLoading ? (<div style={{
         position: 'fixed', top: '50%', left: '55%', marginTop: '-50px', marginLeft: '-100px'
       }}><LoadingStarWar /></div>) : (
-        <div className="app">{status !== 'Admin' && ( <UsertopRigh />)} <CommentCom />
+        <div className="app">{status !== 'Admin' && ( <UsertopRigh />)} <CommentCom /> <IncognitoMode />
 
         {isAdver && (
           <>

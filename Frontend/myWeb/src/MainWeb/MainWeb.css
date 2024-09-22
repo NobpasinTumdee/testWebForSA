@@ -392,3 +392,73 @@ header {             /*top*/
 .audioMain1:hover {
   box-shadow: 0 0 20px #ffdf80;
 }
+
+
+
+/*โหมดไม่ระบุตัวตน*/
+.closeBtnincognito  {
+  background-color: #ff0000;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px #000000;
+}
+.incognitoModeBtn img{
+  background-color: #ffffff00;
+  position: fixed;
+  top: 20px;
+  right: 26%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+.pincogito { 
+  position: absolute;
+  color: #ffffff;
+  top: 50px;
+  right: 24%;
+  visibility: hidden;
+  opacity: 0;
+  transition:  0.5s ease-in-out;
+}
+
+.incognitoModeBtn:hover .pincogito{
+  visibility: visible;
+  opacity: 1;
+}
+
+.incognitoModeBtn:hover {
+  text-shadow: 0 0 20px #FFA726;
+}
+
+.IncognitoContenner {
+  font-family: pkmaehongson;
+  font-size: 24px;
+  background-color: #3C3C3C;
+  position: absolute;
+  width: 1500px;
+  height: 770px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  z-index: 100000;
+  overflow: hidden; /* ป้องกันไม่ให้เนื้อหาล้น */
+  box-shadow: 0 0 30px #000000;
+}
+
+.subincognit {
+  background-color: #575656;
+  position: absolute;
+  margin: 0% 2%;
+  width: 1450px;
+  height: 700px;
+  border-radius: 10px;
+  z-index: 100001;
+  overflow-y: scroll; /* เพิ่มการเลื่อนแนวตั้ง */
+  scrollbar-width: none;
+}
+
