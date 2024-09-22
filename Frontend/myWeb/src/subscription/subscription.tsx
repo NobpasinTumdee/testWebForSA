@@ -69,7 +69,7 @@ const Subscription = () => {
         setPackage(response.data); // บันทึกข้อมูลลงใน state
       })
       .catch(error => {
-        console.error('มีข้อผิดพลาดในการดึงข้อมูล:', error);
+        console.error('Fetching is error!:', error);
       });
   }, []);
 

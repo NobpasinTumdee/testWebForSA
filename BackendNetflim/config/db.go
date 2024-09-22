@@ -40,8 +40,7 @@ func SetupDatabase() {
 	Gender := []entity.Gender{
 		{Gender: "Male"},
 		{Gender: "Female"},
-		{Gender: "God"},
-		{Gender: "LGBTQ+"},
+		{Gender: "Other"},
 		
 	}
 	for _, pkg := range Gender {

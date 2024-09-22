@@ -111,7 +111,7 @@ export const Navbar: React.FC = () => {
             <li onClick={notify} className="sizeMenuComponent">❤️<span className='Navtext'>Movie</span></li>
           )}
           <Link to="/EditInformation">
-            <li className={`sizeMenuComponent ${location.pathname === "/EditInformation" ? "active" : ""}`}>👔<span className='Navtext'>Edit InfoMation</span></li>
+            <li className={`sizeMenuComponent ${location.pathname === "/EditInformation" ? "active" : ""}`}>👔<span className='Navtext'>Edit Information</span></li>
           </Link>
           <Link to="/History">
             <li className={`sizeMenuComponent ${location.pathname === "/History" ? "active" : ""}`}>👜<span className='Navtext'>History</span></li>

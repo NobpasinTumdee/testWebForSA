@@ -58,7 +58,7 @@ function Login1() {
                 setMovie(response.data);
             })
             .catch(error => {
-                console.error('มีข้อผิดพลาดในการดึงข้อมูล:', error);
+                console.error('Fetching is error!:', error);
             });
     }, []);
     return (

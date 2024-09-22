@@ -70,15 +70,15 @@ const Payment: React.FC = () => {
       try {
         const res = await DeletePaymenteByidUser(String(userIdstr));
         if (res.status === 200) {
-          message.success("ยกเลิกสมาชิกสำเร็จ😚");
+          message.success("Cancelling member is success.😚");
         } else {
-          message.error("ไม่สามารถยกเลิกสมาชิกได้🥹");
+          message.error("Cannot cancel member.🥹");
         }
       } catch (error) {
-        message.error("เกิดข้อผิดพลาดในการยกเลิก😭");
+        message.error("Cancelling is error.😭");
       }
     } else {
-      message.error("ID ผู้ใช้ไม่ถูกต้อง🫥");
+      message.error("User ID is incorrect.🫥");
     }
   };
 
