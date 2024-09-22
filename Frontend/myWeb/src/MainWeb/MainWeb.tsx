@@ -324,7 +324,7 @@ const handleAdver = () => {
       {isLoading ? (<div style={{
         position: 'fixed', top: '50%', left: '55%', marginTop: '-50px', marginLeft: '-100px'
       }}><LoadingStarWar /></div>) : (
-        <div className="app">{status !== 'Admin' && ( <UsertopRigh />)} <CommentCom /> <IncognitoMode />
+        <div className="app">{status !== 'Admin' && ( <UsertopRigh />)} <CommentCom /> 
 
         {isAdver && (
           <>
@@ -431,6 +431,7 @@ const handleAdver = () => {
                 <>
                   {paymentInfo ? (
                     <>
+
                       <h3 className='titile'>Search results</h3>
                       <div className="movie-grid">
                         {Moviess.map((movie) => (
@@ -459,6 +460,7 @@ const handleAdver = () => {
 
               {paymentInfo ? (
                 <>
+                <IncognitoMode />
                   <h1 className='titile'>Movie</h1>
                   <div className="movie-grid">
                     {Movies.map((movie) => (
