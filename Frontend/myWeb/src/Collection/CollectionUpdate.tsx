@@ -18,8 +18,7 @@ export const CollectionUpdate: React.FC = () => {
   const userIdstr = localStorage.getItem("id");
 
   const openPopup = () => {
-    navigate('/MainWeb')
-    //setIsPopupOpen(true);
+    setIsPopupOpen(true);
   };
   const closePopup = () => {
     setIsPopupOpen(false);
@@ -156,8 +155,9 @@ export const CollectionUpdate: React.FC = () => {
       {/* <div>Hello</div>
       {id} */}
       <div className="History-container">
-        {CollectM.length > 0 && <h1 className="History-title">{CollectM[0].collection_name}</h1>}
-        <button onClick={openPopup} className='AddMovie' style={{ color: '#ffff', marginBottom: '40px', background: '#bd9d3d', padding: '10px', cursor: 'pointer' }}>Add Movie in your Collection</button>
+        {CollectM.length > 0 && <h1 className="History-title" style={{ marginTop: '5px', marginBottom: '5px' }}>{CollectM[0].collection_name}</h1>}
+        <button onClick={openPopup} className='AddMovie' style={{ color: '#ffff', background: '#bd9d3d', padding: '15px', cursor: 'pointer' }}>Add Movie in your Collection</button>
+        <button onClick={() => navigate('/MainWeb')} className='AddMovie' style={{ color: '#bd9d3d', marginBottom: '20px', padding: '8px', cursor: 'pointer' }}>Go to main page</button>
         <div className="movie-gridCollection" >
           {CollectM.length > 0 ? (
             CollectM.map((CollectM) => (
@@ -178,7 +178,7 @@ export const CollectionUpdate: React.FC = () => {
             <>
               <div style={{ textAlign: 'center', fontSize: '44px' }}>
                 <h1 style={{ textAlign: 'center', fontSize: '34px' }}>Your viewing history is not yet available.</h1>
-                <a href="/MainWeb" >✨Add Movie in your Collection now✨</a>
+                <a href="/MainWeb">✨Add Movie in your Collection now✨</a>
 
                 <div style={{ textAlign: 'center' }}>
                   <img style={{ width: '20%' }} src='https://media.tenor.com/Comp_iIhz44AAAAi/yui-yui-hirasawa.gif' />
