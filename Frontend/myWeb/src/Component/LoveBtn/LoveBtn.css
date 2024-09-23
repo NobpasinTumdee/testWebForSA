@@ -1,5 +1,5 @@
 .tooltip-container {
-    margin-left: 65px;
+    margin-left: 70px;
     position: relative;
     background-color: #ff3cac;
     background-image: linear-gradient(225deg,
@@ -88,7 +88,7 @@
 }
 
 .tooltip-container:hover .tooltip {
-    left: 100%;
+    left: 200%;
     /* Altere para a posição desejada (a direita) */
     opacity: 1;
     visibility: visible;
