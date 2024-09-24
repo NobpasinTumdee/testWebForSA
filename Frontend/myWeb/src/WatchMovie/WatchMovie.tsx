@@ -11,20 +11,20 @@ import styles from '../Comment/ComponentComment/RatingStars.module.css';
 import { LoveBtn } from '../Component/LoveBtn/LoveBtn';
 import { message } from "antd";
 
-// const key = 'updatable';
+const key = 'updatable';
 const WatchMovie: React.FC = () => {
   const [comment, setComment] = useState<ReviewInterface[]>([]);
   const location = useLocation();
   const { IDMOVIE, videoUrl, movieName, Movie_poster, Movie_information } = location.state as { IDMOVIE: number; videoUrl: string; movieName: string; Movie_poster: string; Movie_information: string; };
   const userIdstr = localStorage.getItem("id");
 
-  // useEffect(() => {
-  //   message.loading({ content: 'Delivering happiness to you.😍', key });
-  //   setTimeout(() => {
-  //     message.success({ content: 'Yay! Have fun!😘', key, duration: 3 });
-  //   }, 2000);
-  //   //message.success("Update your History!!!");
-  // })
+  useEffect(() => {
+    message.loading({ content: 'Delivering happiness to you.😍', key });
+    setTimeout(() => {
+      message.success({ content: 'Yay! Have fun!😘', key, duration: 3 });
+    }, 2000);
+    //message.success("Update your History!!!");
+  },[])
 
   useEffect(() => {
     if (IDMOVIE && userIdstr) {
