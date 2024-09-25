@@ -90,8 +90,9 @@ const MainWeb: React.FC = () => {
 
   useEffect(() => {
     if (history.length > 0) {
-      const { DateP, Expiration } = history[0];
-      if (DateP && Expiration && DateP > Expiration && userIdstr) {
+      const { Expiration } = history[0];
+      const currentDate = new Date(); // เวลาในปัจจุบัน
+      if (currentDate && Expiration && currentDate > new Date(Expiration) && userIdstr) {
         setIsDeleting(true);
         message.error("Your membership has expired.");
         setTimeout(() => {

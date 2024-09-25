@@ -50,7 +50,7 @@ const Payment: React.FC = () => {
   const getFormattedDateTime = (date: Date): string => {
     const day = date.getDate().toString().padStart(2, '0');
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const year = (date.getFullYear() + 543).toString();
+    const year = (date.getFullYear()).toString(); // to year พศ +543
     const hours = date.getHours().toString().padStart(2, '0');
     const minutes = date.getMinutes().toString().padStart(2, '0');
     const seconds = date.getSeconds().toString().padStart(2, '0');
@@ -59,7 +59,7 @@ const Payment: React.FC = () => {
   const getFormattedDateTimeForApi = (date: Date): string => {
     const day = date.getDate().toString().padStart(2, '0');
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const year = (date.getFullYear() + 543).toString();
+    const year = (date.getFullYear() ).toString(); // to year พศ +543
     return `${day}-${month}-${year} `;
   };
 
