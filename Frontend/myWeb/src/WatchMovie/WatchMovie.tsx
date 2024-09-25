@@ -197,7 +197,7 @@ const WatchMovie: React.FC = () => {
                 </div>
               ))
             ) : (
-              <p>No comments yet.</p>
+              <p onClick={openpopup}>No comments yet.</p>
             )}
           </div>
         </div>
