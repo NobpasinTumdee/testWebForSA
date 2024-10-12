@@ -4,7 +4,7 @@ import { LoadingCamp } from '../Component/Loading/LoadingCamp';
 // API
 import { HistoryInterface } from "../interfaces/IMoviePackage";
 import { GetHistoryById, DeleteHistoryByID ,CreateHistory} from "../services/https/index";
-import { message } from "antd"; // Ant Design message for notifications
+import { message } from "antd";
 import { useNavigate } from 'react-router-dom';
 
 const History: React.FC = () => {
@@ -108,6 +108,7 @@ const History: React.FC = () => {
                       <h2>Movie: {historyItem.movie_name || "No Movie Name"}</h2>
                       <p>User Name: {historyItem.user_name || "No Username"}</p>
                       <p>Date: {historyItem.date ? new Date(historyItem.date).toLocaleDateString() : "No Date Available"}</p>
+                      <p>TIME: {historyItem.date ? new Date(historyItem.date).toLocaleTimeString() : "No Date Available"}</p>
                     </div>
                     <button className="edit-button" onClick={() => handleDelete(historyItem.id)}>
                       🗑️
